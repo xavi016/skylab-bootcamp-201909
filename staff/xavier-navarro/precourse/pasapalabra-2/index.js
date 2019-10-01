@@ -172,7 +172,7 @@ let a = [
   let isComplete = false
   let roscoTimer
   let score = 0
-  const totalLetters = 27
+  const totalLetters = questions.length
   let rank = []
   
   function resetGame(){
