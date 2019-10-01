@@ -18,14 +18,14 @@ var flights = [
 simples, pero al ser un código sencillo no lo contemplé
 */
 function muestraVuelos() {
-    var nombre = prompt("Como se llama?");
+    const nombre = prompt("Como se llama?");
     console.log("Buenos días " + nombre + " los vuelos disponibles para hoy son los siguientes: ");
     var costeMedio = 0;
     var nVuelosConEscala = 0;
 
     flights.forEach(function(element) { //Imprimo todos los vuelos y aprovecho para calcular media y n vuelos con escala
         var escala;
-        element[3] ? escala = "tiene escala" : escala = "no tiene escala";
+        element.scale ? escala = "tiene escala" : escala = "no tiene escala";
         costeMedio += element.cost;
 
         if (element.scale) nVuelosConEscala++;
@@ -51,7 +51,7 @@ function muestraVuelos() {
 }
 
 function adminOrUser() {
-    var tipo = prompt("Escribe tu tipo 'Admin' o 'User' para más operaciones, o pulsa Enter para salir.");
+    const tipo = prompt("Escribe tu tipo 'Admin' o 'User' para más operaciones, o pulsa Enter para salir.");
     if (tipo.toUpperCase() == "ADMIN") {
         adminFunction();
     } else if (tipo.toUpperCase() == "USER") {
@@ -98,7 +98,7 @@ function metodoOrdenacion(orden) {
 function userFunction() {
     var validacion = true;
     do {
-        var opcion = prompt("Que desea:escriba \n'1' para ordenar por precio mayor a menor" +
+        const opcion = prompt("Que desea:escriba \n'1' para ordenar por precio mayor a menor" +
             "\n'2' para ordenar por precio menor a mayor" +
             "\n'3' para comprar vuelo" +
             "\npulsa Enter para salir.");
@@ -108,7 +108,7 @@ function userFunction() {
         } else if (opcion == 2) {
             metodoOrdenacion("desc");
         } else if (opcion == 3) {
-            var idVuelo = prompt("Escriba el id del vuelo por favor: ");
+            const idVuelo = prompt("Escriba el id del vuelo por favor: ");
             var validacionId = false;
             flights.forEach(function(element) {
                 if (element.id == idVuelo) {
@@ -120,7 +120,7 @@ function userFunction() {
             validacionId ? console.log("Gracias por su compra, vuelva pronto") : console.log("No se ha entoncreado su vuelo");
 
         } else {
-            console.log("Hasta la próxima")
+            console.log("Hasta la próxima");
             validacion = false;
         }
     } while (validacion);
@@ -132,20 +132,20 @@ function userFunction() {
 function adminFunction() {
     var validacion = true;
     do {
-        var opcion = prompt("Que desea:escriba '1' para añadir o '2' para eliminar vuelos, pulsa Enter para salir.");
+        const opcion = prompt("Que desea:escriba '1' para añadir o '2' para eliminar vuelos, pulsa Enter para salir.");
         if (opcion == 1) {
             if (flights.length < 15) {
-                var origen = prompt("Origen?");
-                var destino = prompt("Destino?");
-                var precio = prompt("Precio?");
-                var escala = prompt("Tiene escalas?");
+                const origen = prompt("Origen?");
+                const destino = prompt("Destino?");
+                const precio = prompt("Precio?");
+                const escala = prompt("Tiene escalas?");
                 var idVuelo = (flights[flights.length - 1].id) + 1;
                 flights.push({ id: idVuelo, to: destino, from: origen, cost: precio, scale: escala });
             } else {
                 alert("No se admiten más vuelo, prueba a borrar alguno");
             }
         } else if (opcion == 2) {
-            var idVuelo = prompt("id del vuelo a eliminar: ");
+            const idVuelo = prompt("id del vuelo a eliminar: ");
             var tamaño = flights.length;
             for (var a = 0; a < flights.length; a++) {
                 if (flights[a].id == idVuelo) {
@@ -155,7 +155,7 @@ function adminFunction() {
             }
             if (tamaño == flights.length) console.log("No se encontró el vuelo con el id " + idVuelo);
         } else {
-            console.log("Hasta la próxima")
+            console.log("Hasta la próxima");
             validacion = false;
         }
         console.log(flights); //Imprimo aquí los vuelos para ver si se han efectuado los cambios.
