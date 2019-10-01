@@ -1,0 +1,123 @@
+.section1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+}
+.grid {
+  border: 1px grey solid;
+  width: 400px;
+  height: 500px;
+  display: grid;
+  grid-template: repeat(7, 1fr) / repeat(4, 1fr)
+}
+.box {
+  background-color: beige;
+  color: black;
+  border: 1px grey solid;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+.color1 {
+  background-color: #e8e8e8;
+}
+.color1:hover {
+  background-color: white;
+}
+.color1:active {
+  background-color: #d2d1d1;
+}
+.color2:hover {
+  background-color: #fffff3
+}
+.color2:active {
+  background-color: #f4f4b7;
+  background-color:  #f7f7ce;
+}
+#back-arrow:hover {
+  width: 60px;
+}
+#back-arrow {
+  width: 51px;
+}
+.change-size:hover {
+  font-size: 2.5rem;
+}
+#message {
+  grid-area: 1 / 1 / span 1 / span 4;
+  font-size: 2rem;
+  align-items: flex-end;
+  padding: 0.5rem 2rem;
+  background-color: #d79d16;
+  color: white;
+  border-bottom: 0px grey solid;
+}
+#display {
+  grid-area: 2 / 1 / span 1 / span 4;
+  font-size: 2.5rem;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0.5rem 2rem;
+  background-color: #d79d16;
+  color: white;
+  border-top: 0px grey solid;
+  box-sizing: border-box;
+  align-items: flex-end;
+}
+#keyAC {
+  grid-area: 3 / 1 / span 1 / span 2;
+}
+#keyBack {
+  grid-area: 3 / 3 / span 1 / span 1;
+}
+#keyDiv {
+  grid-area: 3 / 4 / span 1 / span 1;
+}
+#key7 {
+  grid-area: 4 / 1 / span 1 / span 1;
+}
+#key8 {
+  grid-area: 4 / 2 / span 1 / span 1;
+}
+#key9 {
+  grid-area: 4 / 3 / span 1 / span 1;
+}
+#keyMult {
+  grid-area: 4 / 4 / span 1 / span 1;
+}
+#key4 {
+  grid-area: 5 / 1 / span 1 / span 1;
+}
+#key5 {
+  grid-area: 5 / 2 / span 1 / span 1;
+}
+#key6 {
+  grid-area: 5 / 3 / span 1 / span 1;
+}
+#keySubt{
+  grid-area: 5 / 4 / span 1 / span 1;
+}
+#key1 {
+  grid-area: 6 / 1 / span 1 / span 1;
+}
+#key2 {
+  grid-area: 6 / 2 / span 1 / span 1;
+}
+#key3 {
+  grid-area: 6 / 3 / span 1 / span 1;
+}
+#keyAdd {
+  grid-area: 6 / 4 / span 1 / span 1;
+}
+#key0 {
+  grid-area: 7 / 1 / span 1 / span 2;
+}
+#keyDot {
+  grid-area: 7 / 3 / span 1 / span 1;
+}
+#keyEqual {
+  grid-area: 7 / 4 / span 1 / span 1
+}
