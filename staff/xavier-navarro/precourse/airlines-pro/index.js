@@ -29,14 +29,14 @@ function printFlights(flights){
             escala = "no realiza ninguna escala."
         }
         console.log("- El vuelo "+element['id']+"  con origen: "+element['to']+", y destino: "+element['from']+" tiene un coste de "+element['cost']+"€ y "+escala)
-    });
+    })
 }
 function priceAverage(){
     let price = 0
     let average
     flights.forEach(element => {
         price += element['cost']
-    });
+    })
     average = price/flights.length
     average = Math.round(average*100)/100
     return average
@@ -47,7 +47,7 @@ function scaleFlights(){
         if(element['scale']){
             console.log("- El vuelo con origen: "+element['to']+", y destino: "+element['from'])
         }
-    });
+    })
 }
 
 function lastFlights(numFlights){
@@ -75,7 +75,7 @@ function checkData(flightData){
                 alert("ID reptido. No se puede crear este vuelo")
                 return false
             }
-        });
+        })
     }
     if(isNaN(costFlight)){
         alert("Los datos introducidos no són validos1")
@@ -84,14 +84,14 @@ function checkData(flightData){
     switch (scaleFlight) {
         case "true":
             scaleFlight = true
-            break;
+            break
         case "false":
             scaleFlight = false
-            break;
+            break
         default:
             alert("Los datos introducidos no són validos.")
             return false
-            break;
+            break
     }
     let data = {id: idFlight, to: toFlight, from: fromFlight, cost: costFlight, scale: scaleFlight }
     return data
@@ -226,11 +226,11 @@ function login(){
                          } while (askDelete() == "s" && flights.length > 0);
                          if(flights.length == 0) console.log("No se puede eliminar ningún registro. No hay vuelos programados")
                          console.log("¡Hasta la próxima!")
-                    break;
+                    break
             
                 default:
                     console.log("Lo siento, esta opción no está disponible")
-                    break;
+                    break
             }
             
             break;
@@ -245,14 +245,14 @@ function login(){
                     flight = getMaxPrice(price)
                     console.log("Ha elegido el vuelo: ID:  "+flight['id']+ " con destino "+flight['from']+". Precio: "+flight['cost'])
                     console.log("Gracias por su compra, vuelva pronto.")
-                    break;
+                    break
                 case "-":
                     price =  prompt("Indique el precio máximo del billete:")
                     console.log(price)
                     flight = getMinPrice(price)
                     console.log("Ha elegido el vuelo más barato. ID: "+flight['id']+ " con destino "+flight['from']+". Precio: "+flight['cost'])
                     console.log("Gracias por su compra, vuelva pronto.")
-                    break;
+                    break
                 case "=":
                     flight = getEqualPrice()
                     if(flight === false){
@@ -262,20 +262,20 @@ function login(){
                         console.log("Ha elegido el vuelo "+flight['id']+ " con destino "+flight['from']+". Precio: "+flight['cost'])
                         console.log("Gracias por su compra, vuelva pronto.")
                     }
-                    break;
+                    break
             
                 default:
                     console.log("Operación no disponible. Adiós.")
-                    break;
+                    break
             }
-            break;
+            break
         
         default:
             console.log("Usuario incorrecto")
-            break;
+            break
     }
 }
-function SkylabAirlines(){
+function skylabAirlines(){
     console.log(welcome()+", estos són todos los vuelos disponibles:")
     printFlights(flights)
     console.log("El coste medio de los vuelos es de "+priceAverage() )
@@ -286,4 +286,4 @@ function SkylabAirlines(){
     login()
 }
 
-SkylabAirlines()
+skylabAirlines()
