@@ -16,14 +16,14 @@ var flights = [
 simples, pero al ser un código sencillo no lo contemplé
 */
 function muestraVuelos() {
-    var nombre = prompt("Como se llama?");
+    const nombre = prompt("Como se llama?");
     console.log("Buenos días " + nombre + " los vuelos disponibles para hoy son los siguientes: ");
-    var costeMedio = 0;
-    var nVuelosConEscala = 0;
+    let costeMedio = 0;
+    let nVuelosConEscala = 0;
 
     flights.forEach(function(element) { //Imprimo todos los vuelos y aprovecho para calcular media y n vuelos con escala
         var escala;
-        element[3] ? escala = "tiene escala" : escala = "no tiene escala";
+        element.scale ? escala = "tiene escala" : escala = "no tiene escala";
         costeMedio += element.cost;
 
         if (element.scale) nVuelosConEscala++;
