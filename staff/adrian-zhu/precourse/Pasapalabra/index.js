@@ -35,39 +35,37 @@ function pasapalabra() {
   
     function play() {
       var posicion = 0;
-      let intentos = 1
+      let intentos = 1;
       alert(`Bienvenidos check Skylab-pasapalabra`)
 
       function check() {
         var pregunta = darpregunta(posicion);
         var respuesta = darrespuesta(posicion);
 
-        console.log(pregunta)
-
-       // console.log(`Te queda ${preguntas.pendiente.length} preguntas`);
+        console.log(pregunta);
         
         var letra = prompt("escribe-nos una de las opciones:\nRespuesta de la pregunta/Pasapalabra/Exit");
         var status = checkrespuesta(letra.toLowerCase(), respuesta, posicion);
-        console.log(status)
+        console.log(status);
   
     
           posicion++;
 
           if (posicion >= preguntas.pendiente.length) {
             if (intentos) {
-              preguntas.pendiente =  preguntas.pendiente.filter(pre => pre.status === 2)
-              posicion = 0
-              intentos--
+              preguntas.pendiente =  preguntas.pendiente.filter(pre => pre.status === 2);
+              posicion = 0;
+              intentos--;
             } else {
               return
             }
           }
 
-          check()
- 
+          check();
+
       }
 
-      check()
+      check();
   
       console.log("Respuestas correctas: " + preguntas.correcto.length);
       console.log("Respuestas incorrectas: " + preguntas.incorrecto.length);
@@ -90,13 +88,11 @@ function pasapalabra() {
       if(letra == "exit") {
         status = 0;
       } else if(letra == "pasapalabra") {
-        preguntas.pendiente[posicion].status = 2
+        preguntas.pendiente[posicion].status = 2;
       } else if(letra == respuesta) {
         preguntas.correcto.push(preguntas.pendiente[posicion]);
-        //preguntas.pendiente.splice(posicion, 1);
       } else if(letra != respuesta) {
         preguntas.incorrecto.push(preguntas.pendiente[posicion]);
-       // preguntas.pendiente.splice(posicion, 1);
       }
   
       return status;

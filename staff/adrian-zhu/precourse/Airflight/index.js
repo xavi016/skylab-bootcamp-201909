@@ -1,10 +1,10 @@
 function airlines(){
-    let userName=askUserName();
+    const userName=askUserName();
     alert(`Encantad@ ${userName}, \n¡Bienvenido a Skylab Airlines!!`);
     console.log(`<--------------------------------------------------------------->`);    
     showFlights(flights);
     console.log(`<--------------------------------------------------------------->`);
-    let avg=average();
+    const avg=average();
     console.log(`El coste promedio de nuestros vuelos ${avg}€  `);
     console.log(`<--------------------------------------------------------------->`);
     withStop();
@@ -42,7 +42,7 @@ function showFlights(flightList){
     for(let i=0;i<flightList.length; i++){
         let scale='';
         if(flightList[i].scale==true){
-        scale='Tiene stops'
+        scale='Tiene stops';
         }else{
         scale="No tienen stops.";    
         }
@@ -75,9 +75,9 @@ function lastFlights(){
 function askProfileUser(){
 
     let profile=prompt('Es su perfil administrador o usuario?');
-    if(profile=='ADMINISTRADOR'|| profile=='administrador' || profile=='Administrador'){
+    if(profile.toLocaleLowerCase() == 'Administrador'){
         showOptionsAdmin();
-    }else if(profile=='USUARIO'|| profile=='usuario'|| profile=='Usuario'){
+    }else if(profile.toLocaleLowerCase() == 'Usuario'){
         showOptionsUser();
     }else{
         alert('Lo sentimos, no hemos reconocido tu perfil.')
@@ -90,7 +90,7 @@ function showOptionsAdmin(){
 
     let option=prompt('Encantad@ administrador, usted puedes insertar o eliminar un vuelo');
 
-    if (option=='INSERTAR'|| option=='Insertar'|| option=='insertar'){
+    if (option.toLowerCase() == 'insertar'){
         if(flights.length<15){
             insertFlight();
         }else{
@@ -98,13 +98,13 @@ function showOptionsAdmin(){
         }
         
         showOptionsAdmin();
-    }else if(option=='Eliminar'|| option =='Eliminar'|| option=='eliminar'){
+    }else if(option.toLocaleLowerCase() == 'eliminar'){
         let flightId=prompt('Por favor diganós el id del vuelo que usted quieres eliminar');
         deleteFlight(flightId);
         showFlights(flights);
         showOptionsAdmin();
     }else if(option==null){
-        alert('Hasta luego!')
+        alert('Hasta luego!');
     }else{
         alert('Lo sentimos, no hemos podido reconocer a este ID que usted has indicado.');
         showOptionsAdmin();
@@ -124,11 +124,11 @@ function deleteFlight(idFl){
         }
 
     }
-    if (flag==true){
-        alert(`Lo sentimos, no hemos podido eliminar a este ${idFl} que usted has indicado. `)
+    if (flag){
+        alert(`Lo sentimos, no hemos podido eliminar a este ${idFl} que usted has indicado. `);
     }
 } else{
-    alert('Los vuelos están eliminado correctamente.')
+    alert('Los vuelos están eliminado correctamente.');
     }
     return
 }
@@ -160,8 +160,9 @@ function insertFlight(){
 
 function showOptionsUser(){
     let option=prompt('Encantad@ usuario \nSeleccionar la opción de precios: bajo, alto, igual');
+    console.log(option);
     
-    if (option=='BAJO'|| option=='Bajo'|| option=='bajo'){
+    if (option.toLowerCase() == 'bajo'){
         let lower=prompt('¿Estás buscando un vuelo con un precio inferior a ...?');
         const lowerThan = flights.filter(flights => flights.cost < lower);
         if (lowerThan.length>0){
@@ -176,7 +177,7 @@ function showOptionsUser(){
             showOptionsUser();
         }
         
-    }else if(option=='ALTO'|| option =='Alto'|| option=='alto'){
+    }else if(option.toLocaleLowerCase() == 'alto'){
         let higher=prompt('¿Estás buscando un vuelo con un precio superior a ...?');
         const higherThan = flights.filter(flights => flights.cost > higher);
         if (higherThan.length>0){
@@ -190,7 +191,7 @@ function showOptionsUser(){
             alert('No resultados');
             showOptionsUser();
         }
-    }else if(option=='IGUAL'|| option =='Igual'|| option=='igual'){
+    }else if(option.toLocaleLowerCase =='igual'){
         let equal=prompt('Estás buscando un vuelo con un precio igual a ...?');
         const equalTo = flights.filter(flights => flights.cost == equal);
         if(equalTo.length>0){

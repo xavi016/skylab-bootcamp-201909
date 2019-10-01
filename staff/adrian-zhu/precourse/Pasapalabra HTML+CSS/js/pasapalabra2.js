@@ -48,8 +48,16 @@ var correcta = document.getElementById("correcta");
 var btnInput = document.getElementById("btnrespuesta");
 var btnAbandonar = document.getElementById("btnAbandonar"); // btn-abandonar
 var btnInformación = document.getElementById("btnInformación");
-var btnJugador = document.getElementById("btnJugador")
-var btnPasapalabra = document.getElementById("btnPasapalabra")
+var btnJugador = document.getElementById("btnJugador");
+var btnPasapalabra = document.getElementById("btnPasapalabra");
+
+var btnClose = document.getElementById("closebtn");
+
+// BTN Close 
+
+btnClose.addEventListener("click", function(){
+    this.parentElement.style.display='none';
+});
 
 // contador 
 function contador(){
@@ -90,7 +98,7 @@ function buscadorPregunas(){
 function logica(){
     if(i<27){
         definicion.innerHTML = questions[i].question;
-        document.getElementById(questions[i].letter).style.backgroundColor = '#64b5f6'
+        document.getElementById(questions[i].letter).style.backgroundColor = '#64b5f6';
         document.getElementById(questions[i].letter).style.transition = 'background-color 1s, border 1s, color 1s';
         document.getElementById(questions[i-1].letter).style.border = "2px solid black";
         document.getElementById(questions[i].letter).style.border = "2px solid black";
@@ -99,7 +107,7 @@ function logica(){
         i=0;
         buscadorPregunas();
         definicion.innerHTML = questions[i].question;
-        document.getElementById(questions[i].letter).style.backgroundColor = '#64b5f6'
+        document.getElementById(questions[i].letter).style.backgroundColor = '#64b5f6';
         document.getElementById(questions[i].letter).style.transition = 'background-color 1s, border 1s, color 1s';
         document.getElementById(questions[i-1].letter).style.border = "2px solid black";
         document.getElementById(questions[i].letter).style.border = "2px solid black";
@@ -111,15 +119,15 @@ function logica(){
 }
 
 function colorAzul(){
-    document.getElementById(questions[i].letter).style.backgroundColor = '#1976d2'
+    document.getElementById(questions[i].letter).style.backgroundColor = '#1976d2';
     document.getElementById(questions[i].letter).style.transition = 'background-color 1s, border 1s, color 1s';
 }
 
 function checkReplay(respuesta,indice){
     
     if(respuesta.value.toLowerCase()==="pasapalabra"){
-        colorAzul()
-        correcta.innerHTML= "Has clicado a Pasapalabra" 
+        colorAzul();
+        correcta.innerHTML= "Has clicado a Pasapalabra" ;
     }
 
     else if(respuesta.value.toLowerCase()===questions[indice].answer){
@@ -145,7 +153,7 @@ function pasapalabra(){
     i++;
     input.value ="";
     logica();
-    correcta.innerHTML= "Has clicado a Pasapalabra" 
+    correcta.innerHTML= "Has clicado a Pasapalabra" ;
 }
 
 function questionSetup(){
@@ -164,7 +172,7 @@ function abort(){
     btnAbandonar.disabled = true;
     btnJugador.disabled = false;
 
-    correcta.innerHTML=`Has abandonado el juego tienes ${correct} preguntas correctas y ${incorrect} preguntas incorrectas`
+    correcta.innerHTML=`Has abandonado el juego tienes ${correct} preguntas correctas y ${incorrect} preguntas incorrectas`;
     btnInformación.innerHTML=`Hasta luego!`;
 
     clearTimeout(myVar); // imovilizar el tiempo
@@ -179,13 +187,13 @@ function final(){
     btnPasapalabra.disabled = true;
     btnJugador.disabled = false;
     
-    correcta.innerHTML=`Has terminado el juego tienes ${correct} preguntas correctas y ${incorrect} preguntas incorrectas`
+    correcta.innerHTML=`Has terminado el juego tienes ${correct} preguntas correctas y ${incorrect} preguntas incorrectas`;
     btnInformación.innerHTML=`Dale otra partida`;
 }
 
 function init(){
 
-    estadoInicio()
+    estadoInicio();
 
     // values preset
     correcta.innerHTML="";
@@ -202,7 +210,7 @@ function init(){
     // html ¨a¨ preset
     definicion.innerHTML = questions[i].question;
     document.getElementById("a").style.border = "2px solid floralwhite";
-    document.getElementById("a").style.backgroundColor = '#64b5f6'
+    document.getElementById("a").style.backgroundColor = '#64b5f6';
 
     // time preset
     tiempo=180;
