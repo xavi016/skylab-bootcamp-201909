@@ -1,0 +1,60 @@
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1, .button, .resultview {
+    font-family: Georgia;
+}
+
+h1 {
+    background-color: rgb(207, 173, 238);
+    margin: 4px;
+    width: 340px;
+    text-align: center;
+    font-weight: inherit;
+}
+
+.main{
+    width: 345px;
+    position: absolute;
+    }
+
+.button {
+    width: 75px;
+    height: 50px;
+    font-size: 20px; 
+    margin: 4px;
+    Border-radius: 20px;
+}
+
+.resultview {
+    width: 260px;
+    height: 45px;
+    font-size: 20px;
+    margin: 6px;
+    Border-radius: 20px;
+    margin-left: 30px; 
+}
+
+.par {
+   background-color: hotpink
+
+}
+
+.impar {
+    background-color: blueviolet;
+}
+
+.par, .impar {
+    font-weight: bold;
+}
+
+.symbol {
+    background-color: lightpink;
+}
+
+.largo {
+    width: 160px;
+}
