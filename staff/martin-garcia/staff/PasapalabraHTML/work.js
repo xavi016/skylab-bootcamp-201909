@@ -6,30 +6,30 @@
 //sin contestar 0           acertada 1          fallada -1
 //Para que el juego fuese más interesante he añadido 5 preguntas por letra, para que puedan salir diferentes definiciones
 
-var noContestadas = [];
-var questions = [];
-var jugador = {};
-var ranking = [];
-var tiempo = 120;
-var intervalo;
-var tipoPregunta; //PrimeraRonda/NoContestada
-var numeroPregunta; //Variable auxiliar para saber en que número de pregunta me encuentro
-var numeroPreguntaNoContestada = 0;
+let noContestadas = [];
+let questions = [];
+let jugador = {};
+let ranking = [];
+let tiempo = 120;
+let intervalo;
+let tipoPregunta; //PrimeraRonda/NoContestada
+let numeroPregunta; //letiable auxiliar para saber en que número de pregunta me encuentro
+let numeroPreguntaNoContestada = 0;
 validacion = {
     partida: true,
     respuesta: true,
     contadorVuelta: 0,
 };
-var comprobacionPregunta;
-var comprobacionRespuesta;
+let comprobacionPregunta;
+let comprobacionRespuesta;
 
 
-//El tipo varía entre primerNombre, nuevoNombre, dependiendo de si se ha pedido ingresar un nuevo nombre
+//El tipo letía entre primerNombre, nuevoNombre, dependiendo de si se ha pedido ingresar un nuevo nombre
 function start(tipo) {
     if (tipo === "primerNombre") {
         jugador.nombre = document.getElementById("nombre").value;
     } else {
-        var segundoNombre = document.getElementById("segundoNombre");
+        let segundoNombre = document.getElementById("segundoNombre");
         if (segundoNombre.value.length > 0) {
             jugador.nombre = segundoNombre.value;
             document.getElementById("nombre").value = jugador.nombre;
@@ -56,7 +56,7 @@ function resetGame() {
     reiniciarBolas();
     questions = [];
     multiplesQuestions.forEach(function(element) {
-        var nRandom = Math.floor((Math.random() * (4 - 0 + 1)));
+        let nRandom = Math.floor((Math.random() * (4 - 0 + 1)));
         questions.push(element[nRandom]);
     });
     document.getElementById("segundoNombre").value = "";
@@ -69,7 +69,7 @@ function resetGame() {
 function timer() {
     intervalo = setInterval(function() {
         tiempo -= 1;
-        var marcadorTiempo = document.getElementById("tiempo");
+        let marcadorTiempo = document.getElementById("tiempo");
         marcadorTiempo.innerHTML = "Tiempo: " + tiempo;
         if (tiempo === 0) {
             alert("Se acabo el tiempo!");
@@ -84,14 +84,14 @@ function timer() {
 
 function cambiarDescripcion(juego) {
     if (juego === "inicio") {
-        var div = document.getElementById("inicio");
+        let div = document.getElementById("inicio");
         div.hidden = true;
         div = document.getElementById("reiniciar");
         div.hidden = true;
         div = document.getElementById("inGame");
         div.hidden = false;
     } else if (juego === "reiniciar") {
-        var div = document.getElementById("inGame");
+        let div = document.getElementById("inGame");
         div.hidden = true;
         div = document.getElementById("reiniciar");
         div.hidden = false;
@@ -102,11 +102,11 @@ function cambiarDescripcion(juego) {
 
 
 function formularPregunta(tipo) {
-    var textBox = document.getElementById("respuesta");
+    let textBox = document.getElementById("respuesta");
     textBox.value = "";
     textBox.focus();
     if (tipo === "PrimeraRonda") {
-        var div = document.getElementById("pregunta");
+        let div = document.getElementById("pregunta");
         div.innerHTML = questions[validacion.contadorVuelta].question;
         tipoPregunta = "PrimeraRonda";
         comprobacionPregunta = questions[validacion.contadorVuelta].question;
@@ -115,7 +115,7 @@ function formularPregunta(tipo) {
         if (numeroPreguntaNoContestada === noContestadas.length || numeroPreguntaNoContestada < 0) {
             numeroPreguntaNoContestada = 0;
         }
-        var div = document.getElementById("pregunta");
+        let div = document.getElementById("pregunta");
         div.innerHTML = noContestadas[numeroPreguntaNoContestada].question;
         tipoPregunta = "NoContestada";
         comprobacionPregunta = noContestadas[numeroPreguntaNoContestada].question;
@@ -127,10 +127,10 @@ function formularPregunta(tipo) {
 
 function responder() {
     if (tipoPregunta === "PrimeraRonda") {
-        var respuesta = document.getElementById("respuesta").value;
+        let respuesta = document.getElementById("respuesta").value;
         validarPregunta(questions, respuesta, validacion.contadorVuelta);
     } else {
-        var respuesta = document.getElementById("respuesta").value;
+        let respuesta = document.getElementById("respuesta").value;
         validarPregunta(noContestadas, respuesta, numeroPreguntaNoContestada);
         console.log("if " + noContestadas[numeroPreguntaNoContestada].status);
 
@@ -215,8 +215,8 @@ function validarPregunta(preguntas, respuesta, posicion) {
 
 //Añade al ranking una objeto con los datos nombre, aciertos y fallos.
 function addToRanking() {
-    var acertadas = 0;
-    var falladas = 0;
+    let acertadas = 0;
+    let falladas = 0;
     questions.forEach(function(element) {
         if (element.status == 1) {
             acertadas += 1;
@@ -230,7 +230,7 @@ function addToRanking() {
 
 //Muestra el ranking por pantalla y pregunta si se quiere jugar otra vez
 function mostrarRanking() {
-    var titulo = document.getElementById("titulo");
+    let titulo = document.getElementById("titulo");
     titulo.innerHTML = "<pre>Nombre       Acertadas       Falladas</pre>";
     ranking.sort(function(a, b) {
         if (a.aciertos < b.aciertos) {
@@ -242,12 +242,12 @@ function mostrarRanking() {
         return 0;
     });
     clearInterval(intervalo);
-    var padre = document.getElementById("ranking");
+    let padre = document.getElementById("ranking");
     while (padre.hasChildNodes()) {
         padre.removeChild(padre.firstChild);
     }
     ranking.forEach(function(element) {
-        var linea = document.createElement("p");
+        let linea = document.createElement("p");
         linea.className = "linea";
         linea.innerHTML = "<pre> " + element.nombre + "    ---->    " + element.aciertos + "    ---->    " + element.fallos + "</pre>";
         padre.appendChild(linea);
@@ -266,7 +266,7 @@ function introResposta(tecla) {
 function introStart(tecla) {
     if (tecla.keyCode === 13) {
         start();
-        var textBox = document.getElementById("respuesta");
+        let textBox = document.getElementById("respuesta");
         textBox.focus();
     }
 }
@@ -275,20 +275,20 @@ function introStart(tecla) {
 function pintarBola(color, numero) {
     console.log(tipoPregunta)
     if (tipoPregunta === "PrimeraRonda") {
-        var bola = document.getElementById("" + numero);
+        let bola = document.getElementById("" + numero);
         color === "rojo" ? bola.style.backgroundColor = "#ff5858" : bola.style.backgroundColor = "#9cf196";
     } else {
-        var numeroBola = questions.indexOf(noContestadas[numero]);
+        let numeroBola = questions.indexOf(noContestadas[numero]);
         console.log(numeroBola);
-        var bola = document.getElementById("" + numeroBola);
+        let bola = document.getElementById("" + numeroBola);
         color === "rojo" ? bola.style.backgroundColor = "#ff5858" : bola.style.backgroundColor = "#9cf196";
 
     }
 }
 
 function reiniciarBolas() {
-    var bolas = document.getElementsByClassName("bola");
-    for (var a = 0; a < bolas.length; a++) {
+    let bolas = document.getElementsByClassName("bola");
+    for (let a = 0; a < bolas.length; a++) {
         bolas[a].style.backgroundColor = "#ffffff";
     }
 
