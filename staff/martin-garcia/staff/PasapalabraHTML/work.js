@@ -124,6 +124,10 @@ function formularPregunta(tipo) {
 
 }
 
+function pasapalabra() {
+    document.getElementById("respuesta").value = 'pasapalabra';
+    responder();
+}
 
 function responder() {
     if (tipoPregunta === "PrimeraRonda") {
