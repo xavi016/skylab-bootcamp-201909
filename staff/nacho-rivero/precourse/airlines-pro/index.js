@@ -27,7 +27,8 @@ var prices = [];
 
 
 function sysBoot(){
-    userName = prompt("Please enter Username");
+    userInput = prompt("Please enter Username");
+    userName = userInput.toLowerCase();
     console.log("Te damos la bienvenida a nuestro terminal de Skylab Airlines!, " + userName + ".");  
 }
 
@@ -90,8 +91,18 @@ function privilegiesByUserType(){
 
           } else if ( user == "admin") {
 
-            console.log("SkyLab Airlines está concediéndote los privilegios pertinentes, " + userName);
-            adminLog();
+            password = prompt("Please introduce password");
+            if (password == "eureka"){
+                console.log("SkyLab Airlines está concediéndote los privilegios pertinentes, " + userName);
+                adminLog(); 
+
+            } else {
+
+                console.log("Incorrect Password, please try again");
+                privilegiesByUserType();
+            }
+
+           
 
           }else{
               
