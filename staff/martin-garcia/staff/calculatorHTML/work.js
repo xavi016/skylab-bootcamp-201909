@@ -9,13 +9,6 @@ function añadirNumero(e) {
     actualizarDisplay(e.target.innerText);
 }
 
-
-
-/* function resultado(e) {
-    console.log("hola" + e.target.innerText);
-} */
-
-
 function actualizarDisplay(textoNuevo) {
     //Compruebo que si ya hay una "," no se inserten más
     if (textoNuevo.includes("Infinity") || textoNuevo.includes("NaN")) {

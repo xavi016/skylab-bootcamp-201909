@@ -77,7 +77,6 @@ function generadorBingoCard(number) {
 }
 
 //Genera un n aleaorio en el rango [1,99]
-//var numeroBombo = () => { return Math.round((Math.random() * (99 - 1 + 1)) + 1); }
 function numeroBombo() {
     return Math.round((Math.random() * (99 - 1 + 1)) + 1);
 }

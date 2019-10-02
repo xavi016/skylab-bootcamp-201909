@@ -133,31 +133,31 @@ function responder() {
         var respuesta = document.getElementById("respuesta").value;
         validarPregunta(noContestadas, respuesta, numeroPreguntaNoContestada);
         console.log("if " + noContestadas[numeroPreguntaNoContestada].status);
-        if (noContestadas[numeroPreguntaNoContestada].status == 1) {
-            console.log("Correcta");
-            questions[questions.indexOf(noContestadas[numeroPreguntaNoContestada])].status == 1;
-            noContestadas.splice(numeroPreguntaNoContestada, 1);
-            numeroPreguntaNoContestada -= 1;
-        } else if (noContestadas[numeroPreguntaNoContestada].status == -1) {
-            console.log("False");
-            questions[questions.indexOf(noContestadas[numeroPreguntaNoContestada])].status == -1;
-            noContestadas.splice(numeroPreguntaNoContestada, 1);
-            numeroPreguntaNoContestada -= 1;
-        } else {
-            numeroPreguntaNoContestada += 1;
+
+        switch (noContestadas[numeroPreguntaNoContestada].status) {
+            case 1:
+                console.log("Correcta");
+                questions[questions.indexOf(noContestadas[numeroPreguntaNoContestada])].status == 1;
+                noContestadas.splice(numeroPreguntaNoContestada, 1);
+                numeroPreguntaNoContestada -= 1;
+                break;
+            case -1:
+                console.log("False");
+                questions[questions.indexOf(noContestadas[numeroPreguntaNoContestada])].status == -1;
+                noContestadas.splice(numeroPreguntaNoContestada, 1);
+                numeroPreguntaNoContestada -= 1;
+                break;
+            default:
+                numeroPreguntaNoContestada += 1;
         }
     }
     validacion.contadorVuelta += 1;
     preguntasRosco();
-    if (validacion.respuesta == false) {
+    if (validacion.respuesta === false) {
         addToRanking();
         //en esta funcion se pregunta mediante un confirm si se quiere jugar de nuevo
-        //validacion.partida = mostrarRanking();
         mostrarRanking();
         cambiarDescripcion("reiniciar");
-    }
-    if (validacion.partida == false) {
-        //Nunca chega aquí
     }
 }
 
