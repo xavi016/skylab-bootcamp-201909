@@ -8,7 +8,6 @@
 
 var noContestadas = [];
 var questions = [];
-//var val;
 var jugador = {};
 var ranking = [];
 var tiempo = 120;
@@ -32,7 +31,7 @@ function start(tipo) {
     } else {
         var segundoNombre = document.getElementById("segundoNombre");
         if (segundoNombre.value.length > 0) {
-            jugador.nombre = segundoNombre.value
+            jugador.nombre = segundoNombre.value;
             document.getElementById("nombre").value = jugador.nombre;
         } else {
             jugador.nombre = document.getElementById("nombre").value;
@@ -49,7 +48,6 @@ function start(tipo) {
 //Resetea los datos del juego para poder comenzar de cero.
 function resetGame() {
     document.getElementById("comprobacionPregunta").innerHTML = "";
-    //document.getElementById("comprobacionRespuesta").innerHTML = "";
     tiempo = 120;
     validacion.contadorVuelta = 0;
     numeroPregunta = 0;
@@ -232,7 +230,6 @@ function addToRanking() {
 
 //Muestra el ranking por pantalla y pregunta si se quiere jugar otra vez
 function mostrarRanking() {
-    //var ranking = document.getElementById("ranking");
     var titulo = document.getElementById("titulo");
     titulo.innerHTML = "<pre>Nombre       Acertadas       Falladas</pre>";
     ranking.sort(function(a, b) {

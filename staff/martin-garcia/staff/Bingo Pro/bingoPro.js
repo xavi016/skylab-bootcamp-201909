@@ -7,7 +7,7 @@ function bingo() {
     var cantidadNumeros = 15; //Cantidad de números en el cartón
     var ranking = []; //Array de objetos {nombre:"Pepe", puntuacion:15}
     var validaPartida = false; //esta variable llevará el valor de la función confirm();
-    mostrarRanking(ranking, cantidadNumeros)
+    mostrarRanking(ranking, cantidadNumeros);
 
 
     do {
@@ -20,7 +20,7 @@ function bingo() {
         //Preguntamos para avanzar, si no quiere salimos de la partida
         //En esta función se sucederan las bolas hasta el final de la partida
         //O hasta que el user quiera salir(En este caso la función devolvera 0)
-        var numeroBolas = comprobarCarton(bingoCard, cantidadNumeros)
+        var numeroBolas = comprobarCarton(bingoCard, cantidadNumeros);
         if (numeroBolas == 0) {
             mostrarRanking(ranking);
             return;
@@ -161,7 +161,7 @@ function generarCarton(numero) {
             for (var x = 0; x < carton[i].length; x++) {
                 cartonStr += " " + carton[i][x].number;
             }
-            cartonStr += "\n"
+            cartonStr += "\n";
         }
         var respuesta = prompt("Si desea jugar con este cartón, escriba 'Yes'," +
             " pulse intro para cambiar de carton\n" +

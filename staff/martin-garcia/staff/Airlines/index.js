@@ -44,7 +44,7 @@ function muestraVuelos() {
 
     ultimosVuelos.forEach(function(element) {
         console.log(element.from + " - " + element.to + " precio:" + element.cost + "€");
-    })
+    });
 
 }
 

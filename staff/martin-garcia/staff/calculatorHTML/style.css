@@ -34,7 +34,7 @@
     grid-template-areas: "display display display display" "AC AC reload division" "siete ocho nueve multiplicacion" "cuatro cinco seis resta" "uno dos tres suma" "cero cero coma igual";
     font-size: 2em;
     font-family: sans-serif;
-    font-weight: 200
+    font-weight: 200;
 }
 
 .display {
