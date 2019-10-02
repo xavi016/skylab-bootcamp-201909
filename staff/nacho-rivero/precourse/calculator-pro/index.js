@@ -43,9 +43,7 @@ function results(){
                  "Total Rest "+ parseFloat(resultRest).toFixed(3).replace(/0+$/,''),
                  "Total Multiplication "+ parseFloat(resultMult).toFixed(3).replace(/0+$/,''),
                  "Total Division "+ parseFloat(resultDiv).toFixed(3).replace(/0+$/,'')];
-    for (var k=0; k < operations.length; k++){
-        console.log(operations[k]);
-}
+    operations.forEach(op => console.log(op));
 }
 
 function newNumbers(){
