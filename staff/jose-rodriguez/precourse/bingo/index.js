@@ -54,7 +54,6 @@ function getBomboNumber (bombo) {
   return selectedNumber;
 }
 
-
 function hayMatch (bingoCard,selectedNumber) {
   for (var i=0; i<bingoCard.length; i++) {
     for (var j=0; j<5; j++){
@@ -67,7 +66,7 @@ function hayMatch (bingoCard,selectedNumber) {
   return bingoCard;
 }
 
-function  cantalinea (bingoCard) {
+function cantalinea (bingoCard) {
  for (var i=0; i<bingoCard.length; i++) {
     var linia = true;
     for (var j=0; j < 5; j++) {
