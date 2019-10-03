@@ -1,4 +1,4 @@
-        let semanticElements = ['div', 'p', 'a', 'span', 'script', 'strong', 'b', 'noscript', 'br', '#text', '#comment', 'button', 'i'];
+        let semanticElements = ['#text', '#comment'];
         let text = '';
         dom = document.getElementsByTagName('body');
 
