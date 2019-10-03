@@ -1,3 +1,9 @@
+nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
 #products  {
     display: flex;
     flex-wrap: wrap;
@@ -5,4 +11,8 @@
 
 .product {
     width: 40%;
+}
+
+#product-detail {
+    display: flex;
 }
