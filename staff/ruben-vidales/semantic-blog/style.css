@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
 }
 
@@ -10,6 +10,18 @@ html {
 ul {
     list-style: none;
     padding-inline-start: 0;
+}
+
+h1{
+    font-size: 3em;
+}
+
+h2{
+    font-size: 2em;
+}
+
+h2{
+    font-size: 1.5em;
 }
 
 /**************** header ****************/
@@ -31,6 +43,7 @@ ul {
 .navigation a:hover {
     background: #666666;
 }
+
 /**************** end header ****************/
 
 /**************** main ****************/
@@ -43,19 +56,34 @@ main {
 main>.welcome-message {
     width: 100vw;
 }
+
 main>.recipe-bloc,
 main>.blog-container {
     width: 74vw;
 }
 
-main > aside {
+main>aside {
     width: 24vw;
 }
 
 .blog-container {
     margin: 0 auto;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.blog-container>nav {
+    width: 100%;
+}
+
+.blog-container>nav>ul.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.blog-container>nav>ul.pagination>li {
+    padding: 20px;
 }
 
 .recipe-container {
@@ -64,12 +92,14 @@ main > aside {
     border: 1px dotted #666666;
     background-color: #dddddd;
     border-radius: 5px;
+    width: 15vw;
 }
 
 .recipe-container>h2 {
     text-align: center;
     width: 100%;
 }
+
 /**************** end main ****************/
 
 /**************** footer ****************/
@@ -82,4 +112,5 @@ ul.socials {
 ul.socials>li {
     margin: 10px;
 }
+
 /**************** end footer ****************/
