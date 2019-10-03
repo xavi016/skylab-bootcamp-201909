@@ -1,4 +1,4 @@
-html{
+html {
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -8,26 +8,37 @@ html{
     background: #333333;
     display: flex;
     justify-content: flex-end;
-  }
-  
-  .navigation a {
+}
+
+.navigation a {
     text-decoration: none;
     display: block;
     padding: 1em;
     color: white;
-  }
-  
-  .navigation a:hover {
-    background: #666666;
-  }
+}
 
-.blog-container{
-    width: 80%;
+.navigation a:hover {
+    background: #666666;
+}
+
+main>.welcome-message {
+    flex: 1 100%;
+}
+
+main>.blog-container {
+    flex: 1 80%;
+}
+
+main > aside {
+    flex: 2 20%;
+}
+
+.blog-container {
     margin: 0 auto;
     display: flex;
 }
 
-.recipe-container{
+.recipe-container {
     margin: 10px;
     padding: 10px;
     border: 1px dotted #666666;
@@ -35,22 +46,22 @@ html{
     border-radius: 5px;
 }
 
-.recipe-container > h2 {
+.recipe-container>h2 {
     text-align: center;
     width: 100%;
 }
 
-main > h1,
-footer > h4{
+main>h1,
+footer>h4 {
     text-align: center;
 }
 
-ul.socials{
+ul.socials {
     list-style: none;
     display: flex;
     justify-content: center;
 }
 
-ul.socials > li {
+ul.socials>li {
     margin: 10px;
 }
