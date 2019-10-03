@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400&display=swap');
+
 body{
 	margin:0;
     background-color: #efefef;
-    align-content: center;
+	align-content: center;
+	font-family: Roboto;
 }
+
 header {
 	font-size: 20px;
-	background-color: black;
-	color: #cccccc;
-	height: 75px;
+
 }
 
 nav {
@@ -16,9 +18,21 @@ nav {
 
 
 article{
-	margin-top:20px;
-	float:center;
+	display: grid;
+	grid-template-columns: 1fr 0,5in [start] 1.25in 5in 1.25in [end] 0,5in 1fr;
+	height: auto;
+	padding: 0.5in 0;
+	
+
 }
+
+article * {grid-column: start/end; }
+
+.size-1 {grid-column: 4/5; }
+.size-2 {grid-column: 3/6; }
+.size-3 {grid-column: 2/7; }
+.size-4 {grid-column: 1/8; }
+img.size-1, img.size-2, img.size-3 {width: 100%; };
 
 footer{	
 	color: white;	
@@ -28,4 +42,29 @@ footer{
 	min-height: 50px;	
 	padding:20px;	
 	background-color: black;	
+}
+
+h2, h3, h4, p { margin-bottom: 2.4rem; }
+
+h1{font: 2rem/1.2 "Roboto"; color: rgb(105, 99, 99)}
+h2{font: 2rem/1.2 "Roboto"; color: rgb(95, 87, 87)}
+time{font: 0.9rem/1.2 "Roboto" ; color:#154011}
+h3{font: 1.2rem/1.2 "Roboto"; color:rgb(74, 83, 74)}
+p{font: 1.0rem/1.5 "Roboto";}
+
+a {box-shadow: inset 0 -0.15em #2A8022;}
+
+.blog-head{
+	height: 500px;
+	background-image: url(https://static1.visitestonia.com/images/2890339/Estonian_forest_reasons_to_visit_Sven_Zacek.jpg);
+	display:flex;
+	flex-direction: column;
+	font-size: 20;
+	
+}
+
+nav {
+	display:flex;
+	align-content: flex-start;
+	flex-direction: column;
 }
