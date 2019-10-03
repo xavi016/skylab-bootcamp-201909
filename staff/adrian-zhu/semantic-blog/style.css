@@ -3,11 +3,11 @@
   grid-template-columns: 12% auto 400px 12%;
   grid-template-rows: auto auto 400px auto auto auto;
   grid-template-areas: 
-    "top-bar     top-bar     top-bar     top-bar"
+    "name     name     name     name"
     "main-header main-header main-header main-header"
-    "hero        hero        hero        hero"
-    ".           blog-posts  side-bar    ."
-    ".           news        side-bar    ."
+    "box-article        box-article        box-article        box-article"
+    ".           message-3  message-5    ."
+    ".           message-4        message-5    ."
     "main-footer main-footer main-footer main-footer";
   margin: 0 auto;
   padding: 1px 5px 5px 5px;
@@ -18,16 +18,16 @@
   grid-template-columns: 12% auto 400px 12%;
   grid-template-rows: auto auto auto auto;
   grid-template-areas: 
-    "top-bar     top-bar     top-bar     top-bar"
+    "name     name     name     name"
     "main-header main-header main-header main-header"
-    "hero        hero        hero        hero"
+    "box-article        box-article        box-article        box-article"
     "main-footer main-footer main-footer main-footer";
   margin: 0 auto;
   padding: 1px 5px 5px 5px;
 }
 
-.top-bar{
-  grid-area: top-bar;
+.name{
+  grid-area: name;
   background: red;
   padding: 4px 12%; 
   text-align: center;
@@ -38,8 +38,8 @@
   padding: 12px 12%;
   
 } 
-.hero{
-  grid-area: hero;
+.box-article{
+  grid-area: box-article;
   background: green;
   padding: 15px 12% 0 12%;
   
@@ -48,12 +48,12 @@
   grid-template-columns: auto 50px auto;
   grid-template-rows: auto auto auto;
   grid-template-areas: 
-    "message   .  award"
+    "message   .  message-2"
 ; 
 }
 
 .againster{
-  grid-area: hero;
+  grid-area: box-article;
   background: green;
   padding: 15px 12% 0 12%;
   
@@ -67,16 +67,16 @@
 ; 
 }
 
-.blog-posts{
-  grid-area: blog-posts;
+.message-3{
+  grid-area: message-3;
   background: #8af;
 }
-.news{
-  grid-area: news;
+.message-4{
+  grid-area: message-4;
   background: #1bd;
 }
-.side-bar{
-  grid-area: side-bar;
+.message-5{
+  grid-area: message-5;
   background: #0e8;
 }
 .main-footer{
@@ -88,8 +88,8 @@
 .message{
   grid-area: message;
 }
-.award{
-  grid-area: award;
+.message-2{
+  grid-area: message-2;
 }
 
 
