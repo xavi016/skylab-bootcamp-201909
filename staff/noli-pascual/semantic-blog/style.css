@@ -5,7 +5,7 @@ header {
     width: 100%;
 }
 
-#logo {
+.logo {
     width: 38%;
     justify-self: flex-start;
 }
@@ -43,16 +43,16 @@ nav li:hover{
   color:#000;
 }
 
-#slider-container {
+.slider-container {
     width: 100%;
     height: auto;
 }
 
-#slider-container img {
+.slider-container img {
     width: 100%;
 }
 
-#last-posts {
+.last-posts {
     width: 70vw;
     display: flex;
     flex-wrap: wrap;
@@ -71,14 +71,14 @@ img {
     height: auto;
 }
 
-#recomendations {
+.recomendations {
     width: 70vw;
     height: 200px;
     display: flex;
     flex-direction: row;
 }
 
-#recomendations h2 {
+.recomendations h2 {
     display: block;
 }
 

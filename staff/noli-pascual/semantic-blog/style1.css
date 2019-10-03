@@ -5,7 +5,7 @@ header {
     width: 100%;
 }
 
-#logo {
+.logo {
     width: 38%;
     justify-self: flex-start;
 }
@@ -43,7 +43,7 @@ nav li:hover{
   color:#000;
 }
 
-#active-article {
+.active-article {
     width: 100%;
     height: auto;
     text-align: justify;
