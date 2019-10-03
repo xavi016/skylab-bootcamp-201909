@@ -1,0 +1,53 @@
+* {
+    border: 1px solid;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+.grid {
+    width: 98%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+    nav
+    header
+    aside
+    main
+    privacy
+    footer;
+    grid-template-rows: 10% 20% 3fr 1fr 2fr;
+    grid-template-columns: 1fr; 
+}
+
+nav {
+    grid-area: nav;  
+}
+header {
+    grid-area: header;
+    width: 100%;
+    background-color: grey;
+}
+
+aside {
+    grid-area: aside;
+    width: 98%;
+}
+
+main{
+    grid-area: main;
+    width: 98%;
+}
+
+.privacy {
+    grid-area: privacy;
+    width: 98%;
+}
+
+footer {
+    grid-area: footer;
+    width: 100%;
+}
