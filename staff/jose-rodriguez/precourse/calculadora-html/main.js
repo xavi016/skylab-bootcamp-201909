@@ -5,7 +5,7 @@ var op;
 
 
 function getNumber(numero) {
-    if(num1==0 && num1!=="0.") {
+    if(num1===0 && num1!=="0.") {
         num1=numero;
     } else {
         num1 += numero;
@@ -14,10 +14,10 @@ function getNumber(numero) {
 }
 
 function dot() {
-    if (num1==0) {
-        num1 = '0,'
+    if (num1===0) {
+        num1 = '0.'
     } else if (num1.indexOf(',') == -1) {
-        num1+= ','
+        num1+= '.'
     }
     showNum();
 }
