@@ -1,0 +1,81 @@
+body {
+  display: grid;
+  grid-template-columns: 12% auto 400px 12%;
+  grid-template-rows: auto auto 400px auto auto auto;
+  grid-template-areas: 
+    "top-bar     top-bar     top-bar     top-bar"
+    "main-header main-header main-header main-header"
+    "hero        hero        hero        hero"
+    ".           blog-posts  side-bar    ."
+    ".           news        side-bar    ."
+    "main-footer main-footer main-footer main-footer";
+  margin: 0 auto;
+  padding: 1px 5px 5px 5px;
+}
+
+.top-bar{
+  grid-area: top-bar;
+  background: red;
+  padding: 4px 12%; 
+  text-align: center;
+} 
+.main-header{
+  grid-area: main-header;
+  background: #a3c;
+  padding: 12px 12%;
+} 
+.hero{
+  grid-area: hero;
+  background: green;
+  padding: 15px 12% 0 12%;
+  
+
+  display: grid;
+  grid-template-columns: auto 50px auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: 
+    "message   .  award"
+; 
+}
+
+.againster{
+  grid-area: hero;
+  background: green;
+  padding: 15px 12% 0 12%;
+  
+
+  display: grid;
+  grid-template-columns: auto 50px auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: 
+    "  . . .  message   .  "
+    
+; 
+}
+
+.blog-posts{
+  grid-area: blog-posts;
+  background: #8af;
+}
+.news{
+  grid-area: news;
+  background: #1bd;
+}
+.side-bar{
+  grid-area: side-bar;
+  background: #0e8;
+}
+.main-footer{
+  grid-area: main-footer;
+  background: #033;
+  padding: 25px 12%;
+}
+
+.message{
+  grid-area: message;
+}
+.award{
+  grid-area: award;
+}
+
+
