@@ -1,0 +1,37 @@
+$alert-border: turquoise
+$alert-title: black 
+    
+.alert 
+    width: 50vw
+    border: 0.2rem solid $alert-border
+    border-radius: 1rem
+    padding: 1rem
+    background-color: darkgreen
+    margin: 1rem
+    font-family: Arial, Helvetica, sans-serif
+
+
+&_title 
+
+    color: $alert-title
+
+
+
+&_body 
+
+    font-size: 1.2rem
+
+
+
+&--danger 
+
+    border-color: red
+    background-color: pink
+
+
+
+&--danger > &__title 
+
+    color: red
+
+
