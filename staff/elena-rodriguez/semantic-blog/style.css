@@ -5,23 +5,23 @@
 body {
     margin:0;
     padding:0;
-    background-image: radial-gradient(rgba(0, 81, 255, 0.541), rgba(0, 255, 234, 0.747), rgb(0, 2, 128));
+    background-color: white;
+    /*background-image: radial-gradient(rgba(0, 81, 255, 0.541), rgba(0, 255, 234, 0.747), rgb(0, 2, 128));*/
 }
 
-header {
-
+.header_bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    padding: 0 25px;
 }
 
-.header_top {
-display:grid;
-grid-template-columns: 80% 20%;
-}
-
-h1 {
+.landing_title {
     font-family:Arial, Helvetica, sans-serif;
     text-align:center;
-    margin-left:240px;
-    
+    font-size:40px;
+    margin-left:0;
     padding:0;
 }
 
@@ -30,49 +30,18 @@ form{
     width: 110px;
     margin: 30px 10px 30px 40px;
     text-align: center;
-    
     display: block;
 }
-/*
-.header_top{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    flex-direction:row;
-}
-
-h1 {
-    display:flex;
-    justify-content:center;
-    text-align:center;
-    justify-content: flex-start;
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid black;
-}
-
-
-form {
-    height: 30px;
-    display:flex;
-    justify-content:center;
-    text-align:center;
-    justify-content: flex-start;
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid black;
-}*/
    
 nav ul {
     display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
+    justify-content: space-around;
     color: black;
   }
 
 
   li {
-    font-size: 15px;
+    font-size: 20px;
     margin-left: 0;
     margin-right: 30px;
     list-style: none;
@@ -82,13 +51,68 @@ nav ul {
 
   a {
     text-decoration: none;
-    color: black;
+    color: rgb(0, 0, 0);
+  }
+
+  .title {
+      color: black;
+      font-size: 30px;
   }
 
 
-main {
+  .articulos_tres_columnas {
+    display: flex;
+    justify-content: flex-start;
+}
+  
+  
+  .main {
+      background-color: white;
+      color: rgb(8, 8, 8);
+      font-family: helvetica;
+  }
 
+  .last_reviews1 {
+    background-color: white;
+    margin: 1px;
+    color:black;
+    padding:8px;
+      
+  }
+
+  .last_reviews2 {
+    background-color:  white;
+    margin: 1px;
+    color:rgb(3, 3, 3);
+    padding:8px;
+    
+    
 }
-footer {
-   
+
+.last_reviews3 {
+    background-color: white;
+    margin: 1px;
+    color:rgb(0, 0, 0);
+    padding:8px;
+    
+    
 }
+
+  .section_title {
+      margin-left: 20px;
+     
+  }
+
+  .header_article {
+    height: 500px;
+    width: 100%; 
+    background-color: white;
+  }
+  .article-content {
+      color:rgb(7, 7, 7);
+  }
+
+.cut_review {
+    font-size: 30px;
+}
+
