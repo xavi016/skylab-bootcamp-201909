@@ -24,7 +24,7 @@ body {
         'nav nav nav nav nav nav'
         'main main main main main aside'
         'footer footer footer footer footer footer';
-    grid-template-rows: 25% 5% 60% 10%;
+    /*grid-template-rows: 25% 5% 60% 10%;*/
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     background-color: aliceblue;
 }
@@ -37,6 +37,7 @@ header {
     justify-content: center;
     align-items: center;
     letter-spacing: 3px;
+    height: 40vh;
 }
 
 main {
@@ -79,5 +80,5 @@ article {
     width: 25%;
     height: 30%;
     margin:2%;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
