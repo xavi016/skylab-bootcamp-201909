@@ -1,0 +1,112 @@
+body{
+    display:flex;
+    width: 100%;
+    flex-direction: column;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: #fadffa
+}
+img{
+    width: 40%;
+    align-self: center;
+    border-radius: 15px;
+}
+
+.header{
+    
+    align-self: center;
+    background-image: url(https://cdn.pixabay.com/photo/2018/12/12/09/47/pink-dawn-3870437_1280.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    justify-content: center;
+    display:flex;
+}
+
+.header-title{
+    align-self: center;
+    color: white;
+    font-size: 40px;
+    
+}
+
+main{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.main-article{
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    width: 70%;
+    border: 1px solid black;
+}
+
+.article-title{
+    align-self:center;
+    color: grey;
+    
+}
+
+.main-text{
+    
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    align-self: center;
+}
+
+.aside{
+    width: 29%;
+    height: auto;
+    border: 1px solid black;
+}
+
+.aside-title{
+    color:grey;
+    text-align: center;
+}
+.comments{
+    border: 1px solid black;
+    height: 200px;
+    display: block;
+    text-align: center;       
+}
+
+
+.send-comment{
+    border: 2px solid rgb(252, 4, 239);    
+    background: rgb(139, 11, 139);
+    color: white;
+    border-radius: 15px;
+    height: 35px;
+    width: 100px;
+    font-size: 15px; 
+    text-align: center;
+    
+}
+
+.send-comment:active{
+    transform: scale(.9);
+}
+
+footer{
+    border: 2px solid red;
+    align-self: center;
+    background-image: url(https://cdn.pixabay.com/photo/2018/12/12/09/47/pink-dawn-3870437_1280.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    justify-content: center;
+    display:flex;
+}
+
+.copyright{
+    color: white;
+}
+
+ul{
+    list-style:none;
+    }
