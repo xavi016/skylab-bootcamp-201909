@@ -126,7 +126,7 @@ aside {
 }
 
 .comment-site {
-    width: 100%;
+    width: 90%;
 }
 
 .input-textarea {
@@ -187,15 +187,16 @@ footer {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+
 }
+
 
 .footer-list {
   display: flex;
   flex-direction: row;
   list-style: none;
-
-  justify-content: space-between;
-  width: 25%;
+  justify-content: space-around;
+  width: 18%;
   
 }
 
