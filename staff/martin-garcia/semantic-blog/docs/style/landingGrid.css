@@ -19,6 +19,16 @@ main>.multiArticle {
 
 main>aside {
     grid-area: 4 / 2 / 5 /5;
+    padding-top: 6vh;
+    padding-bottom: 6vh;
+    font-size: 1.4em;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.asidePaddingLeft {
+    padding-left: 4vh;
 }
 
 main>footer {

@@ -1,6 +1,8 @@
 * {
     box-sizing: border-box;
     margin: 0px 0px 0px 0px;
+    /*     border: solid thin black;
+ */
 }
 
 body {
@@ -14,7 +16,9 @@ body {
 main>header {
     display: flex;
     justify-content: space-between;
-    margin-top: 3%;
+    /*     flex-wrap: wrap;
+ */
+    margin-top: 5%;
 }
 
 .menuNav {
@@ -25,6 +29,7 @@ main>header {
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .menuNav ul li {
@@ -60,4 +65,23 @@ h1 {
 .reverseColor a {
     background-color: #26282e;
     color: #fef86e;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+footer>nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+footer>nav>ul {
+    width: 40%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
