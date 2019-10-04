@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+.header__nav {
+  display: grid;
+  grid-template-columns: 50px 2fr 1fr;
+  grid-template-rows: repeat(2, 35px);
+  grid-template-area: "menu icons logo" "search search search";
+}
+.header__menu {
+  grid-area: menu;
+}
+.header__icons {
+  grid-area: icons;
+}
+.header__title {
+  grid-area: logo;
+}
+.header__search {
+  grid-area: search;
+}
+
+/*# sourceMappingURL=style.css.map */

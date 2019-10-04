@@ -1,0 +1,30 @@
+*
+    box-sizing: border-box
+
+
+.header
+    &__nav
+        display: grid
+        grid-template-columns: 50px 2fr 1fr
+        grid-template-rows: repeat(2, 35px)
+        grid-template-area: "menu icons logo" "search search search"
+
+
+    &__menu
+        grid-area: menu   
+
+
+    &__icons
+        grid-area: icons
+    // display: flex
+    // justify-content: center
+    // align-items: center
+
+
+
+    &__title 
+        grid-area: logo 
+ 
+
+    &__search    
+        grid-area: search
