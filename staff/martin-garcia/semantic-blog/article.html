@@ -8,14 +8,15 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./docs/style/main.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="./docs/style/articleFlex.css">
+    <title>Article</title>
 </head>
 
 <body>
     <main>
         <header class="principalElement">
             <figure>
-                <img src="./docs/images/logo.svg" alt="logo image">
+                <a href="./landing.html"><img src="./docs/images/small_logo.svg" alt="logo image"></a>
             </figure>
             <nav class="menuNav">
                 <ul>
@@ -35,15 +36,17 @@
             </nav>
         </header>
 
-        <section>
-            <header>
+        <section class="principalElement article">
+            <div class="title">
+                <p class="time"><time>02 <br> SEP</time></p>
+
                 <h1>
                     A free video series on building web apps with Elm
                 </h1>
                 <summary>
                     See how I build Elm apps in this entirely free 20 video series.
                 </summary>
-            </header>
+            </div>
 
             <main>
                 <p>
@@ -61,8 +64,6 @@
                     <figcaption> Lorem ipsum dolor sit amet consectetur adipisicing elit.</figcaption>
                 </figure>
 
-                <hr>
-
                 <aside>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi saepe asperiores, accusantium dolorem modi voluptate tenetur et ipsa laudantium veritatis similique!
                 </aside>
@@ -72,21 +73,14 @@
                     <input type="button" value="Subscribe">
                 </form>
 
-                <hr>
-
-                <aside>
+                <aside class="twitter">
                     <p>If you enjoyed this article please feel free to <a href="twitter.com">share it on Twitter.</a></p>
                 </aside>
 
             </main>
-
-
-
-
-
         </section>
 
-        <footer>
+        <footer class="principalElement">
             <nav>
                 <ul>
                     <li>
