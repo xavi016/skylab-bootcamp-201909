@@ -5,49 +5,63 @@
 }
 
 body {
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .grid {
-    width: 98%;
-    height: 100%;
-    display: grid;
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr 1fr auto;
+    grid-gap:10px;
+    height: calc(100vh - 10px);
+    background-color: yellow;
     grid-template-areas: 
-    nav
-    header
-    aside
-    main
-    privacy
-    footer;
-    grid-template-rows: 10% 20% 3fr 1fr 2fr;
-    grid-template-columns: 1fr; 
+    "nav"
+    "header"
+    "aside"
+    "main"
+    "footer";
+    /* grid-template-rows: 10% 20% 20% 40% 10%;
+    grid-template-columns: 1fr;  */
 }
 
 nav {
     grid-area: nav;  
+    height: 10%;
+    width: 100%;
+  
+    background-color: blue;
 }
 header {
     grid-area: header;
     width: 100%;
+    
     background-color: grey;
 }
 
 aside {
     grid-area: aside;
-    width: 98%;
+    width: 25%;
+  
 }
 
 main{
     grid-area: main;
-    width: 98%;
+    width: 70%;
+    
 }
 
 .privacy {
-    grid-area: privacy;
-    width: 98%;
+    width: 100%;
+    
 }
 
 footer {
     grid-area: footer;
     width: 100%;
+  
+} 
+
+header figure img{
+    width: 30%;
 }
