@@ -82,6 +82,7 @@ main {
   margin-left: 1%;
 }
 
+
 .img__articles{
 
   width: 100px;
@@ -91,6 +92,20 @@ main {
 
 }
 
+.img__lapland {
+
+  width: 100%
+
+
+}
+
+.article-sizing{
+
+display: flex;
+justify-content: stretch;
+
+
+}
 
 
 .container{
