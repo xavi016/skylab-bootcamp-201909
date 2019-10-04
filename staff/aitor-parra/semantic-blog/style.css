@@ -1,0 +1,67 @@
+body {
+    background-color: rgba(21, 133, 181, 0.66)
+}
+
+title {
+    text-align: center;
+}
+
+ul, aside {
+    display: flex;
+    justify-content: space-around;
+}
+
+img {
+    border: 2px solid white;
+}
+
+.who-block {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 
+    "titulowho imagenwho"
+    "textowho imagenwho";
+}
+
+.titulowho {
+    grid-area: titulowho;
+}
+
+.textowho {
+    grid-area: textowho;
+}
+
+.whoami {
+    
+    float: right; 
+    grid-area: imagenwho;
+}
+
+.whereami {
+    display: flex;
+    border: 2px solid white;
+    float: center; 
+
+}
+
+footer {
+    font-size: 10px;
+    color: rgb(12, 12, 157)
+}
+
+aside {
+    justify-content: flex-end;
+    display: flex;
+    float: right;
+}
+
+.imagescountries {
+    display: flex;
+    border: 1px solid white;
+    max-width: 400px;
+    justify-content: space-between;
+    flex-direction: row;
+    align-self: stretch;
+    
+    
+}
