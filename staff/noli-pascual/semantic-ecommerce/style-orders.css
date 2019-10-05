@@ -11,10 +11,10 @@ body {
 .grid {
     display:grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr 1fr auto;
+    grid-template-rows: 10% 10% 10% 50% 10%;
     grid-gap:10px;
     height: calc(100vh - 10px);
-    background-color: yellow;
+    
     grid-template-areas: 
     "nav"
     "header"
@@ -26,42 +26,52 @@ body {
 }
 
 nav {
+    display: flex;
     grid-area: nav;  
-    height: 10%;
     width: 100%;
-  
-    background-color: blue;
+    justify-content: center;
+}
+
+nav ul {
+    display: flex;
+    width: 100%;
+    
+    background-color: red;
+    justify-content: center;
 }
 header {
     grid-area: header;
     width: 100%;
-    
-    background-color: grey;
+    justify-content: center;
 }
 
 aside {
     grid-area: aside;
-    width: 25%;
+    width: 100%;
+   
   
 }
 
 main{
     grid-area: main;
-    width: 70%;
-    
+    width: 100%;
+
+    background-color: yellow;
 }
 
-.privacy {
-    width: 100%;
-    
-}
 
 footer {
     grid-area: footer;
     width: 100%;
+    
   
 } 
 
-header figure img{
-    width: 30%;
+header figure {
+    width: 50%;
+    height: 90%;
+}
+
+header figure img {
+    width: 90%;
 }
