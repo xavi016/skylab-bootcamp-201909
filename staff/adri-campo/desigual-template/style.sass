@@ -1,30 +1,175 @@
 *
     box-sizing: border-box
+    
 
+body
+    margin: 0
+    
 
 .header
-    &__nav
+
+    .nav
         display: grid
         grid-template-columns: 50px 2fr 1fr
         grid-template-rows: repeat(2, 35px)
-        grid-template-area: "menu icons logo" "search search search"
+        grid-template-areas: "menu iconlist title" "search search search"
+        padding: .75rem 
+   
+        &__menu
+            grid-area: menu   
+            display: flex
+            justify-content: center
+            align-items: center
+
+        &__iconlist
+            grid-area: iconlist
+            display: flex
+            align-items: center
+            margin: -45px
+
+        &__icons 
+                display: flex
+                justify-content: flex-start
+                list-style: none
+
+        &__li
+                    margin: 7px
+             
+
+        &__title 
+            grid-area: title
+            display: flex
+            justify-content: center
+            align-items: center
+    
+            .titlelogo
+                width: 100%
+                max-width: 123px
+                
+
+        &__search    
+            grid-area: search
+            display: flex
+            justify-content: center
+            align-items: center
 
 
-    &__menu
-        grid-area: menu   
+
+.footer
+    
+
+    .customer-service
+        display: grid
+        grid-template-columns: 1fr
+        grid-template-rows: 1fr 1fr 1fr
+        grid-template-areas: "menu" "menu" "menu" 
+
+        &__menu
+            grid-area: menu  
+            display: flex
+            justify-content: flex-start
+            align-items: center
+            background: #2e2c2c11
+            
+            .menu__items
+                list-style: none
+                color: #2C2926
+
+                .link
+                    color: #2C2926
+                    padding: .5rem
+                    font-size: 12px
+
+                .fas
+                    margin-right: 15px
+
+    .registration
+        // display: grid
+        // grid-template-columns: 1fr 200px 1fr
+        // grid-template-rows: 1fr 1fr 1fr
+        // grid-template-areas: ". title ." ". subtitle ." ". button ."
+        // border-bottom: solid grey 5px
+        // font-weight: bold
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center 
+        font-weight: bold
+        border-bottom: silver solid 1px
+       
+        
+    
+        &__title
+            // grid-area: title 
+            // display: flex
+            // justify-content: center
+            // align-items: center 
+            font-size: 20px
+            
+
+        &__subtitle
+            // grid-area: subtitle 
+            // display: flex
+            // justify-content: center
+            // align-items: center 
+            font-size: 10px
+            margin-top: -9px
 
 
-    &__icons
-        grid-area: icons
-    // display: flex
-    // justify-content: center
-    // align-items: center
+        &__button
+            // grid-area: button  
+            // display: flex
+            // flex-direction: column
+            // justify-content: center
+            // align-content: center
+            border: solid black 1.5px
+            border-radius: .3rem
+            background: white
+            color: black
+            padding: .5rem
+            margin-bottom: 20px
+   
+    .guide
+        display: grid
+        grid-template-columns: 1fr
+        grid-template-rows: 1fr 1fr 1fr 1fr
+        grid-template-areas: "menu" "menu" "menu" "menu"
+        font-size: 12px
+      
+        
+        &__menu
+            grid-area: menu  
+            display: flex
+            flex-direction: column
+            justify-content: flex-start
+            align-items: left
+            background: white
+            margin-top: 5px
+      
+            
+        &__options
+                list-style: none
+                color: #2C2926
+                
+            
+                .text
+                    color: #2C2926
+                    padding: .5rem
+                    font-size: 10px
 
+                .fas
+                    margin-right: 9px
 
+                .a
+                    display: flex
 
-    &__title 
-        grid-area: logo 
- 
+                .a > p
+                    margin: 0 
+        
 
-    &__search    
-        grid-area: search
+            
+
+               
+            
+
+        

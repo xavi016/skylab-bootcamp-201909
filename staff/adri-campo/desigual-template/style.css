@@ -2,23 +2,135 @@
   box-sizing: border-box;
 }
 
-.header__nav {
+body {
+  margin: 0;
+}
+
+.header .nav {
   display: grid;
   grid-template-columns: 50px 2fr 1fr;
   grid-template-rows: repeat(2, 35px);
-  grid-template-area: "menu icons logo" "search search search";
+  grid-template-areas: "menu iconlist title" "search search search";
+  padding: 0.75rem;
 }
-.header__menu {
+.header .nav__menu {
   grid-area: menu;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.header__icons {
-  grid-area: icons;
+.header .nav__iconlist {
+  grid-area: iconlist;
+  display: flex;
+  align-items: center;
+  margin: -45px;
 }
-.header__title {
-  grid-area: logo;
+.header .nav__icons {
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
 }
-.header__search {
+.header .nav__li {
+  margin: 7px;
+}
+.header .nav__title {
+  grid-area: title;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .nav__title .titlelogo {
+  width: 100%;
+  max-width: 123px;
+}
+.header .nav__search {
   grid-area: search;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .customer-service {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "menu" "menu" "menu";
+}
+.footer .customer-service__menu {
+  grid-area: menu;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #2e2c2c11;
+}
+.footer .customer-service__menu .menu__items {
+  list-style: none;
+  color: #2C2926;
+}
+.footer .customer-service__menu .menu__items .link {
+  color: #2C2926;
+  padding: 0.5rem;
+  font-size: 12px;
+}
+.footer .customer-service__menu .menu__items .fas {
+  margin-right: 15px;
+}
+.footer .registration {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-bottom: silver solid 1px;
+}
+.footer .registration__title {
+  font-size: 20px;
+}
+.footer .registration__subtitle {
+  font-size: 10px;
+  margin-top: -9px;
+}
+.footer .registration__button {
+  border: solid black 1.5px;
+  border-radius: 0.3rem;
+  background: white;
+  color: black;
+  padding: 0.5rem;
+  margin-bottom: 20px;
+}
+.footer .guide {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: "menu" "menu" "menu" "menu";
+  font-size: 12px;
+}
+.footer .guide__menu {
+  grid-area: menu;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+  background: white;
+  margin-top: 5px;
+}
+.footer .guide__options {
+  list-style: none;
+  color: #2C2926;
+}
+.footer .guide__options .text {
+  color: #2C2926;
+  padding: 0.5rem;
+  font-size: 10px;
+}
+.footer .guide__options .fas {
+  margin-right: 9px;
+}
+.footer .guide__options .a {
+  display: flex;
+}
+.footer .guide__options .a > p {
+  margin: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
