@@ -14,8 +14,15 @@ nav {
 
 .product {
     width: 40%;
+    text-align: center;
 }
 
+.product img {
+    width: 50%;
+}
+.product p {
+    text-align: justify;
+}
 .product-detail {
     display: flex;
 }
