@@ -1,0 +1,17 @@
+* {
+ box-sizing: border-box;
+ margin:0;
+ padding:0;
+}
+
+body {
+ display: grid;
+ grid-template-rows: 15% 70% 15%;
+ grid-template-columns: 100vw;
+ grid-template-areas: 
+"header"
+"main"
+"footer";
+}
+
+.header__title 
