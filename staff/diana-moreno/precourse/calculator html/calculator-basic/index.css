@@ -1,41 +1,38 @@
+html, body {
+  height: 100%;
+}
 .section1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 800px;
+  height: 100%;
 }
 .grid {
   border: 1px grey solid;
   width: 400px;
   height: 500px;
   display: grid;
-  grid-template: repeat(7, 1fr) / repeat(4, 1fr)
+  grid-template: repeat(7, 1fr) / repeat(4, 1fr);
+  border-radius: 6%;
+  grid-gap: 11px;
+  padding: 20px;
+  background-color: palevioletred;
 }
 .box {
-  background-color: beige;
-  color: black;
-  border: 1px grey solid;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 20px;
+  color: #4d3232;
+  border: 0;
   font-size: 2rem;
 }
 .color1 {
-  background-color: #e8e8e8;
+  background-color: #f9d4cf;
 }
-.color1:hover {
-  background-color: white;
-}
-.color1:active {
-  background-color: #d2d1d1;
-}
-.color2:hover {
-  background-color: #fffff3
-}
-.color2:active {
-  background-color: #f4f4b7;
-  background-color:  #f7f7ce;
+.color2 {
+  background-color: #bcace0;
 }
 #back-arrow:hover {
   width: 60px;
@@ -51,9 +48,8 @@
   font-size: 2rem;
   align-items: flex-end;
   padding: 0.5rem 2rem;
-  background-color: #d79d16;
   color: white;
-  border-bottom: 0px grey solid;
+  border: 0;
 }
 #display {
   grid-area: 2 / 1 / span 1 / span 4;
@@ -61,11 +57,11 @@
   align-items: flex-end;
   justify-content: flex-end;
   padding: 0.5rem 2rem;
-  background-color: #d79d16;
-  color: white;
+  background-color: #ffffff;
   border-top: 0px grey solid;
   box-sizing: border-box;
   align-items: flex-end;
+  color: #4d3232;
 }
 #keyAC {
   grid-area: 3 / 1 / span 1 / span 2;
