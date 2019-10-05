@@ -1,9 +1,61 @@
+body {
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+
 .container {
-    box-sizing: content-box;
+    box-sizing: border-box;
     margin: 0px auto;
-    background-color: rgb(207, 207, 236);
-    width: 90vw;
-    height: 90vw;
-    border: .1rem solid rgb(182, 212, 240);
-    border-radius: 1rem;
-};
+    width: 100%;
+    border:0%;
+}
+
+.boxhead {
+    background-color: rgb(158, 14, 14);
+    box-sizing: border-box;
+    margin:0% auto;
+    border:0%;
+    padding:0rem;
+    height: 6rem;
+    color: rgb(255, 255, 255);
+}
+
+.logo {
+    box-sizing: border-box;
+    margin-left: 2.5rem;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+
+.boxtextprin {
+    box-sizing: border-box;
+    margin:0% auto;
+    border:0%;
+    width: 35rem;
+    height: 27rem;
+}
+
+
+.textprin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;    
+}
+
+p {
+   font-family: Roboto;
+
+}
+
+h5 {
+    font-family: Roboto;
+    font-size: 1.7rem;
+}
+
