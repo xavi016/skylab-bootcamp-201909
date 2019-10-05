@@ -16,8 +16,7 @@ header {
     width: 100vw;
     height: 10vh;
     background: linear-gradient(45deg, rgb(241, 67, 36), rgb(245, 200, 118));
-    position: relative;
-    z-index: 2;
+
 }
 
 nav {
@@ -42,8 +41,6 @@ footer {
     color: whitesmoke;
     font-size: 2rem;
     background: linear-gradient(45deg, rgb(241, 67, 36), rgb(245, 200, 118));
-    overflow: hidden;
-    z-index: 2;
     height: 10vh;
 }
 
