@@ -1,20 +1,18 @@
 * {
-    border: 1px solid;
     margin: 0 auto;
     box-sizing: border-box;
 }
 
 body {
-    /* height: 100vh; */
+    height: 100vh;
 }
 
 .grid {
     display:grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 10% 10% 10% 50% 10%;
+    grid-template-rows: 10% 15% 10% 62% 3%;
     grid-gap:10px;
     height: calc(100vh - 10px);
-    
     grid-template-areas: 
     "nav"
     "header"
@@ -35,43 +33,71 @@ nav {
 nav ul {
     display: flex;
     width: 100%;
-    
-    background-color: red;
+    justify-content: center;
+}
+nav>ul>li {
+    width: 100%;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 header {
     grid-area: header;
     width: 100%;
     justify-content: center;
+    text-align: center;
 }
-
-aside {
-    grid-area: aside;
-    width: 100%;
-   
-  
-}
-
-main{
-    grid-area: main;
-    width: 100%;
-
-    background-color: yellow;
-}
-
-
-footer {
-    grid-area: footer;
-    width: 100%;
-    
-  
-} 
 
 header figure {
     width: 50%;
-    height: 90%;
+    height: 100%;
 }
 
 header figure img {
-    width: 90%;
+    width: 100%;
 }
+
+aside {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-area: aside;
+    width: 100%;
+}
+
+aside>article {
+    display: flex;
+    flex-direction: column;
+}
+
+aside>article>ul {
+    display: flex;
+    width: 100%;
+    justify-items: center;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    grid-area: main;
+    width: 100%;
+}
+
+.buscador {
+    width: 100%;
+}
+
+.pedidos{
+    display: flex;
+    width: 100%;
+}
+
+.pedidos>figure {
+    width: 20%;
+}
+.pedidos>figure>img {
+    width: 100%;
+}
+footer {
+    grid-area: footer;
+    width: 100%;
+} 
