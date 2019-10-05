@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+
+}
 .main-text1 {
   display: grid;
   grid-template-columns: 12% auto 400px 12%;
@@ -10,39 +14,98 @@
     ".           news        side-bar    ."
     "main-footer main-footer main-footer main-footer";
   margin: 0 auto;
-  padding: 1px 5px 5px 5px;
-  grid-gap: 5px 5px;
+  padding: 5px 5px 5px 5px;
+
 }
 
 .main-text2 {
   display: grid;
-  grid-template-columns: 12% auto auto 12%;
-  grid-template-rows: auto auto auto auto;
+  grid-template-columns: 12% auto 400px 12%;
+  grid-template-rows: auto auto auto auto auto auto;
   grid-template-areas: 
     "top-bar     top-bar     top-bar     top-bar"
     "main-header main-header main-header main-header"
-    "hero        hero        hero        hero"
+    "againster        againster        againster        againster"
+    ".           blog-posts  side-bar    ."
+    ".           news        side-bar    ."
     "main-footer main-footer main-footer main-footer";
   margin: 0 auto;
-  padding: 1px 5px 5px 5px;
-  grid-gap: 5px 5px;
+  padding: 5px 5px 5px 5px;
 }
 
 .top-bar{
   grid-area: top-bar;
-  background: red;
-  padding: 4px 12%; 
+  background: #fff1e9;
+  padding-top: 4%; 
+
   text-align: center;
-} 
-.main-header{
-  grid-area: main-header;
-  background: #a3c;
-  padding: 12px 12%;
+  font-size: 250%;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+
   
 } 
+.main-header {
+  grid-area: main-header;
+  background: #fff1e9;
+  padding: 5px 12% 5% 12%; 
+} 
+
+.main-header ul {
+  display: flex;
+  margin:auto;
+  
+  padding: 5%; 
+  font-size: 90%;
+  text-transform: uppercase;
+  color: gray;
+  
+  justify-content: center;
+  vertical-align: center;
+}
+
+.main-header ul li {
+  
+  font-weight: 350;
+  letter-spacing: 2px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.main-header ul li a {
+  margin-left: 25px
+}
+
+p{
+  font-family: serif;
+  word-spacing: 0.8px;
+  letter-spacing: .01em;
+}
+
+a,
+.main-header ul li a {
+  text-decoration: none;
+  color:black;
+  text-align: center;
+}
+
+.againster .award h3{
+  text-align: center;
+  font-style: italic;
+  letter-spacing: 0cm;
+  font-size: 200%;
+}
+
+.againster .award .fecha{
+  color:gray;
+  font-size: 0.7rem;
+  text-align: center;
+  padding-bottom: 4%;
+}
+
 .hero{
   grid-area: hero;
-  background: green;
+  background: #ffddcc;
   padding: 15px 12% 0 12%;
   
 
@@ -50,39 +113,107 @@
   grid-template-columns: auto 50px auto;
   grid-template-rows: auto auto auto;
   grid-template-areas: 
-    "message   .  award"
-; 
+    "message   .  award"; 
 }
 
 .againster{
-  grid-area: hero;
-  background: green;
+  grid-area: againster;
+  background: #ffddcc;
   padding: 15px 12% 0 12%;
-  
 
   display: grid;
-  grid-template-columns: auto 50px auto;
-  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 20% 50px auto;
+  grid-template-rows: auto auto auto;
   grid-template-areas: 
-    "  . . .  message   .  ";
+    "message-article   .  award";
 }
+
+.message--article{
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto auto auto auto;
+  grid-template-areas: 
+  "."
+  "."
+  "."
+  "post1"
+  "post2"
+  ".";
+  
+}
+
+.message-article--posts{
+  grid-area: post1;
+}
+
+.message-article--posts p {
+  border-bottom: 2px gray dotted;
+  padding-top: 5px;
+}
+
+
+.message-article--posts2{
+  grid-area: post2;
+}
+
+.message-article--posts2 p {
+  border-bottom: 2px gray dotted;
+}
+
+
+h3{
+  color: #fda77f;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h4{
+  color: #fda77f;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+
 
 .blog-posts{
   grid-area: blog-posts;
-  background: #8af;
+  background: #ffd5d5;
 }
 .news{
   grid-area: news;
-  background: #1bd;
+  background: #ffd5d5;
 }
 .side-bar{
   grid-area: side-bar;
-  background: #0e8;
+  background: #ffd5d5;
 }
 .main-footer{
   grid-area: main-footer;
-  background: #033;
-  padding: 25px 12%;
+  background: #ffeecc;
+
+  padding-top: 4%;
+
+}
+.main-footer h4{
+  display: flex;
+  justify-content: center;
+
+  color:gray;
+  font-size: 0.7rem;
+  text-align: center;
+  padding-top: 4%;
+}
+
+.main-footer ul {
+  display: flex;
+  justify-content: center;
+  margin-right: 5px;
+  margin: 0 auto;
+}
+
+.main-footer ul li{
+  display: flex;
+  align-content: flex-end;
+  margin-left: 45px;
 }
 
 .message{
@@ -91,6 +222,4 @@
 .award{
   grid-area: award;
 }
-
-
 
