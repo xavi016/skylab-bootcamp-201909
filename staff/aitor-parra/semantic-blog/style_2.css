@@ -1,0 +1,67 @@
+.grid {
+    display: grid;
+    gap: .2rem;
+    
+    min-height: 100vh;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat (5, 20%);
+    grid-template-areas: 
+    "header header"
+    "nav nav"
+    "section aside"
+    "article aside"
+    "footer footer";
+}
+
+.header {
+    grid-area: header;
+    border: 1.5px solid blue;
+    max-height: 8rem;
+}
+
+.nav {
+    grid-area: nav;
+    border: 1.5px solid blue;
+    max-height: 8rem;
+    
+    /* justify-items: center;
+    align-items: center; */  
+}
+
+.section {
+    grid-area: section;
+    border: 1.5px solid blue;
+    width: 70rem;
+    height: 30rem;
+
+    
+}
+
+.article {
+    grid-area: article;
+    border: 1.5px solid blue;
+    width: 100rem;
+    height: 30rem;
+}
+
+.aside {
+    grid-area: aside;
+    border: 1.5px solid blue;
+    width: 10rem;
+    /* height: 10rem;  */
+}
+
+.footer {
+    grid-area: footer;
+    border: 1.5px solid blue;
+    height: 5rem;
+}
+
+.nav-ul {
+    justify-content: center;
+    
+}
+
+.nav-1 {
+    color: red;
+}
