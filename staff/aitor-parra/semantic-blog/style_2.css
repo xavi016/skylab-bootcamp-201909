@@ -1,28 +1,34 @@
 .grid {
     display: grid;
     gap: .2rem;
+    padding:20px;
     
+    border: 1.5px solid black;
     min-height: 100vh;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: repeat (5, 20%);
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 10% 10% 25% 50% 5%;
     grid-template-areas: 
     "header header"
     "nav nav"
-    "section aside"
+    "section section"
     "article aside"
     "footer footer";
 }
 
 .header {
     grid-area: header;
-    border: 1.5px solid blue;
+    border: 1.5px solid rgb(37, 37, 41);
     max-height: 8rem;
+    text-align: center;
+    background-color: rgb(165, 242, 165);
 }
 
 .nav {
     grid-area: nav;
-    border: 1.5px solid blue;
+    border: 1.5px solid rgb(37, 37, 41);
     max-height: 8rem;
+    
+    
     
     /* justify-items: center;
     align-items: center; */  
@@ -30,38 +36,52 @@
 
 .section {
     grid-area: section;
-    border: 1.5px solid blue;
-    width: 70rem;
-    height: 30rem;
+    border: 1.5px solid rgb(37, 37, 41);
+    padding:20px;
+    background-color: rgb(165, 242, 165);
+}
+.section_p {
+    max-width: 400px;
+}
 
+.section_img {
+    float: right;
+    padding:20px;
     
 }
 
 .article {
     grid-area: article;
-    border: 1.5px solid blue;
-    width: 100rem;
-    height: 30rem;
+    border: 1.5px solid rgb(37, 37, 41);
+    width:700px;
+    padding:20px;  
+    
+    
 }
 
 .aside {
     grid-area: aside;
-    border: 1.5px solid blue;
-    width: 10rem;
+    width: 150px;
+    border: 1.5px solid rgb(37, 37, 41);
+    padding:20px;
+    background-color: rgb(165, 242, 165);
+
     /* height: 10rem;  */
 }
 
 .footer {
     grid-area: footer;
-    border: 1.5px solid blue;
-    height: 5rem;
+    border: 1.5px solid rgb(37, 37, 41);
+    padding:20px;
+    
 }
 
 .nav-ul {
     justify-content: center;
+    color: green
     
 }
 
 .nav-1 {
-    color: red;
+    
 }
