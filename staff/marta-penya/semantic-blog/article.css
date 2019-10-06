@@ -19,6 +19,7 @@ body{
     background-image: url(https://cdn.pixabay.com/photo/2018/12/12/09/47/pink-dawn-3870437_1280.jpg);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
     width: 100%;
     justify-content: center;
     display:flex;
@@ -41,7 +42,6 @@ main{
     align-self: center;
     flex-direction: column;
     width: 70%;
-    border: 1px solid black;
 }
 
 .article-title{
@@ -62,7 +62,6 @@ main{
     width: 29%;
     height: 100%;
     height: auto;
-    border: 1px solid black;
     display:flex;
     flex-direction: column;
     align-items: space-between;
@@ -71,7 +70,9 @@ main{
 .aside-title{
     color:grey;
     height: 10%;
-    text-align: center;
+    display:flex;
+    align-items: flex-end;
+    justify-content: center;
 
 }
 
@@ -83,9 +84,8 @@ main{
 .aside-list{
     display:flex;    
     flex-direction: column;
-    border: 1px solid red;
     height: 80%;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     align-content: space-around;
     flex-wrap: wrap;
@@ -104,23 +104,46 @@ li a{
     color:grey;
 }
 .contact-section{
-    border: 2px solid purple;
     align-self: flex-end;
     display: flex;
-    
+    justify-content: center;
     padding: 0;
     height: 30%;
     width: 100%;
     flex-wrap: wrap;
 
 }
+.contact-div{
+    display: flex;
+    
+    height: 45%;
+}
 .contact-info{
-    height: 20%;
+    display: flex;    
+    height: 10%;
     width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    color: grey;
+    justify-content: center;
+       
+}
+
+.facebook, .instagram {    
+    width: 30%;
+}
+
+
+
+.facebook img, .instagram img{
+    width: 70%;
+    height: 40%;
 }
 
 .img-nyan{
-    align-self: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     height: 80%;
     width: 100%;
     
@@ -129,10 +152,10 @@ li a{
 .img-nyan img{
     width: 100%;
     border-radius: 20px;
+    
 }
 
 .comments{
-    border: 1px solid black;
     height: 200px;
     display: block;
     text-align: center;       
@@ -157,11 +180,11 @@ li a{
 }
 
 footer{
-    border: 2px solid red;
     align-self: center;
     background-image: url(https://cdn.pixabay.com/photo/2018/12/12/09/47/pink-dawn-3870437_1280.jpg);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
     width: 100%;
     justify-content: center;
     display:flex;
