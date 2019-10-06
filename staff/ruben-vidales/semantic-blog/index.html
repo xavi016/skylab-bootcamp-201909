@@ -6,16 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Skylab Cooking Blog</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <img class="logo" src="https://via.placeholder.com/400x100/?text= SKYLAB Cooking"
-            alt="skylab cooking blog logo">
+    <header class="header" style="background-color: red;">
+        <img class="header__logo" src="images/logo.svg" alt="skylab cooking blog logo">
         <nav>
-            <ul class="navigation">
+            <ul class="header__nav">
                 <li><a href="#">Starters</a></li>
                 <li><a href="#">Main dishes</a></li>
                 <li><a href="#">Veggie</a></li>
@@ -24,7 +22,7 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main style="background-color: blue;">
         <h1 class="welcome-message">Welcome to Skylab's Cooking Blog</h1>
         <section class="blog-container">
             <article class="recipe-container">
@@ -34,8 +32,8 @@
                     tincidunt ut elit id varius. Donec maximus massa vitae ex imperdiet cursus. Curabitur eleifend velit
                     vel dignissim mollis.</p>
                 <figure><img class="dish"
-                        src="https://minimalistbaker.com/wp-content/uploads/2017/08/10-Ingredient-Butternut-Squash-Enchiladas-Simple-methods-and-ingredients-and-AMAZING-results-plantbased-vegan-glutenfree-enchiladas-recipe-healthy-dinner-minimalistbaker.jpg"
-                        width="150" alt=" recipe 1 dish image"></figure>
+                        src="https://www.tappers.es/wp-content/uploads/2019/05/51.-CHOP-SUEY-VEGETAL-400x400.jpg"
+                        alt=" recipe1 dish image"></figure>
                 <time datetime="2019-10-2 22:00-0800">10/2/2019</time>
             </article>
             <article class="recipe-container">
@@ -45,8 +43,8 @@
                     tincidunt ut elit id varius. Donec maximus massa vitae ex imperdiet cursus. Curabitur eleifend velit
                     vel dignissim mollis.</p>
                 <figure><img class="dish"
-                        src="https://minimalistbaker.com/wp-content/uploads/2017/08/10-Ingredient-Butternut-Squash-Enchiladas-Simple-methods-and-ingredients-and-AMAZING-results-plantbased-vegan-glutenfree-enchiladas-recipe-healthy-dinner-minimalistbaker.jpg"
-                        width="150" alt=" recipe 1 dish image"></figure>
+                        src="https://www.tappers.es/wp-content/uploads/2019/03/MORCILLO-CON-PURE-DE-PATATA_3200151-400x400.jpg"
+                        alt=" recipe2 dish image"></figure>
                 <time datetime="2019-10-2 22:00-0800">10/2/2019</time>
             </article>
             <article class="recipe-container">
@@ -56,8 +54,8 @@
                     tincidunt ut elit id varius. Donec maximus massa vitae ex imperdiet cursus. Curabitur eleifend velit
                     vel dignissim mollis.</p>
                 <figure><img class="dish"
-                        src="https://minimalistbaker.com/wp-content/uploads/2017/08/10-Ingredient-Butternut-Squash-Enchiladas-Simple-methods-and-ingredients-and-AMAZING-results-plantbased-vegan-glutenfree-enchiladas-recipe-healthy-dinner-minimalistbaker.jpg"
-                        width="150" alt=" recipe 1 dish image"></figure>
+                        src="https://www.tappers.es/wp-content/uploads/2019/03/ENSALADA-DE-PASTA-CON-VERDURA_3200145-400x400.jpg"
+                        alt=" recipe3 dish image"></figure>
                 <time datetime="2019-10-2 22:00-0800">10/2/2019</time>
             </article>
             <article class="recipe-container">
@@ -67,8 +65,30 @@
                     tincidunt ut elit id varius. Donec maximus massa vitae ex imperdiet cursus. Curabitur eleifend velit
                     vel dignissim mollis.</p>
                 <figure><img class="dish"
-                        src="https://minimalistbaker.com/wp-content/uploads/2017/08/10-Ingredient-Butternut-Squash-Enchiladas-Simple-methods-and-ingredients-and-AMAZING-results-plantbased-vegan-glutenfree-enchiladas-recipe-healthy-dinner-minimalistbaker.jpg"
-                        width="150" alt=" recipe 1 dish image"></figure>
+                        src="https://www.tappers.es/wp-content/uploads/2019/04/27.-BACALAO-CON-TOMATE-400x400.jpg"
+                        alt=" recipe4 dish image"></figure>
+                <time datetime="2019-10-2 22:00-0800">10/2/2019</time>
+            </article>
+            <article class="recipe-container">
+                <h2>Recipe title 5</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pulvinar a velit id imperdiet.
+                    Mauris
+                    tincidunt ut elit id varius. Donec maximus massa vitae ex imperdiet cursus. Curabitur eleifend velit
+                    vel dignissim mollis.</p>
+                <figure><img class="dish"
+                        src="https://www.tappers.es/wp-content/uploads/2019/04/03.-arroz-meloso-con-rape-y-gambas-400x400.jpg"
+                        alt=" recipe5 dish image"></figure>
+                <time datetime="2019-10-2 22:00-0800">10/2/2019</time>
+            </article>
+            <article class="recipe-container">
+                <h2>Recipe title 6</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pulvinar a velit id imperdiet.
+                    Mauris
+                    tincidunt ut elit id varius. Donec maximus massa vitae ex imperdiet cursus. Curabitur eleifend velit
+                    vel dignissim mollis.</p>
+                <figure><img class="dish"
+                        src="https://www.tappers.es/wp-content/uploads/2019/03/POLLO-CON-MOLE_3054405-400x400.jpg"
+                        alt=" recipe6 dish image"></figure>
                 <time datetime="2019-10-2 22:00-0800">10/2/2019</time>
             </article>
             <nav>
@@ -101,22 +121,19 @@
             </nav>
         </aside>
     </main>
-    <footer>
-        <h4 class="author-copyright">Skylab Coders - 2019</h4>
+    <footer class="footer" style="background-color: green;">
+        <h4 class="footer__author">Skylab Coders - 2019</h4>
         <nav>
-            <ul class="socials">
+            <ul class="">
                 <li><a href="#"><img
                             src="http://icons.iconarchive.com/icons/limav/flat-gradient-social/48/Twitter-icon.png"
-                            alt="social1"></a></li>
+                            alt="twitter icon"></a></li>
                 <li><a href="#"><img
-                            src="http://icons.iconarchive.com/icons/limav/flat-gradient-social/48/Twitter-icon.png"
-                            alt="social2"></a></li>
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Facebook_vmc2015.png/120px-Facebook_vmc2015.png"
+                            alt="facebook icon"></a></li>
                 <li><a href="#"><img
-                            src="http://icons.iconarchive.com/icons/limav/flat-gradient-social/48/Twitter-icon.png"
-                            alt="social3"></a></li>
-                <li><a href="#"><img
-                            src="http://icons.iconarchive.com/icons/limav/flat-gradient-social/48/Twitter-icon.png"
-                            alt="social4"></a></li>
+                            src="https://www.iconninja.com/files/900/942/487/social-media-instagram-color-instagram-new-design-logo-icon.png"
+                            alt="instagram icon"></a></li>
             </ul>
         </nav>
     </footer>

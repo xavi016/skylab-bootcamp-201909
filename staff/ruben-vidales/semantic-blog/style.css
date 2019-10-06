@@ -24,13 +24,22 @@ h3{
     font-size: 1.5em;
 }
 
+a {
+    text-decoration: none;
+    color: #005FBF;
+}
+
+a:visited {
+    color: #005FBF;
+}
+
 /**************** header ****************/
-.navigation {
+.header__navigation {
     list-style: none;
     margin: 0;
-    background: #333333;
+    background: #005FBF;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .navigation a {
@@ -38,6 +47,7 @@ h3{
     display: block;
     padding: 1em;
     color: white;
+    background-color: #005FBF;
 }
 
 .navigation a:hover {
@@ -87,12 +97,13 @@ main>aside {
 }
 
 .recipe-container {
-    margin: 10px;
+    position: relative;
+    width: 30%;
+    margin: 1.5%;
     padding: 10px;
     border: 1px dotted #666666;
     background-color: #dddddd;
     border-radius: 5px;
-    width: 15vw;
 }
 
 .recipe-container>h2 {
