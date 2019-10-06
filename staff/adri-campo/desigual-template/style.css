@@ -1,11 +1,24 @@
+@charset "UTF-8";
+.footer .registration, .main, .header .nav__search, .header .nav__title, .header .nav__menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  font-family: "Quicksand", sans-serif;
 }
 
+.header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
 .header .nav {
   display: grid;
   grid-template-columns: 50px 2fr 1fr;
@@ -15,9 +28,6 @@ body {
 }
 .header .nav__menu {
   grid-area: menu;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .header .nav__iconlist {
   grid-area: iconlist;
@@ -35,9 +45,6 @@ body {
 }
 .header .nav__title {
   grid-area: title;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .header .nav__title .titlelogo {
   width: 100%;
@@ -45,41 +52,87 @@ body {
 }
 .header .nav__search {
   grid-area: search;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+.header .nav__search .searchspace {
+  border: none;
+  border-bottom: 0.15rem solid black;
+  background-color: white;
+  height: 20px;
+}
+.header .nav__search .searchicon {
+  border: none;
+  border-bottom: 0.15rem solid black;
+  cursor: pointer;
+  background-color: white;
+  height: 20px;
 }
 
-.footer .customer-service {
+.main {
+  overflow: auto;
+  flex-direction: column;
+  font-weight: bold;
+  background-image: url("https://www.desigual.com/dw/image/v2/BCVV_PRD/on/demandware.static/-/Library-Sites-DsglSharedLibrary/default/dw1873f07d/campaigns/2019/AW2019/W40/MSS/MSS_home_hero1_01_desktop_all.jpg?sfrm=jpg&sw=1920");
+}
+.main .discount {
+  color: white;
+}
+.main .discount__title {
+  background: red;
+}
+.main .discount__text {
+  background: red;
+  font-size: 0.75rem;
+}
+.main .discount__clothes {
+  list-style: none;
+  font-weight: normal;
+  text-decoration: underline;
+  font-size: 14px;
+  padding: 0;
+}
+.main .discount__clothes .clothes__li {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+.main .discount__clothes .clothes__li::before {
+  content: "•";
+  color: #2c2926;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.footer {
+  overflow: auto;
+}
+.footer .customerservice {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas: "menu" "menu" "menu";
 }
-.footer .customer-service__menu {
+.footer .customerservice__menu {
   grid-area: menu;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   background: #2e2c2c11;
 }
-.footer .customer-service__menu .menu__items {
+.footer .customerservice__menu .menu__items {
   list-style: none;
   color: #2C2926;
 }
-.footer .customer-service__menu .menu__items .link {
+.footer .customerservice__menu .menu__items .link {
   color: #2C2926;
   padding: 0.5rem;
   font-size: 12px;
 }
-.footer .customer-service__menu .menu__items .fas {
+.footer .customerservice__menu .menu__items .fas {
   margin-right: 15px;
 }
 .footer .registration {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-weight: bold;
   border-bottom: silver solid 1px;
 }
@@ -104,6 +157,7 @@ body {
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas: "menu" "menu" "menu" "menu";
   font-size: 12px;
+  margin-bottom: 10px;
 }
 .footer .guide__menu {
   grid-area: menu;
@@ -131,6 +185,79 @@ body {
 }
 .footer .guide__options .a > p {
   margin: 0;
+}
+.footer .place {
+  display: flex;
+  flex-direction: column;
+  border-bottom: silver solid 1px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.footer .place__menu1 {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+.footer .place__country {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 40px;
+  margin-rigth: 10px;
+}
+.footer .place__selectcountry {
+  margin-left: 8px;
+}
+.footer .place__menu2 {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+.footer .place__language {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 40px;
+  margin-rigth: 10px;
+}
+.footer .place__selectlanguage {
+  margin-left: 8px;
+}
+.footer .bottomsite {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "socialmedia endtitle" ". copyright";
+  padding: 0.75rem;
+}
+.footer .bottomsite__socialmedia {
+  grid-area: socialmedia;
+  display: flex;
+  justify-content: flex-start;
+  align-items: left;
+  background: white;
+  margin-top: 5px;
+  list-style: none;
+  padding: 0;
+}
+.footer .bottomsite__socialmedia .b {
+  margin: 0 0.5rem 0 0.5rem;
+}
+.footer .bottomsite__endtitle {
+  grid-area: endtitle;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.footer .bottomsite__endtitle .endtitlelogo {
+  width: 100%;
+  max-width: 123px;
+}
+.footer .bottomsite__copyright {
+  grid-area: copyright;
+}
+
+.link-white {
+  text-decoration: none;
+  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */
