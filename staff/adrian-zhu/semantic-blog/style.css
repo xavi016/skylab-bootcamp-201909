@@ -89,14 +89,14 @@ a,
   text-align: center;
 }
 
-.textos .award h3{
+.textos .second-text h3{
   text-align: center;
   font-style: italic;
   letter-spacing: 0cm;
   font-size: 200%;
 }
 
-.textos .award .fecha{
+.textos .second-text .fecha{
   color:gray;
   font-size: 0.7rem;
   text-align: center;
@@ -113,7 +113,7 @@ a,
   grid-template-columns: auto 50px auto;
   grid-template-rows: auto auto auto;
   grid-template-areas: 
-    "message   .  award"; 
+    "message   .  second-text"; 
 }
 
 .textos{
@@ -125,7 +125,7 @@ a,
   grid-template-columns: 20% 50px auto;
   grid-template-rows: auto auto auto;
   grid-template-areas: 
-    "message-article   .  award";
+    "message-article   .  second-text";
 }
 
 .message--article{
@@ -219,7 +219,7 @@ h4{
 .message{
   grid-area: message;
 }
-.award{
-  grid-area: award;
+.second-text{
+  grid-area: second-text;
 }
 
