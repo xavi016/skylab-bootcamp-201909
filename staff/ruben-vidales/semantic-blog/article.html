@@ -6,31 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Skylab Cooking Blog</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header class="header">
         <img class="header__logo" src="images/logo.svg" alt="skylab cooking blog logo">
-        <nav>
-            <ul class="header__nav">
-                <li><a href="#">Starters</a></li>
-                <li><a href="#">Main dishes</a></li>
-                <li><a href="#">Veggie</a></li>
-                <li><a href="#">Desserts & Cakes</a></li>
-                <li><a href="#">About</a></li>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item">
+                    <a class="header__nav-item-link" href="#">Starters</a>
+                </li>
+                <li class="header__nav-item">
+                    <a class="header__nav-item-link" href="#">Main dishes</a>
+                </li>
+                <li class="header__nav-item">
+                    <a class="header__nav-item-link" href="#">Veggie</a>
+                </li>
+                <li class="header__nav-item">
+                    <a class="header__nav-item-link" href="#">Desserts & Cakes</a>
+                </li>
+                <li class="header__nav-item">
+                    <a class="header__nav-item-link" href="#">About</a>
+                </li>
             </ul>
         </nav>
     </header>
-    <main>
-        <section class="recipe-bloc">
-            <article class="recipe">
-                <h1>Recipe Title</h1>
-                <figure><img class="main-recipe-image"
-                        src="https://minimalistbaker.com/wp-content/uploads/2017/08/10-Ingredient-Butternut-Squash-Enchiladas-Simple-methods-and-ingredients-and-AMAZING-results-plantbased-vegan-glutenfree-enchiladas-recipe-healthy-dinner-minimalistbaker.jpg"
-                        width="500" alt="main image"></figure>
-                <h3>Ingredients</h3>
+    <main class="main-content">
+        <section class="main-content__section">
+            <article class="recipe recipe--explanation">
+                <h1 class="recipe__title">Recipe Title</h1>
+                <figure class="recipe__figure">
+                    <img class="recipe__figure-image--explanation"
+                        src="https://pinchofyum.com/wp-content/uploads/Tortilla-Soup-600x900.jpg"
+                        alt="main recipe image"></figure>
+                <h3 class="recipe__subtitle">Ingredients</h3>
                 <ul>
                     <li>Ingredient 1: 150gr.</li>
                     <li>Ingredient 2: 2 teaspoon</li>
@@ -39,7 +49,7 @@
                     <li>Ingredient 5</li>
                     <li>Ingredient 6</li>
                 </ul>
-                <h3>Preparation</h3>
+                <h3 class="recipe__subtitle">Preparation</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia vestibulum libero non
                     varius. Nam volutpat nisl nulla. Nulla varius sit amet neque eu dictum. Curabitur elementum pretium
                     accumsan. Proin ligula purus, feugiat ut metus at, interdum gravida nulla. Donec libero ex, sodales
@@ -51,9 +61,37 @@
                     commodo quis gravida in, suscipit et ligula. Etiam quis vehicula nisl. Donec at ex sagittis, feugiat
                     nisl et, hendrerit urna. Vivamus tristique lacinia ligula, ut tempus magna finibus eu. Nullam augue
                     tortor, vehicula sed suscipit quis, gravida et ligula.</p>
-                <img class="main-recipe-image"
-                    src="https://minimalistbaker.com/wp-content/uploads/2017/08/10-Ingredient-Butternut-Squash-Enchiladas-Simple-methods-and-ingredients-and-AMAZING-results-plantbased-vegan-glutenfree-enchiladas-recipe-healthy-dinner-minimalistbaker.jpg"
-                    width="300" alt="detail image">
+                <figure class="recipe__figure">
+                    <img class="recipe__figure-image--explanation"
+                        src="https://pinchofyum.com/wp-content/uploads/Tortilla-Soup-Ingredients-600x900.jpg"
+                        alt="detail preparation image"></figure>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia vestibulum libero non
+                    varius. Nam volutpat nisl nulla. Nulla varius sit amet neque eu dictum. Curabitur elementum pretium
+                    accumsan. Proin ligula purus, feugiat ut metus at, interdum gravida nulla. Donec libero ex, sodales
+                    tincidunt purus eget, accumsan viverra ipsum. Donec viverra aliquet elit eu ultricies. Sed nunc
+                    nisl, tristique vel bibendum at, vehicula commodo augue. Pellentesque molestie blandit erat, a
+                    accumsan nulla placerat in.
+
+                    Fusce fermentum posuere quam eu varius. Morbi porta iaculis est eu molestie. Sed quam tellus,
+                    commodo quis gravida in, suscipit et ligula. Etiam quis vehicula nisl. Donec at ex sagittis, feugiat
+                    nisl et, hendrerit urna. Vivamus tristique lacinia ligula, ut tempus magna finibus eu. Nullam augue
+                    tortor, vehicula sed suscipit quis, gravida et ligula.</p>
+                <h3 class="recipe__subtitle">Decoration</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia vestibulum libero non
+                    varius. Nam volutpat nisl nulla. Nulla varius sit amet neque eu dictum. Curabitur elementum pretium
+                    accumsan. Proin ligula purus, feugiat ut metus at, interdum gravida nulla. Donec libero ex, sodales
+                    tincidunt purus eget, accumsan viverra ipsum. Donec viverra aliquet elit eu ultricies. Sed nunc
+                    nisl, tristique vel bibendum at, vehicula commodo augue. Pellentesque molestie blandit erat, a
+                    accumsan nulla placerat in.
+
+                    Fusce fermentum posuere quam eu varius. Morbi porta iaculis est eu molestie. Sed quam tellus,
+                    commodo quis gravida in, suscipit et ligula. Etiam quis vehicula nisl. Donec at ex sagittis, feugiat
+                    nisl et, hendrerit urna. Vivamus tristique lacinia ligula, ut tempus magna finibus eu. Nullam augue
+                    tortor, vehicula sed suscipit quis, gravida et ligula.</p>
+                <figure class="recipe__figure">
+                    <img class="recipe__figure-image--explanation"
+                        src="https://pinchofyum.com/wp-content/uploads/Tortilla-Soup-in-Bowls-600x900.jpg"
+                        alt="detail decoration image"></figure>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia vestibulum libero non
                     varius. Nam volutpat nisl nulla. Nulla varius sit amet neque eu dictum. Curabitur elementum pretium
                     accumsan. Proin ligula purus, feugiat ut metus at, interdum gravida nulla. Donec libero ex, sodales
@@ -67,7 +105,7 @@
                     tortor, vehicula sed suscipit quis, gravida et ligula.</p>
             </article>
         </section>
-        <aside>
+        <aside class="main-content__aside">
             <h3>Categories</h3>
             <nav>
                 <ul>
@@ -88,19 +126,31 @@
         </aside>
 
     </main>
-    <footer>
-        <h4 class="author-copyright">Skylab Coders - 2019</h4>
-        <nav>
-            <ul class="socials">
-                <li><a href="#"><img
+    <footer class="footer">
+        <h4 class="footer__author">Ruben Vidales for Skylab Coders - 2019</h4>
+        <nav class="footer__social">
+            <ul class="footer__social-list">
+                <li class="footer__social-item">
+                    <a class="footer__social-link" href="#">
+                        <img class="footer__social-image"
                             src="http://icons.iconarchive.com/icons/limav/flat-gradient-social/48/Twitter-icon.png"
-                            alt="twitter icon"></a></li>
-                <li><a href="#"><img
+                            alt="twitter icon">
+                    </a>
+                </li>
+                <li class="footer__social-item">
+                    <a class="footer__social-link" href="#">
+                        <img class="footer__social-image"
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Facebook_vmc2015.png/120px-Facebook_vmc2015.png"
-                            alt="facebook icon"></a></li>
-                <li><a href="#"><img
+                            alt="facebook icon">
+                    </a>
+                </li>
+                <li class="footer__social-item">
+                    <a class="footer__social-link" href="#">
+                        <img class="footer__social-image"
                             src="https://www.iconninja.com/files/900/942/487/social-media-instagram-color-instagram-new-design-logo-icon.png"
-                            alt="instagram icon"></a></li>
+                            alt="instagram icon">
+                    </a>
+                </li>
             </ul>
         </nav>
     </footer>
