@@ -7,9 +7,9 @@
   grid-template-columns: 12% auto 400px 12%;
   grid-template-rows: auto auto auto auto auto auto;
   grid-template-areas: 
-    "top-bar     top-bar     top-bar     top-bar"
-    "main-header main-header main-header main-header"
-    "hero        hero        hero        hero"
+    "name     name     name     name"
+    "header-nav header-nav header-nav header-nav"
+    "box        box        box        box"
     ".           blog-posts  side-bar    ."
     ".           news        side-bar    ."
     "main-footer main-footer main-footer main-footer";
@@ -23,9 +23,9 @@
   grid-template-columns: 12% auto 400px 12%;
   grid-template-rows: auto auto auto auto auto auto;
   grid-template-areas: 
-    "top-bar     top-bar     top-bar     top-bar"
-    "main-header main-header main-header main-header"
-    "againster        againster        againster        againster"
+    "name     name     name     name"
+    "header-nav header-nav header-nav header-nav"
+    "textos        textos        textos        textos"
     ".           blog-posts  side-bar    ."
     ".           news        side-bar    ."
     "main-footer main-footer main-footer main-footer";
@@ -33,8 +33,8 @@
   padding: 5px 5px 5px 5px;
 }
 
-.top-bar{
-  grid-area: top-bar;
+.name{
+  grid-area: name;
   background: #fff1e9;
   padding-top: 4%; 
 
@@ -46,13 +46,13 @@
 
   
 } 
-.main-header {
-  grid-area: main-header;
+.header-nav {
+  grid-area: header-nav;
   background: #fff1e9;
   padding: 5px 12% 5% 12%; 
 } 
 
-.main-header ul {
+.header-nav ul {
   display: flex;
   margin:auto;
   
@@ -65,14 +65,14 @@
   vertical-align: center;
 }
 
-.main-header ul li {
+.header-nav ul li {
   
   font-weight: 350;
   letter-spacing: 2px;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
-.main-header ul li a {
+.header-nav ul li a {
   margin-left: 25px
 }
 
@@ -83,28 +83,28 @@ p{
 }
 
 a,
-.main-header ul li a {
+.header-nav ul li a {
   text-decoration: none;
   color:black;
   text-align: center;
 }
 
-.againster .award h3{
+.textos .award h3{
   text-align: center;
   font-style: italic;
   letter-spacing: 0cm;
   font-size: 200%;
 }
 
-.againster .award .fecha{
+.textos .award .fecha{
   color:gray;
   font-size: 0.7rem;
   text-align: center;
   padding-bottom: 4%;
 }
 
-.hero{
-  grid-area: hero;
+.box{
+  grid-area: box;
   background: #ffddcc;
   padding: 15px 12% 0 12%;
   
@@ -116,8 +116,8 @@ a,
     "message   .  award"; 
 }
 
-.againster{
-  grid-area: againster;
+.textos{
+  grid-area: textos;
   background: #ffddcc;
   padding: 15px 12% 0 12%;
 
