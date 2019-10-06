@@ -1,29 +1,77 @@
-
-body {
-    padding: 20px;
-    margin: 20px 60px;
-    font-size: 18px;
-    background-color: #22afc7;
+body{
+    margin: 0px;
+    background-color:powderblue;
 }
-.h1 {
-    font-family: calibry;
-    width: 96%;
-    height: 100px;
-    margin: 20px;
+header{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    border: 2px solid blue;
+    border-radius: 35px 35px 35px 35px;
+    -moz-border-radius: 35px 35px 35px 35px;
+    -webkit-border-radius: 35px 35px 35px 35px;
+    -o-border-radius: 35px 35px 35px 35px;
 }
-
-.h2 {
-    font-family: calibry;
-    width: 70%;
-    height: 100px;
-    float: right;
-    margin: 20px;
+h1{
+    font-family:Arial, Helvetica, sans-serif;
+    color: blue;
+    font-size:30px;
 }
-
-.meta {
-    font-family: calibry;
-    width: 96%;
-    height: 600px;
-    margin: 20px;
-
+h2{
+    font-family:Arial, Helvetica, sans-serif;
+    color: blue;
+    font-size:25px;
+}
+nav ul{
+    display:flex;
+    justify-content: space-around;
+    background-color: white;
+    border: 2px solid blue;
+    border-radius: 35px 35px 35px 35px;
+    -moz-border-radius: 35px 35px 35px 35px;
+    -webkit-border-radius: 35px 35px 35px 35px;
+    -o-border-radius: 35px 35px 35px 35px;
+}
+article{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 60%;
+    margin: 10px;
+    background-color: white;
+    margin-bottom: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    color: black;
+    font-size:15px;
+    border: 2px solid blue;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -o-border-radius: 10px 10px 10px 10px;
+}
+aside{
+    float:right;
+    width: 25%;
+    background-color: white;
+    display:inline-table;
+    color: black;
+    font-size:15px;
+    border: 2px solid blue;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -o-border-radius: 10px 10px 10px 10px;
+}
+footer{
+    display:inline-block;
+    grid-template-columns: 300px;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    border: 2px solid blue;
+    border-radius: 35px 35px 35px 35px;
+    -moz-border-radius: 35px 35px 35px 35px;
+    -webkit-border-radius: 35px 35px 35px 35px;
+    -o-border-radius: 35px 35px 35px 35px;
 }
