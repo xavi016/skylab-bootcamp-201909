@@ -8,12 +8,11 @@ body
     margin: 0
     font-family: 'Quicksand', sans-serif
    
-
 .header
     position: sticky
     top: 0
-    background-color: $header-bg-white
-    
+    background-color: $header-bg-mobile
+
 .nav
     display: grid
     grid-template-columns: 50px 2fr 1fr
@@ -99,6 +98,7 @@ body
                 
 .footer
     overflow: auto
+    background-color-mobile: $footer-bg-mobile
 
     .customerservice
         display: grid
@@ -256,8 +256,14 @@ body
 
 @media only screen and (min-width:768px)
     .header
-        background-color: $header-bg-yellow
+        background-color: $header-bg-tablet
+    .footer
+        .bottomsite
+            background-color: $footer-bg-tablet
 
 @media only screen and (min-width:1024px)
     .header
-        background-color: $header-bg-red
+        background-color: $header-bg-desktop
+    .footer
+        .bottomsite
+            background-color: $footer-bg-desktop
