@@ -1,6 +1,8 @@
 /**
  * 
  * @param {*} array The array to delete elements to.
+ * 
+ * @returns {number} The new lenth of the array.
  */
 function shift(array) { 	
     //console.log(arguments)

@@ -1,6 +1,6 @@
 /**
  * 
- * @param {*} array 
+ * @param {*} array The array to delete elements to.
  * 
  * @returns {string} value of last array.
  */
