@@ -7,5 +7,5 @@ console.log(push(array, 4)); // 4
 console.log(array); // [1, 2, 3, 4]
 
 console.log('should push a multiple items');
-console.log(push(array, 'a', 'b', 'c')); // 7
+console.log(push(array, 'a', 'b', 'c')); // 6
 console.log(array); // [1, 2, 3, 'a', 'b', 'c']
