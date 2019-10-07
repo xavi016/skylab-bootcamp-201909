@@ -8,7 +8,7 @@
 function pop(array) { 
 	var lastItemPos = array.length-1; 
 	var lastItem = array[lastItemPos]
-	array.length = array.length-1;
+	array.length--;
   
 	return lastItem;
   }
