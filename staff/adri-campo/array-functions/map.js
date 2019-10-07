@@ -6,21 +6,11 @@
  * 
  */
 
-function pop(array) {
-        var value = array[array.length - 1];
-        array.length--;
+function map(array, expression) {
+    var newArr = []
+    for (var i = 0; i < array.length; i++)
+    newArr[newArr.length] = expression(array[i])
 
-        return value;
-}
+    return newArr
 
-
-
-
-
-
-
-
-
-
-
-
+};
