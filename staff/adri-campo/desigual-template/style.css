@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.footer .registration, .main, .header .nav__search, .header .nav__title, .header .nav__menu {
+.footer .registration, .main, .nav__search, .nav__title, .nav__menu {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +11,7 @@
 
 body {
   margin: 0;
-  fontsa-family: "Quicksand", sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 .header {
@@ -19,47 +19,48 @@ body {
   top: 0;
   background-color: white;
 }
-.header .nav {
+
+.nav {
   display: grid;
   grid-template-columns: 50px 2fr 1fr;
   grid-template-rows: repeat(2, 35px);
   grid-template-areas: "menu iconlist title" "search search search";
   padding: 0.75rem;
 }
-.header .nav__menu {
+.nav__menu {
   grid-area: menu;
 }
-.header .nav__iconlist {
+.nav__iconlist {
   grid-area: iconlist;
   display: flex;
   align-items: center;
   margin: -45px;
 }
-.header .nav__icons {
+.nav__icons {
   display: flex;
   justify-content: flex-start;
   list-style: none;
 }
-.header .nav__li {
+.nav__li {
   margin: 7px;
 }
-.header .nav__title {
+.nav__title {
   grid-area: title;
 }
-.header .nav__title .titlelogo {
+.nav__title .titlelogo {
   width: 100%;
   max-width: 123px;
 }
-.header .nav__search {
+.nav__search {
   grid-area: search;
 }
-.header .nav__search .searchspace {
+.nav__search .searchspace {
   border: none;
   border-bottom: 0.15rem solid black;
   background-color: white;
   height: 20px;
 }
-.header .nav__search .searchicon {
+.nav__search .searchicon {
   border: none;
   border-bottom: 0.15rem solid black;
   cursor: pointer;
@@ -202,7 +203,7 @@ body {
   display: flex;
   justify-content: flex-start;
   margin-left: 40px;
-  margin-rigth: 10px;
+  margin-right: 10px;
 }
 .footer .place__selectcountry {
   margin-left: 8px;
@@ -216,7 +217,7 @@ body {
   display: flex;
   justify-content: flex-start;
   margin-left: 40px;
-  margin-rigth: 10px;
+  margin-right: 10px;
 }
 .footer .place__selectlanguage {
   margin-left: 8px;
@@ -258,6 +259,17 @@ body {
 .link-white {
   text-decoration: none;
   color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    background-color: yellow;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .header {
+    background-color: rgba(255, 0, 0, 0.75);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

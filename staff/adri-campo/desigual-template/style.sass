@@ -1,70 +1,66 @@
 @import config
 @import panel
-    
+   
 *
     box-sizing: border-box
     
 body
     margin: 0
-    fontsa-family: 'Quicksand', sans-serif
+    font-family: 'Quicksand', sans-serif
    
 
 .header
     position: sticky
     top: 0
-    background-color: $header-background-color
+    background-color: $header-bg-white
     
-    .nav
-        display: grid
-        grid-template-columns: 50px 2fr 1fr
-        grid-template-rows: repeat(2, 35px)
-        grid-template-areas: "menu iconlist title" "search search search"
-        padding: .75rem 
-      
-        &__menu
-            grid-area: menu   
-            @extend %flex-center
+.nav
+    display: grid
+    grid-template-columns: 50px 2fr 1fr
+    grid-template-rows: repeat(2, 35px)
+    grid-template-areas: "menu iconlist title" "search search search"
+    padding: .75rem 
 
-        &__iconlist
-            grid-area: iconlist
-            display: flex
-            align-items: center
-            margin: -45px
+    &__menu
+        grid-area: menu   
+        @extend %flex-center
+    &__iconlist
+        grid-area: iconlist
+        display: flex
+        align-items: center
+        margin: -45px
+    &__icons 
+        display: flex
+        justify-content: flex-start
+        list-style: none
+    &__li
+        margin: 7px
+         
+    &__title 
+        @extend %flex-center 
+        grid-area: title
+        
 
-        &__icons 
-            display: flex
-            justify-content: flex-start
-            list-style: none
-
-        &__li
-            margin: 7px
-             
-
-        &__title 
-            @extend %flex-center 
-            grid-area: title
+        .titlelogo
+            width: 100%
+            max-width: 123px
             
-    
-            .titlelogo
-                width: 100%
-                max-width: 123px
-                
-        &__search
-            @extend %flex-center 
-            grid-area: search
-            
-            .searchspace
-                border: none
-                border-bottom: .15rem solid black
-                background-color: white
-                height: 20px
+    &__search
+        @extend %flex-center 
+        grid-area: search
+        
+        .searchspace
+            border: none
+            border-bottom: .15rem solid black
+            background-color: white
+            height: 20px
+        .searchicon
+            border: none
+            border-bottom: .15rem solid black
+            cursor: pointer
+            background-color: white
+            height: 20px
 
-            .searchicon
-                border: none
-                border-bottom: .15rem solid black
-                cursor: pointer
-                background-color: white
-                height: 20px
 .main
     @extend %flex-center 
     overflow: auto
@@ -201,7 +197,7 @@ body
             display: flex
             justify-content: flex-start
             margin-left: 40px
-            margin-rigth: 10px
+            margin-right: 10px
             
         &__selectcountry
             margin-left: 8px
@@ -215,7 +211,7 @@ body
             display: flex
             justify-content: flex-start
             margin-left: 40px
-            margin-rigth: 10px 
+            margin-right: 10px 
      
         &__selectlanguage
                 margin-left: 8px
@@ -256,3 +252,12 @@ body
 .link-white
     text-decoration: none
     color: $link-white
+
+
+@media only screen and (min-width:768px)
+    .header
+        background-color: $header-bg-yellow
+
+@media only screen and (min-width:1024px)
+    .header
+        background-color: $header-bg-red
