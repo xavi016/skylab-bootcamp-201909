@@ -4,9 +4,9 @@ var array = [1, 2, 3];
 
 console.log('should print the array given')
 
-console.log(array);
+console.log(array); //[1, 2, 3]
 
-console.log('should pop the last item of the array and return the erased item');
+console.log('should pop the last item of the array and return the eliminated item');
 
 console.log(pop(array)); // 3
 

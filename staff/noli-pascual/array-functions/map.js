@@ -1,10 +1,11 @@
 /**
  * Iterates on every item of an array and manipuates it according to a function.
+ * It returns the new array with items modified
  * 
- * @param {Array} array The array to push elements to.
- * @param {Function} function that specifies what to do with the array items.
+ * @param {Array} array The array to get items.
+ * @param {Function} function that specifies what to do with the array items (add 2)
  * 
- * @returns {Array} The new lenth of the array.
+ * @returns {Array} The new array.
  */
 
 
