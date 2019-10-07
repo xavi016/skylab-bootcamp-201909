@@ -1,5 +1,5 @@
 /**
- * The pop() method removes the last element of an
+ * The pop method removes the last element of an
  * array, and returns that element.
  * @param {Array} array The array to pop elements from.
  * 

@@ -1,5 +1,5 @@
 /**
- * Map() method creates a new array with the results of the function 
+ * Map method creates a new array with the results of the function 
  * callback applied to each one of its elements.
  * @param {Array} array The array where we will use map() method.
  * @param {Function} expression The expression that will produce elements for the new array.
