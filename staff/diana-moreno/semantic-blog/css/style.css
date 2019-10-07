@@ -57,17 +57,10 @@ figure {
 .article {
   margin: 0 auto;
   padding: 3rem;
+  margin: 0 5rem;
 }
 .article > p {
   line-height: 2rem;
-}
-.article__video {
-  display: flex;
-  margin: 0 auto;
-  height: 25rem;
-  width: 42rem;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
 }
 .article__independ-text {
   clear: both;
@@ -79,31 +72,32 @@ figure {
 .article__img > img {
   width: 100%;
 }
-.article--slim {
-  margin: 0 5rem;
+.article__video {
+  display: flex;
+  margin: 0 auto;
+  height: 25rem;
+  width: 42rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
-.section {
+.lattest {
   display: flex;
   justify-content: space-evenly;
   margin: 3rem;
   flex-wrap: wrap;
   line-height: 2rem;
-  /*aside en article file tiene un modificador*/
 }
-.section__introduction {
+.lattest__introduction {
   padding: 0 5rem;
 }
-.section__article {
+.lattest__post {
   display: flex;
   align-items: center;
   flex-direction: column;
   max-width: 300px;
   padding: 3rem;
   flex-wrap: wrap;
-}
-.section__article--slim {
-  padding: 0;
 }
 
 .aside {
@@ -114,6 +108,10 @@ figure {
   border-left: 2px solid lightgrey;
   padding: 2rem;
   align-items: center;
+}
+.aside__prev-article {
+  padding: 0;
+  text-align: center;
 }
 
 .footer {
