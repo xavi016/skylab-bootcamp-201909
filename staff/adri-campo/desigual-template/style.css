@@ -17,7 +17,7 @@ body {
 .header {
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: skyblue;
 }
 
 .nav {
@@ -106,7 +106,7 @@ body {
 
 .footer {
   overflow: auto;
-  background-color-mobile: white;
+  background-color-mobile: skyblue;
 }
 .footer .customerservice {
   display: grid;
@@ -264,11 +264,11 @@ body {
 
 @media only screen and (min-width: 768px) {
   .header {
-    background-color: yellow;
+    background-color: pink;
   }
 
   .footer .bottomsite {
-    background-color: yellow;
+    background-color: pink;
   }
 }
 @media only screen and (min-width: 1024px) {
