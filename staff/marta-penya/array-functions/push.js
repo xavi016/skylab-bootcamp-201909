@@ -6,6 +6,7 @@
  * 
  * @returns {number} The new lenth of the array.
  */
+
 function push(array, ) { 
 	//console.log(arguments) 
 
