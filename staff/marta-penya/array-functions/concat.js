@@ -1,31 +1,29 @@
 /**
- * Pushes a variable number of items into an array.
+ * To join two or more arrays. This method does not change existing arrays.
  * 
- * @param {Array} array The array to push elements to.
+ * @param {...any} item The items array to start joining.
  * 
- * @param {...any} item The item (or items) to push.
+ * @param {...any} item The item (or items) to join.
  * 
- * @returns {Array} the new array created
+ * @returns {Array} the new array created with all items joined
  */
 
-function concat(arguments) { 
+function concat(item, item) { 
     var newArr = array;
-    var index = array.length
+    var index = newArr.length;
 
-	for (var i = 1; i < arguments.length; i++){
-        if(arguments instanceof Array){
-            for(var j = 1; j < arguments.length; j++){
+	for(var i = 1; i < arguments.length; i++){
+        if(item instanceof Array){
+            for(var j = 0; j < arguments.length; j++){
 
-                newArr[newArr.length] = arguments[i][j]
-                index++ 
-                         
+                newArr[index] = arguments[i][j];
+                index++;        
             }
         }
          else {
-            newArr[newArr.length] = arguments[i]
-            index++
+            newArr[index] = arguments[i];
+            index++;
         }
     }
-		
 	return newArr
 }

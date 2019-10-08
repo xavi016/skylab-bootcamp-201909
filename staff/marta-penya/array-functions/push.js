@@ -1,5 +1,5 @@
 /**
- * To join two or more arrays. This method does not change existing arrays.
+ * Pushes a variable number of items into an array.
  * 
  * @param {Array} array The array to push elements to.
  * @param {...any} item The item (or items) to push.
