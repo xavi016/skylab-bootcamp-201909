@@ -5,26 +5,31 @@
  * @param {Array} array to add to first array.
  */
 
-let arr1 = [1,2,3];
-const arr2 = ['a','b','c'];
 
-function concat(arrPrimero, arrSegundo) {
+var elem1 = ['a','b','c'];
+var elem2 = 2;
+var elem3 = [1,6];
+var elem4 = ['Manoli'];
+
+
+function concat(...arguments) {
 	var newArray = [];
 	
-	for(i = 0; i<arrPrimero.length;i++) { 
+	for(var i = 0; i < arguments.length; i++) { 
 
-		newArray[newArray.length] = arrPrimero[i];
-	} 
-
-	arrPrimero += ',';
-
-	for(j = 0; j < arrSegundo.length; j++) {
-		newArray[newArray.length] = arrSegundo[j];
+		if(!(arguments[i] instanceof Array)) { 
+			newArray[newArray.length] = arguments[i];
+		}
+		else {
+			
+			for(var j = 0; j < arguments[i].length; j++) {
+				newArray[newArray.length] = arguments[i][j];
+			}
+		}	
 	}
-	return newArray;
-
+	
+	return newArray; 
 }
 
-concat(arr1, arr2);
-
+concat(elem1, elem2, elem3, elem4);
 
