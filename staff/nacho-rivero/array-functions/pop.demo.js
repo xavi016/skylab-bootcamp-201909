@@ -5,15 +5,13 @@ console.log('DEMO: pop');
         console.log('introduced array', array);
         console.log('pop method');
 
-    var result = pop(array);
+            var result = pop(array);
 
         console.log('removed value: ' + result);
 
         console.log('remaining: ' + array);
 
-        console.log('pop results');
-
-    result = pop(array);
+            result = pop(array);
 
         console.log('removed value: ' + result);
 
