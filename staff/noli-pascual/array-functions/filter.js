@@ -7,10 +7,6 @@
  * @returns {Array} The new array.
  */
 
-function isTwo(item) {
-    return item > 2;
-}
-
 function filter(array,funcion) { 
     var newArray = [];
     for (i = 0; i < array.length; i++) {

@@ -1,9 +1,9 @@
 /**
- * Eliminates the first item of an array and returns it.
+ * Eliminates the first item of an array and returns it. Modifies the length of array.
  * 
  * @param {Array} array The array to shift.
  * 
- * @returns {item} The item eliminated.
+ * @returns {Item} Item eliminated.
  */
 
 function shift(array) { 
@@ -13,7 +13,6 @@ function shift(array) {
 		if(i > 0) {
 			array[i - 1] = array[i];
 		}
-		
 	}
 	array.length = array.length -1;
 	return itemShift;

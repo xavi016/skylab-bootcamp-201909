@@ -1,3 +1,7 @@
+function addTwo(item) {
+    return item + 2;
+}
+
 console.log('DEMO map');
 
 var array = [1, 2, 3];

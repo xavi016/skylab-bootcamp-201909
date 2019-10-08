@@ -1,3 +1,6 @@
+function isTwo(item) {
+    return item > 2;
+}
 console.log('DEMO filter');
 
 var array = [1, 2, 3];
