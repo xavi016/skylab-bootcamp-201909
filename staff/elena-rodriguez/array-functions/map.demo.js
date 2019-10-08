@@ -11,7 +11,7 @@ var mapped = map(array,function (x) {
 
 console.log(mapped);
 
-console.log('should return a new Array with the numbers of the first array multiplied for 2'); 
+console.log('should return a new Array with the square root of the initial array numbers'); 
 // [1, 1.4142135623730951, 1.7320508075688772] 
 var mapped = map(array,function(num) {
     return Math.sqrt(num);

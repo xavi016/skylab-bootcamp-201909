@@ -1,18 +1,18 @@
 /**
- * removes the last element from an array and returns that element. This method changes the length of the array.
+ * Returns a new array with an expression applied. 
  * 
  * @param {Array} array The array to iterate.
  * @param {expression} function which will return a new parameter.
  * 
- * @returns {newArray} The new parameters with the function applied.
+ * @returns {newArray} The new array with the function applied.
  */
 
 
-function map(array, expression) { 
-    var newArray = [];
-   for (let i = 0; i < array.length ; i++)
-   {newArray[i] = expression(array[i])}
+function map(numbers, expression) { 
+var result = [];
+   for (let i = 0; i < numbers.length ; i++)
+   {result[i] = expression(numbers[i])}
 
-    return newArray;
+    return result;
 }
 
