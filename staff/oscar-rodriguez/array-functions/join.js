@@ -6,7 +6,8 @@
  *                           If an separator is omited, as default separator is a coma.
  */
 function join (array) {
-
+    if (!(array instanceof Array)) throw TypeError (array + ' is not an array');
+    
     var separator = arguments.length>1 ? arguments[1] : ",";
     var string='';
 

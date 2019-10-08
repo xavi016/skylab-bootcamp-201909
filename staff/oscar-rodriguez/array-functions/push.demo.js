@@ -1,4 +1,4 @@
-console.log('DEMO push');
+console.log('\n *** PUSH DeMO ***');
 
 var array = [1, 2, 3];
 

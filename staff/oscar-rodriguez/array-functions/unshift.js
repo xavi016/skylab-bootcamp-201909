@@ -4,9 +4,11 @@
  * @param {Array} array The array on will add item at first .
  * @param {any} item The item will be added in the array.
  */
-function unshift (array, item) {
-    for (var i=array.length; i>=1; i--) {
-        array[i]=array[i-1];
+function unshift (array) {
+    for (var i=((array.length-1)+(arguments.length-1)); i>0; i--) {
+        array[i]=array[i-(arguments.length-1)];
     }
-    array[0]=item;
+    for (var i=0; i<(arguments.length-1); i++) {
+        array[i]=arguments[i+1];
+    }
 }
