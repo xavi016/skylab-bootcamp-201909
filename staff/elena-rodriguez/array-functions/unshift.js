@@ -1,28 +1,30 @@
 /**
- * removes the last element from an array and returns that element. This method changes the length of the array.
+ * Add elements at the begining of an array. Returns the array modified. 
  * 
- * @param {Array} array The array to remove elements to.
+ * @param {Array} array The array to add elements to.
+ * @param {Array} array the items to add. 
  * 
- * @returns {item} The last item removed.
+ * @returns {array} The array moddified.
  */
 
-var array = [1,2,3,4]
-var items = ["a","b"]
+ 
+
 function unshift(array, items) { 
   var itemsLen = items.length;
   var arrLen = array.length;
-  for(var i = 0; i < itemsLen; i++){
-    for(var e = arrLen ; e = 0;  e--){
-
-        //
-    array[e] = array[e+1];
-    console.log(array[e])
-    console.log(array[e+1])
-    console.log(array)
-    items[i] = array[0]
-    }
+  for(var i = 0; i< itemsLen; i++){
+    array[arrLen+i] = null
   }
+  var newLen = array.length-1;
+  for(var e = newLen; e >= 0; e--){
+    array[e] = array[e-itemsLen]
+    if(e === newLen-arrLen){
+       break
+      }
+  }
+  for(var o = 0; o<itemsLen; o++){
+         array[o] = items[o];
+       }
   return array
 }
-console.log(unshift(array, items))
 
