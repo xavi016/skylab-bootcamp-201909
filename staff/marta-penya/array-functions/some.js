@@ -1,19 +1,25 @@
-El método some() comprueba si al menos un elemento del array 
-cumple con
- la condición implementada por la función proporcionada.
 
  /**
- * Pushes a variable number of items into an array.
+ * Checks if at least one element of the array complies with the condition implemented by the specific function.
  * 
- * @param {Array} array The array to push elements to.
- * @param {...any} item The item (or items) to push.
+ * @param {Array} array The array to evaluate elements to the condition given 
  * 
- * @returns {number} The new lenth of the array.
+ * @param {Function} expression The expression to evaluate in each item of the array.
+ * 
+ * @returns {boolean} returns true if the callback function returns a true value for any element
+ * 
+ *  in the array; otherwise, false.
  */
 
-function some(array, expression ) { 
-    for (var i = 1; i < arguments.length; i++) {
-        expression(array, i)
-    }
 
+
+function some(array,funcion) { 
+    var isElement = false;
+    for (i = 0; i < array.length; i++) {
+        if(funcion(array[i])) {
+        isElement = true;
+    }
 }
+    return isElement
+}
+

@@ -1,10 +1,10 @@
 /**
- * Pushes a variable number of items into an array.
+ * To join two or more arrays. This method does not change existing arrays.
  * 
  * @param {Array} array The array to push elements to.
  * @param {...any} item The item (or items) to push.
  * 
- * @returns {number} The new lenth of the array.
+ * @returns {number} returns a new array
  */
 
 function push(array, ) { 

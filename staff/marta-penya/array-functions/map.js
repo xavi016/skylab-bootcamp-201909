@@ -8,10 +8,15 @@
  * 
  * @returns {Array} array the new array created
  * 
+ * @throws {TypeError} If expression is not a function.
  */
+ 
 
 
-function map(array, expression) { 
+function map(array, expression) {
+    if (typeof expression !== 'function') throw TypeError(expression + ' is not a function')
+
+
     var newArr = [];
     for (var i = 0; i < array.length; i++)
     newArr[newArr.length] = expression(array[i])
