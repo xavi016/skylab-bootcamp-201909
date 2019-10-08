@@ -1,12 +1,15 @@
 /**
  * 
- * @param {*} array The array to push elements to.
+ * @param {*} array The array to unshift elements to.
  * @param {...any} item The item (or items) to unshift.
  * 
  * @returns {number} The new lenth of the array.
  */
 function unshift(array) { 	
     //console.log(arguments)
+    if (array===undefined) throw TypeError(array + ' is no an array')
+    if (!(arguments[0] instanceof Array)) throw TypeError(arguments[0] + ' is no an array')
+    
     var newArray = []; 
 
     for (var i = 1; i < arguments.length; i++) {

@@ -19,5 +19,4 @@ console.log('should add all numbers in an external variable');
 var result = 0;
 
 forEach(numbers, function(number) { result += number; });
-
 console.log(result);
