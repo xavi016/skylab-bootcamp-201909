@@ -1,34 +1,18 @@
 console.log('DEMO every');
 
+var array = [1, 30, 39, 29, 20, 10];
 
-
-var array = [1, 30, 29, 29, 10, 13];
-
-    function every(array){
-        var x
-        array.forEach(element => {
-            if(element > 40) return false;
-        });
-        return true;
-    }
-
-
-    console.log(every(array));
-
-  // expected output: true
-
-
-
-
-
-
-
-  function every(currentValue) {
+function belowFourty(currentValue) {
     return currentValue < 40;
-  }
+}
 
-  function esSuficientementeGrande(elemento, indice, arrreglo) {
-    return elemento >= 10;
-  }
-  [12, 5, 8, 130, 44].every(esSuficientementeGrande);   // false
-  [12, 54, 18, 130, 44].every(esSuficientementeGrande); // true
+console.log("Should return true")
+console.log(every(array,belowFourty));
+
+
+function overThirty(currentValue) {
+    return currentValue > 30;
+}
+
+console.log("Should return false")
+console.log(every(array,overThirty));
