@@ -25,4 +25,4 @@ function slice(array, indexIni, indexEnd) {
   return newArray;
 }
 
-//falta la parte de negativos
+// falta la parte de negativos
