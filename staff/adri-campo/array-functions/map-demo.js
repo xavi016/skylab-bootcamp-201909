@@ -6,11 +6,17 @@ var newArr = map(array, function(value){
 });
 console.log(newArr)
 
-console.log('CASE should throw type error on no expresion');
-try {
-    forEach([]);
+console.log("Should show undefined is not an array")
+try{
+    map()
+}
+catch(error){ 
+    console.error(error.message);
+}
+console.log("Should show undefined is not a function")
+try{
+    map([])
 }
 catch(error){
-console.log(error.message)
-console.log("type error: " + (error instanceof TypeError));
+    console.error(error.message)
 }
