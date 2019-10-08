@@ -6,3 +6,11 @@ var newArr = map(array, function(value){
 });
 console.log(newArr)
 
+console.log('CASE should throw type error on no expresion');
+try {
+    forEach([]);
+}
+catch(error){
+console.log(error.message)
+console.log("type error: " + (error instanceof TypeError));
+}
