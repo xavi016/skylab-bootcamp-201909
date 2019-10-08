@@ -10,9 +10,3 @@ function fill (array, item) {
         array[i]=item;
     }
 }
-
-fill(arr, "B");
-
-var arr= ["A","b","C","d"];
-
-fill(arr, "B",2,3);
