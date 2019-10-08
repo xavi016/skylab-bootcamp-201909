@@ -12,3 +12,12 @@ console.log(array);
 console.log('should return a new array with those items who accomplish the condition "item > 2"');
 
 console.log(filter(array, isTwo)); // [3]
+
+console.log('CASE throw type error if no funcion');
+
+try {
+    console.log(filter(array, 3));
+} catch (error) {
+    console.error(error);
+}
+
