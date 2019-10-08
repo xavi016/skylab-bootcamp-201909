@@ -21,3 +21,19 @@ var result = 0;
 forEach(numbers, function(number) { result += number; });
 
 console.log(result);
+
+
+
+try {
+        forEach();
+        console.error('should not reach this point');
+    } catch(error) {
+      console.error(error.message);
+}
+
+try {
+    forEach(array);
+    console.error('should not reach this point');
+    }catch(error) {
+    console.error(error.message);
+}
