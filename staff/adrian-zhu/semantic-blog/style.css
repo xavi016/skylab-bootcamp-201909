@@ -166,7 +166,8 @@ h3{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-h4{
+.readme{
+  font-size: 16px;
   color: #fda77f;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
