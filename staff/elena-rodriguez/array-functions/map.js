@@ -16,3 +16,6 @@ var result = [];
     return result;
 }
 
+var x = [0, 2, 5] 
+map(x)
+

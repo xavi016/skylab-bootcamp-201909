@@ -8,7 +8,7 @@
  * */
 
 
-function join(array, caract) {
+ function join(array, caract) {
     if(caract === undefined)
         caract =',';
     var result = '';
