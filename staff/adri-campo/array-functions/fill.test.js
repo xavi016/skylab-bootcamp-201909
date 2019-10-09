@@ -2,9 +2,9 @@ describe('fill', function () {
     it('should fill the function with a value', function () {
         var array = [1, 3, 4, 6, 7, 8, 6];
         fill(array, 7);
-        result = JSON.stringify(array);
+        result = array.toString();
 
-        expect(result).toBe(JSON.stringify([7,7,7,7,7,7,7]));
+        expect(result).toBe([7,7,7,7,7,7,7].toString());
 
     });
 
