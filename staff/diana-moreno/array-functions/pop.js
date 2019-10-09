@@ -5,11 +5,10 @@
  * @throws {TypeError}    If array is not an array
  */
 function pop(array) {
-  if(array.length ==0) return undefined;
-  if(!(array instanceof Array)) throw TypeError('Data type is not Array');
+  if (array.length == 0) return undefined;
+  if (!(array instanceof Array)) throw TypeError('Data type is not Array');
 
-  var lastElem = array[array.length-1]
-  array.length = array.length-1
-  return lastElem
+  var lastElem = array[array.length - 1];
+  array.length = array.length - 1;
+  return lastElem;
 }
-

@@ -1,26 +1,19 @@
 /**
  * Creates a new array with the results of calling a provided function on every element in the calling array.
- * @param  {[type]}   array [description]
- * @param  {Function} fn    [description]
- * @return {[type]}         [description]
+ * @param  {[type]}   array Array to change
+ * @param  {Function} fn    Function that produces an element of the new Array
+ * @return {[type]}         A new array with each element being the result of the callback function.
+ * @throws {TypeError} If array is not an array, or expression is not a function.
  */
 function map(array, fn) {
-
-  if(!(array instanceof Array)) throw TypeError(typeof array + ' is not an array')
-  else if(!(fn instanceof Function)) throw TypeError(typeof fn + ' is not a function');
+  if (array.length === 0) throw Error('Array is empty');
+  if (!(array instanceof Array)) throw TypeError('type is not an array');
+  if (!(fn instanceof Function)) throw TypeError('type is not a function');
 
   let newArray = [];
-  let counter = 0;
 
-  for(let i in array) {
-    newArray[i] = fn(array[i])
-  }
+  for (let i in array)
+    newArray[i] = fn(array[i]);
+
   return newArray;
 }
-
-var array = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-var arr2 = [1, 2, 3]
-console.log(map(array, word => word.length > 23))
-console.log(map(arr2, x => x + 1))
-/*console.log(map('hola', word => word.length > 23))
-console.log(map(array, 'hola'))*/
