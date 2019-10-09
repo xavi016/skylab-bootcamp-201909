@@ -4,7 +4,6 @@ function concat () {
 
     var result=[];
     result.length=0;
-    debugger
     for (var i=0; i<arguments.length; i++) {
         for (var j=0; j<arguments[i].length; j++) {
             result[result.length]=arguments[i][j];
