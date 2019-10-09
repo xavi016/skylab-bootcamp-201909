@@ -6,9 +6,9 @@
 
 function map(array, expression) { 	
     //console.log(arguments)
-    if (!(array instanceof Array)) throw TypeError(array + ' is no an array');
+    if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
     // if (!(expression instanceof Function)) throw TypeError(expression + ' is no a function')
-    if (typeof expression !== 'function') throw TypeError(expression + ' is no a function')
+    if (typeof expression !== 'function') throw TypeError(expression + ' is not a function')
 
     var newArray = []; 
 	for (var i = 0; i < array.length; i++) 
