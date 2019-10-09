@@ -1,10 +1,19 @@
  
-function includes(arr, val){
-    if(val === undefined){return false}
-    else{
-    for(var i=0; i<arr.length; i++){if(arr[i] === val) return true;}
-    return false}
+//The includes() method determines whether an array includes a certain value among its entries,
+//returning true or false as appropriate.
+
+function includes(arr, value) { 
+
+	for(var i = 0; i < arr.length; i++) {
+		
+		if(arr[i] === value) {
+			return true;
+    }
+    
+  }
+  return false;
 }
-  var a = [1, 2, 3, 4]
-  console.log(includes(a, 1)) 
-  console.log(include());
+var array = [1, 5, 8];
+
+includes(array, 8);
+

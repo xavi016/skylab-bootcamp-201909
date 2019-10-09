@@ -25,6 +25,17 @@ function find(array,funcion) {
 	}
 }
 
+//REFACTORIZACIÓN
+function find(array,funcion) { 
+	
+	for(i = 0; i < array.length; i++) {
+		
+		if(funcion(array[i])) {
+			return array[i];
+		}
+	}
+	return undefined
+}
 
 function isGreater(item) {
 	return item > 2;

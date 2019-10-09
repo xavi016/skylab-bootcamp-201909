@@ -1,4 +1,33 @@
-function addTwo(item) {
+describe('map'/* primer parámetro de describe*/, function () {//function es el segundo parámetro de la función describe con todos los it (pruebas)
+
+    it ('should add two to each value of the array', function () {// it: title, funcion: (vars, )
+    
+    var array= [1,2,3];
+
+    var result = [];
+
+    function addTwo(item) {
+        return item + 2;
+    }
+
+    result = map(array, addTwo);
+
+    expect(result).toBe(3,4,5);
+
+    }, 
+    
+    function (error) {
+        expect(error).toBe(undefined);
+    }
+
+    )
+
+    
+    
+});
+
+
+/* function addTwo(item) {
     return item + 2;
 }
 
@@ -30,4 +59,4 @@ try {
 
 } catch (error) {
     console.error(error);
-}
+} */

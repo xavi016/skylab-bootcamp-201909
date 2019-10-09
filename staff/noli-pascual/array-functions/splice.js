@@ -9,20 +9,8 @@
  * @returns {number} the position of the first element that accomplish the condition
  */
 
-function slice(arr, indexIni, indexFin) { 
-    var newArray = []
-    if(indexFin === undefined) {
-        indexFin = arr.length;
-    }
-	
-	for(i = indexIni; i < indexFin; i++) {
-		
-		newArray[newArray.length] = arr[i];
-    }
-    return newArray;
-}
-
-var array = ['index0', 'index1', 'index2', 'index3', 'index4'];
-slice(array, 3, 4);
 
 
+
+
+//var arrDeletedItems = array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
