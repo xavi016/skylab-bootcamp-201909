@@ -6,17 +6,29 @@
  * @param {index} number 
  */
 
-    function indexOf(array,element,number){
-        number = number || 0;
-        var index= -1
-        for (var i = number; i < array.length; i++){
-            if(element === array[i]) {
-                index = i
-                break
+    var arrayNumbers = [1,2,3,4,5]
+
+    function indexOf(array, item , expression){
+        for (var i = 0; i < array.length; i++){
+            if (expression(array[i],item)){
+                return i
             }
         }
-        return index;
+        return -1
     }
+        
 
+    function findNumber(itemArray,item){
+       return itemArray === item
+    }
+        
 
-
+    // function findNumber(itemArray,item){
+    //    if (itemArray === item){
+    //        return true
+    //    }  else {
+    //        return false
+    //    }
+    // }
+    
+    indexOf(arrayNumbers , 2 , findNumber)
