@@ -4,7 +4,7 @@ function indexOf (array, item) {
     if (isNaN(start)) return -1;
 
     for (i=start; i<array.length; i++) {
-        if (expression(array[i])) return i;
+        if (array[i]===item) return i;
     }
     return -1;
 }

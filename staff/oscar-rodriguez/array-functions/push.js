@@ -7,7 +7,8 @@
  * @returns {number} The new lenth of the array.
  */
 function push(array) { 
-	//console.log(arguments) 
+	
+    if (!(array instanceof Array)) throw TypeError (array + 'is not an array');
 
 	for (var i = 1; i < arguments.length; i++)
 		array[array.length] = arguments[i]

@@ -6,6 +6,9 @@
  * @returns {any} returns de last item deleted on the array
  */
 function pop (array) {
+    
+    if (!(array instanceof Array)) throw TypeError (array + 'is not an array');
+    
     var result=array[array.length-1];
     array.length-=1;
     

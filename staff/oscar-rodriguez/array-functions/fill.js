@@ -1,4 +1,4 @@
-var arr= ["A","b","C","d"];
+
 function fill (array, item) {
     if (!(array instanceof Array)) throw TypeError (array + ' is not an array');
 
