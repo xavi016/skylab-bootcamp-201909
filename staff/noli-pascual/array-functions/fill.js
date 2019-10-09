@@ -12,7 +12,7 @@
 function fill(arr, element, indexIni, indexFin) { 
     
     if(indexFin === undefined) {
-        indexFin = arr.length;
+        indexFin = arr.length-1;
     }
 	
 	for(i = indexIni; i <= indexFin; i++) {
