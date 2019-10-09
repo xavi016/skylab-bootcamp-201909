@@ -10,5 +10,5 @@ function forEach(array, expression) {
 	if (!(array instanceof Array)) throw TypeError (array + 'is not an array');
 	
 	for (var i = 0; i < array.length; i++) 
-		expression(array[i], i, array);
+		expression(array[i], array);
 }
