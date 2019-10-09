@@ -1,6 +1,17 @@
 
+ /**
+ * Invert the order of the elements of an array in place, the first element becomes the last and the last
+ * becomes the first.
+ * 
+ * @param {Array} array The array to evaluate elements to the condition given 
+ * 
+ * @returns {Array} returns the array inverted
+ * 
+ *  
+ */
 
-var lenguajes = ["PHP", "C", "C#", "Rust", "Java", "JavaScript", "C++", "Go"];
+
+
 
 function reverse(array) {
     var reversed = [];
@@ -11,9 +22,17 @@ function reverse(array) {
     }
     return reversed;
 }
+
+
+
+
+console.log('DEMO reverse');
+
+var lenguajes = ["PHP", "C", "C#", ".Net", "Java", "JavaScript", "C++", "HTML"];
+console.log(lenguajes);
+
+console.log('should reverse the order of the items of the array');
 reverse(lenguajes);
-
-
 
 
 
