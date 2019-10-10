@@ -9,7 +9,7 @@
 function shift (array) {
 
     if (!(array instanceof Array)) throw TypeError (array + 'is not an array');
-
+    if (array.length===0) return undefined;
     var itemShifted = array[0];
 
     for (var i=1; i<array.length; i++) {

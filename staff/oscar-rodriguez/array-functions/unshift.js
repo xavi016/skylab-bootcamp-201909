@@ -14,4 +14,6 @@ function unshift (array) {
     for (var i=0; i<(arguments.length-1); i++) {
         array[i]=arguments[i+1];
     }
+
+    return array.length;
 }
