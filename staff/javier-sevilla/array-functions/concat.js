@@ -19,7 +19,7 @@ function concat(array) {
         } else {
             newArray[x] = arguments[i];
             x += 1;
-        }
+        } 
     }
     
     return newArray;
