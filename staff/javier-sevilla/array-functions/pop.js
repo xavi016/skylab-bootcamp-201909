@@ -6,8 +6,8 @@
  */
 
 function pop(array) { 
-    var x = array[array.length - 1]
+    var deletedElement = array[array.length - 1]
     array.length = array.length - 1;
     
-    return x;
+    return eletedElement;
 }
