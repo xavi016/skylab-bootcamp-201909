@@ -3,7 +3,7 @@ function Hooray() {
         this[i] = arguments[i];
 
     this.length = arguments.length;
-}
+};
 
 /**
  * Iterates the current hooray and evaluates an expression on each item.
@@ -33,3 +33,37 @@ Hooray.prototype.push = function() {
 
 	return this.length;
 };
+
+
+/**
+ * Copies a part of the hooray within a new hooray starting from beginning
+ * to end (end not included). The original hooray will not be modified.
+ *
+ * 
+ * @param {number} begin  Item for the start position
+ * 
+ * @param {number} end  Item for the end position
+ * 
+ * @returns {Hooray} New hooray with the extracted values
+ */
+
+ Hooray.prototype.slice = function(begin, end) {
+	if (!this) throw Error( 'is not defined'); 
+	if (!(this instanceof Hooray)) throw Error( 'Is not a Hooray');
+
+    //if (typeof end === 'undefined') end = hooray.length;
+
+    var result = []; // {}; // WTF?
+
+    begin = begin || 0;
+    begin = begin < 0? this.length + begin : begin;
+    end = end || this.length;
+    end = end < 0? this.length + end : end;
+
+    for (var i = begin; i < end; i++)
+        result[i - begin] = this[i];
+
+    //result.length = end - begin; // WTF?
+    
+    return result;
+}
