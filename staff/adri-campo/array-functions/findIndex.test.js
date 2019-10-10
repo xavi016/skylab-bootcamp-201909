@@ -1,27 +1,34 @@
+function checkCondition(item) {
+    return item > 5
+}
+
+function checkConditionNoMatch(item) {
+    return item > 55
+}
+
 describe('findIndex', function () {
+
     it('should return the index number of the first item that returns true to the condition', function () {
         var array = [1, 4, 5, 53, 23, 37];
-        findIndex(array, array[i] > 5);
-        
-        expect(i).toBe(3);
+        findIndex(array, checkCondition);
+
+        expect(findIndex(array, checkCondition)).toBe(3);
 
     });
 
     it('should return -1 if there is no match', function () {
         var array = [1, 4, 5, 53, 23, 37];
-        findIndex(array, array[i] > 55);
-        result = -1;
+        findIndex(array, checkConditionNoMatch);
 
-        expect(result).toBe(-1);
+        expect(findIndex(array, checkConditionNoMatch)).toBe(-1);
 
     });    
 
     it('should return -1 if the array is empty', function () {
         var array = [];
-        findIndex(array, array[i] > 55);
-        result = -1;
-
-        expect(result).toBe(-1);
+        findIndex(array, checkCondition);
+    
+        expect(findIndex(array, checkCondition)).toBe(-1);
 
     });   
 
@@ -29,10 +36,10 @@ describe('findIndex', function () {
     // ERRORES
 
     it('should fail if array is NOT an array', function () {
-        var array; //= [1, 4, 5, 53, 23, 37];
-        var condition = array[i] > 55
-
-        expect( function() { findIndex(array, condition);}).toThrow(TypeError, "Cannot read property '0' of undefined");
+        //= [1, 4, 5, 53, 23, 37];
+        findIndex(array, checkCondition);
+        
+        expect( function() { findIndex();}).toThrow(TypeError, "array is not defined");
 
     });   
 

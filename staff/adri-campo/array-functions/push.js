@@ -4,7 +4,7 @@
  * @param {Array} array The array to push elements to.
  * @param {...any} item The item (or items) to push.
  * 
- * @returns {number} The new lenth of the array.
+ * @returns {number} The new length of the array.
  */
 function push(array) { 
 	//console.log(arguments) 

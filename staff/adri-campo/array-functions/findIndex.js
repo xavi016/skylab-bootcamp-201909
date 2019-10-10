@@ -1,12 +1,11 @@
 function checkCondition(item) {
-    return item > 5 
+    return item > 5
 }
 
-function findIndex(array,expression){
-    if(!(array instanceof Array)) throw TypeError("Cannot read property '0' of undefined");
-
+function findIndex(array, expression){
+    if(!(array instanceof Array)) throw TypeError("array is not defined");
     for (i=0; i<array.length;i++){
-        if (checkCondition(array[i])){
+        if (expression(array[i])){
             return i
         }
     } 
@@ -22,6 +21,6 @@ var arrayNumbers = [1,4,5,53,23,37]
 //     arrayNumbers[i] = rnd
 // }
 
-findIndex(arrayNumbers, checkCondition);
+console.log(findIndex(arrayNumbers, checkCondition));
 
 
