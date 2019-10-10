@@ -12,21 +12,22 @@
  */
 
 
+function slice(array, begin, end) {
+    if (!(array instanceof Array)) throw new TypeError(array + ' is not an array');
 
-var animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+    //if (typeof end === 'undefined') end = array.length;
 
+    var result = []; // {}; // WTF?
 
-function slice(array, fidx, lidx){
-    if(array.length === 0)throw ReferenceError('array is empty');
-    if(!(array instanceof Array)) throw new TypeError(array + 'is not an array');
+    begin = begin || 0;
+    begin = begin < 0? array.length + begin : begin;
+    end = end || array.length;
+    end = end < 0? array.length + end : end;
+
+    for (var i = begin; i < end; i++)
+        result[i - begin] = array[i];
+
+    //result.length = end - begin; // WTF?
     
-    fidx = fidx < 0? array.length - fidx : fidx;
-    end = end < 0? array.length - end : end;
-
-    var newArray = [];
-    for(var i = (fidx || 0); i < (lidx || array.lenght); i++){
-        newArray[newArray.length++] = array[i];
-    }
-    return newArray;
+    return result;
 }
-console.log(slice(animals, 2, 4));
