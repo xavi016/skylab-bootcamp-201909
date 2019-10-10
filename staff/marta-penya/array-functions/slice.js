@@ -18,9 +18,13 @@ var animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
 
 function slice(array, fidx, lidx){
     if(array.length === 0)throw ReferenceError('array is empty');
+    if(!(array instanceof Array)) throw new TypeError(array + 'is not an array');
     
+    fidx = fidx < 0? array.length - fidx : fidx;
+    end = end < 0? array.length - end : end;
+
     var newArray = [];
-    for(var i = fidx; i < lidx; i++){
+    for(var i = (fidx || 0); i < (lidx || array.lenght); i++){
         newArray[newArray.length++] = array[i];
     }
     return newArray;

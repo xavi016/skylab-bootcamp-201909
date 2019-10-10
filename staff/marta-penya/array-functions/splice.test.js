@@ -5,7 +5,7 @@ describe('splice', function (){
 
         expect(JSON.stringify(result)).toBe(JSON.stringify(['ant', 'grillo', 'camel', 'duck', 'elephant']))
     });
-
+ 
     it('should run an error to not a number', function(){
         
         expect(function() { splice(animals, 'a', 1, 'grillo'); }).toThrowError('a is not a number')
