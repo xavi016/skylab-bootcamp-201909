@@ -25,14 +25,16 @@ function splice (array, start) {
     if (start===(array.length-1)) 
                     array.length--;
     for (var i=start; i<start+deleteCount; i++) {
-        debugger
+        ///debugger
         if (deleteCount > 0) {
             deleted[deletedIndex]=array[i];
             deletedIndex++;
-            array[i]=array[i+deleteCount];
         }
     }
-    array.length-=deleteCount;
+    for (var j=start; j<=array.length; j++) {
+        array[j-1]=array[j];
+    }
+    array.length-=deleteCount-1;
     if (arguments.length>3) {
         for (var i=array.length-1; i>=start; i--) {
             array[i+(arguments.length-3)]=array[i];
@@ -44,8 +46,3 @@ function splice (array, start) {
                 
     return deleted;
 }
-
-
-var arr = [1,12,3,4,5,6,7];
-
-splice(arr, 3, 2);
