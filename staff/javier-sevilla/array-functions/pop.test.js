@@ -1,25 +1,18 @@
 describe('Pop', function () {
-    it('should succeed on correct array and arguments, adding one elements', function () {
+    it('should succeed on correct array, deleted the last element', function () {
         var array = [1, 2, 3];
 
-        var lengthArr = push(array, 4);
+        var lastElement = pop(array);
 
-        expect(lengthArr).toBe(4);
-    });
-
-    it('should succeed on correct array and expression, adding multiple elements', function () {
-        var array = [1, 2, 3];
-
-        var lengthArr = push(array, 4, 5, 6);
-
-        expect(lengthArr).toBe(6);
+        expect(lastElement).toBe(3);
+        expect(array[array.length-1]).toBe(2);
+        expect(array.length-1).toBe(1);
     });
 
     it('should fail on undefined array', function () {
         var array; //= [1, 2, 3];
-        var arg;
 
-        expect(function() { forEach(array, arg); }).toThrow(TypeError, 'undefined is not an array');
+        expect(function() { pop(array); }).toThrow(TypeError, 'undefined is not an array');
         
     });
 });

@@ -6,8 +6,9 @@
  */
 
 function pop(array) { 
+    if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
     var deletedElement = array[array.length - 1]
     array.length = array.length - 1;
     
-    return eletedElement;
+    return deletedElement;
 }
