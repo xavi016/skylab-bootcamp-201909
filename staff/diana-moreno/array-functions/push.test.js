@@ -5,6 +5,8 @@ describe('push', function() {
     expect(push(array, 'd')).toBe(4);
     expect(array.length).toBe(4);
     expect(array[array.length - 1]).toBe('d');
+
+    var chars = ['a', 'b', 'c', ]
   });
 
   it('should push multiple items', function() {

@@ -13,9 +13,12 @@ describe('fill', function() {
   it('should modify the original array', function() {
     var array = [1, 2, 3];
     var item = 'a';
+    var _result = ['a', 'a', 'a']
     fill(array, item);
 
-    expect(array.toString()).toBe('a,a,a');
+    for (var i = 0; i < array.length; i++) {
+      expect(array[i]).toBe(_result[i]);
+    };
   });
 
   it('should receive an array with an item and first index', function() {
@@ -37,7 +40,12 @@ describe('fill', function() {
     var indexEnd = 4;
     var _result = [1, 'a', 'a', 'a', 5];
     var result = fill(array, item, indexIni, indexEnd); // [1, 'a', 'a', 'a', 5];
-    expect(result.toString()).toBe([1, 'a', 'a', 'a', 5].toString());
+
+    for (var i = 0; i < array.length; i++) {
+      expect(array[i]).toBe(_result[i]);
+    };
+    //expect(JSON.stringify(result)).toBe(JSON.stringify([1, 'a', 'a', 'a', 5]));
+    // Es mejor iterar, no utilizar .toString()
   });
 
   it('should fail on non-received array', function() {

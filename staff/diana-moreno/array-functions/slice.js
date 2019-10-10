@@ -7,8 +7,12 @@
  * @throws {TypeError}    If array is not an array
  */
 function slice(array, indexIni, indexEnd) {
+  if (!(array instanceof Array)) throw TypeError('Data type is not an array');
+
   let newArray = [];
   counter = 0;
+
+  //indexIni = indexIni || 0;
 
   if(indexIni > indexEnd) {
     return newArray;
@@ -20,6 +24,7 @@ function slice(array, indexIni, indexEnd) {
 
   for(var i = indexIni; i < indexEnd; i++) {
     newArray[counter] = array[i];
+    // newArray[i - indexIni] = array[i] // no hace falta declarar counter
     counter++;
   }
   return newArray;
