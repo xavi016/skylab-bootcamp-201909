@@ -1,22 +1,29 @@
-console.log('DEMO shift');
+describe('shift', function() {
+  it('should remove the first element of the array', function() {
+    var array = ['a', 'b', 'c'];
 
-var array = [1, 2, 3]
+    expect(shift(array)).toBe('a');
+    expect(array.length).toBe(2);
+    expect(array[array.length - 1]).toBe('c');
+    expect(array[array.length - 2]).toBe('b');
+  });
 
-console.log('should remove the first element of the array and return the element');
-console.log(shift(array)) // 1
-console.log(array) // [2, 3]
+  it('should return undefined when an empty array is passed', function() {
+    var array = [];
 
-console.log('CASE should return undefined on empty array');
-console.log(shift()) // undefined
-console.log(array) // [2, 3]
+    expect(shift(array)).toBe(undefined);
+  });
 
-console.log('CASE should throw type error on argument different to array');
-try {
-  shift('hello')
-  console.log('this will not print')
-} catch(error) {
-  console.log(error.message) // string is not and array
-  //debugger
-}
+  it('should throw an error when others types different to array are passed', function() {
 
+    expect(function() { shift('hello') }).toThrowError('hello is not an array');
+    expect(function() { shift(1) }).toThrowError('1 is not an array');
+  });
 
+  it('should modify the original array', function() {
+    var array = ['a', 'b', 'c'];
+    shift(array);
+
+    expect(array.toString()).toBe('b,c');
+  });
+});
