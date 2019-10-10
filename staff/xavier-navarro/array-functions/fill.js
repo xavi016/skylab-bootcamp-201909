@@ -1,28 +1,28 @@
 /**
- * Return a string separated by the character it receives
+ * Fill the array to iterate with the item that you sent
  * 
  * @param {Array} array The array to iterate.
- * @param {newItem} - Character by which we will replace items from array
- * @param {start} - Position where the value will start to change
- * @param {end} - Position less one where the value will end to change
+ * @param {*} newItem Character by which we will replace items from array
  * 
- * @returns {newArray} Return a string separated by the character it receives
  */
-function fill(array,newItem, start, end){
-    if(typeof start === 'number' && typeof end === 'undefined'){
-      for(var i = start; i < array.length; i++){
-        array[i] = newItem;
-      }
-    }else if(typeof start === 'undefined' && typeof end === 'undefined'){
-      for(var i = 0; i < array.length; i++){
-        array[i] = newItem;
-      }
-    } else if(typeof start === 'number' && typeof end === 'number'){
-      for(var i = start; i < end; i++){
-        array[i] = newItem;
-      }
-    }else{
-      return array;
-    }
-    return array
+function fill(array,newItem){
+  if (!(array instanceof Array)) throw TypeError (array + ' is not an array');
+  var start = 0;
+  var end = array.length;
+  switch(arguments.length){
+    case 3:
+      start = arguments[2];
+      break;
+    case 4:
+      start = arguments[2];
+      end = arguments[3];
+      break;
+    default:
+        if (arguments.length < 2 ) newItem = undefined;
+      break;
   }
+  
+  for(var i = start; i < end; i++){
+      array[i] = newItem;
+    }  
+}
