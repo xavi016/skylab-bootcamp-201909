@@ -12,10 +12,10 @@ function shuffle(array) {
     newArray[i] = copyArray[randomIndex]
     copyArray.splice(randomIndex, 1)
   }
-  console.log(array) // no modifica el array original porque hacemos una copia
+  //console.log(array) // no modifica el array original porque hacemos una copia
   return newArray
 }
 
 var numbers = [1, 2, 3, 4, 5]
 
-console.log(shuffle(numbers))
+//console.log(shuffle(numbers))

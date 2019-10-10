@@ -1,20 +1,16 @@
+/**
+ * Returns the index of the first element in the provided array that satisfies the provided testing function.
+ * @param  {Array}   array Array to find in
+ * @param  {Function} fn   Function that returns a condition
+ * @return {Number}        First index that matches the condition
+ * @throws {TypeError}    If array is not an array or function is not a function
+ */
 function findIndex(array, fn) {
-  for(let i in array) {
-    if(fn(array[i])) return i
-  }
-  return -1
+  if (!(array instanceof Array)) throw TypeError(array + ' is not an array')
+  if (!(fn instanceof Function)) throw TypeError(fn + ' is not a function');
+
+  for (let i = 0; i < array.length; i++)
+    if (fn(array[i])) return i;
+
+  return -1;
 }
-
-var array = [5, 12, 8, 130, 44];
-
-function isLargeNumber(element) {
-  return element > 13;
-}
-function isLargeNumber2(element) {
-  return element > 444;
-}
-
-
-console.log(findIndex(array, isLargeNumber))
-console.log(findIndex(array, isLargeNumber2))
-console.log(array)

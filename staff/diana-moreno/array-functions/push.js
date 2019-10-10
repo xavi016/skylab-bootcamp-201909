@@ -3,11 +3,11 @@
  *
  * @param {Array} array The array to push elements to.
  * @param {...any} item The item (or items) to push.
- *
  * @returns {number} The new lenth of the array.
+ * @throws {TypeError}    If array is not an array
  */
 function push(array) {
-  if (!(array instanceof Array)) throw TypeError('Data type is not Array');
+  if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
 
 	for (var i = 1; i < arguments.length; i++)
 		array[array.length] = arguments[i];

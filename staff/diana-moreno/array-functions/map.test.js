@@ -23,33 +23,28 @@ describe('map', function() {
       expect(array.toString()).toBe('1,2,3,4');
     })
 
-    it('should fail on empty array',
+    it('should return an empty array if receive an empty array',
       function() {
         var array = [];
         var fn = function(x) { return x * 2; };
-        // 3 maneras diferentes de hacer lo mismo
-        expect(function() { map(array, fn); }).toThrow(Error, 'Array is empty');
-        //expect(function() { map(array, fn); }).toThrowError('Array is empty');
-        /* try {
-              map(array, fn)
-            } catch(error) {debugger
-              expect(error.message).toBe('Array is empty') //mismo mensaje que en map
-            }*/
+        let result = map(array).length
+
+        expect(result).toBe(0);
       });
 
   it('should fail on non-function expression', function() {
     var array = [1, 2, 3];
 
-    expect(function() { map(array, [1, 2]) }).toThrowError('type is not a function');
-    expect(function() { map(array, true); }).toThrowError('type is not a function');
-    expect(function() { map(array, 1); }).toThrowError('type is not a function');
+    expect(function() { map(array, [1, 2]) }).toThrowError('1,2 is not a function');
+    expect(function() { map(array, true); }).toThrowError('true is not a function');
+    expect(function() { map(array, 1); }).toThrowError('1 is not a function');
   });
 
   it('should fail on different type to array passed', function() {
     var fn = function(x) { return x * 2; };
 
-    expect(function() { map('hello', fn) }).toThrowError('type is not an array');
-    expect(function() { map(1, true); }).toThrowError('type is not an array');
-    expect(function() { map(true, 1); }).toThrowError('type is not an array');
+    expect(function() { map('hello', fn) }).toThrowError('hello is not an array');
+    expect(function() { map(1, fn); }).toThrowError('1 is not an array');
+    expect(function() { map(true, fn); }).toThrowError('true is not an array');
   });
 })

@@ -5,18 +5,17 @@
  * @throws {TypeError}    If array is not an array
  */
 function reverse(array) {
+  if(!(array instanceof Array)) throw TypeError(array + ' is not an array');
+
   let newArray = [];
   counter = 0;
 
-  if(!(array instanceof Array)) throw TypeError(typeof array + ' is not an array');
-
-  for(var i = array.length-1; i >= 0; i--) {
-    newArray[counter] = array[i];
-    counter++;
-  }
+  for(var i = array.length-1; i >= 0; i--)
+    newArray[counter++] = array[i];
+    // counter++;
 
   for(var i = 0; i < array.length; i++)
     array[i] = newArray[i]
 
-  return array
+  return array;
 }

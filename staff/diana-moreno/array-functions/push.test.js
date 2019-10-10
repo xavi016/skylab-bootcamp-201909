@@ -20,11 +20,9 @@ describe('push', function() {
       expect(array[i]).toBe(chars[i - 3]);
   });
   it('should throw an error when others types different to array are passed', function() {
-    var string = 'hello';
-    var number = 'number';
 
-    expect(function() { push(string) }).toThrowError('Data type is not Array');
-    expect(function() { push(number) }).toThrowError('Data type is not Array');
+    expect(function() { push('hello') }).toThrowError('hello is not an array');
+    expect(function() { push(1) }).toThrowError('1 is not an array');
   });
 
   it('should modify the original array', function() {

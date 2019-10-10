@@ -8,18 +8,18 @@
 function unshift(array) {
   let newArray = []
 
-  if(!(array instanceof Array)) throw TypeError(typeof array + ' is not an array');
+  if(!(array instanceof Array)) throw TypeError(array + ' is not an array');
 
   for(var i = 1; i < arguments.length; i++)
-    newArray[i-1] = arguments[i]
+    newArray[i-1] = arguments[i];
 
   for (var i = 0; i < array.length; i++)
-    newArray[newArray.length] = array[i]
+    newArray[newArray.length] = array[i];
 
   for(var i = 0; i < newArray.length; i++)
-    array[i] = newArray[i]
+    array[i] = newArray[i];
 
-  return array.length
+  return array.length;
 }
 
 /*function unshift (array) {

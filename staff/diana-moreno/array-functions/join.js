@@ -5,23 +5,14 @@
  * @throws {TypeError}    If array is not an array
  */
 function join(array, separator) {
-  let string = ''
-  if(!separator) separator = ','
+  let string = '';
+  if (!separator) separator = ',';
+  if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
+  if ((separator instanceof Function)) throw TypeError('separator cannot be a function');
 
-  if(!(array instanceof Array)) throw TypeError(typeof array + ' is not an array');
-  else if(typeof separator !== 'string') throw TypeError(typeof separator + ' is not an string');
-
-  for(let i in arguments[0]) {
-    if(string.length === 0) string += arguments[0][0]
-    else string += separator + arguments[0][i]
+  for (let i in arguments[0]) {
+    if (string.length === 0) string += arguments[0][0];
+    else string += separator + arguments[0][i];
   }
   return string;
 }
-
-let array = [1, 2, 3, 5, 3]
-let arr2 = ['a', 'b', 'hola']
-console.log(join(array))
-console.log(join(arr2, ''))
-console.log(join(arr2, ','))
-console.log(join(arr2, '-'))
-console.log(join(arr2, 2))
