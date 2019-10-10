@@ -6,7 +6,7 @@
  */
 function pop(array) {
   if (array.length == 0) return undefined;
-  if (!(array instanceof Array)) throw TypeError('Data type is not Array');
+  if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
 
   var lastElem = array[array.length - 1];
   array.length = array.length - 1;

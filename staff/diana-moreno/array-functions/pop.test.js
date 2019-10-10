@@ -16,9 +16,10 @@ describe('pop', function() {
 
   it('should throw an error when others types different to array are passed', function() {
     var string = 'hello';
-    var number = 'number';
+    var number = 1;
 
-    expect(function() { pop(string) }).toThrowError('Data type is not Array');
+    expect(function() { pop(string) }).toThrowError('hello is not an array');
+    expect(function() { pop(number) }).toThrowError('1 is not an array');
   });
 
   it('should modify the original array', function() {
