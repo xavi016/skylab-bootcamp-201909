@@ -8,14 +8,15 @@
  */
 
 
-function map(numbers, expression) { 
-var result = [];
-   for (let i = 0; i < numbers.length ; i++)
-   {result[i] = expression(numbers[i])}
+function map(arr, expression) { 
+var newArr = [];
+if (!(arr instanceof Array)) throw TypeError(arr + ' is not an array');
+if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+   
+for (let i = 0; i < arr.length ; i++)
+   {newArr[i] = expression(arr[i])};
 
-    return result;
-}
+    return newArr;
+};
 
-var x = [0, 2, 5] 
-map(x)
 

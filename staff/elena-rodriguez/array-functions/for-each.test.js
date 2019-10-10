@@ -38,7 +38,7 @@ describe('forEach', function () {
 
         //throw Error('hola mundo');
 
-        expect(function () { forEach(array, undefined); }).toThrow(TypeError, 'undefined is not a function');
+        expect(function() { forEach(array, undefined); }).toThrow(TypeError, 'undefined is not a function');
         expect(function() { forEach(array, true); }).toThrowError('true is not a function');
         expect(function() { forEach(array, 1); }).toThrowError('1 is not a function');
     });

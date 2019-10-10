@@ -1,25 +1,26 @@
 describe('map', function () {
-    it('should succeed on correct array and expression, adding all numbers', function () {
+    it('should succeed on correct new array and expression, adding all numbers', function () {
         var numbers = [1, 2, 3];
         var result = [];
-        var add = function (number) {return number + 2};
+        var addTwo = function (number) { return number + 2};
 
-        map (numbers, add);
+        result = map (numbers, addTwo);
 
         expect(result).toBe([3, 4, 5]);
     });
 
 
-    // hemos hecho hasta aqui
-    it('should succeed on correct array and expression, concatenating all numbers', function () {
+    it('should succeed on correct new array and expression, doing the square root of each number', function () {
         var numbers = [1, 2, 3];
-        var result = '';
-        var concatenate = function (number) { result += number; };
+        var result = [];
+        var sqrRoot = function (number) { return Math.sqrt(number); };
 
-        map (numbers, concatenate);
+        map (numbers, sqrRoot);
 
-        expect(result).toBe('123');
+        expect(result).toBe([1, 1.4142135623730951, 1.7320508075688772]);
     });
+
+    
 
     it('should fail on undefined array', function () {
         var array; //= [1, 2, 3];
