@@ -19,7 +19,7 @@ function filter(array, condition) {
     
            if (array[i].length > condition){
     
-               result += array[i] + ' ';  
+               result += array[i];  
            }
         } return result; 
     

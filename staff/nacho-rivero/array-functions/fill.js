@@ -11,39 +11,32 @@ function fill(array, value, start, end) {
     if(!(array instanceof Array)) throw TypeError (array +' is not an array');
     if(!(array instanceof Function)) throw TypeError (array+' is not a function');
 
-    var i=0;
-    var j=0;
-
     if (end){
-
-        j=start;
        
-        for (j; j<end; j++){
-            array[j]=value;
+        for (i = start; i<end; i++){
+            array[i]=value;
         }
 
-        return  array[j]=value;
+        return  array[i]=value;
         
     } 
 
     else if (start){
 
-        i=start-1;
-
-        for (i; i<array.length-1; i++){
-            array[i]=value;
+        for (j=start-1; j<array.length-1; j++){
+            array[j]=value;
         }
 
-        return  array[i]=value;
+        return  array[j]=value;
 
     } else 
     
         {
 
-        for (var i=0; i<array.length-1; i++){
-            array[i]=value;
+        for (var j=0; j<array.length-1; j++){
+            array[j]=value;
         }
 
-        return  array[i]=value;
+        return  array[j]=value;
     }
 }
