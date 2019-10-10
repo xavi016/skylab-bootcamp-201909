@@ -29,11 +29,11 @@ describe('sort', function () {
         expect(function() { sort(array); }).toThrow(TypeError, array+'is not an array');
     });
 
-    // it('should fail on passing a string', function () {
-    //     var array = "[1, 2, 3]";
+    it('should fail on passing a string', function () {
+        var array = "[1, 2, 3]";
 
-    //     expect(function() { sort(array); }).toThrow(TypeError, 'undefined is not a function');
-    // });
+        expect(function() { sort(array); }).toThrow(TypeError, 'undefined is not a function');
+    });
 
 //     it('should fail on non-function expression', function () {
 //         var array = [1, 2, 3];
