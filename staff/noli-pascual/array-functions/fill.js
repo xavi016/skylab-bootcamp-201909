@@ -9,19 +9,21 @@
  * @returns {number} the position of the first element that accomplish the condition
  */
 
-function fill(arr, element, indexIni, indexFin) { 
+function fill(array, item, indexIni, indexEnd) {
+
+    if(!(array instanceof Array)) throw TypeError(typeof array + ' is not an array');
+    if(item instanceof Function) throw TypeError(typeof item + ' should be a string or a number')
     
-    if(indexFin === undefined) {
-        indexFin = arr.length-1;
+    if(!indexEnd) indexEnd = array.length - 1;
+    
+    else if(indexEnd) indexEnd = indexEnd -1;
+    
+    if(!item) item = undefined;
+    
+    if(!indexIni) indexIni = 0;
+    
+    for(var i = indexIni; i <= indexEnd; i++) {
+      array[i] = item;
     }
-	
-	for(i = indexIni; i <= indexFin; i++) {
-		
-		arr[i] = element;
-    }
-    return arr;
+    return array;
 }
-
-var array = ['index0', 'index1', 'index2', 'index3', 'index4'];
-fill(array, 'fill', 3, 4);
-
