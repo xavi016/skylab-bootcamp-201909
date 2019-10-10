@@ -22,6 +22,7 @@ function concat(array) {
         } 
     }
     
+    
     return newArray;
     
 }
