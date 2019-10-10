@@ -8,7 +8,7 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: lighter;
   display: grid;
-  grid-template-rows: 10% 83% 7%;
+  grid-template-rows: 15% 78% 7%;
   grid-template-columns: 100%;
   grid-template-areas: 
  "header"
@@ -65,7 +65,11 @@
    justify-content: flex-end;  
 
  }
- 
+
+  main {
+    grid-area: main;
+    
+  }
 
  .section-title {
   font-size: 30px;
@@ -89,6 +93,12 @@
 
 .comentarios__content {
   margin: 1% 0;
+}
+
+.comentarios__box {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0.1rem;
 }
  
  .article {
