@@ -60,7 +60,7 @@ function expect(target) {
 				if (error.message !== message) throw new Error('expected ' + message + ', but got ' + error.message);
 			} finally {
 				if (succeded) throw Error('expected to throw error');
-			}S
+			}
 		},
 
 		toThrow(type, message) {
