@@ -4,9 +4,11 @@
  * It returns the modified array.
  * 
  * @param {Array} array
- * @param {Function} function that specifies the condition
+ * @param {*} 
+ * @param {...number} number that specifies the start index
+ * @param {...number} number that especifies the end index
  * 
- * @returns {number} the position of the first element that accomplish the condition
+ * @returns {Array} the resulting array with 
  */
 
 function fill(array, item, indexIni, indexEnd) {
@@ -21,9 +23,10 @@ function fill(array, item, indexIni, indexEnd) {
     if(!item) item = undefined;
     
     if(!indexIni) indexIni = 0;
-    
+
     for(var i = indexIni; i <= indexEnd; i++) {
       array[i] = item;
     }
     return array;
 }
+
