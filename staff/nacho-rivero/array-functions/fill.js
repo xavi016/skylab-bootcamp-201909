@@ -23,7 +23,7 @@ function fill(array, value, start, end) {
 
     else if (start){
 
-        for (j=start-1; j<array.length-1; j++){
+        for (j=start-1; j<array.length-1; j++){ //  
             array[j]=value;
         }
 

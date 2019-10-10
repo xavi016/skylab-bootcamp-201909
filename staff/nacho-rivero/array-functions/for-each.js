@@ -12,7 +12,7 @@ function forEach(array, expression) {
             expression(array[i]);
     }
     
-    var numbers = [1, 2, 3, 4, 5];
+    var numbers = [1, 2, 3, 4, 5]; //ejercicio de función recursiva
     
     function forEcho(array, i){
         var counter = i;
@@ -25,5 +25,17 @@ function forEach(array, expression) {
         }
     }
 
-
     forEcho(numbers, 0)
+
+    var numbers = [1, 2, 3, 4, 5]; //ejercicio de función recursiva
+    
+    (function forEcho(array, i){
+        var counter = i;
+        counter++
+        if(counter !== array.length){
+            console.log('loading');
+            forEcho(numbers, counter);
+        } else {
+            console.log(numbers);
+        }
+    })(numbers, 0);
