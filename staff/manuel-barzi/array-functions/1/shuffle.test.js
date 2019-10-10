@@ -1,4 +1,29 @@
 describe('shuffle', function () {
+    it('should mix array with string values (staff names)', function () {
+        var staff = ['adri-campo', 'adrian-zhu', 'aitor-parra', 'albert-ferrer', 'cristian-astudillo', 'diana-moreno', 'elena-rodriguez', 'fatima-mata', 'isidro-alonso', 'javier-sevilla', 'joan-luis', 'jose-rodriguez', 'luka-bontempi', 'marta-penya', 'martin-garcia', 'nacho-rivero', 'noli-pascual', 'oscar-rodriguez', 'ruben-vidales', 'xavier-navarro'];
+
+        var randomized = shuffle(staff);
+
+        expect(randomized === staff).toBe(false);
+
+        expect(randomized instanceof Array).toBe(true);
+        expect(randomized.length).toBe(staff.length);
+
+        var expected = ['adri-campo', 'adrian-zhu', 'aitor-parra', 'albert-ferrer', 'cristian-astudillo', 'diana-moreno', 'elena-rodriguez', 'fatima-mata', 'isidro-alonso', 'javier-sevilla', 'joan-luis', 'jose-rodriguez', 'luka-bontempi', 'marta-penya', 'martin-garcia', 'nacho-rivero', 'noli-pascual', 'oscar-rodriguez', 'ruben-vidales', 'xavier-navarro'];
+        for (var i = 0; i < staff.length; i++)
+            expect(staff[i]).toBe(expected[i]);
+
+        for (var i = 0; i < randomized.length; i++) {
+            var notFound = true;
+
+            for (var j = 0; j < staff.length && notFound; j++)
+                //if (randomized[i] === numbers[j]) notFound = false;
+                randomized[i] === staff[j] && (notFound = false);
+
+            expect(notFound).toBe(false);
+        }
+    });
+
     it('should mix array with number values', function () {
         var numbers = [1, 2, 3, 4, 5];
 
