@@ -11,6 +11,15 @@ function forEach(array, expression) {
 	if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
 
 	//throw Error('🤡');
-	for (var i = 0; i < array.length; i++) 
-		expression(array[i], i, array);
+	// for (var i = 0; i < array.length; i++) 
+	// 	expression(array[i], i, array);
+
+	// TODO make it work with recursion!
+
+	(function loop(index) {
+		expression(array[index], index);
+
+		//if (++index < array.length) loop(index);
+		++index < array.length && loop(index);
+	})(0);
 }
