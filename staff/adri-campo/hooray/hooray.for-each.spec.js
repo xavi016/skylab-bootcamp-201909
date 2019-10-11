@@ -27,25 +27,26 @@ describe('Hooray.prototype.forEach', function () {
 
         numbers.forEach(multiply);
 
-        expect(result.length).toBe(numbers.length);
+        expect(result.length).toBe(numbers.length); 
 
-        for (var i = 0; i < result.length; i++)
-            expect(result[i]).toBe(numbers[i] * 10);
+        var expected = [10,20,30];
+        expect(result).toEqual(expected);
+
     });
 
     it('should fail on undefined expression', function () {
         var hooray = new Hooray(1, 2, 3);
         var expression; // = console.log;
 
-        expect(function() { hooray.forEach(expression); }).toThrow(TypeError, 'undefined is not a function');
+        expect(function() { hooray.forEach(expression); }).toThrowError(TypeError, 'undefined is not a function');
     });
 
     it('should fail on non-function expression', function () {
         var hooray = new Hooray(1, 2, 3);
 
-        expect(function () { hooray.forEach(undefined); }).toThrow(TypeError, 'undefined is not a function');
-        expect(function() { hooray.forEach(true); }).toThrow(TypeError, 'true is not a function');
-        expect(function() { hooray.forEach(1); }).toThrow(TypeError, '1 is not a function');
+        expect(function () { hooray.forEach(undefined); }).toThrowError(TypeError, 'undefined is not a function');
+        expect(function() { hooray.forEach(true); }).toThrowError(TypeError, 'true is not a function');
+        expect(function() { hooray.forEach(1); }).toThrowError(TypeError, '1 is not a function');
     });
 });
 

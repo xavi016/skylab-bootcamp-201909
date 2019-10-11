@@ -104,3 +104,61 @@ Hooray.prototype.findIndex = function (expression){
 };
 
 
+/**
+ * DESCRIPTION DE SPLICE AQUÍ!!!!!!!!!!!!!!
+ * 
+ * 
+ * @returns {number}
+ * 
+ */
+
+Hooray.prototype.splice = function(start, delCount) { 
+    //if (typeof end === 'undefined') end = array.length;
+    // if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+    var result = new Hooray;
+    var newHooray = [];
+    var x = 0;
+    var arrPos = 0;
+    var itemsLen;
+    var items = [];
+    
+    if(typeof delCount === 'undefined'){
+        itemsLen = arguments.length-1;
+        var index = 1;
+    }else{
+        itemsLen = arguments.length-2
+        var index = 2;
+    }
+    for(var y = 0; y<itemsLen; y++){
+        items[y] = arguments[index];
+        index++;
+    }
+    
+    var finalLength = this.length-delCount+itemsLen;
+    
+    // Deleted elements
+    for (var i = 0; i < delCount; i++) {
+        result[i] = this[i+start];
+    }
+    while (x < finalLength) {
+        if(x === start){
+            for(var y =0; y<delCount; y++){
+                arrPos++
+            }
+            for(var y = 0; y<itemsLen; y++){
+                newHooray[x] = items[y]
+                x++
+            }
+        }else{
+            newHooray[x] = this[arrPos] 
+            x++
+            arrPos++
+        }
+    }
+    this.length = newHooray.length
+    for(var i = 0; i<this.length;i++){
+        this[i] = newHooray[i]
+    }
+    
+    return result;
+};
