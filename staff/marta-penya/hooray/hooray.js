@@ -1,3 +1,4 @@
+
 function Hooray() {
     for (var i = 0; i  < arguments.length; i++)
         this[i] = arguments[i];
@@ -77,19 +78,21 @@ Hooray.prototype.slice = function(begin, end) {
  * @param {*} item The elements to add to the array 
  * 
  * @returns {Hooray} An hooray containing the deleted elements. If only one element is removed, 
- * an hooray of one element  *  is returned. If no elements are removed, an empty hooray is returned.
+ * an hooray of one element is returned. If no elements are removed, an empty hooray is returned.
  */
 
- 
+
 Hooray.prototype.splice = function(start, delCount) { 
     //if (typeof end === 'undefined') end = array.length;
 	// if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
-	var result = [];
+	var result = new Hooray;
 	var newArray = [];
 	var x = 0;
 	var arrPos = 0;
 	var itemsLen;
-	var items = [];
+    var items = [];
+    
+
 	if(typeof delCount === 'undefined'){
 		itemsLen = arguments.length-1;
 		var index = 1;
@@ -100,7 +103,9 @@ Hooray.prototype.splice = function(start, delCount) {
 	for(var y = 0; y<itemsLen; y++){
 		items[y] = arguments[index];
 		index++;
-	}
+    }
+    
+
 	var finalLength = this.length-delCount+itemsLen;
 	
 	// Deleted elements
@@ -125,7 +130,9 @@ Hooray.prototype.splice = function(start, delCount) {
 	this.length = newArray.length
 	for(var i = 0; i<this.length;i++){
 		this[i] = newArray[i]
-	}
-​
-    return this;
+    }
+    
+    return result;
 };
+
+

@@ -11,53 +11,57 @@ describe('Hooray.prototype.splice', function() {
 
         expected = ['Jan', 'Feb', 'March', 'April', 'June'];
         for (var i = 0; i < expected.length; i++)
-            expect(result[i]).toBe(expected[i]);
+        expect(months[i]).toBe(expected[i]); 
+
+        
     });
 
-     /* it('should return a new hooray with the values in from the beginning (no ending)', function() {
-        var months = new Hooray(1, 2, 3, 4, 5, 6, 7, 8, 9);
-
-        var result = months.slice(2);
+    it('should return a new hooray adding more than one element in the specific position', function() {
+        var months = new Hooray('Jan', 'March', 'April', 'June');
+    
+        var result = months.splice(1, 0, 'Feb', 'Dec');
 
         expect(result === months).toBe(false);
         
-        var expected = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        for (var i = 0; i < expected.length; i++)
-            expect(months[i]).toBe(expected[i]);
+        expect(months[1], months[2]).toBe('Feb', 'Dec');
 
-        expected = [3, 4, 5, 6, 7, 8, 9];
+        expected = ['Jan', 'Feb', 'Dec', 'March', 'April', 'June'];
         for (var i = 0; i < expected.length; i++)
-            expect(result[i]).toBe(expected[i]);
+        expect(months[i]).toBe(expected[i]); 
     });
 
-    it('should return a new empty hooray (from an empty hooray) from a beginning (no ending)', function() {
-        var months = new Hooray();
+    it('should return a new empty hooray if no parameters are included', function() {
+        var months = new Hooray('Jan', 'March', 'April', 'June');
 
-        var result = months.slice(12);
+        var result = months.splice();
 
         expect(result === months).toBe(false);
         
         expect(result.length).toBe(0);
     });
 
-    it('should return a new hooray with the same values of the original hooray when no beginning and no ending', function() {
-        var months = new Hooray(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    it('should return a new hooray with the elements eliminated from the original hooray', function() {
+        var months = new Hooray('Jan', 'March', 'April', 'June');
 
-        var result = months.slice();
+        var result = months.splice(1, 2);
 
         expect(result === months).toBe(false);
+
+        expect(result.length).toBe(2);
+
+        // expect(result[0], result[1]).toBe('March', 'April');
         
 
-        var expected = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        for (var i = 0; i < expected.length; i++)
-            expect(months[i]).toBe(expected[i]);
+        // expected = ['Jan', 'Feb', 'Dec', 'March', 'April', 'June'];
+        // for (var i = 0; i < expected.length; i++)
+        // expect(months[i]).toBe(expected[i]);
 
-        expected = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        for (var i = 0; i < expected.length; i++)
-            expect(result[i]).toBe(expected[i]);
+        // expected = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        // for (var i = 0; i < expected.length; i++)
+        //     expect(result[i]).toBe(expected[i]);
     });
 
-    it('should return a new hooray with the last values of the original hooray when beginning is negative and no ending', function() {
+    /*it('should return a new hooray with the last values of the original hooray when beginning is negative and no ending', function() {
         var months = new Hooray(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
         var result = months.slice(-4);
