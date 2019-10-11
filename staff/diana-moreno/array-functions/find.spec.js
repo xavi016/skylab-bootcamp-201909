@@ -1,9 +1,7 @@
 describe('find', function() {
   it('should find the fist element that satisfies the function', function() {
     var array = [6, 7, 8, 9, 10];
-    var fn = function(x) {
-      return x >= 7;
-    };
+    var fn = function(x) { return x >= 7; };
 
     expect(find(array, fn)).toBe(7);
     expect(array.length).toBe(5);
@@ -12,9 +10,7 @@ describe('find', function() {
 
   it('should fail finding in the array', function() {
     var array = [3, 7, 8, 9, 10];
-    var fn = function(x) {
-      return x > 11;
-    };
+    var fn = function(x) { return x > 11; };
 
     expect(find(array, fn)).toBe(undefined);
     expect(array.length).toBe(5);
@@ -22,9 +18,7 @@ describe('find', function() {
   });
 
   it('should throw an error when others types different to array are passed', function() {
-    var fn = function(x) {
-      x > 5;
-    };
+    var fn = function(x) { return x > 5; };
 
     expect(function() { find('hello', fn) }).toThrowError('hello is not an array');
     expect(function() { find(1, fn) }).toThrowError('1 is not an array');
@@ -33,14 +27,11 @@ describe('find', function() {
   it('should not modify the original array', function() {
     var array = [6, 7, 8, 9, 10];
     var expected = [6, 7, 8, 9, 10];
-    var fn = function(x) {
-      x > 5;
-    };
+    var fn = function(x) { return x > 5; };
     find(array, fn);
 
     expect(array.length).toBe(expected.length);
-    for (var i = 0; i < expected.length; i++)
-      expect(array[i]).toBe(expected[i]);
+    expect(array).toEqual(expected);
   });
 
   it('should throw an error when others types different to function are passed', function() {

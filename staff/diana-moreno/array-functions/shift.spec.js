@@ -14,16 +14,16 @@ describe('shift', function() {
     expect(shift(array)).toBe(undefined);
   });
 
-  it('should throw an error when others types different to array are passed', function() {
-
-    expect(function() { shift('hello') }).toThrowError('hello is not an array');
-    expect(function() { shift(1) }).toThrowError('1 is not an array');
-  });
-
   it('should modify the original array', function() {
     var array = ['a', 'b', 'c'];
     shift(array);
 
     expect(array.toString()).toBe('b,c');
+  });
+
+  it('should throw an error when others types different to array are passed', function() {
+
+    expect(function() { shift('hello') }).toThrowError(TypeError, 'hello is not an array');
+    expect(function() { shift(1) }).toThrowError(TypeError, '1 is not an array');
   });
 });

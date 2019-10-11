@@ -28,8 +28,7 @@ describe('join', function() {
     var expected = [1, 2, 3, 5, 3];
     join(array);
 
-    for (var i = 0; i < array.length; i++)
-      expect(array[i]).toBe(expected[i]);
+    expect(array).toEqual(expected);
   });
 
   it('should work with an empty array', function() {
@@ -40,15 +39,15 @@ describe('join', function() {
   });
 
   it('should fail on different type to array passed', function() {
-    expect(function() { join('hello') }).toThrowError('hello is not an array');
-    expect(function() { join(1, ''); }).toThrowError('1 is not an array');
-    expect(function() { join(true, '-'); }).toThrowError('true is not an array');
+    expect(function() { join('hello') }).toThrowError(TypeError, 'hello is not an array');
+    expect(function() { join(1, ''); }).toThrowError(TypeError, '1 is not an array');
+    expect(function() { join(true, '-'); }).toThrowError(TypeError, 'true is not an array');
   });
 
   it('should fail on function passed as separator', function() {
     array = [];
     const fn = function() { return 'fake'; }
 
-    expect(function() { join(array, fn) }).toThrowError('separator cannot be a function');
+    expect(function() { join(array, fn) }).toThrowError(TypeError, 'separator cannot be a function');
   })
 })

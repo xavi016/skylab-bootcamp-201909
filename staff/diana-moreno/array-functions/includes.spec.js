@@ -22,19 +22,18 @@ describe('includes', function() {
     includes(array, 6);
 
     expect(array.length).toBe(expected.length);
-    for (var i = 0; i < expected.length; i++)
-      expect(array[i]).toBe(expected[i]);
+    expect(array).toEqual(expected);
   });
 
   it('should throw an error when others types different to array are passed', function() {
 
-    expect(function() { includes('hello', 2) }).toThrowError('hello is not an array');
-    expect(function() { includes(1, 2) }).toThrowError('1 is not an array');
+    expect(function() { includes('hello', 2) }).toThrowError(TypeError, 'hello is not an array');
+    expect(function() { includes(1, 2) }).toThrowError(TypeError, '1 is not an array');
   });
 
   it('should throw an error when others types different to string or number are passed as item', function() {
     var array = [6, 7, 8, 9, 10];
 
-    expect(function() { includes(array, [2, 5]) }).toThrowError('2,5 is not a number, boolean or a string');
+    expect(function() { includes(array, [2, 5]) }).toThrowError(TypeError, '2,5 is not a number, boolean or a string');
   });
 });

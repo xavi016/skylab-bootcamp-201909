@@ -9,9 +9,7 @@
  */
 function fill(array, item, indexIni, indexEnd) {
   if (!(array instanceof Array)) throw TypeError(typeof array + ' is not an array');
-  if (item instanceof Function) throw TypeError('function is not a string or a number');
-  if (item instanceof Array) throw TypeError('array is not a string or a number');
-  if (typeof item === 'boolean') throw TypeError('boolean is not a string or a number');
+  if (!(typeof item === 'number' || typeof item === 'string')) throw TypeError(typeof item + ' is not a string or a number');
   if (indexIni !== undefined && typeof indexIni !== 'number') throw TypeError('index should be a number');
   if (indexEnd !== undefined && typeof indexEnd !== 'number') throw TypeError('index should be a number');
 

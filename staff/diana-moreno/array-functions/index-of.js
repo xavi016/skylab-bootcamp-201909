@@ -7,9 +7,7 @@
  */
 function indexOf(array, item) {
   if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
-  if (item instanceof Function) throw TypeError('function is not a string or a number');
-  if (item instanceof Array) throw TypeError('array is not a string or a number');
-  if (typeof item === 'boolean') throw TypeError('boolean is not a string or a number');
+  if (!(typeof item === 'number' || typeof item === 'string')) throw TypeError(typeof item + ' is not a string or a number');
 
   for (let i = 0; i < array.length; i++)
     if (array[i] === item) return i;

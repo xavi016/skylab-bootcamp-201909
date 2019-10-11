@@ -14,18 +14,18 @@ describe('pop', function() {
     expect(pop(array)).toBe(undefined);
   });
 
-  it('should throw an error when others types different to array are passed', function() {
-    var string = 'hello';
-    var number = 1;
-
-    expect(function() { pop(string) }).toThrowError('hello is not an array');
-    expect(function() { pop(number) }).toThrowError('1 is not an array');
-  });
-
   it('should modify the original array', function() {
     var array = ['a', 'b', 'c'];
     pop(array);
 
     expect(array.toString()).toBe('a,b');
+  });
+
+  it('should throw an error when others types different to array are passed', function() {
+    var string = 'hello';
+    var number = 1;
+
+    expect(function() { pop(string) }).toThrowError(TypeError, 'hello is not an array');
+    expect(function() { pop(number) }).toThrowError(TypeError, '1 is not an array');
   });
 });

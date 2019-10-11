@@ -22,8 +22,7 @@ describe('indexOf', function() {
     indexOf(array, 9);
 
     expect(array.length).toBe(expected.length);
-    for (var i = 0; i < expected.length; i++)
-      expect(array[i]).toBe(expected[i]);
+    expect(array).toEqual(expected);
   });
 
   it('should throw an error when others types different to array are passed', function() {
@@ -35,11 +34,8 @@ describe('indexOf', function() {
     var array = [1, 2, 3];
     var fn = function(x) { return x + 2 }
 
-    expect(function() { fill(array, fn) }).toThrow(TypeError, 'function is not a string or a number');
-    expect(function() { fill(array, [1, 2, 3]) }).toThrow(TypeError, 'array is not a string or a number');
-    expect(function() { fill(array, false) }).toThrow(TypeError, 'boolean is not a string or a number');
+    expect(function() { fill(array, fn) }).toThrowError(TypeError, 'function is not a string or a number');
+    expect(function() { fill(array, [1, 2, 3]) }).toThrowError(TypeError, 'object is not a string or a number');
+    expect(function() { fill(array, false) }).toThrowError(TypeError, 'boolean is not a string or a number');
   });
-
-
-
 });
