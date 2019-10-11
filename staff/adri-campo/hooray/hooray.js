@@ -72,14 +72,35 @@ Hooray.prototype.push = function() {
 /**
  * Deletes the last item of an array and returns de deleted item.
  *  
- * @returns {any} returns de last item deleted on the array
+ * @returns {number} returns de last item deleted on the array
  */
 Hooray.prototype.pop = function () {
     
     if (this.length===0) return undefined;
-​
+
     var result = this[this.length-1];
     this.length-=1;
     
     return result;
 } 
+
+
+/**
+ * Returns the 1st index that got true in the function given
+ * If there is no match, returns a -1
+ * 
+ * @returns {number}
+ * 
+ */
+
+Hooray.prototype.findIndex = function (expression){
+    if(!(this instanceof Hooray)) throw TypeError("array is not defined");
+    
+    for (i = 0; i < this.length;i++){
+        if (expression(this[i])){
+            return i
+        }
+    } 
+    return -1
+    
+};
