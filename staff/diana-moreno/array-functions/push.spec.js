@@ -1,22 +1,43 @@
-describe('push', function () {
-    it('should push a single item', function () {
-        var array = ['a', 'b', 'c'];
+describe('push', function() {
+  it('should push a single item', function() {
+    var array = ['a', 'b', 'c'];
 
-        expect(push(array, 'd')).toBe(4);
-        expect(array.length).toBe(4);
-        expect(array[array.length - 1]).toBe('d');
+    expect(push(array, 'd')).toBe(4);
+    expect(array.length).toBe(4);
+    expect(array[array.length - 1]).toBe('d');
 
-        var expected = ['a', 'b', 'c', 'd'];
-        expect(array).toEqual(expected);
-    });
+    var expected = ['a', 'b', 'c', 'd'];
+    expect(array).toEqual(expected);
+  });
 
-    it('should push multiple items', function () {
-        var array = ['a', 'b', 'c'];
+  it('should push multiple items', function() {
+    var array = ['a', 'b', 'c'];
 
-        expect(push(array, 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')).toBe(11);
-        expect(array.length).toBe(11);
+    expect(push(array, 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')).toBe(11);
+    expect(array.length).toBe(11);
 
-        var expected = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
-        expect(array).toEqual(expected);
-    });
+    var expected = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
+    expect(array).toEqual(expected);
+  });
+
+  it('should modify the original array', function() {
+    var array = ['a', 'b', 'c'];
+    var expected = 'a,b,c,3,5';
+    push(array, 3, 5);
+
+    expect(array.toString()).toBe(expected);
+  });
+
+  it('should return the array length', function() {
+    var array = ['a', 'b', 'c'];
+    push(array, 3, 5);
+
+    expect(array.length).toBe(5);
+  });
+
+  it('should throw an error when others types different to array are passed', function() {
+
+    expect(function() { push('hello') }).toThrowError(TypeError, 'hello is not an array');
+    expect(function() { push(1) }).toThrowError(TypeError, '1 is not an array');
+  });
 });

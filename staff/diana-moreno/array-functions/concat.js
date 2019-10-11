@@ -11,6 +11,7 @@ function concat() {
   let newArray = [];
 
   for (let i in arguments)
+
     for (let j in arguments[i])
       newArray[newArray.length] = arguments[i][j];
 

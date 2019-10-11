@@ -25,6 +25,16 @@ describe('includes', function() {
     expect(array).toEqual(expected);
   });
 
+  it('should return a boolean', function() {
+    var array = [6, 7, 8, 9, 10];
+    var result = includes(array, 7);
+
+    expect(result).toBe(true);
+
+    var result2 = includes(array, 2);
+    expect(result2).toBe(false);
+  });
+
   it('should throw an error when others types different to array are passed', function() {
 
     expect(function() { includes('hello', 2) }).toThrowError(TypeError, 'hello is not an array');
