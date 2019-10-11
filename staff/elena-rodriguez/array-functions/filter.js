@@ -8,7 +8,13 @@
  * */
 
 
-function filter(array,expression) { 
+function filter(array,expression) {
+
+    if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
+    if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+
+
+
     var newArr = [];
         for (i = 0; i < array.length; i++) {
         if(expression(array[i])) {
@@ -17,5 +23,6 @@ function filter(array,expression) {
     }
     return newArr;
 }
+
 
 

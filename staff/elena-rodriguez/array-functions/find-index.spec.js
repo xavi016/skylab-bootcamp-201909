@@ -14,7 +14,7 @@ describe('find-index', function () {
     });
 
     
-    it('should return -1 when there is no element that accomplish the expression', function () {
+    it('should return -∫ when there is no element that accomplish the expression', function () {
         var numbers = [1,2,3] ;
         var biggerThanFive = function (element) {return element > 5};
         expect(findIndex(numbers,biggerThanFive)).toBe(-1);
@@ -25,7 +25,7 @@ describe('find-index', function () {
         var numbers = [1,2,3]
         var multiply = 'hola';
 
-        expect(function() {findIndex(numbers, multiply)}).toThrowError(multiply + " is not a function");
+        expect(function() { findIndex(numbers, multiply) }).toThrowError(multiply + " is not a function");
 
     });
 
