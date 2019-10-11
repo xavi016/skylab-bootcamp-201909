@@ -94,8 +94,6 @@ Hooray.prototype.pop = function () {
  */
 
 Hooray.prototype.findIndex = function (expression){
-    if(!(this instanceof Hooray)) throw TypeError("array is not defined");
-    
     for (i = 0; i < this.length;i++){
         if (expression(this[i])){
             return i
@@ -104,3 +102,5 @@ Hooray.prototype.findIndex = function (expression){
     return -1
     
 };
+
+

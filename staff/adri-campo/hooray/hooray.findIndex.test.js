@@ -35,18 +35,4 @@ describe('Hooray.prototype.findIndex', function () {
 
     });   
 
-    // ERRORES
-
-    it('should fail if hooray is NOT an hooray', function () {
-        function checkCondition(item) {
-            return item > 5
-            };
-    
-        var numbers = new Hooray;//= [1, 4, 5, 53, 23, 37];
-        var result = numbers.findIndex(checkCondition);
-        
-        expect( function() { findIndex();}).toThrow(TypeError, "hooray is not defined");
-
-    });  
-
 });
