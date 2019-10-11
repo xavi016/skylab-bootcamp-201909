@@ -50,14 +50,17 @@ describe('filter', function () {
 
     }); 
 
+
     it("should return an error if the condition is not a function" , function () {
         var array = [1,2,3,4,5];
         var checkCondition = "im not a function!";
-​
-        expect(function() { filter(array, checkCondition) }).toThrowError(checkCondition + " is not a function");
-​
+
+        expect( function() { filter(array, checkCondition) }).toThrowError(checkCondition + " is not a function");
+
     });
 
 
 });
+
+
 
