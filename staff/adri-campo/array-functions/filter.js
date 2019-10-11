@@ -1,16 +1,23 @@
 /**
+ * Create a new array with all the elements that accomplish the condition of the function given.
  * 
- * @param {*} array 
- * @param {*} expression 
+ * @param {Array} array 
+ * @param {Function} expression we use to test the elements. 
+ * 
+ * @returns {Array} newArr with the items of the first array that accomplished the test.
  */
 
 
-function checkCondition (item){
-    return item < 25
+// function checkCondition (item){
+//     return item < 25
 
-}
+// }
 
 function filter(array, expression){
+
+    if (!(array instanceof Array)) throw TypeError(array + " is not an array");
+    if (typeof expression !== "function") throw TypeError(expression + " is not a function");
+
     var newArray = [];
 
     for (i=0; i<array.length;i++){
@@ -22,6 +29,6 @@ function filter(array, expression){
     
 };
 
-var arrayNumbers = [1,4,5,53,23,37]
+// var arrayNumbers = 3;
 
-console.log(filter(arrayNumbers, checkCondition));
+// console.log(filter(arrayNumbers, checkCondition));
