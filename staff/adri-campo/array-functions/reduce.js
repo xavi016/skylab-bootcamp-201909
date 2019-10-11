@@ -1,18 +1,4 @@
-
-
-function reduce(array,item,expresion) { 
-    
-	for (var i = 0; i < array.length; i++){
-		
-    }
-
-	return 	
-}
-
-
-
-
-function reduce(array, reducer, initialValue) {
+function reduce(array, expression, initialValue) {
   
     if (initialValue || initialValue === 0) {
         var accum = initialValue
@@ -21,18 +7,36 @@ function reduce(array, reducer, initialValue) {
         var accum = array[0]
         var start = 1
     }
-      
+     
     for (var i = start; i < array.length; i++) {
-        accum = reducer(accum, arr[i])
+        accum = expression(accum, array[i])
     }
+
     return accum
-  }
+
+};
   
   
-  reduce(arr, function(accum, value) {
-      return accum + value;
-  })
-  
+function reducer(accum, initialValue) {
+    return accum + initialValue;
+};
+
+
+var arrayNumbers = [1,2,3,4,5];
+
+reduce(arrayNumbers, reducer, 10);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
