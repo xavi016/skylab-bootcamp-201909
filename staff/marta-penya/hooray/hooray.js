@@ -66,3 +66,66 @@ Hooray.prototype.slice = function(begin, end) {
     return result;
 }
 
+
+/**
+ * Changes the contents of an hooray by removing or replacing existing elements and/or adding new elements in place.
+ * 
+ * @param {number} start Index for starting position 
+ * 
+ * @param {number} delCount Indez for ending position 
+ * 
+ * @param {*} item The elements to add to the array 
+ * 
+ * @returns {Hooray} An hooray containing the deleted elements. If only one element is removed, 
+ * an hooray of one element  *  is returned. If no elements are removed, an empty hooray is returned.
+ */
+
+ 
+Hooray.prototype.splice = function(start, delCount) { 
+    //if (typeof end === 'undefined') end = array.length;
+	// if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+	var result = [];
+	var newArray = [];
+	var x = 0;
+	var arrPos = 0;
+	var itemsLen;
+	var items = [];
+	if(typeof delCount === 'undefined'){
+		itemsLen = arguments.length-1;
+		var index = 1;
+	}else{
+		itemsLen = arguments.length-2
+		var index = 2;
+	}
+	for(var y = 0; y<itemsLen; y++){
+		items[y] = arguments[index];
+		index++;
+	}
+	var finalLength = this.length-delCount+itemsLen;
+	
+	// Deleted elements
+	for (var i = 0; i < delCount; i++) {
+		result[i] = this[i+start];
+	}
+	while (x < finalLength) {
+		if(x === start){
+			for(var y =0; y<delCount; y++){
+				arrPos++
+			}
+			for(var y = 0; y<itemsLen; y++){
+				newArray[x] = items[y]
+				x++
+			}
+		}else{
+			newArray[x] = this[arrPos] 
+			x++
+			arrPos++
+		}
+	}
+	this.length = newArray.length
+	for(var i = 0; i<this.length;i++){
+		this[i] = newArray[i]
+	}
+​
+    return this;
+};
