@@ -88,7 +88,6 @@ Hooray.prototype.pop = function () {
 /**
  * Converts an Array into a String.
  * 
- * @param {Array} array Array that we will convert to String.
  * @param {String} separator Separator between each element. 
  *                           If an separator is omited, as default separator is a coma.
  */
@@ -122,4 +121,65 @@ Hooray.prototype.map = function (expression) {
     }
 
     return newHooray;
+}
+
+/**
+ * concats two or more Hoorays on a new array. 
+ * First Hooray concatenated it's the hooray who call's the method. If no more Hoorays are sent, only
+ * the calling Hooray is returned.
+ * Concat doesn't modify the original Hoorays.
+ * 
+ * @param {Hooray} this - the Hooray that call's the concat and will be contenated on the Hooray.
+ * @param {*} item - Required: the Hooray(s) to be concatenated in the params order on the new Hooray.
+ */
+Hooray.prototype.concat = function () {
+	
+    var result= new Hooray();  
+	
+	for (var i=0; i<this.length; i++){
+        result[result.length++]=this[i];
+    }
+
+    for (var i=0; i<arguments.length; i++) {
+        if (arguments[i] instanceof Hooray) {
+            for (var j=0; j<arguments[i].length; j++) {
+                result[result.length++]=arguments[i][j];
+            }
+        } else result[result.length++]=arguments[i];
+    }
+    return result;
+}
+
+
+/**
+ * Evaluate if all items accomplish the expression sent.
+ * 
+ * @param {Function} expression The expression to evaluate on every item in the Hooray.
+ * 
+ * @returns {Boolean} True when ALL itmes acomplish expression || False when not.
+ * 
+ * @throws {TypeError} If expression is not a function.
+ */
+Hooray.prototype.every = function  (expression) {
+
+    if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+    
+    for (i=0; i<this.length; i++) {
+        if (!(expression(this[i]))) return false;
+    }
+    return true;
+}
+
+Hooray.prototype.fill = function (item) {
+
+    var start = arguments[1] || 0;
+    start = start < 0 ? this.length + start : start;
+    var end = arguments[2] || this.length;
+    end = end < 0 ? this.length + end : end;
+
+    if (end > this.length) end = this.length;    
+
+    for( var i=start; i<end; i++){
+        this[i]=item;
+    }
 }
