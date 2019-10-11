@@ -24,8 +24,8 @@ describe('Hooray.prototype.findIndex', function () {
     it('should return an errror if the function is not a function' , function () {
         var numbers = new Hooray(1, 2, 3);
         var multiply = 'hola';
-debugger
-        expect(function() {numbers.findIndex(multiply)}).toThrowError("hola is not a function");
+
+        expect(function() {numbers.findIndex(multiply)}).toThrowError(multiply + " is not a function");
 
     });
 
