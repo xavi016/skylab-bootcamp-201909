@@ -86,7 +86,7 @@ Hooray.prototype.splice = function(start, delCount) {
     //if (typeof end === 'undefined') end = array.length;
 	// if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
 	var result = new Hooray;
-	var newArray = [];
+	var newHooray = [];
 	var x = 0;
 	var arrPos = 0;
 	var itemsLen;
@@ -118,18 +118,18 @@ Hooray.prototype.splice = function(start, delCount) {
 				arrPos++
 			}
 			for(var y = 0; y<itemsLen; y++){
-				newArray[x] = items[y]
+				newHooray[x] = items[y]
 				x++
 			}
 		}else{
-			newArray[x] = this[arrPos] 
+			newHooray[x] = this[arrPos] 
 			x++
 			arrPos++
 		}
 	}
-	this.length = newArray.length
+	this.length = newHooray.length
 	for(var i = 0; i<this.length;i++){
-		this[i] = newArray[i]
+		this[i] = newHooray[i]
     }
     
     return result;
