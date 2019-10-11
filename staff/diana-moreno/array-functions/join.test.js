@@ -6,10 +6,9 @@ describe('join', function() {
     var result2 = join(array, '');
     var result3 = join(array, ',');
     var result4 = join(array, '-');
-    // var result5 = join(array, 2); no pasa el test!
-
-    var results = [result, result2, result3, result4, /*result5*/ ];
-    var expects = ["1,2,3,5,3", "1,2,3,5,3", "1,2,3,5,3", "1-2-3-5-3", /*"122232523"*/ ];
+    var result5 = join(array, 2);
+    var results = [result, result2, result3, result4, result5 ];
+    var expects = ["1,2,3,5,3", "1,2,3,5,3", "1,2,3,5,3", "1-2-3-5-3", "122232523" ];
 
     for (var i = 0; i < results.length; i++)
       for (var j = 0; j < results[i].length; j++) {

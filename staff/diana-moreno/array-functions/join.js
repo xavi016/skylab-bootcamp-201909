@@ -12,7 +12,7 @@ function join(array, separator) {
 
   for (let i in arguments[0]) {
     if (string.length === 0) string += arguments[0][0];
-    else string += separator + arguments[0][i];
+    else string += (separator + '') + arguments[0][i];
   }
   return string;
 }
