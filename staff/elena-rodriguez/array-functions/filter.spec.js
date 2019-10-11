@@ -29,4 +29,10 @@ describe('filter', function () {
 
     });
 
+    it('should return an error if the array is not an array ', function () {
+        var numbers = 3;
+        var smallerThanSix = function(number) {return number < 6;};
+        expect(function () { filter(numbers, smallerThanSix) }).toThrowError(numbers + " is not an array");
+
+    });
 });
