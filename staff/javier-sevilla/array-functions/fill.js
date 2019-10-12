@@ -8,14 +8,12 @@
  * @param {*} end  end index
  * 
  * 
- * 
  */
-function slice(array, value, begin, end) {
+function fill(array, value, begin, end) {
     if (!(array instanceof Array)) throw new TypeError(array + ' is not an array');
-    
-    var result = []; // {}; // WTF?
 
-    if (begin > array.length) return result;
+    if (begin > array.length) return;debugger;
+
 
     begin = begin || 0;
     if (begin < 0){
@@ -23,15 +21,8 @@ function slice(array, value, begin, end) {
         if (begin < 0) begin = 0;
     };
     end = end || array.length;
-    end = end < 0? array.length + end : end;
-
-    
-    
-    
+    end = end < 0? array.length + end : end; 
+       
     for (var i = begin; i < end; i++)
-        result[i - begin] = array[i];
-
-    //result.length = end - begin; // WTF?
-    
-    return result;
+        array[i] = value;
 };

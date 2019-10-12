@@ -67,7 +67,7 @@ describe('fill', function () {
         expect(array).toBeInstanceOf(Array);
         expect(array.length).toBe(9);
 
-        var expected = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var expected = [1, 2, 11, 11, 11, 11, 7, 8, 9];
         expect(array).toEqual(expected);
     });
 
@@ -91,7 +91,7 @@ describe('fill', function () {
         expect(array).toBeInstanceOf(Array);
         expect(array.length).toBe(9);
 
-        var expected = [11, 11, 3, 4, 5, 6, 7, 8, 9];
+        var expected = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
         expect(array).toEqual(expected);
     });
 
