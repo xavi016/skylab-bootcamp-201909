@@ -8,7 +8,10 @@
  * @param {...number} number that specifies the start index
  * @param {...number} number that especifies the end index
  * 
- * @returns {Array} the resulting array with 
+ * @returns {Array} the resulting array with elements replaced.
+ * 
+ * @throws error if first parameter is not an array.
+ * @throws error if second parameter is not a function.
  */
 
 function fill(array, item, indexIni, indexEnd) {

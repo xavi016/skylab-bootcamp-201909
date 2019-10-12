@@ -2,14 +2,10 @@
  * Adds the second parameter value to the first parameter.
  * 
  * @param {Array} array 
- * @param {Array} array to add to first array.
+ * @param {*} parameter to add to first array.
+ * 
+ * @returns {Array} the resulting array with array and parameter.
  */
-
-
-var elem1 = ['a','b','c'];
-var elem2 = 2;
-var elem3 = [1,6];
-var elem4 = ['Manoli'];
 
 
 function concat(...arguments) {
@@ -31,5 +27,5 @@ function concat(...arguments) {
 	return newArray; 
 }
 
-concat(elem1, elem2, elem3, elem4);
+
 
