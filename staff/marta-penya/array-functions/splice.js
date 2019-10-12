@@ -74,6 +74,6 @@ function splice(array, start, delCount) {
     for(var i = 0; i<array.length;i++){
         array[i] = newArray[i]
     }
- console.log(newArray)
+ 
    return result;
 };
