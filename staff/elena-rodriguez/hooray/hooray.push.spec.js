@@ -21,4 +21,7 @@ describe('Hooray.prototype.push', function () {
         for (var i = 0; i < hooray.length; i++)
             expect(hooray[i]).toBe(chars[i]);
     });
+
+
+    //FALTAN ERRORES!!
 });
