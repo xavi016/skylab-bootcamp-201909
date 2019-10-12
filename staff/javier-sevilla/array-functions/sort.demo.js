@@ -4,7 +4,7 @@ var array = [111, 22 , 1, 23, 2134, 2345];
 
 console.log('should sort  numbers');
 console.log(sort(array)); 
-console.log(array); // [99, 88, 77, 66, 55, 44, 11]
+console.log(array);
 
 
 array = ['a', 'j', 'o', 'E', 'e'];

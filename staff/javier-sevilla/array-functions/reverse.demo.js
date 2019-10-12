@@ -2,13 +2,13 @@ console.log('DEMO reverse');
 
 var array = [99, 88, 77, 66, 55, 44, 66, 44];
 
-console.log('should sort reverse numbers');
+console.log('should reverse numbers');
 console.log(reverse(array)); 
 console.log(array); // [44, 66, 44, 55, 66, 77, 88, 99]
 
 
 array = ['a', 'j', 'o', 'E', 'e'];
-console.log('should sort reverse numbers');
+console.log('should reverse characters');
 console.log(reverse(array)); 
 console.log(array); // ["e", "E", "o", "j", "a"]
 
