@@ -13,9 +13,10 @@
 function map(array, funcion) { 
     if(!(array instanceof Array)) throw TypeError(array + ' is not an array');
     if(!(funcion instanceof Function)) throw TypeError(funcion + ' is not a function');
-    var newArray = [];
+    
+    var result = [];
     for (i = 0; i < array.length; i++) {
-        newArray[i] = funcion(array[i]);
+        result[i] = funcion(array[i]);
     }
-    return newArray;
+    return result;
 }
