@@ -12,7 +12,7 @@
 
 
 
-function every(array,funcion) { 
+function every(array,expression) { 
 	if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
 	
     for (let i = 0; i < array.length; i++) {

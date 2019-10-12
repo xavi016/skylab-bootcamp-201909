@@ -1,7 +1,8 @@
+
 describe('splice', function() {
     it('should return a new array adding one element in the specific position', function() {
         var months = ['Jan', 'March', 'April', 'June'];
-        var result = months.splice(1, 0, 'Feb');
+        var result = splice(months,1, 0, 'Feb');
 
         expect(result).not.toBe(months);
         expect(months[1]).toBe('Feb');
@@ -9,7 +10,7 @@ describe('splice', function() {
     });
     it('should return a new array adding more than one elements in the specific position', function() {
         var months = ['Jan', 'March', 'April', 'June'];
-        var result = months.splice(1, 0, 'Feb','Dic');
+        var result = splice(months, 1, 0, 'Feb','Dic');
 
         expect(result).not.toBe(months);
         expect(months[1],months[2]).toBe('Feb','Dic');
@@ -17,14 +18,14 @@ describe('splice', function() {
     });
     it('should return a new empty array if no parameters are included', function() {
         var months = ['Jan', 'March', 'April', 'June'];
-        var result = months.splice();
+        var result = splice(months);
 
         expect(result).not.toBe(months);
         expect(result.length).toBe(0);
     });
     it('should return a new array with the elements eliminated from the original array', function() {
         var months = ['Jan', 'March', 'April', 'June'];
-        var result = months.splice(1, 2);
+        var result = splice(months, 1, 2);
 
         expect(result).not.toBe(months);
         expect(result.length).toBe(2);
@@ -36,7 +37,7 @@ describe('splice', function() {
 
     it('should delete all elements after the index (index included)', function() {
         var months = ['Jan', 'March', 'April', 'June'];
-        var result = months.splice(1);
+        var result = splice(months, 1);
 
         expect(result).not.toBe(months);
         expect(result.length).toBe(3);
@@ -46,7 +47,7 @@ describe('splice', function() {
 
     it('should remove one element from index -2', function() {
         var months = ['Jan', 'March', 'April', 'June'];
-        var result = months.splice(-2,1);
+        var result = splice(months, -2,1);
 
         expect(result).not.toBe(months);
         expect(result.length).toBe(1); 
