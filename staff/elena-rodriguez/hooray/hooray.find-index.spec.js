@@ -1,11 +1,3 @@
-/**
- * Find the first element that accomplish a condition and returns its index. 
- * 
- * @param {Array} array we want to test.
- * @param {Function} expression that contains the condition. 
- * @returns {element} number that is the index of the element found. 
- * */
-
 describe('Hooray.prototype.findIndex', function () {
     it('should return index of the first element that accomplish the expression', function () {
         var numbers = new Hooray(1, 2, 3);
