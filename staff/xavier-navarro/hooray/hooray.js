@@ -180,7 +180,7 @@ Hooray.prototype.fill = function(newItem){
 * @returns {boolean} True if ALL the elements accomplish the condition, else, false.
 */
 Hooray.prototype.every = function (expression) {
-	// if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+	if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
 
 	for (let i = 0; i < this.length; i++) {
 		if (!expression(this[i])) return false;
