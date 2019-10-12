@@ -1,4 +1,5 @@
 /**
+ * Concat array with arguments and return a new array with all array elements  + arguments
  * 
  * @param {*} array The array to concatenate elements to newArray
  * 

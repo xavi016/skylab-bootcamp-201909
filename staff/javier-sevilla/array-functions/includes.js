@@ -1,4 +1,5 @@
 /**
+ * Find arguments value in array and if exists return true if not return false
  * 
  * @param {*} array The array to concatenate elements to newArray
  * 
@@ -9,7 +10,7 @@
 function includes(array) { 	
     if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
     
-    var finded = true; debugger
+    var finded = true; 
     var continua = true;
     for (var i = 1; i < arguments.length && finded; i++) {
         continua = true;
