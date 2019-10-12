@@ -14,22 +14,45 @@ body{
 }
 
 .header{
-    
-    align-self: center;
+    display:flex;
     background-image: url(https://cdn.pixabay.com/photo/2018/12/12/09/47/pink-dawn-3870437_1280.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    justify-content: center;
-    display:flex;
+    flex-wrap: nowrap;
+    justify-items: center;
+    justify-content: space-evenly;
+    
 }
-
+.header-container{
+    display:flex;    
+    justify-items: center;
+}
 .header-title{
+    display: flex;
     align-self: center;
     color: white;
-    font-size: 40px;
+    font-size: 40px;   
+}
+
+.header-nav{
+    display:flex;
+    width: 50%;
     
+}
+.header-menu{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    color: white;   
+}
+
+.menu-item{
+    text-decoration:none;
+    color: white;
+    display: block;
+    font-weight: bold;
 }
 
 main{
@@ -156,7 +179,8 @@ li a{
 }
 
 .comments{
-    height: 200px;
+    height: 250px;
+    padding-top: 2em;
     display: block;
     text-align: center;       
 }
