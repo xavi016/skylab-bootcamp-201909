@@ -13,16 +13,12 @@
 
 
 function every(array,funcion) { 
-    var areAll = false;
-    var newArr = [];
-    for (i = 0; i < array.length; i++) {
-        if(funcion(array[i])) {
-         newArr[newArr.length] = array[i] 
-        }
-        
+	if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+	
+    for (let i = 0; i < array.length; i++) {
+        if (!expression(array[i])) return false;
     }
-    if(newArr.length === array.length){
-        areAll = true
-    }
-    return areAll
-}
+    return true;
+};
+
+

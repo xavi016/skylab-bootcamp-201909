@@ -1,65 +1,96 @@
+/**
+ * SPLICE
+ * Changes the contents of an array by removing or replacing
+ *  existing elements and/or adding new elements in place.
+ * 
+ * @param {Number} start Index for starting position.
+ * @param {Number} delCount Index for the last position.
+ * @param {*} items Index for the last position.
+ * 
+ * @returns {Array} An array containing the deleted elements.
+ * If only one element is removed, an array of one element is returned.
+ *  If no elements are removed, an empty array is returned.
+ */
+
+function splice(array, start, delCount) { 
+    //if (typeof end === 'undefined') end = array.length;
+    // if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+    
+	var result = []; // nuevo array con los elementos eliminados
+	var newArray = []; // introducir nuevos valores del array original
+	var x = 0; // iniciar el bucle y recorrer el array
+	var arrPos = 0; // indice para colocar los elementos correctamente
+	var itemsLen; // longitud de los items a introducir
+	var items = []; // items a introducir
+	// debugger
 
 
-var animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+	if(delCount === 'undefined'){ // si no hay elementos a eliminar
+		itemsLen = arguments.length-1;
+		var index = 1;
+	}else if(arguments.length === 2 && start !== 'undefined' && start >= 0 && delCount !== 'undefined'){ // si no hay items a introducir
+		var index = 0;
+		itemsLen = 0;
+	}else if(arguments.length === 1){ // si solo se introduce un parámetro numérico 
+		delCount = array.length-start;
+		itemsLen = array.length-start;
+	} else if(start < 0){ // si start es negativo
+		itemsLen = arguments.lenght - delCount + start;
+		start = array.length+start;
+	}else{ // si introducimos todos los parametros 
+		itemsLen = arguments.length-2
+		var index = 2;
+	}
+	
+	// extracción de items de arguments y guardarlos en var items
+	if(itemsLen !== 0){
+		var finalLength = array.length-delCount;
+		// ADD ['Jan','March']
+		for(var y = 0; y<itemsLen; y++){
+			items[y] = arguments[index];
+			index++;
+		}
+	}else {
+		var finalLength = array.length-delCount+itemsLen;
+	}
+	// guardar items eliminados en el array results
+	for (var i = 0; i < delCount; i++) {
+		result[i] = array[i+start];
+		result.length++;
+	}
+	//bucle para colocar los items correctamente en el new array
+	var lol = false;
+	while (x < finalLength) {
+		if(x === start && lol === false){
+			for(var y =0; y<delCount; y++){
+				arrPos++
+			}
+			if(itemsLen !== 0){
+				for(var y = 0; y<itemsLen; y++){
+					newArray[x] = items[y]
+					x++
+				}
+			}
+			lol = true
+		}else{
+			newArray[x] = array[arrPos] 
+			x++
+			arrPos++
+		}
+	}
+	// arreglar lenght del array original y añadir items(si hay)
+	// debugger
+	for(var i = 0; i<array.length;i++){
+		array[i] = newArray[i]
+	}
 
+	for(var x = delCount; x>0; x--){
+		delete array[array.length-1];
+		array.length--
+	}
+	// debugger
+	console.log(result);
+	console.log(array);
 
-
-splice(animals, 1, 1, 'grillo');
-
-
-function splice(array, start, remove, add1, add2) {
-    if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
-    if (!(typeof start === 'number')) throw TypeError(start + ' is not a number');
-    var newArray = [];
-    var n = 0;
-    var x = remove;
-    for (var i = 0; i < array.length; i++) {
-        if (i < start) {
-            newArray[n++] = array[i];
-        } else if (x >= 0) {
-            if (x === 0) {
-                newArray[n++] = array[i];
-                if (add1 != 0) {
-                    newArray[n++] = add1;
-                    add1 = 0;
-                    if (add2 != 0) {
-                        newArray[n++] = add2;
-                        add2 = 0;
-                    }
-                }
-            } else if (x-- === 1) {
-                if (add1 != 0) {
-                    newArray[n++] = add1;
-                    add1 = 0;
-                    if (add2 != 0) {
-                        newArray[n++] = add2;
-                        add2 = 0;
-                    }
-                }
-            }
-        } else if (array.length > start + remove) {
-            newArray[n++] = array[i];
-        }
-    }
-    return newArray;
-}
-
-
-// function splice(array, start, eliminados, itemintroducir){
-//     var results = [];
-
-//     if(eliminados !== 0){
-//         debugger
-//         for(var i = 0; i < eliminados; i++){
-//             results[i] = array[start + i];
-//             if((start + eliminados + i) < array.length){
-//                 for(var i in array){
-//                     array[start] = array[start + eliminados + i]
-//                 }
-                
-//             };
-//         };        
-//         array.length = array.length - eliminados;
-//     }
-
-// }
+    return result;
+};
