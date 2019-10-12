@@ -2,13 +2,10 @@
  * 
  * @param {*} array The array to delete elements to.
  * 
- * @returns {number} The new lenth of the array.
+ * @returns {elementDeleted} The new lenth of the array.
  */
 function shift(array) { 	
-    //console.log(arguments)
-    if(array.length === 0) {
-      return undefined;
-    }
+    if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
  
     var newArray = []; 
     var elementDeleted = array[0];

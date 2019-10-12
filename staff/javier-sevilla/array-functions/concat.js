@@ -1,6 +1,13 @@
+/**
+ * 
+ * @param {*} array The array to concatenate elements to newArray
+ * 
+ * 
+ * @returns {*} newArray contains: array + arguments.
+ * 
+ */
 function concat(array) { 	
-    if (array===undefined) throw TypeError(array + ' is no an array')
-    if (!(arguments[0] instanceof Array)) throw TypeError(arguments[0] + ' is no an array')
+    if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
 
     var newArray = []; 
 
@@ -20,9 +27,7 @@ function concat(array) {
             newArray[x] = arguments[i];
             x += 1;
         } 
-    }
-    
-    
+    }       
     return newArray;
     
 }
