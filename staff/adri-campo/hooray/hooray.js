@@ -124,7 +124,6 @@ Hooray.prototype.findIndex = function(expression) {
 // }
 
 Hooray.prototype.filter = function (expression) {
-
     if (!(this instanceof Hooray)) throw TypeError(this + " is not defined");
     if (!(expression instanceof Function)) throw TypeError(expression + " is not a function");
 
@@ -138,6 +137,38 @@ Hooray.prototype.filter = function (expression) {
     return newHooray
     
 };
+
+
+/**
+ * Removes the last element of an array, and returns that element. This method change the lenght of the array.
+ * 
+ * @param {Hooray} The hooray to pop the value from
+ * @returns {Function} The value deleted from the expression 
+ * 
+ */
+
+Hooray.prototype.map = function (expression) {
+    if (typeof expression !== "function") throw TypeError(expression + " is not a function")
+
+    var newHooray = new Hooray;
+
+    for (var i = 0; i < this.length; i++){
+        newHooray[newHooray.length] = expression(this[i])
+        newHooray.length++
+    }
+    return newHooray
+
+};
+
+
+// var arrayexample = [2,3,5,6];
+
+// function modify (item) {
+//     return item * 2
+// };
+
+// console.log(map,modify);
+
 
 /**
  * DESCRIPTION DE SPLICE AQUÍ!!!!!!!!!!!!!!
@@ -197,3 +228,4 @@ Hooray.prototype.splice = function(start, delCount) {
     
     return result;
 };
+
