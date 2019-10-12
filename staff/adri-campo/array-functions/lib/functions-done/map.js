@@ -7,8 +7,9 @@
  */
 
 function map(array, expression) {
-    if(!(array instanceof Array)) throw TypeError(array + " is not an array")
+    if(!(array instanceof Array)) throw TypeError(undefined + " is not an array")
     if (typeof expression !== "function") throw TypeError(expression + " is not a function")
+
     var newArr = []
 
     for (var i = 0; i < array.length; i++){
@@ -17,6 +18,17 @@ function map(array, expression) {
     return newArr
 
 };
+
+
+// var arrayexample = [2,3,5,6];
+
+// function modify (item) {
+//     return item * 2
+// };
+
+// console.log(map,modify);
+
+
 
 
 
