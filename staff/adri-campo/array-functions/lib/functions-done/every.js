@@ -13,3 +13,11 @@ function every(array, expression){
 };   
 
 
+function check (item){
+    return item < 6 
+}
+
+
+var arrayNumbers = [1,2,3,4,5]
+
+every(arrayNumbers, check)

@@ -6,9 +6,10 @@
  * @param {index} number 
  */
 
-    var arrayNumbers = [1,2,3,4,5]
-
     function indexOf(array, item , expression){
+        if (!(array instanceof Array)) throw TypeError(array + " is not an array");
+        if (!(array instanceof Array)) throw TypeError(null + " is not an array");
+
         for (var i = 0; i < array.length; i++){
             if (expression(array[i],item)){
                 return i
@@ -23,12 +24,15 @@
     }
         
 
-    // function findNumber(itemArray,item){
-    //    if (itemArray === item){
-    //        return true
-    //    }  else {
-    //        return false
-    //    }
-    // }
+    // var arrayNumbers = [1,2,3,4,5]
+
+
+    // // function findNumber(itemArray,item){
+    // //    if (itemArray === item){
+    // //        return true
+    // //    }  else {
+    // //        return false
+    // //    }
+    // // }
     
-    indexOf(arrayNumbers , 2 , findNumber)
+    // indexOf(arrayNumbers , 2 , findNumber)

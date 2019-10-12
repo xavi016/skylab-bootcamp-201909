@@ -16,7 +16,6 @@ function reduce(array, expression, initialValue) {
 
 };
   
-  
 function reducer(accum, initialValue) {
     return accum + initialValue;
 };

@@ -1,7 +1,9 @@
 /**
+ * It shows you all the items merged using a string value that is given at the beginning.
+ * If no value is given, then the function gives you ",".
  * 
- * @param {*} array 
- * @param {*} expression 
+ * @param {Array} array 
+ * @param {String} String value you give to merge the items
  */
 
 
@@ -26,8 +28,9 @@ function join(array, item) {
     return result;
  }
 
+ 
 
- var arrayNumbers = [1,2,3,4,5]
- console.log(join(arrayNumbers, '---'));
+//  var arrayNumbers = [1,2,3,4,5];
+//  join(arrayNumbers, '---');
  
 
