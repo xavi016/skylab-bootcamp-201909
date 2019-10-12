@@ -86,23 +86,58 @@ Hooray.prototype.pop = function () {
 
 
 /**
- * Returns the 1st index that got true in the function given
- * If there is no match, returns a -1
+ * Find the first element that accomplish a condition and returns its index. 
  * 
- * @returns {number}
+ * @param {Array} array we want to test.
+ * @param {Function} expression that contains the condition. 
+ * @returns {element} the index of the element found. 
+ * */
+
+Hooray.prototype.findIndex = function(expression) { 
+    if (!(this instanceof Hooray)) throw TypeError(this + " is not defined");
+    if (!(expression instanceof Function)) throw TypeError(expression + " is not a function");
+        
+    for (let i = 0; i < this.length; i++){
+            if(expression(this[i])) {
+                return i;
+            }  
+        } 
+         return -1;  
+    }
+
+
+
+
+/**
+ * Create a new array with all the elements that accomplish the condition of the function given.
  * 
+ * @param {Function} expression we use to test the elements. 
+ * 
+ * @returns {Array} newArr with the items of the first array that accomplished the test.
  */
 
-Hooray.prototype.findIndex = function (expression){
-    for (i = 0; i < this.length;i++){
+
+
+// function checkCondition (item){
+//     return item < 25
+
+// }
+
+Hooray.prototype.filter = function (expression) {
+
+    if (!(this instanceof Hooray)) throw TypeError(this + " is not defined");
+    if (!(expression instanceof Function)) throw TypeError(expression + " is not a function");
+
+    var newHooray = new Hooray;
+    for (i=0; i<this.length;i++){
         if (expression(this[i])){
-            return i
+            newHooray[newHooray.length] = this[i]
+            newHooray.length++
         }
     } 
-    return -1
+    return newHooray
     
 };
-
 
 /**
  * DESCRIPTION DE SPLICE AQUÍ!!!!!!!!!!!!!!
