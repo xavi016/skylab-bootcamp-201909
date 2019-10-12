@@ -1,6 +1,9 @@
 /**
+ * sort array from low value to high value
  * 
- * @param {*} array The array to sort elements to. 
+ * @param {*} array 
+ * 
+ * 
  */
 function sort(array) { 	
     if (!(array instanceof Array)) throw TypeError(array + ' is no an array');

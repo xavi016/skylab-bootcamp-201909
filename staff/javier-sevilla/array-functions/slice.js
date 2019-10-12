@@ -1,7 +1,16 @@
+/**
+ * 
+ * 
+ * @param {*} array 
+ * @param {*} begin 
+ * @param {*} end 
+ * 
+ * 
+ * 
+ * 
+ */
 function slice(array, begin, end) {
     if (!(array instanceof Array)) throw new TypeError(array + ' is not an array');
-
-    //if (typeof end === 'undefined') end = array.length;
 
     var result = []; // {}; // WTF?
 

@@ -1,4 +1,5 @@
 /**
+ * Delete the first element of elements
  * 
  * @param {*} array The array to delete elements to.
  * 
