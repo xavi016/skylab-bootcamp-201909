@@ -13,7 +13,7 @@
 
 function fill(array, item, indexIni, indexEnd) {
 
-    if(!(array instanceof Array)) throw TypeError(typeof array + ' is not an array');
+    if(!(array instanceof Array)) throw TypeError(array + ' is not an array');
     if(item instanceof Function) throw TypeError(typeof item + ' should be a string or a number')
     
     if(!indexEnd) indexEnd = array.length - 1;

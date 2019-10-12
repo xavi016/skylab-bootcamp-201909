@@ -1,5 +1,5 @@
 /**
- * Iterates on every item of an array and manipuates it according to a function.
+ * MAP Iterates on every item of an array and manipuates it according to a function.
  * It returns the new array with items modified.
  * 
  * @param {Array} array The array to get items.
