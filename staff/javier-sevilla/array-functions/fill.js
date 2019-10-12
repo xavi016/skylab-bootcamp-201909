@@ -3,13 +3,14 @@
  * (default zero) to an end index (default array length) with a static value.
  * 
  * @param {*} array origin array
+ * @param {*} value static value
  * @param {*} begin start index 
  * @param {*} end  end index
  * 
  * 
  * 
  */
-function slice(array, begin, end) {
+function slice(array, value, begin, end) {
     if (!(array instanceof Array)) throw new TypeError(array + ' is not an array');
     
     var result = []; // {}; // WTF?
@@ -24,6 +25,9 @@ function slice(array, begin, end) {
     end = end || array.length;
     end = end < 0? array.length + end : end;
 
+    
+    
+    
     for (var i = begin; i < end; i++)
         result[i - begin] = array[i];
 
