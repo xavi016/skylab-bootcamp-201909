@@ -6,6 +6,9 @@
 
 function indexOf(array, element) {
 
+  if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
+  if (!(typeof element === 'number' || typeof element === 'string')) throw TypeError(typeof element + ' is not a string or a number');
+
     for (var i = 0; i < array.length; i++) {
 
       if (element === array[i]) {

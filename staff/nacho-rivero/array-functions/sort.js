@@ -4,9 +4,10 @@
  */
 
 function sort(array){
-  
-    var temp = []; 
 
+  if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
+
+    var temp = []; 
 
     for (var i = 1; i < array.length; i++) {
 

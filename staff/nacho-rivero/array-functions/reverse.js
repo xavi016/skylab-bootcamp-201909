@@ -5,6 +5,8 @@
 
 function reverse(array) {
 
+    if(!(array instanceof Array)) throw TypeError(array + ' is not an array');
+    
     var rarray = [];
 
     for (var i = 0; i < array.length; i++) {

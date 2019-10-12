@@ -7,6 +7,9 @@
  */
 
 function concat(item, item) { 
+
+    if(!(arguments instanceof Array)) throw TypeError (arguments + 'is not an array');
+
     var newArr = array;
     var index = newArr.length;
 

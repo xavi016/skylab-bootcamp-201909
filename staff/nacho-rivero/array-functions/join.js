@@ -6,6 +6,11 @@
 
 function join(array, separator) {
 
+  if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
+  if ((separator instanceof Function)) throw TypeError('separator cannot be a value');
+  if ((separator instanceof Function)) throw TypeError('separator cannot be a function');
+  if ((separator instanceof Function)) throw TypeError('separator cannot be an array');
+
     var string = '';
 
     if (separator == '' || separator == undefined) {

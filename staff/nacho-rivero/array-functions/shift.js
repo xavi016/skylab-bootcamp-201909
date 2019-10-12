@@ -6,6 +6,8 @@
 
 function shift(array) {
 
+  if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
+
     var first = array[0];
 
     for(var i = 1; i < array.length; i++) {
