@@ -4,18 +4,18 @@ describe ('Hooray.prototype.map', function () {
         var expression = function (item) { return item << 2; }
         var result = hooray.map(expression);
 
-        expect (hooray === result).toBe(false);
-
-        for (i=0; i<result.length; i++)
-            expect(result[i]).toBe(hooray[i]<<2);
+        expect (hooray).not.toBe(result);
+        
+        var expected = new Hooray (8,16,24);
+        expect(result).toEqual(expected);
     })
 
     it('should throw a TypeError when parameter is not a function', function () {
 
         var hooray = new Hooray (2,4,6);
 
-        expect (function () { hooray.map(2)}).toThrow(TypeError,'2 is not a function');
-        expect (function () { hooray.map("a")}).toThrow(TypeError,'a is not a function');
-        expect (function () { hooray.map()}).toThrow(TypeError,'undefined is not a function');
+        expect (function () { hooray.map(2)}).toThrowError(TypeError,'2 is not a function');
+        expect (function () { hooray.map("a")}).toThrowError(TypeError,'a is not a function');
+        expect (function () { hooray.map()}).toThrowError(TypeError,'undefined is not a function');
     })
 })

@@ -28,16 +28,15 @@ describe ('Hooray.prototype.every', function () {
         hooray.every(expresion);
         expect (hooray.length).toBe(hooray_copy.length);
 
-        for (i=0; i<hooray.length; i++)
-            expect(hooray[i]).toBe("hooray_copy[i]");
+        expect(hooray).toEqual(hooray_copy);
 
     });
 
     it('should fail on non-function expression', function () {
         var hooray = new Hooray(1, 2, 3);
 
-        expect(function () { hooray.forEach(undefined); }).toThrow(TypeError, 'undefined is not a function');
-        expect(function() { hooray.forEach(true); }).toThrow(TypeError, 'true is not a function');
-        expect(function() { hooray.forEach(1); }).toThrow(TypeError, '1 is not a function');
+        expect(function () { hooray.forEach(undefined); }).toThrowError(TypeError, 'undefined is not a function');
+        expect(function() { hooray.forEach(true); }).toThrowError(TypeError, 'true is not a function');
+        expect(function() { hooray.forEach(1); }).toThrowError(TypeError, '1 is not a function');
     });
 })

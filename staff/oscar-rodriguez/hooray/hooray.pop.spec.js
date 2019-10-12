@@ -6,9 +6,9 @@ describe ('Hooray.prototype.pop', function (){
         expect(items.pop()).toBe(4);
 
         var test = new Hooray (1,2,3);
-        for (var i=0; i<items.length; i++) {
-            expect(items[i]).toBe(test[i]);
-        }
+        
+        expect(items).toEqual(test);
+      
     });
 
     it('should return undefined on an empty array', function (){

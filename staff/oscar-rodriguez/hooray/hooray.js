@@ -42,13 +42,15 @@ Hooray.prototype.push = function() {
  * @returns {any} The item deleted from the hooray.
  */
 Hooray.prototype.shift = function  () {
-
+    
     if (this.length===0) return undefined;
     var itemShifted = this[0];
 
     for (var i=1; i<this.length; i++) {
         this[i-1]=this[i];
     }
+    
+    delete this[this.length-1];
     this.length--;
     return itemShifted;
 }
@@ -57,6 +59,8 @@ Hooray.prototype.shift = function  () {
  * Add a new item at beggining of an array and unshifts each item into a higher index.
  * 
  * @param {any} item The item will be added in the array.
+ * 
+ * @returns {Number} the new length of the Hooray
  */
 Hooray.prototype.unshift = function () {
 
@@ -80,16 +84,20 @@ Hooray.prototype.pop = function () {
     if (this.length===0) return undefined;
 
     var result = this[this.length-1];
+    
+    delete this[this.length-1];
     this.length-=1;
     
     return result;
 } 
 
 /**
- * Converts an Array into a String.
+ * Converts an Array into a String merging each item with the separator if it's provided.
  * 
- * @param {String} separator Separator between each element. 
+ * @param {String} separator Optional -- Separator between each element. 
  *                           If an separator is omited, as default separator is a coma.
+ * 
+ * @returns {string} The Hooray as a string.
  */
 Hooray.prototype.join = function () {
         
@@ -170,6 +178,17 @@ Hooray.prototype.every = function  (expression) {
     return true;
 }
 
+/**
+ * Fills a hooray with the item provided as a parameter;
+ * 
+ * @param {*} any - the value to fill into the Hooray
+ * @param {Number} Start - Optional. Index where start to fill. 0 as default if is not declared
+ *                                   If Start is negative, will start #Start items from the end.
+ * 
+ * @param {Number} End - Optional. Index where end's the fill. End index is not includded. 
+ *                                 hooray's length as default if is not declared.
+ *                                 If End is negative, will fill until #End items from the end.
+ */
 Hooray.prototype.fill = function (item) {
 
     var start = arguments[1] || 0;
@@ -183,3 +202,49 @@ Hooray.prototype.fill = function (item) {
         this[i]=item;
     }
 }
+
+
+/**
+ * Return a Hooray with the items that accomplish the expression provided as a parameter
+ * 
+ * @param {Function} expression The expression that evaluates the items to be returned.
+ * 
+ * @returns {Hooray} The Hooray with the items that accomplish the expression provided on the 
+ *                   calling hooray. If there's no items that accomplish, returns an empty Hooray.
+ * 
+ * @throws {TypeError} If the expression is not a function.
+ */
+Hooray.prototype.filter = function (expression) {
+    if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+
+    var results = new Hooray;
+
+    for (i=0; i<this.length; i++) {
+        if (expression(this[i])) {
+            results[results.length++]=this[i];
+        }
+    }
+    return results;
+}
+
+
+Hooray.protoype.findIndex = function (expression) {
+    if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+    
+    for (i=0; i<this.length; i++) {
+        if (expression(this[i])) return i;
+    }
+    return -1;
+}
+
+
+/* function find (array, expression) {
+    if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+    if (!(array instanceof Array)) throw TypeError (array + ' is not an array');
+    if (array.length === 0 ) return undefined;
+
+    for (i=0; i<array.length; i++) {
+        if (expression(array[i])) return array [i];
+    }
+    return undefined;
+} */

@@ -4,11 +4,11 @@ describe('Hooray.prototype.push', function () {
 
         expect(hooray.push('d')).toBe(4);
         expect(hooray.length).toBe(4);
-        expect(hooray[hooray.length - 1]).toBe('d');
+        expect(hooray).toContain('d');
 
-        var chars = ['a', 'b', 'c', 'd'];
-        for (var i = 0; i < chars.length; i++)
-            expect(hooray[i]).toBe(chars[i]);
+        var chars = new Hooray ('a', 'b', 'c', 'd');
+        
+        expect(hooray).toEqual(chars);
     });
 
     it('should push multiple items', function () {
@@ -17,8 +17,7 @@ describe('Hooray.prototype.push', function () {
         expect(hooray.push('d', 'e', 'f', 'g', 'h', 'i', 'j', 'k')).toBe(11);
         expect(hooray.length).toBe(11);
 
-        var chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
-        for (var i = 0; i < hooray.length; i++)
-            expect(hooray[i]).toBe(chars[i]);
+        var chars = new Hooray ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k');
+        expect(hooray).toEqual(chars);
     });
 });

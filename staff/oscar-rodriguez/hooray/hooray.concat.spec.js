@@ -7,11 +7,7 @@ describe ('Hooray.prototype.concat', function() {
 
         var result = hooray1.concat (hooray2);
 
-        for (i=0; i<hooray1.length; i++)
-            expect(result[i]).toBe(hooray1[i]);
-
-        for (i=hooray1.length; i<result.length; i++)
-            expect(result[i]).toBe(hooray2[i-hooray1.length]);
+        expect(result).toContain(1,2,2,4,5,6,7,8);
 
         expect (result.length).toBe(hooray1.length+hooray2.length);
        
@@ -24,8 +20,8 @@ describe ('Hooray.prototype.concat', function() {
         
         var result = hooray1.concat ();
 
-        for (i=0; i<hooray1.length; i++)
-            expect(result[i]).toBe(hooray1[i]);
+        
+        expect(result).toEqual(hooray1);
 
         expect (result.length).toBe(hooray1.length);
     })
@@ -37,29 +33,22 @@ describe ('Hooray.prototype.concat', function() {
         
         var result = hooray1.concat (hooray2);
 
-        for (i=0; i<hooray1.length; i++)
-            expect(result[i]).toBe(hooray1[i]);
-
-        for (i=hooray1.length; i<result.length; i++)
-            expect(result[i]).toBe(hooray2[i-hooray1.length]);
+        expect(result).toEqual(hooray2);
 
         expect (result.length).toBe(hooray1.length+hooray2.length);
     })
 
     it ('should concat to the returned hooray the parameters sent even they are not a hooray', function () {
 
-        var hooray1 = new Hooray ();
+        var hooray1 = new Hooray (2,4,6);
         var number = 3;
         var string ="abc";
         var result = hooray1.concat (number, string);
 
-        for (i=0; i<hooray1.length; i++)
-            expect(result[i]).toBe(hooray1[i]);
+        
+        expect(result).toContain(2,4,6,4,"abc");
 
-        expect(result[hooray1.length]).toBe(number);
-        expect(result[hooray1.length+1]).toBe(string);
-
-        expect (result.length).toBe(hooray1.length+2);
+        expect (result.length).toBe(5);
     })
 
-})
+}) 
