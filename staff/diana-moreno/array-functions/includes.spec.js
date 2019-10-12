@@ -35,15 +35,28 @@ describe('includes', function() {
     expect(result2).toBe(false);
   });
 
+  it('should fail on undefined array', function() {
+    var array;
+
+    expect(function() { includes(array, 3); }).toThrowError(TypeError, 'undefined is not an array');
+  });
+
+  it('should return undefined on empty array received', function() {
+    var array = [];
+    var result = includes(array, 3);
+
+    expect(result).toBe(false);
+  });
+
   it('should throw an error when others types different to array are passed', function() {
 
-    expect(function() { includes('hello', 2) }).toThrowError(TypeError, 'hello is not an array');
-    expect(function() { includes(1, 2) }).toThrowError(TypeError, '1 is not an array');
+    expect(function() { includes('hello', 2); }).toThrowError(TypeError, 'hello is not an array');
+    expect(function() { includes(1, 2); }).toThrowError(TypeError, '1 is not an array');
   });
 
   it('should throw an error when others types different to string or number are passed as item', function() {
     var array = [6, 7, 8, 9, 10];
 
-    expect(function() { includes(array, [2, 5]) }).toThrowError(TypeError, '2,5 is not a number, boolean or a string');
+    expect(function() { includes(array, [2, 5]); }).toThrowError(TypeError, '2,5 is not a number, boolean or a string');
   });
 });

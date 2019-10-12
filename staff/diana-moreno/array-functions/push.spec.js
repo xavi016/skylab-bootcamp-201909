@@ -10,6 +10,15 @@ describe('push', function() {
     expect(array).toEqual(expected);
   });
 
+  it('should work properly with received empty array', function() {
+    var array = [];
+    var expected = [234];
+    push(array, 234);
+
+    expect(array.length).toBe(1);
+    expect(array).toEqual(expected);
+  });
+
   it('should push multiple items', function() {
     var array = ['a', 'b', 'c'];
 
@@ -35,8 +44,13 @@ describe('push', function() {
     expect(array.length).toBe(5);
   });
 
-  it('should throw an error when others types different to array are passed', function() {
+  it('should fail on undefined array', function() {
+    var array;
 
+    expect(function() { forEach(array); }).toThrowError(TypeError, 'undefined is not an array');
+  });
+
+  it('should fail when others types different to array are passed', function() {
     expect(function() { push('hello') }).toThrowError(TypeError, 'hello is not an array');
     expect(function() { push(1) }).toThrowError(TypeError, '1 is not an array');
   });

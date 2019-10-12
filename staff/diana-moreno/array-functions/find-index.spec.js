@@ -34,7 +34,21 @@ describe('findIndex', function() {
 
     expect(typeof result).toBe('number');
     expect(result).toBe(2);
-  })
+  });
+
+  it('should fail on undefined array', function() {
+    var array;
+    var fn = function(x) { return x > 5; };
+
+    expect(function() { findIndex(array, fn); }).toThrowError(TypeError, 'undefined is not an array');
+  });
+
+  it('should return undefined on empty array received', function() {
+    var array = [];
+    var fn = function(x) { x > 5; };
+
+    expect(findIndex(array, fn)).toBe(-1);
+  });
 
   it('should throw an error when others types different to array are passed', function() {
     var fn = function(x) { return x > 5; };

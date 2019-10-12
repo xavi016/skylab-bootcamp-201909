@@ -25,7 +25,12 @@ describe('pop', function() {
     var string = 'hello';
     var number = 1;
 
-    expect(function() { pop(string) }).toThrowError(TypeError, 'hello is not an array');
-    expect(function() { pop(number) }).toThrowError(TypeError, '1 is not an array');
+    expect(function() { pop(string); }).toThrowError(TypeError, 'hello is not an array');
+    expect(function() { pop(number); }).toThrowError(TypeError, '1 is not an array');
+  });
+  it('should fail on undefined array', function() {
+    var array;
+
+    expect(function() { forEach(array); }).toThrowError(TypeError, 'undefined is not an array');
   });
 });

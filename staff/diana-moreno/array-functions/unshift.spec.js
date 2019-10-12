@@ -33,9 +33,21 @@ describe('unshift', function() {
     expect(array.length).toBe(5);
   });
 
-  it('should throw an error when others types different to array are passed', function() {
+  it('should return 0 when an empty array is passed', function() {
+    var array = [];
+
+    expect(unshift(array)).toEqual(0);
+  });
+
+  it('should fail when others types different to array are passed', function() {
 
     expect(function() { unshift('hello') }).toThrowError(TypeError, 'hello is not an array');
     expect(function() { unshift(1) }).toThrowError(TypeError, '1 is not an array');
+  });
+
+  it('should fail on undefined array', function() {
+    var array;
+
+    expect(function() { shift(array); }).toThrowError(TypeError, 'undefined is not an array');
   });
 });

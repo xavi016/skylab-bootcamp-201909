@@ -17,6 +17,13 @@ describe('filter', function() {
       expect(result.length).toBe(0);
     });
 
+  it('should fail on undefined array', function() {
+    var array;
+    var fn = function(x) { return x * 2; };
+
+    expect(function() { filter(array, fn); }).toThrowError(TypeError, 'undefined is not an array');
+  });
+
   it('should fail on non-function expression', function() {
     var array = [1, 2, 3];
 

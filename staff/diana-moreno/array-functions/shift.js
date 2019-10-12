@@ -5,8 +5,8 @@
  * @throws {TypeError}    If array is not an array
  */
 function shift(array) {
-  if (array.length == 0) return undefined;
   if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
+  if (array.length == 0) return undefined;
 
   var firstElem = array[0];
 

@@ -5,15 +5,18 @@
  * @throws {TypeError} If array is not an array, or expression is not a function.
  */
 function concat() {
-  for (let i in arguments)
-    if (!(arguments[i] instanceof Array)) throw TypeError(arguments[i] + ' is not an array');
+  if (!(arguments[0] instanceof Array)) throw TypeError(arguments[0] + ' is not an array');
 
   let newArray = [];
 
-  for (let i in arguments)
-
-    for (let j in arguments[i])
-      newArray[newArray.length] = arguments[i][j];
-
+  for (let i in arguments) {
+    if(!(arguments[i] instanceof Array)) {
+      newArray[newArray.length] = arguments[i]
+    } else {
+      for(let j in arguments[i]) {
+        newArray[newArray.length] = arguments[i][j];
+      }
+    }
+  }
   return newArray;
 }

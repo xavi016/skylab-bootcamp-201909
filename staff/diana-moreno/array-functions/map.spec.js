@@ -5,9 +5,7 @@ describe('map', function() {
     var result = map(array, fn);
     var expected = [2, 4, 6, 8]
 
-    var fn2 = function(x) {
-      return x * 3;
-    };
+    var fn2 = function(x) { return x * 3; };
     var result2 = map(array, fn2);
     var expected2 = [3, 6, 9, 12]
 
@@ -49,5 +47,12 @@ describe('map', function() {
     expect(function() { map('hello', fn) }).toThrowError(TypeError, 'hello is not an array');
     expect(function() { map(1, fn); }).toThrowError(TypeError, '1 is not an array');
     expect(function() { map(true, fn); }).toThrowError(TypeError, 'true is not an array');
+  });
+
+  it('should fail on undefined array', function() {
+    var array;
+    var fn = function(x) { return x * 2; };
+
+    expect(function() { forEach(array, fn); }).toThrowError(TypeError, 'undefined is not an array');
   });
 })
