@@ -16,9 +16,14 @@
 
 .header {
     grid-area: header;
-    background-color: #232f3e;
-    color: white;
+    /* background-color: #232f3e; */
+    /* color: white; */
     overflow: hidden; 
+}
+
+.header__content {
+    display: flex;
+    flex-direction: column;
 }
 
 .main__content {
