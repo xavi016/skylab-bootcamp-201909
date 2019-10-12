@@ -10,14 +10,12 @@ describe('map', function () {
 
         var expected = [3, 4, 5];
         expect(result).toEqual(expected);
-        expect(result.length).toBe(expected.length);
+        expect(addTwo).toBeInstanceOf(Function);
 
     });
 
     it('should fail on non-function expression', function () {
         var array = [1, 2, 3];
-
-        //throw Error('hola mundo');
 
         expect(function () { map(array, undefined); }).toThrowError(TypeError, 'undefined is not a function');
         expect(function() { map(array, true); }).toThrowError(TypeError, 'true is not a function');
@@ -26,9 +24,9 @@ describe('map', function () {
 
     it('should fail on undefined array', function () {
         var array; //= [1, 2, 3];
-        var expression = console.log;
+        var addTwo = function (number) { return number + 2; };
 
-        expect(function() { map(array, expression); }).toThrowError(TypeError,'undefined is not an array');
+        expect(function() { map(array, addTwo); }).toThrowError(TypeError,'undefined is not an array');
     });
 
 
