@@ -91,21 +91,17 @@ Hooray.prototype.fill = function(newItem){
   };	
 
   Hooray.prototype.splice = function(start, delCount) { 
-    //if (typeof end === 'undefined') end = array.length;
-	// if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
 	var result = new Hooray; // nuevo hooray con los elementos eliminados
 	var newHooray = []; // introducir nuevos valores del hooray original
 	var x = 0; // iniciar el bucle y recorrer el hooray
 	var arrPos = 0; // indice para colocar los elementos correctamente
 	var itemsLen; // longitud de los items a introducir
 	var items = []; // items a introducir
-	// debugger
-
 
 	if(delCount === 'undefined'){ // si no hay elementos a eliminar
-		itemsLen = arguments.length-1;
+		itemsLen = arguments.length--;
 		var index = 1;
-	}else if(arguments.length === 2 && start !== 'undefined' && start >= 0 && delCount !== 'undefined'){ // si no hay items a introducir
+	}else if(arguments.length === 2 && start >= 0){ // si no hay items a introducir
 		var index = 0;
 		itemsLen = 0;
 	}else if(arguments.length === 1){ // si solo se introduce un parámetro numérico 
@@ -136,38 +132,33 @@ Hooray.prototype.fill = function(newItem){
 		result.length++;
 	}
 	//bucle para colocar los items correctamente en el new hooray
-	var lol = false;
+	var exit = false;
 	while (x < finalLength) {
-		if(x === start && lol === false){
+		if(x === start && exit === false){
 			for(var y =0; y<delCount; y++){
 				arrPos++
 			}
 			if(itemsLen !== 0){
 				for(var y = 0; y<itemsLen; y++){
 					newHooray[x] = items[y]
-					x++
+					x++;
 				}
 			}
-			lol = true
+			exit = true;
 		}else{
-			newHooray[x] = this[arrPos] 
-			x++
-			arrPos++
+			newHooray[x] = this[arrPos];
+			x++;
+			arrPos++;
 		}
 	}
 	// arreglar lenght del hooray original y añadir items(si hay)
-	// debugger
 	for(var i = 0; i<this.length;i++){
-		this[i] = newHooray[i]
+		this[i] = newHooray[i];
 	}
 
 	for(var x = delCount; x>0; x--){
-		delete this[this.length-1];
-		this.length--
+		delete this[this.length--];
 	}
-	// debugger
-	console.log(result);
-	console.log(this);
 
     return result;
 };
