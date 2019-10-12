@@ -99,6 +99,20 @@ describe('slice', function () {
         expect(result.length).toBe(0);
     });
 
+    it('should return a new array with values of the original array from the beginning and ending, begin < 0', function () {
+        var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+        var result = slice(numbers, -32, -7);
+
+        expect(result).not.toBe(numbers);
+        expect(result).toBeInstanceOf(Array);
+
+        var expected = [1, 2];
+        expect(result).toEqual(expected);
+
+        expect(result.length).toBe(2);
+    });
+
     it('should fail on first parameter non-array', function () {
         expect(function () { slice(); }).toThrowError(TypeError, 'undefined is not an array');
 
