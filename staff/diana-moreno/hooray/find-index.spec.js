@@ -27,18 +27,26 @@ describe('findIndex', function() {
       expect(hooray[i]).toBe(expected[i]);
   });
 
+  it('should return a number', function() {
+    var array = [6, 7, 8, 9, 10];
+    var fn = function(x) { return x > 7; };
+    let result = hooray.findIndex(fn);
+
+    expect(typeof result).toBe('number');
+    expect(result).toBe(2);
+  });
+
+  it('should return undefined on empty array received', function() {
+    var noHooray = new Hooray([]);
+    var fn = function(x) { return x > 7; };
+
+    expect(noHooray.findIndex(fn)).toBe(-1);
+  });
+
   it('should throw an error when others types different to function are passed', function() {
     expect(function() { hooray.findIndex([1, 2, 3]) }).toThrowError('1,2,3 is not a function');
     expect(function() { hooray.findIndex('hello') }).toThrowError('hello is not a function');
     expect(function() { hooray.findIndex(1) }).toThrowError('1 is not a function');
     expect(function() { hooray.findIndex(true) }).toThrowError('true is not a function');
   });
-/*
-  it('should throw an error when others types different to hooray are passed', function() {
-    var fn = function(x) { x > 5; };
-    var greeting = 'hello'
-
-    expect(function() { greeting.findIndex(fn) }).toThrowError('Data type is not a hooray');
-    expect(function() { findIndex(1, fn) }).toThrowError('1 is not an array');
-  });*/
 });
