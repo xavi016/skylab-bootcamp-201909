@@ -40,6 +40,8 @@ Hooray.prototype.push = function() {
 	return this.length;
 };
 
+
+
 /**
  * FIND-INDEX
  * Find the first element that accomplish a condition and returns its index. 
@@ -160,6 +162,5 @@ Hooray.prototype.fill = function(newItem){
 
 	for(var i = start; i < end; i++){
 		this[i] = newItem;
-	  }  
-	  
+	  }  	  
   };
