@@ -124,13 +124,12 @@ Hooray.prototype.findIndex = function(expression) {
 // }
 
 Hooray.prototype.filter = function (expression) {
-    if (!(this instanceof Hooray)) throw TypeError(this + " is not defined");
     if (!(expression instanceof Function)) throw TypeError(expression + " is not a function");
-
+   
     var newHooray = new Hooray;
     for (i=0; i<this.length;i++){
         if (expression(this[i])){
-            newHooray[newHooray.length] = this[i]
+            newHooray[newHooray.length] = this[i];
             newHooray.length++
         }
     } 
