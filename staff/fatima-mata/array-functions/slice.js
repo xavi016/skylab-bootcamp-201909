@@ -4,7 +4,7 @@ function slice(array, begin, end) {
     //if (typeof end === 'undefined') end = array.length;
 
     var result = []; // {}; // WTF?
-
+    debugger
     begin = begin || 0;
     begin = begin < 0? array.length + begin : begin;
     end = end || array.length;
