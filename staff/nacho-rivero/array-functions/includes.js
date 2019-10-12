@@ -6,23 +6,14 @@
 
 
 function includes(array, value){
-    var a = 0;
+    
+    var found = false;
     
     for(i=0; i<array.length; i++){
       
         if(array[i] == value){
-            a++;
-        }  
+            found = true;
+        } 
     }
-
-    switch(a){
-        case a = 1:
-            console.log(`Array includes ${value}`);
-            console.log(true);
-            break;
-        case a = 0:
-            console.log(`Array NOT includes ${value}`);
-            console.log(false);
-            break;
-    }   
+    return found;
 }

@@ -15,9 +15,13 @@ function slice(array, fidx, lidx){
     if(array.length === 0)throw ReferenceError('array is empty');
     if(!(array instanceof Array))throw new TypeError(array + ' is not an array');
     
-    var newArray = [];
+    var result = [];
+
     for(var i = fidx; i < lidx; i++){
-        newArray[newArray.length++] = array[i];
+
+        result[result.length++] = array[i];
+
     }
-    return newArray;
+
+    return result;
 }

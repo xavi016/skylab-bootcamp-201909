@@ -11,21 +11,16 @@
 
 function filter(array, condition) {
 
-    result=[];
-        
-    if (condition){
-    
-       for (var i=0; i<array.length; i++){
-    
-           if (array[i].length > condition){
-    
-               result += array[i];  
-           }
-        } return result; 
-    
-        } else {
-            
-          return result;
-    }
+    var result=[];
+    var count=0;
+        for(var i = 0; i<array.length; i++){
+            if(condition(array[i])){
+                result[count] = array[i];
+                count++;
+            }
+
+            return result;
+        }
+
     }
     

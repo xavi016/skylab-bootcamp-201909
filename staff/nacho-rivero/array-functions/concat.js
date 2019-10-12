@@ -1,25 +1,27 @@
 /**
- * Concat method it is used to fuse one or more arrays. This method doesn't
- * change the existing arrays.
- * @param{arguments} The selected arrays that give the values to the functions
- * @param{newArray} The new array with the merged values
+ * To join two or more arrays. This method does not change existing arrays.
  * 
+ * @param {...any} item The items array to start joining.
+ * @param {...any} item The item (or items) to join.
+ * @returns {Array} the new array created with all items joined
  */
-function concat(){
-        
-    var count = 0;
-    var newArray = [];
 
-    for(var i = 0; i < arguments.length; i++) {
-        for(var j=0; j < arguments[i].length; j++){
-            
-            newArray[count] = arguments[i][j];
-                count++
+function concat(item, item) { 
+    var newArr = array;
+    var index = newArr.length;
+
+	for(var i = 1; i < arguments.length; i++){
+        if(item instanceof Array){
+            for(var j = 0; j < arguments.length; j++){
+
+                newArr[index] = arguments[i][j];
+                index++;        
+            }
         }
-
+         else {
+            newArr[index] = arguments[i];
+            index++;
+        }
     }
-    return newArray;
+	return newArr
 }
-
-
-

@@ -1,13 +1,19 @@
 /**
  * Method to reverse the array. It returns the array modified. The last input becomes the first.
- * @param {*} array The array to do the changes.
+ * @param {array} array The array to reverse its numbers.
  */
 
 function reverse(array) {
-    for (var i = 0; i <= Math.floor((array.length - 1) / 2); i++) {
-        var a = array[i];
-        array[i] = array[array.length - 1 - i];
-        array[array.length - 1 - i] = a;
+
+    var rarray = [];
+
+    for (var i = 0; i < array.length; i++) {
+        
+        rarray[i] = array[array.length - 1 - i];
+        
+        for(var j = 0; j < rarray.length; j++){
+            array[i] = rarray[j];
+        }
     }
     return array;
   }

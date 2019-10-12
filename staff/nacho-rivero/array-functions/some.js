@@ -1,20 +1,21 @@
 /**
  * Method test whether at least one element in the array pass the test. It returns a boolean expression.
- * @param {*} array The array to do the test.
- * @param {*} expression The function test provided.
+ * @param {array} array The array to do the test.
+ * @param {expression} expression The function test provided.
  */
 
 function some(array,expression){
 
-    for (let i=0; i<array.length;i++){
+    if(!(array instanceof Array)) throw TypeError(`${array} is not an array`);
+    if(!(expression instanceof Function)) throw TypeError (`${expression} is not a function`);
+
+    var pass = false;
+
+    for (var i=0; i<array.length; i++){
         
-        if (array[i] === expression){
-            console.log(true)
-            break
-        }
-        if (array[i] !== expression){
-            console.log(false)
-            break
+        if (expression(array[i])){
+            pass = true;
         }
     }
+    return pass;
 }

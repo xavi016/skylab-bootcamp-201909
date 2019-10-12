@@ -1,7 +1,7 @@
 /**
  * Returns de value of the fisrt element in the array that satisfies the condition.
- * @param {*} array The array done.
- * @param {*} expression provided testing function.
+ * @param {array} Array The array to be inspected.
+ * @param {condition} expression that specifies what condition should be provided.
  */
 
 
@@ -11,6 +11,10 @@ function find(array , expression){
     if(!(expression instanceof Function)) throw TypeError(expression + " is not a function");
 
     for(var i = 0 ; i<array.length ; i++){
-        if(expression(array[i])) return array[i];
+
+        if(expression(array[i])){
+
+            return array[i];
     };
-};
+}
+}

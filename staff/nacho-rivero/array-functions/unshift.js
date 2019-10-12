@@ -8,13 +8,15 @@
 function unshifty(array) {
     if (!(array instanceof Array)) throw TypeError("unshifty this is not an array");
 
-    var inc = arguments.length - 1;
+    var item = arguments.length - 1;
+
     var length = array.length;
+
     for (var i = length - 1; i >= 0; i--){
-        array[i + inc] = array[i]
+        array[i + item] = array[i]
     }
-    for (var j = 1; j < arguments.length; j++)
-        array[j - 1] = arguments[j];
+    for (var j = inc; j < arguments.length; j++)
+        array[j - inc] = arguments[j];
     
     return array.length;
 }

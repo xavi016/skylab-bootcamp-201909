@@ -9,34 +9,40 @@
 function fill(array, value, start, end) {
 
     if(!(array instanceof Array)) throw TypeError (array +' is not an array');
-    if(!(array instanceof Function)) throw TypeError (array+' is not a function');
+    if(!(array instanceof Function)) throw TypeError (array + ' is not a function');
+    if(!(start > end)) throw TypeError (start + 'cant be bigger than end');
 
-    if (end){
+    if (i < start){
        
         for (i = start; i<end; i++){
             array[i]=value;
         }
 
-        return  array[i]=value;
+        return  array;
         
     } 
 
-    else if (start){
+    else if (0 > start){
 
-        for (j=start-1; j<array.length-1; j++){ //  
+        for (j=start+array.length; j<end; j++){ //  
             array[j]=value;
         }
 
-        return  array[j]=value;
+        return  array;
 
-    } else 
-    
-        {
+    } else if (0 > end){
+
+        for (j=start; j<end+array.length; j++){ //  
+            array[j]=value;
+        }
+
+        return array;
+
+    }else{
 
         for (var j=0; j<array.length-1; j++){
             array[j]=value;
         }
-
-        return  array[j]=value;
-    }
+            return  array;
+            }
 }
