@@ -1,4 +1,5 @@
 /**
+ * MAP.
  * Returns a new array with an expression applied. 
  * 
  * @param {Array} array The array to iterate.
