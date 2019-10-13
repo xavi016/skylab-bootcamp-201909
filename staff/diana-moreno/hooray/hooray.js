@@ -3,7 +3,7 @@ function Hooray() {
     this[i] = arguments[i];
 
   this.length = arguments.length;
-}
+};
 
 /**
  * Iterates the current hooray and evaluates an expression on each item.
@@ -66,7 +66,7 @@ Hooray.prototype.slice = function(indexIni, indexEnd) {
     //counter++;// no hace falta declarar counter
   }
   return newArray;
-}
+};
 
 /**
  * Creates a new array with the results of calling a provided function on every element in the calling array.
@@ -85,7 +85,7 @@ Hooray.prototype.map = function(expression) {
     newArray[i] = expression(this[i]);
 
   return newArray;
-}
+};
 
 /**
  * Modifies all the elements of an array from a start index (default zero) to an end index (default array length) with a static value.
@@ -111,7 +111,7 @@ Hooray.prototype.fill = function(item, indexIni, indexEnd) {
     this[i] = item;
   };
   return this;
-}
+};
 
 /**
  * Returns the value of the first element in the provided array that satisfies the provided testing function.
@@ -127,7 +127,7 @@ Hooray.prototype.find = function(expression) {
     if (expression(this[i])) return this[i];
 
   return undefined;
-}
+};
 
 /**
  * Tests whether at least one element in the array passes the test implemented by the provided function.
@@ -143,7 +143,7 @@ Hooray.prototype.some = function(expression) {
     if (expression(this[i])) return true;
 
   return false;
-}
+};
 
 /**
  * Tests whether all elements in the array pass the test implemented by the provided function.
@@ -160,7 +160,7 @@ Hooray.prototype.every = function(expression) {
     if (expression(this[i])) counter++;
 
   return counter === this.length ? true : false;
-}
+};
 
 /**
  * Returns the first index at which a given element can be found in the array, or -1 if it is not present.
@@ -176,7 +176,7 @@ Hooray.prototype.indexOf = function(item) {
     if (this[i] === item) return i;
 
   return -1;
-}
+};
 
 /**
  * Reverses the order of the elements in an array and returns the new array
@@ -195,7 +195,7 @@ Hooray.prototype.reverse = function(array) {
     this[i] = newArray[i];
 
   return this;
-}
+};
 
 /**
  * Determines whether an array includes a certain value among its entries, returning true or false as appropriate.
@@ -208,7 +208,7 @@ Hooray.prototype.includes = function(item) {
     if (this[i] === item) return true;
   }
   return false;
-}
+};
 
 /**
  * creates a new array with all elements that pass the test implemented by the provided function.
@@ -228,7 +228,7 @@ Hooray.prototype.filter = function(expression) {
     //counter++
   }
   return newArray;
-}
+};
 
 /**
  * Is used to merge two or more arrays without modifying the original array.
@@ -252,7 +252,7 @@ Hooray.prototype.concat = function() {
     }
   }
   return newArray;
-}
+};
 
 /**
  Creates and returns a new string by concatenating all of the elements in an array (or an array-like object), separated by commas or a specified separator string. If the array has only one item, then that item will be returned without using the separator.
@@ -269,7 +269,7 @@ Hooray.prototype.join = function(separator) {
     else string += (separator + '') + this[i];
   }
   return string;
-}
+};
 
 /**
  * Remove the last element of the array and return the element
@@ -283,7 +283,7 @@ Hooray.prototype.pop = function() {
   delete this[this.length - 1];
   this.length--;
   return lastElem;
-}
+};
 
 /**
  * Removes the first element of the array and returns the element
@@ -301,7 +301,7 @@ Hooray.prototype.shift = function() {
   delete this[this.length - 1];
   this.length--;
   return firstElem;
-}
+};
 
 /**
  * Adds one or more elements to the first positions of the array and returns the new array length
@@ -323,7 +323,7 @@ Hooray.prototype.unshift = function() {
     this.length = i + 1;
   }
   return this.length;
-}
+};
 
 /**
  * sorts the elements of an array in place and returns the sorted array
@@ -333,7 +333,7 @@ Hooray.prototype.unshift = function() {
  * @throws {TypeError}    If expression is not a expression
  */
 Hooray.prototype.sort = function(expression) {
-  if (!expression) expression = function() { return 1 }
+  if (!expression) expression = function() { return 1; };
   if (!(expression instanceof Function)) throw TypeError(expression + ' is not a function');
 
   var decreasing = function() {
@@ -362,7 +362,7 @@ Hooray.prototype.sort = function(expression) {
     }
   };
   return this;
-}
+};
 /**
  * Sorts an array randomly
  * @param  {Array} array Array to sort randomly
@@ -379,4 +379,22 @@ Hooray.prototype.shuffle = function() {
     result[random] = value;
   }
   return result;
-}
+};
+
+/**
+ * Executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
+ * @param  {Array} array      Array to be reduced
+ * @param  {Function} expression Function to reduce with
+ * const reducer = (accumulator, currentValue) => accumulator + currentValue;
+ * @return {[type]}            returned value is assigned to the accumulator of expression
+ */
+Hooray.prototype.reduce = function(reducer) {
+  if (typeof reducer !== 'function') throw TypeError(reducer + ' is not a function');
+  if (this.length === 0) throw TypeError('Reduce of empty array with no initial value');
+
+  var result = this[0]
+  for (i = 1; i < this.length; i++) {
+    result = reducer(result, this[i]);
+  };
+  return result;
+};
