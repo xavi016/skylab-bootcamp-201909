@@ -2,7 +2,7 @@ describe('fill', function() {
   it('should fill the array with the item', function() {
     var hooray = new Hooray(1, 2, 3);
     var item = 'a';
-    var expected = ['a', 'a', 'a']
+    var expected = ['a', 'a', 'a'];
     hooray.fill(item);
 
     for (var i = 0; i < expected.length; i++)
@@ -12,7 +12,7 @@ describe('fill', function() {
   it('should modify the original array', function() {
     var hooray = new Hooray(1, 2, 3);
     var item = 'a';
-    var expected = ['a', 'a', 'a']
+    var expected = ['a', 'a', 'a'];
     hooray.fill(item);
 
     for (var i = 0; i < expected.length; i++)
@@ -36,7 +36,7 @@ describe('fill', function() {
     var indexIni = 1;
     var indexEnd = 4;
     var expected = [1, 'a', 'a', 'a', 5];
-    var result = hooray.fill(item, indexIni, indexEnd);
+    hooray.fill(item, indexIni, indexEnd);
 
     for (var i = 0; i < expected.length; i++)
       expect(hooray[i]).toBe(expected[i]);
@@ -51,7 +51,7 @@ describe('fill', function() {
 
   it('should fail on receive a non-string or number as item', function() {
     var hooray = new Hooray(1, 2, 3);
-    var fn = function(x) { return x + 2; }
+    var fn = function(x) { return x + 2; };
 
     expect(function() { hooray.fill(fn); }).toThrowError(TypeError, 'function is not a string or a number');
     expect(function() { hooray.fill([1, 2, 3]); }).toThrowError(TypeError, 'object is not a string or a number');
@@ -60,7 +60,6 @@ describe('fill', function() {
 
   it('should fail on receive a non-number as index', function() {
     var hooray = new Hooray(1, 2, 3);
-    var item = 'a';
     var fn = function(x) { return x + 2; };
 
     expect(function() { hooray.fill('a', fn); }).toThrowError(TypeError, 'index should be a number');
@@ -68,5 +67,4 @@ describe('fill', function() {
     expect(function() { hooray.fill('a', true); }).toThrowError(TypeError, 'index should be a number');
     expect(function() { hooray.fill('a', 1, 'hello'); }).toThrowError(TypeError, 'index should be a number');
   });
-
-})
+});

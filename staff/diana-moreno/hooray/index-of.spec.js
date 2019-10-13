@@ -36,7 +36,7 @@ describe('indexOf', function() {
 
   it('should fail on receive an item non-string or number', function() {
     var hooray = new Hooray(6, 7, 8, 9, 10);
-    var fn = function(x) { return x + 2 }
+    var fn = function(x) { return x + 2; };
 
     expect(function() { hooray.fill(fn); }).toThrowError(TypeError, 'function is not a string or a number');
     expect(function() { hooray.fill([1, 2, 3]); }).toThrowError(TypeError, 'object is not a string or a number');

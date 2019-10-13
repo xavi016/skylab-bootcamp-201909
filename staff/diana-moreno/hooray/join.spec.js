@@ -1,12 +1,12 @@
 describe('join', function() {
   it('should join all elements separated by a separator ', function() {
-    var array = [1, 2, 3, 5, 3];
+    var hooray = new Hooray(1, 2, 3, 5, 3);
 
-    var result = join(array);
-    var result2 = join(array, '');
-    var result3 = join(array, ',');
-    var result4 = join(array, '-');
-    var result5 = join(array, 2);
+    var result = hooray.join();
+    var result2 = hooray.join('');
+    var result3 = hooray.join(',');
+    var result4 = hooray.join('-');
+    var result5 = hooray.join(2);
     var results = [result, result2, result3, result4, result5];
     var expects = ["1,2,3,5,3", "1,2,3,5,3", "1,2,3,5,3", "1-2-3-5-3", "122232523"];
 
@@ -18,42 +18,31 @@ describe('join', function() {
   });
 
   it('should return a string', function() {
-    var array = [1, 2, 3, 5, 3];
-    var result = join(array);
+    var hooray = new Hooray(1, 2, 3, 5, 3);
+    var result = hooray.join();
     expect(typeof result).toBe('string');
   });
 
   it('should not modify the original array', function() {
-    var array = [1, 2, 3, 5, 3];
+    var hooray = new Hooray(1, 2, 3, 5, 3);
     var expected = [1, 2, 3, 5, 3];
-    join(array);
+    hooray.join();
 
-    expect(array).toEqual(expected);
+    for (var i = 0; i < expected.length; i++)
+      expect(hooray[i]).toBe(expected[i]);
   });
 
   it('should work with an empty array', function() {
-    var array = [];
-    var result = join(array);
+    var hooray = new Hooray();
+    var result = hooray.join();
 
     expect(result.length).toBe(0);
   });
 
-  it('should fail on undefined array', function() {
-    var array;
-
-    expect(function() { join(array); }).toThrowError(TypeError, 'undefined is not an array');
-  });
-
-  it('should fail on different type to array passed', function() {
-    expect(function() { join('hello'); }).toThrowError(TypeError, 'hello is not an array');
-    expect(function() { join(1, ''); }).toThrowError(TypeError, '1 is not an array');
-    expect(function() { join(true, '-'); }).toThrowError(TypeError, 'true is not an array');
-  });
-
   it('should fail on function passed as separator', function() {
-    array = [];
-    const fn = function() { return 'fake'; }
+    var hooray = new Hooray();
+    const fn = function() { return 'fake'; };
 
-    expect(function() { join(array, fn) }).toThrowError(TypeError, 'separator cannot be a function');
-  })
-})
+    expect(function() { hooray.join(fn); }).toThrowError(TypeError, 'separator cannot be a function');
+  });
+});

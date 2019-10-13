@@ -1,8 +1,7 @@
 describe('some', function() {
   it('at least one element should pass all the requirements of the function and return a boolean', function() {
     var hooray = new Hooray(6, 7, 8, 9, 10);
-    var array = [6, 7, 8, 9, 10];
-    var fn = function(x) { return x = 7; };
+    var fn = function(x) { return x === 7; };
 
     expect(hooray.some(fn)).toBe(true);
     expect(hooray.length).toBe(5);
@@ -39,9 +38,9 @@ describe('some', function() {
   it('should fail on others types different to function are passed', function() {
     var hooray = new Hooray(3, 7, 8, 9, 10);
 
-    expect(function() { hooray.some([1, 2, 3]) }).toThrowError(TypeError, '1,2,3 is not a function');
-    expect(function() { hooray.some('hello') }).toThrowError(TypeError, 'hello is not a function');
-    expect(function() { hooray.some(1) }).toThrowError(TypeError, '1 is not a function');
-    expect(function() { hooray.some(true) }).toThrowError(TypeError, 'true is not a function');
+    expect(function() { hooray.some([1, 2, 3]); }).toThrowError(TypeError, '1,2,3 is not a function');
+    expect(function() { hooray.some('hello'); }).toThrowError(TypeError, 'hello is not a function');
+    expect(function() { hooray.some(1); }).toThrowError(TypeError, '1 is not a function');
+    expect(function() { hooray.some(true); }).toThrowError(TypeError, 'true is not a function');
   });
 });

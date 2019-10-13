@@ -1,22 +1,22 @@
 describe('slice', function() {
   it('should return a new array with the values in the given limits', function() {
     var hooray = new Hooray(1, 2, 3, 4, 5, 6, 7, 8, 9);
-    var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     var result = hooray.slice(3, 7);
     var expected = [4, 5, 6, 7];
 
-    expect(numbers).not.toEqual(result)
+    expect(numbers).not.toEqual(result);
     expect(result).toBeInstanceOf(Array);
     expect(result).toEqual(expected);
   });
 
   it('should return a new array with the values in from the beginning (no ending)', function() {
     var hooray = new Hooray(1, 2, 3, 4, 5, 6, 7, 8, 9);
-    var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     var result = hooray.slice(2);
     var expected = [3, 4, 5, 6, 7, 8, 9];
 
-    expect(numbers).not.toEqual(result)
+    expect(numbers).not.toEqual(result);
     expect(result).toBeInstanceOf(Array);
     expect(result).toEqual(expected);
   });

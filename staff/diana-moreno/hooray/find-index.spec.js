@@ -1,5 +1,5 @@
 describe('findIndex', function() {
-  var hooray = new Hooray(6, 7, 8, 9, 10)
+  var hooray = new Hooray(6, 7, 8, 9, 10);
 
   it('should return the fist index that satisfies the function', function() {
     var fn = function(x) { return x >= 7; };
@@ -19,7 +19,7 @@ describe('findIndex', function() {
 
   it('should not modify the original array', function() {
     var expected = [6, 7, 8, 9, 10];
-    var fn = function(x) { x > 5; };
+    var fn = function(x) { return x > 5; };
     hooray.findIndex(fn);
 
     expect(hooray.length).toBe(expected.length);

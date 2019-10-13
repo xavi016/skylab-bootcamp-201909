@@ -1,36 +1,30 @@
-describe('pop', function() {
+describe('hooray.pop', function() {
   it('should return the deleted item', function() {
-    var array = ['a', 'b', 'c'];
+    var hooray = new Hooray('a', 'b', 'c');
+    var expected = ['a', 'b', 'c'];
 
-    expect(pop(array)).toBe('c');
-    expect(array.length).toBe(2);
-    expect(array[array.length - 1]).toBe('b');
-    expect(array[array.length - 2]).toBe('a');
-  });
+    for (var i = 0; i < expected.length - 1; i++)
+      expect(hooray[i]).toBe(expected[i]);
 
-  it('should return undefined when an empty array is passed', function() {
-    var array = [];
-
-    expect(pop(array)).toBe(undefined);
+    expect(hooray.pop()).toBe('c');
+    expect(hooray[Object.keys(hooray)[0]]).toBe('a');
+    expect(hooray[Object.keys(hooray)[1]]).toBe('b');
+    expect(hooray[Object.keys(hooray)[2]]).not.toBe('c');
   });
 
   it('should modify the original array', function() {
-    var array = ['a', 'b', 'c'];
-    pop(array);
+    var hooray = new Hooray('a', 'b', 'c');
+    hooray.pop();
+    var expected = ['a', 'b'];
 
-    expect(array.toString()).toBe('a,b');
+    expect(hooray.length).toBe(expected.length);
+    expect(hooray[hooray.length - 1]).not.toBe('c');
   });
 
-  it('should throw an error when others types different to array are passed', function() {
-    var string = 'hello';
-    var number = 1;
+  it('should return undefined when an empty array is passed', function() {
+    var hooray = new Hooray();
+    var result = hooray.pop();
 
-    expect(function() { pop(string); }).toThrowError(TypeError, 'hello is not an array');
-    expect(function() { pop(number); }).toThrowError(TypeError, '1 is not an array');
-  });
-  it('should fail on undefined array', function() {
-    var array;
-
-    expect(function() { forEach(array); }).toThrowError(TypeError, 'undefined is not an array');
+    expect(result).toBe(undefined);
   });
 });

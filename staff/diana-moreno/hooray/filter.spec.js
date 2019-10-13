@@ -2,7 +2,7 @@ describe('filter', function() {
   it('should work correctly filtering the values', function() {
     var hooray = new Hooray(1, 2, 3, 4);
     var fn = function(x) { return x > 2; };
-    var expected = [3, 4]
+    var expected = [3, 4];
     var result = hooray.filter(fn);
 
     expect(result).toEqual(expected);
@@ -12,7 +12,7 @@ describe('filter', function() {
     function() {
       var hooray = new Hooray();
       var fn = function(x) { return x * 2; };
-      var result = hooray.filter(fn)
+      var result = hooray.filter(fn);
 
       expect(result.length).toBe(0);
     });
@@ -34,4 +34,4 @@ describe('filter', function() {
     expect(function() { hooray.filter(true); }).toThrowError(TypeError, 'true is not a function');
     expect(function() { hooray.filter(1); }).toThrowError(TypeError, '1 is not a function');
   });
-})
+});

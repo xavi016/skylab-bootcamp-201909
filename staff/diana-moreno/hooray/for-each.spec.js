@@ -3,7 +3,6 @@ describe('forEach', function() {
     var hooray = new Hooray(1, 2, 3);
     var result = 0;
     var add = function(number) { result += number; };
-
     hooray.forEach(add);
 
     expect(result).toBe(6);
@@ -13,7 +12,6 @@ describe('forEach', function() {
     var hooray = new Hooray(1, 2, 3);
     var result = '';
     var concatenate = function(number) { result += number; };
-
     hooray.forEach(concatenate);
 
     expect(result).toBe('123');
@@ -23,28 +21,26 @@ describe('forEach', function() {
     var hooray = new Hooray(1, 2, 3);
     var result = [];
     var multiply = function(number, index) { result[index] = number * 10; };
-
     hooray.forEach(multiply);
 
     expect(result.length).toBe(hooray.length);
-
     for (var i = 0; i < result.length; i++)
       expect(result[i]).toBe(hooray[i] * 10);
   });
 
   it('should not modify the original array', function() {
-    var hooray = new Hooray(1, 2, 3)
+    var hooray = new Hooray(1, 2, 3);
     var expected = [1, 2, 3];
     var result = 0;
     var add = function(number) { result += number; };
+    hooray.forEach(add);
 
     for (var i = 0; i < expected.length; i++)
       expect(hooray[i]).toBe(expected[i]);
   });
 
   it('should return undefined on an empty array received', function() {
-    var hooray = new Hooray(6, 7, 8, 9, 10)
-    var array = [];
+    var hooray = new Hooray(6, 7, 8, 9, 10);
     var result = 0;
     var add = function(number) { result += number; };
 

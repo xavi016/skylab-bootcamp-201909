@@ -27,7 +27,7 @@ describe('every', function() {
   it('should not modify the original array', function() {
     var hooray = new Hooray(6, 7, 8, 9, 10);
     var expected = [6, 7, 8, 9, 10];
-    var fn = function(x) { x > 5; };
+    var fn = function(x) { return x > 5; };
     hooray.every(fn);
 
     expect(hooray.length).toBe(expected.length);
@@ -38,7 +38,7 @@ describe('every', function() {
 
   it('should return true on empty array received', function() {
     var hooray = new Hooray();
-    var fn = function(x) { x > 5; };
+    var fn = function(x) { return x > 5; };
 
     expect(hooray.every(fn)).toBe(true);
   });
