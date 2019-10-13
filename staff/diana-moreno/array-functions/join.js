@@ -15,4 +15,4 @@ function join(array, separator) {
     else string += (separator + '') + arguments[0][i];
   }
   return string;
-}
+};

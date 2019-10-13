@@ -64,10 +64,10 @@ describe('sort', function() {
   });
 
   it('should fail on different type to array passed', function() {
-    var fn = function(a, b) { return b - a };
+    var fn = function(a, b) { return b - a; };
 
     expect(function() { sort('hello'); }).toThrowError(TypeError, 'hello is not an array');
     expect(function() { sort(1, fn); }).toThrowError(TypeError, '1 is not an array');
     expect(function() { sort(true, fn); }).toThrowError(TypeError, 'true is not an array');
   });
-})
+});

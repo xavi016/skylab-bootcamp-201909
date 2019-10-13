@@ -3,7 +3,7 @@ describe('fill', function() {
   it('should fill the array with the item', function() {
     var array = [1, 2, 3];
     var item = 'a';
-    var expected = ['a', 'a', 'a']
+    var expected = ['a', 'a', 'a'];
     fill(array, item);
 
     expect(array).toEqual(expected);
@@ -12,7 +12,7 @@ describe('fill', function() {
   it('should modify the original array', function() {
     var array = [1, 2, 3];
     var item = 'a';
-    var _expected = ['a', 'a', 'a']
+    var _expected = ['a', 'a', 'a'];
     fill(array, item);
 
     expect(array).toEqual(_expected);
@@ -38,7 +38,6 @@ describe('fill', function() {
 
     expect(array).toEqual(_expected);
     //expect(JSON.stringify(result)).toBe(JSON.stringify([1, 'a', 'a', 'a', 5]));
-    // Es mejor iterar. No utilizar .toString()
   });
 
   it('should fail on non-received array', function() {
@@ -49,7 +48,7 @@ describe('fill', function() {
 
   it('should return an empty array when an empty array is passed', function() {
     var array = [];
-    var expected = []
+    var expected = [];
 
     expect(fill(array, '1')).toEqual(expected);
   });
@@ -73,4 +72,4 @@ describe('fill', function() {
     expect(function() { fill(array, 'a', true); }).toThrowError(TypeError, 'index should be a number');
     expect(function() { fill(array, 'a', 1, 'hello'); }).toThrowError(TypeError, 'index should be a number');
   });
-})
+});

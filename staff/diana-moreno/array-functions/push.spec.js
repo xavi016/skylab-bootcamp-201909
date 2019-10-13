@@ -51,7 +51,7 @@ describe('push', function() {
   });
 
   it('should fail when others types different to array are passed', function() {
-    expect(function() { push('hello') }).toThrowError(TypeError, 'hello is not an array');
-    expect(function() { push(1) }).toThrowError(TypeError, '1 is not an array');
+    expect(function() { push('hello'); }).toThrowError(TypeError, 'hello is not an array');
+    expect(function() { push(1); }).toThrowError(TypeError, '1 is not an array');
   });
 });

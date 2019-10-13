@@ -25,16 +25,16 @@ describe('every', function() {
   });
 
   it('should throw an error when others types different to array are passed', function() {
-    var fn = function(x) { x > 5; };
+    var fn = function(x) { return x > 5; };
 
-    expect(function() { every('hello', fn) }).toThrowError(TypeError, 'hello is not an array');
+    expect(function() { every('hello', fn); }).toThrowError(TypeError, 'hello is not an array');
     expect(function() { every(1, fn) }).toThrowError(TypeError, '1 is not an array');
   });
 
   it('should not modify the original array', function() {
     var array = [6, 7, 8, 9, 10];
     var expected = [6, 7, 8, 9, 10];
-    var fn = function(x) { x > 5; };
+    var fn = function(x) { return x > 5; };
     every(array, fn);
 
     expect(array.length).toBe(expected.length);
@@ -43,14 +43,14 @@ describe('every', function() {
 
   it('should fail on undefined array', function() {
     var array;
-    var fn = function(x) { x > 5; };
+    var fn = function(x) { return x > 5; };
 
     expect(function() { every(array, fn); }).toThrowError(TypeError, 'undefined is not an array');
   });
 
   it('should return true on empty array received', function() {
     var array = [];
-    var fn = function(x) { x > 5; };
+    var fn = function(x) { return x > 5; };
 
     expect(every(array, fn)).toBe(true);
   });

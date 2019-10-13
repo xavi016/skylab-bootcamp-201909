@@ -6,27 +6,18 @@
  * @throws {TypeError}    If array is not an array
  */
 function unshift(array) {
-  let newArray = []
+  let newArray = [];
 
-  if(!(array instanceof Array)) throw TypeError(array + ' is not an array');
+  if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
 
-  for(var i = 1; i < arguments.length; i++)
-    newArray[i-1] = arguments[i];
+  for (var i = 1; i < arguments.length; i++)
+    newArray[i - 1] = arguments[i];
 
   for (var i = 0; i < array.length; i++)
     newArray[newArray.length] = array[i];
 
-  for(var i = 0; i < newArray.length; i++)
+  for (var i = 0; i < newArray.length; i++)
     array[i] = newArray[i];
 
   return array.length;
-}
-
-/*function unshift (array) {
- for (var i=((array.length-1)+(arguments.length-1)); i>0; i--) {
-    array[i]=array[i-(arguments.length-1)];
- }
- for (var i=0; i<(arguments.length-1); i++) {
-    array[i]=arguments[i+1];
- }
-}*/
+};

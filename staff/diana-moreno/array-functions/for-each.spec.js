@@ -40,7 +40,7 @@ describe('forEach', function() {
   });
 
   it('should fail on undefined array', function() {
-    var array; //= [1, 2, 3];
+    var array;
     var expression = console.log;
 
     expect(function() { forEach(array, expression); }).toThrowError(TypeError, 'undefined is not an array');
@@ -55,7 +55,7 @@ describe('forEach', function() {
 
   it('should fail on undefined expression', function() {
     var array = [1, 2, 3];
-    var expression; // = console.log;
+    var expression;
 
     expect(function() { forEach(array, expression); }).toThrowError(TypeError, 'undefined is not a function');
   });

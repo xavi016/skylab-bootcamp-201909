@@ -19,7 +19,7 @@ describe('reverse', function() {
 
   it('should return an empty array when an empty array is passed', function() {
     var array = [];
-    var expected = []
+    var expected = [];
 
     expect(reverse(array)).toEqual(expected);
   });

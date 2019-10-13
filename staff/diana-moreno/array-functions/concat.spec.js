@@ -1,7 +1,7 @@
 describe('concat', function() {
   it('should merge two arrays', function() {
     var array = [1, 2, 3];
-    var array2 = [4, 5, 6]
+    var array2 = [4, 5, 6];
     var result = concat(array, array2);
     var expected = [1, 2, 3, 4, 5, 6];
 
@@ -11,7 +11,7 @@ describe('concat', function() {
 
   it('should merge multiple arrays', function() {
     var array = [1, 2, 3];
-    var array2 = [4, 5, 6]
+    var array2 = [4, 5, 6];
     var array3 = [7, 8, 9];
     var array4 = [10, 11, 12];
     var result = concat(array, array2, array3, array4);
@@ -71,4 +71,4 @@ describe('concat', function() {
     expect(function() { concat(1, 1); }).toThrowError(TypeError, '1 is not an array');
     expect(function() { concat(true, false); }).toThrowError(TypeError, 'true is not an array');
   });
-})
+});

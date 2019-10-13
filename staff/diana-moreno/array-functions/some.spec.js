@@ -51,9 +51,9 @@ describe('some', function() {
   it('should fail on others types different to function are passed', function() {
     var array = [3, 7, 8, 9, 10];
 
-    expect(function() { some(array, [1, 2, 3]) }).toThrowError(TypeError, '1,2,3 is not a function');
-    expect(function() { some(array, 'hello') }).toThrowError(TypeError, 'hello is not a function');
-    expect(function() { some(array, 1) }).toThrowError(TypeError, '1 is not a function');
-    expect(function() { some(array, true) }).toThrowError(TypeError, 'true is not a function');
+    expect(function() { some(array, [1, 2, 3]); }).toThrowError(TypeError, '1,2,3 is not a function');
+    expect(function() { some(array, 'hello'); }).toThrowError(TypeError, 'hello is not a function');
+    expect(function() { some(array, 1); }).toThrowError(TypeError, '1 is not a function');
+    expect(function() { some(array, true); }).toThrowError(TypeError, 'true is not a function');
   });
 });

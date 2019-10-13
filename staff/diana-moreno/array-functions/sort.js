@@ -5,7 +5,7 @@
  * @return {Array}         Array sorted
  */
 function sort(array, fn) {
-  if (!fn) fn = function() { return 1 }
+  if (!fn) fn = function() { return 1 };
   if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
   if (!(fn instanceof Function)) throw TypeError(fn + ' is not a function');
 
@@ -33,5 +33,4 @@ function sort(array, fn) {
   };
 
   return array;
-}
-
+};

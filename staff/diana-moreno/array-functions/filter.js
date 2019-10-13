@@ -18,4 +18,4 @@ function filter(array, fn) {
   //counter++
 
   return newArray;
-}
+};

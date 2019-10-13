@@ -6,11 +6,11 @@
  * @throws {TypeError}    If array is not an array or function is not a function
  */
 function findIndex(array, fn) {
-  if (!(array instanceof Array)) throw TypeError(array + ' is not an array')
+  if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
   if (!(fn instanceof Function)) throw TypeError(fn + ' is not a function');
 
   for (let i = 0; i < array.length; i++)
     if (fn(array[i])) return i;
 
   return -1;
-}
+};

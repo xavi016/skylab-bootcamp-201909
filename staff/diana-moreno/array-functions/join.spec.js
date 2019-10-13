@@ -52,8 +52,8 @@ describe('join', function() {
 
   it('should fail on function passed as separator', function() {
     array = [];
-    const fn = function() { return 'fake'; }
+    const fn = function() { return 'fake'; };
 
     expect(function() { join(array, fn) }).toThrowError(TypeError, 'separator cannot be a function');
-  })
-})
+  });
+});

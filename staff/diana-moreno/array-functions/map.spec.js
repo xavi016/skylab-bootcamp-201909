@@ -7,13 +7,10 @@ describe('map', function() {
 
     var fn2 = function(x) { return x * 3; };
     var result2 = map(array, fn2);
-    var expected2 = [3, 6, 9, 12]
+    var expected2 = [3, 6, 9, 12];
 
-    expect(result).toEqual(expected)
-    expect(result2).toEqual(expected2)
-    /*    for (var i = 0; i < result.length; i++)
-          expect(result2[i]).toBe(array[i] * 3);
-    */
+    expect(result).toEqual(expected);
+    expect(result2).toEqual(expected2);
   });
 
   it('should not modify the original array', function() {
@@ -36,7 +33,7 @@ describe('map', function() {
   it('should fail on non-function expression', function() {
     var array = [1, 2, 3];
 
-    expect(function() { map(array, [1, 2]) }).toThrowError(TypeError, '1,2 is not a function');
+    expect(function() { map(array, [1, 2]); }).toThrowError(TypeError, '1,2 is not a function');
     expect(function() { map(array, true); }).toThrowError(TypeError, 'true is not a function');
     expect(function() { map(array, 1); }).toThrowError(TypeError, '1 is not a function');
   });
@@ -44,7 +41,7 @@ describe('map', function() {
   it('should fail on different type to array passed', function() {
     var fn = function(x) { return x * 2; };
 
-    expect(function() { map('hello', fn) }).toThrowError(TypeError, 'hello is not an array');
+    expect(function() { map('hello', fn); }).toThrowError(TypeError, 'hello is not an array');
     expect(function() { map(1, fn); }).toThrowError(TypeError, '1 is not an array');
     expect(function() { map(true, fn); }).toThrowError(TypeError, 'true is not an array');
   });
@@ -55,4 +52,4 @@ describe('map', function() {
 
     expect(function() { forEach(array, fn); }).toThrowError(TypeError, 'undefined is not an array');
   });
-})
+});

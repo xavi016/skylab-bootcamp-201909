@@ -11,4 +11,4 @@ function pop(array) {
   var lastElem = array[array.length - 1];
   array.length = array.length - 1;
   return lastElem;
-}
+};

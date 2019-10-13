@@ -19,8 +19,7 @@ function slice(array, indexIni, indexEnd) {
 
   for (var i = indexIni; i < indexEnd; i++) {
     newArray[counter] = array[i];
-    // newArray[i - indexIni] = array[i] // no hace falta declarar counter
     counter++;
   }
   return newArray;
-}
+};

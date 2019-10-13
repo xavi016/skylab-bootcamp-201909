@@ -7,10 +7,9 @@
  */
 function includes(array, item) {
   if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
-  if ((item instanceof Array) || (item instanceof Function)) throw TypeError(item + ' is not a number, boolean or a string');
 
   for (let i in array) {
     if (array[i] === item) return true;
   }
   return false;
-}
+};

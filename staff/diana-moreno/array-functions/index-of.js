@@ -13,6 +13,6 @@ function indexOf(array, item) {
     if (array[i] === item) return i;
 
   return -1;
-}
+};
 
 //versión segundo índice?

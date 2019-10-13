@@ -16,4 +16,4 @@ function map(array, fn) {
     newArray[i] = fn(array[i]);
 
   return newArray;
-}
+};

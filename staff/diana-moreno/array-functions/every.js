@@ -6,12 +6,12 @@
  * @throws {TypeError}    If array is not an array or function is not a function
  */
 function every(array, fn) {
-  if(!(array instanceof Array)) throw TypeError(array + ' is not an array');
-  if(!(fn instanceof Function)) throw TypeError(fn + ' is not a function');
+  if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
+  if (!(fn instanceof Function)) throw TypeError(fn + ' is not a function');
 
   let counter = 0;
-  for(let i in array)
-    if(fn(array[i])) counter++;
+  for (let i in array)
+    if (fn(array[i])) counter++;
 
   return counter === array.length ? true : false;
-}
+};

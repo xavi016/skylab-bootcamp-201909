@@ -41,8 +41,8 @@ describe('unshift', function() {
 
   it('should fail when others types different to array are passed', function() {
 
-    expect(function() { unshift('hello') }).toThrowError(TypeError, 'hello is not an array');
-    expect(function() { unshift(1) }).toThrowError(TypeError, '1 is not an array');
+    expect(function() { unshift('hello'); }).toThrowError(TypeError, 'hello is not an array');
+    expect(function() { unshift(1); }).toThrowError(TypeError, '1 is not an array');
   });
 
   it('should fail on undefined array', function() {

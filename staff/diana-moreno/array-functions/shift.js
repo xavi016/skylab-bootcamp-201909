@@ -16,4 +16,4 @@ function shift(array) {
   array.length = array.length - 1;
 
   return firstElem;
-}
+};

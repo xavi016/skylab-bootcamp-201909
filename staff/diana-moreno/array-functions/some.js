@@ -6,11 +6,11 @@
  * @throws {TypeError} If array is not an array, or function is not a function
  */
 function some(array, fn) {
- if(!(array instanceof Array)) throw TypeError(array + ' is not an array')
- if(!(fn instanceof Function)) throw TypeError(fn + ' is not a function');
+  if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
+  if (!(fn instanceof Function)) throw TypeError(fn + ' is not a function');
 
-  for(let i in array) {
-    if(fn(array[i])) return true;
+  for (let i in array) {
+    if (fn(array[i])) return true;
   }
   return false;
-}
+};
