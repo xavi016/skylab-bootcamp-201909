@@ -11,6 +11,7 @@
 
 body {
   margin: 0;
+  font-family: "Voltaire", sans-serif;
 }
 
 .header {
@@ -109,34 +110,169 @@ body {
   margin-left: -1em;
 }
 
-.season__fall {
-  position: relative;
-  height: 595px;
+.renovacion {
+  padding: 0.5rem;
 }
-.season__promotion {
+.renovacion__title {
+  text-align: center;
+  margin: 5px;
+}
+.renovacion__text {
+  text-align: center;
+  margin: 5px;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+.product__img {
+  max-width: 100px;
+}
+.product__title {
+  font-size: 1rem;
+}
+.product__description {
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.banner__container {
+  position: relative;
+}
+.banner__container .season__promotion {
   position: absolute;
   left: 15vw;
-  bottom: 5vh;
+  bottom: 6vh;
   color: #fff;
 }
-.season__promotion .promotion__title {
+.banner__container .season__promotion .promotion__title {
   display: inline-block;
   background-color: #2c2926;
   font-size: 1.98rem;
   margin: 0;
-  clear: both;
 }
-.season__promotion .promotion__text {
+.banner__container .season__promotion .promotion__text {
   display: inline-block;
   margin: 0;
   background-color: #2c2926;
   font-size: 1.12rem;
-  clear: both;
 }
-.season__img {
-  position: absolute;
-  width: 100vw;
-  z-index: -1;
+.banner__container .season__img {
+  width: 100%;
+}
+
+.result {
+  padding: 0.5rem;
+}
+.result__title {
+  font-size: 1rem;
+}
+.result__button {
+  background-color: #fff;
+  border: 2px solid #020202;
+  padding: 0.34rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  width: 100%;
+}
+.result__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0.5rem;
+  gap: 1rem;
+}
+.result__img {
+  max-width: 180px;
+}
+
+.item__title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+.item__price {
+  margin: 0;
+}
+
+.cart {
+  padding: 0.5rem;
+}
+.cart__title {
+  marging-bottom: 0.5rem;
+  color: #2C2926;
+  font-weight: 400;
+  font-size: 1rem;
+}
+.cart__code {
+  text-decoration: underline;
+}
+.cart__button {
+  display: block;
+  text-align: center;
+  padding: 0.69rem 1.5rem;
+  background-color: #2C2926;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  border-color: #2C2926;
+}
+.cart__expenses {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #766e66;
+}
+.cart__shipping {
+  text-align: left;
+}
+.cart__free-shipping {
+  text-align: right;
+  color: #0cc459;
+}
+.cart__total {
+  text-align: left;
+  color: #000;
+}
+.cart__total-price {
+  text-align: right;
+  color: #000;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.card__img {
+  max-width: 180px;
+}
+.card .product-name {
+  font-size: 1rem;
+}
+.card .product-size {
+  margin: 0;
+}
+.card .product-code {
+  font-size: 0.5rem;
+}
+.card .produnt-count {
+  margin: 0;
+}
+.card .product-pricing {
+  margin: 0;
+  width: 100%;
+  text-align: right;
+}
+
+.divide {
+  display: flex;
+  align-items: center;
 }
 
 .footer__top {
@@ -236,6 +372,38 @@ body {
 .form-control .label {
   font-weight: bold;
   margin-right: 1rem;
+}
+
+.relative {
+  position: relative;
+}
+
+.like {
+  display: flex;
+  position: absolute;
+  color: #807871;
+  background-color: #fff;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 50%;
+  padding: 0.5rem;
+  text-decoration: none;
+  border: 1px solid;
+}
+
+.eslogan {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #766e66;
+  font-weight: 400;
+}
+
+.img {
+  width: 100%;
+}
+
+.small-text {
+  font-size: 0.6rem;
 }
 
 /*# sourceMappingURL=style.css.map */
