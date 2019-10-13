@@ -33,8 +33,8 @@ describe('some', function () {
         //throw Error('hola mundo');
 
         expect(function () { some(array, undefined); }).toThrowError(TypeError, 'undefined is not a function');
-        expect(function() { some(array, true); }).toThrowError('true is not a function');
-        expect(function() { some(array, 1); }).toThrowError('1 is not a function');
+        expect(function() { some(array, true); }).toThrowError(TypeError, 'true is not a function');
+        expect(function() { some(array, 1); }).toThrowError(TypeError, '1 is not a function');
     });
 });
 

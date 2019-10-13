@@ -15,4 +15,4 @@ function some(array, expression) {
         if (boleana) return true;        
     }
     return false;
-}
+};

@@ -33,8 +33,8 @@ describe('find', function () {
         //throw Error('hola mundo');
 
         expect(function () { find(array, undefined); }).toThrowError(TypeError, 'undefined is not a function');
-        expect(function() { find(array, true); }).toThrowError('true is not a function');
-        expect(function() { find(array, 1); }).toThrowError('1 is not a function');
+        expect(function() { find(array, true); }).toThrowError(TypeError, 'true is not a function');
+        expect(function() { find(array, 1); }).toThrowError(TypeError, '1 is not a function');
     });
 });
 

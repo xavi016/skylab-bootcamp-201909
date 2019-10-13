@@ -1,5 +1,8 @@
 /**
  * 
+ * The first array element becomes the last, 
+ * and the last array element becomes the first.
+ * 
  * @param {*} array The array to reverse sort elements to. 
  */
 function reverse(array) { 	
@@ -16,4 +19,4 @@ function reverse(array) {
     }
 
     return array;
-}
+};

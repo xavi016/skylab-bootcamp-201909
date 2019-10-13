@@ -24,4 +24,4 @@ function unshift(array) {
         array[x] = newArray[x];
     }
     return array.length;
-}
+};

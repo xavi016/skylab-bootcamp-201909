@@ -18,4 +18,4 @@ function findIndex(array, expression) {
         }           
     }
     return result;
-}
+};
