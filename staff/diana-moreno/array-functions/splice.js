@@ -8,16 +8,17 @@
     If deleteCount is 0 or negative, no elements are removed. In this case, you should specify at least one new element (see below).
 * @param      {...any} items Optional:
     The elements to add to the array, beginning from start. If you do not specify any elements, splice() will only remove elements from the array.
-* @return {Array}       the array modified
+* @return {Array}       the deleted elements of the array
 * @throws {TypeError}    If array is not an array
  */
 function splice(array) {
   if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
+  if (array.length === 0) return [];
 
   var array = arguments[0];
   var indexIni = arguments[1];
   var deleteCount = arguments[2] || arguments[2] === 0 ? arguments[2] : array.length - indexIni;
-  if(deleteCount > array.length) deleteCount = array.length - indexIni;
+  if (deleteCount > array.length) deleteCount = array.length - indexIni;
   var items = [];
 
   if (arguments[3]) {
@@ -25,34 +26,33 @@ function splice(array) {
       items[i - 3] = arguments[i];
   };
   var newArray = [];
+  var deleted = [];
 
-  if (items.length <= 0) {
-    var counter = 0;
-    for (var i = indexIni; i < indexIni + deleteCount; i++) {
-      newArray[counter] = array[i];
-      counter++;
-    };
+  for (var i = 0; i < indexIni; i++) {
+    newArray[i] = array[i];
+  };
+  for (let i = 0; i < items.length; i++) {
+    newArray[newArray.length] = items[i];
+  };
+  var counter = 0;
+  for (var i = indexIni; i < indexIni + deleteCount; i++) {
+    deleted[counter++] = array[i];
+  }
+  for (var i = indexIni + deleteCount; i < array.length; i++) {
+    newArray[newArray.length] = array[i];
   };
 
-  if (items.length > 0) {
-    for (var i = 0; i < indexIni; i++) {
-      newArray[i] = array[i];
-    };
-    for (let i = 0; i < items.length; i++) {
-      newArray[newArray.length] = items[i];
-    };
-    for (var i = indexIni + deleteCount; i < array.length; i++) {
-      newArray[newArray.length] = array[i];
-    };
-  };
-
-  // modify the original array:
-  array.length = newArray.length;
+  // modify the original array
+  // add the new elements
   for (let i = 0; i < newArray.length; i++) {
     array[i] = newArray[i];
   };
-  return array;
+  // delete the last elements
+  for (let i = newArray.length; i < array.length; i++) {
+    delete array[i];
+  };
+  array.length = newArray.length;
+  return deleted;
 };
 
 // the negative cases are missing
-//
