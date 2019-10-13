@@ -48,8 +48,8 @@ Hooray.prototype.push = function () {
  */
 
 Hooray.prototype.slice = function (begin, end) {
-    if (!this) throw Error('is not defined');
-    if (!(this instanceof Hooray)) throw Error('Is not a Hooray');
+   // if (!this) throw Error("undefined is not defined");
+    if (!(this instanceof Hooray)) throw Error("is not a Hooray");
 
     //if (typeof end === 'undefined') end = hooray.length;
 
@@ -182,9 +182,9 @@ Hooray.prototype.map = function (expression) {
  */ 
 
 
-function checkCondition(item) {
-    return item > 5
-}
+// function checkCondition(item) {
+//     return item > 5
+// }
 
 Hooray.prototype.some = function(expression) {  
     if (typeof expression !== "function") throw new TypeError(expression + " is not a function");
@@ -197,7 +197,112 @@ Hooray.prototype.some = function(expression) {
     return false
 };
 
+/**
+ * Fills with an input from an start index to and end. 
+ * 
+ * @param {Array} title The test suite title
+ * @param {Expression} expression The tests to be run
+ */
 
+Hooray.prototype.fill = function(newItem){
+	var start = 0;
+	var end = this.length;
+	
+	switch(arguments.length){
+	  case 2:
+		start = arguments[1];
+		break;
+	  case 3:
+		start = arguments[1];
+		end = arguments[2];
+		break;
+	  default:
+		  if (arguments.length < 1 ) newItem = undefined;
+		break;
+	}
+
+	for(var i = start; i < end; i++){
+		this[i] = newItem;
+	  }  
+	  
+  };
+
+ /**
+ * Checks if all the elements in the array pass the condition implemented by the given function
+ * 
+ * @param {Array} array The array to evaluate elements to the condition given 
+ * 
+ * @param {Function} expression The expression to evaluate in each item of the array.
+ * 
+ * @returns {boolean} returns true if all the elements in the array pass the condition; otherwise, false.
+ * 
+ */
+
+Hooray.prototype.every = function (expression) {
+	if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+	
+    for (let i = 0; i < this.length; i++) {
+        if (!expression(this[i])) return false;
+    }
+    return true;
+};
+
+/**
+ * It shows you all the items merged using a string value that is given at the beginning.
+ * If no value is given, then the function gives you ",".
+ * 
+ * @param {Array} array 
+ * @param {String} String value you give to merge the items
+ */
+
+Hooray.prototype.join = function(hongda){
+
+    if(hongda === undefined)
+        hongda =',';
+    result = '';
+    for (var i = 0; i < this.length; i++) {
+        if (i === this.length - 1)
+            result += this[i];
+        else
+            result +=this[i] + hongda;
+	} 
+    return result;
+}
+
+/**
+ * Look for an element & returns the first index (if not found > return -1)
+ * 
+ * @param {array} The array to be searched with element
+ * @param {Function} expression The expression to evaluate in each item of the array.
+ * @param {item} item what you want to check inside the array 
+ */
+
+// Hooray.prototype.indexOf = function(value, startIndex){
+    if (!(this instanceof Hooray)) throw TypeError(this + " is not an array");
+    if (!(this instanceof Hooray)) throw TypeError(null + " is not an array");
+    if (arguments.length > 3) throw Error('too many arguments');
+//     !startIndex ? startIndex = 0 : parseInt(startIndex);
+ 
+//     for (var i = startIndex; i < this.length; i++) {
+//      if (this[i] === value) return i;
+//    }
+//    return -1;
+//  }
+Hooray.prototype.indexOf = function(expression,item){
+//     // if (!(this instanceof Hooray)) throw TypeError(this + " is not an array");
+//     // if (!(this instanceof Hooray)) throw TypeError(null + " is not an array");
+    for (var i = 0; i < this.length; i++){
+        if (expression(this[i],item)){
+            return i
+        }
+    }
+    return -1
+};
+
+//    function findNumber(itemHooray,item){
+//    return itemHooray === item
+// };
+    
 
 /**
  * DESCRIPTION DE SPLICE AQUÍ!!!!!!!!!!!!!!

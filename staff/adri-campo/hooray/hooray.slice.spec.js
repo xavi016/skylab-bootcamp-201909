@@ -5,7 +5,7 @@ describe('Hooray.prototype.slice', function() {
 
         expect(result).not.toBe(numbers);
         expect(numbers).toContain(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        expect(result).toContain(4,5,6,7);
+        expect(result).toContain(4,5,6);
     
     }); 
 
@@ -65,6 +65,17 @@ describe('Hooray.prototype.slice', function() {
         expect(result).not.toBe(numbers);
         expect(numbers).toContain(1, 2, 3, 4, 5, 6, 7, 8, 9);
         expect(result.length).toBe(0);
+
+    });
+
+    // ERRORS 
+
+    it("should return expression is not a function", function() {
+        var hoorayNumbers = (1,2,3);
+        var checkCondition;
+
+
+        expect(function() { hoorayNumbers.slice(checkCondition); }).toThrowError(TypeError, "hoorayNumbers.slice is not a function");
 
     });
 
