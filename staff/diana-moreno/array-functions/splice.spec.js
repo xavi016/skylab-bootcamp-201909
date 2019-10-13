@@ -21,6 +21,30 @@ describe('splice', function() {
     expect(nums).toEqual(expected);
   });
 
+  it('should return an empty array if indexIni is longer than the array length', function() {
+    var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    var result = splice(nums, 20);
+    var expected = [];
+
+    expect(result).toEqual(nums);
+    expect(result).toBeInstanceOf(Array);
+    expect(result.length).toBe(nums.length);
+    expect(result.length).toBe(expected.length);
+    expect(result).toEqual(expected);
+  });
+
+  it('should set deleteCount to array length if the provided value is longer', function() {
+    var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    var result = splice(nums, 3, 20);
+    var expected = [4, 5, 6, 7, 8, 9, 10];
+
+    expect(result).toEqual(nums);
+    expect(result).toBeInstanceOf(Array);
+    expect(result.length).toBe(7);
+    expect(result.length).toBe(expected.length);
+    expect(result).toEqual(expected);
+  })
+
   it('should cut the array starting at indexIni, if not end given, the end is the final of the array', function() {
     var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     var result = splice(nums, 4);
@@ -71,7 +95,7 @@ describe('splice', function() {
 
   it('it should return en empty array if receives an empty array', function() {
     var empty = [];
-    var result = splice(array, 2);
+    var result = splice(empty, 2);
     var expected = [];
 
     expect(result).toEqual(empty);

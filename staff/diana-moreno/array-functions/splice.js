@@ -1,9 +1,23 @@
+/**
+ * changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+ * @param  {Array} array The array to modify
+ * @param  {Number} indexIni Optional: index to start to cut
+* @param  {Number} deleteCount Optional:
+    An integer indicating the number of elements in the array to remove from start.
+    If deleteCount is omitted, or if its value is equal to or larger than array.length - start (that is, if it is equal to or greater than the number of elements left in the array, starting at start), then all the elements from start to the end of the array will be deleted.
+    If deleteCount is 0 or negative, no elements are removed. In this case, you should specify at least one new element (see below).
+* @param      {...any} items Optional:
+    The elements to add to the array, beginning from start. If you do not specify any elements, splice() will only remove elements from the array.
+* @return {Array}       the array modified
+* @throws {TypeError}    If array is not an array
+ */
 function splice(array) {
   if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
 
   var array = arguments[0];
   var indexIni = arguments[1];
   var deleteCount = arguments[2] || arguments[2] === 0 ? arguments[2] : array.length - indexIni;
+  if(deleteCount > array.length) deleteCount = array.length - indexIni;
   var items = [];
 
   if (arguments[3]) {
@@ -39,3 +53,6 @@ function splice(array) {
   };
   return array;
 };
+
+// the negative cases are missing
+//
