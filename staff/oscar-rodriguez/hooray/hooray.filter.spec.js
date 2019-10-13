@@ -39,9 +39,9 @@ describe('Hooray.prototype.filter', function () {
 
         var hooray = new Hooray (2,4,6);
 
-        expect (function () { hooray.map(2)}).toThrowError(TypeError,'2 is not a function');
-        expect (function () { hooray.map("a")}).toThrowError(TypeError,'a is not a function');
-        expect (function () { hooray.map()}).toThrowError(TypeError,'undefined is not a function');
+        expect (function () { hooray.filter(2)}).toThrowError(TypeError,'2 is not a function');
+        expect (function () { hooray.filter("a")}).toThrowError(TypeError,'a is not a function');
+        expect (function () { hooray.filter()}).toThrowError(TypeError,'undefined is not a function');
 
     })
 })
