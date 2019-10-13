@@ -52,24 +52,14 @@ describe ("some", function() {
     });
 
 
-
-
 // ERRORS
 
-// it('Should fail on NULL array', function () {
-//     var arrayNumbers = null;
+    it("should return expression is not a function", function() {
+        var arrayNumbers = [1,2,3];
 
-//     function checkCondition(item) {
-//         return item > 55
-//     }
-
-//     var result = some(arrayNumbers, checkCondition);
-
-//     expect(function() { result ; }).toThrowError("Cannot read property 'length' of " + null);
-
-// });
-
-
+        expect(function () { some(arrayNumbers, undefined); }).toThrowError(TypeError, "undefined is not a function");
+        
+    });
 
 
 });

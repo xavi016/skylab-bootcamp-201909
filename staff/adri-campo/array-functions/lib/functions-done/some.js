@@ -16,7 +16,7 @@ function checkCondition(item) {
 }
 
 function some(array, expression) {  
-    // if (!(array instanceof Array)) throw TypeError(null + " is not an array");
+    if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
 
     for (i=0; i< array.length; i++){
         if (expression(array[i])){
