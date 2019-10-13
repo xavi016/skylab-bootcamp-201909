@@ -42,3 +42,32 @@ Hooray.prototype.every = function (expression) {
         }
     } return true;
 }
+
+Hooray.prototype.fill = function(item) {
+    if (typeof item === undefined) throw ReferenceError (item + 'is not defined')
+    var start = arguments.length > 1 ? arguments[1] : 0;
+    var end = arguments.length > 2 ? arguments[2] : this.length;
+
+    start = start < 0 ? this.length + start : start
+
+    for (var i = start; i < end; i++) {
+        this[i] = item;
+    } return this;
+}
+
+Hooray.prototype.pop = function (){
+    var a = this[this.length - 1];
+    this.length -= 1;
+    return a;
+}
+
+Hooray.prototype.map = function (expression) {
+    if (typeof expression !== 'function') throw TypeError(expression + 'is not a function');
+
+    var hooray2 = new Hooray();
+    for (var i = 0; i < this.length; i++) {
+        hooray2[i] = expression(this[i]);
+    } 
+    hooray2.length = this.length;
+    return hooray2;
+}

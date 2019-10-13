@@ -1,4 +1,4 @@
-describe('hooray.every', function () {
+describe('Hooray.prototype.every', function () {
     it('should succeed if every hooray element is > 10', function () {
         var hooray = new Hooray(1, 2, 3, 10);
         var majorTen = function (x) { return x > 10 };
