@@ -7,7 +7,13 @@
  */
 
 function pop(array) { 
+	if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
+
 	var itemErased = array[array.length -1];
-    array.length = array.length -1;
-	return itemErased;
+	if(array.length > 0) {
+		array.length = array.length -1;
+		return itemErased;
+	} 
+	return undefined;
+
 }

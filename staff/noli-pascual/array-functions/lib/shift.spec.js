@@ -3,7 +3,7 @@ describe('shift', function () {
     it('should eliminate first item of the array given and return it', function() {
         var array = ['Pol', 'Jordi', 'Noa'];
 
-        var result = array.shift();
+        var result = shift(array);
 
         expect(result).toBe('Pol');
 
