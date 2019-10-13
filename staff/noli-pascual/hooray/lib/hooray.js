@@ -58,34 +58,37 @@ Hooray.prototype.map = function(expression) {
 }
 
 /**
- * Concat array with arguments and return a new array adding arguments.
+ * Concat array with arguments and return a new array with all array elements  + arguments
  * 
- * @param {Array} array The array to concatenate elements to newArray
+ * @param {*} array The array to concatenate elements to newArray
  * 
- * @returns {Array} newArray contains: array + arguments.
+ * 
+ * @returns {*} newArray contains: array + arguments.
  * 
  */
 Hooray.prototype.concat = function() { 	
-	var hooray = new Hooray();	
+	var hoorayAux = new Hooray();	
 	
-    for (var i = 0; i < this.length; i++){
-        hooray[i] = this[i];
+    for (var y = 0; y < this.length; y++){
+        hoorayAux[y] = this[y];
     }
 		
     for (var i = 0; i < arguments.length; i++) {
 		if (arguments[i] instanceof Array) {
 			for (var j = 0; j < arguments[i].length; j++){
-				hooray[i] = arguments[i][j];
-				++i
+				hoorayAux[y] = arguments[i][j];
+				++y
 			}
 		} else {
-			hooray[i] = arguments[i];
-			++i			
+			hoorayAux[y] = arguments[i];
+			++y			
 		}
 	}      
-	hooray.length = i;
-    return hooray;
+	hoorayAux.length = y;
+    return hoorayAux;
+    
 };
+
 
 
 /**
@@ -258,8 +261,6 @@ Hooray.prototype.splice = function(start, delCount) {
  * 
  */
 
-
-
 Hooray.prototype.join = function(separator){
 
     if(separator === undefined)
@@ -383,4 +384,51 @@ Hooray.prototype.reverse = function() {
       }
 
     return this;
+};
+
+/**
+ * FIND
+ *
+ * @param {String} elem elemento que queremos buscar
+ */
+
+
+Hooray.prototype.find = function(elem){
+   
+    
+    if ((typeof elem ==='undefined' )) throw TypeError (elem + ' the element is undefined');
+    
+    var found=false;
+ 
+    for(var i = 0; i < this.length; i++){
+
+       if (this[i]===elem) {
+          found = true;
+          break;
+       }
+    }
+    return found;
+ }
+ 
+
+/**
+ * 
+ * SOME 
+ *
+ * @param {Array} array 
+ * @param {Function} expression we use to test the elements. 
+ * 
+ * @returns {boolean} true if any of the elements match with the condition or false if any of them match.
+ *  
+ */ 
+
+Hooray.prototype.some = function(expression) {  
+    if (typeof expression !== "function") throw new TypeError(expression + " is not a function");
+
+    for (i=0; i< this.length; i++){
+        if (expression(this[i])){
+            return true 
+        }
+    } 
+    return false
 };
