@@ -32,8 +32,6 @@ Hooray.prototype.forEach = function(expression) {
 
 Hooray.prototype.push = function() { 
 
-    //FALTAN LOS ERRORES!!!
-
 	for (var i = 0; i < arguments.length; i++)
 		this[this.length++] = arguments[i];
 
