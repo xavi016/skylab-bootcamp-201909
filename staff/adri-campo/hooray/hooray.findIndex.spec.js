@@ -38,8 +38,11 @@ describe('Hooray.prototype.findIndex', function () {
 
     it('should return -1 when there is no element that accomplish the expression', function () {
         var numbers = new Hooray(1, 2, 3);
-        var biggerThanFive = function (element) {return element > 5};
-        expect(numbers.findIndex(biggerThanFive)).toBe(-1);
+        function checkCondition(item) {
+            return item > 5
+        };
+        
+        expect(numbers.findIndex(checkCondition)).toBe(-1);
     });
 
 
@@ -50,5 +53,6 @@ describe('Hooray.prototype.findIndex', function () {
         expect(function() {numbers.findIndex(multiply)}).toThrowError(multiply + " is not a function");
 
     });
+
     
 });

@@ -1,4 +1,4 @@
-describe('map', function() {
+describe('hooray.prototype.map', function() {
     
     it("Should return an array affected by the function we have given", function() {
         function modify (item) {

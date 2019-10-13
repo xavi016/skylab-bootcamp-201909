@@ -5,7 +5,7 @@ describe('Hooray.prototype.slice', function() {
 
         expect(result).not.toBe(numbers);
         expect(numbers).toContain(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        expect(result).toContain(4,5,6);
+        expect(result).toContain(4,5,6,7);
     
     }); 
 

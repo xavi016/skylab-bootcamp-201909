@@ -1,5 +1,5 @@
 function Hooray() {
-    for (var i = 0; i  < arguments.length; i++)
+    for (var i = 0; i < arguments.length; i++)
         this[i] = arguments[i];
 
     this.length = arguments.length;
@@ -12,12 +12,12 @@ function Hooray() {
  * 
  * @throws {TypeError} If expression is not a function.
  */
-Hooray.prototype.forEach = function(expression) {
-	if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+Hooray.prototype.forEach = function (expression) {
+    if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
 
-	//throw Error('🤡');
-	for (var i = 0; i < this.length; i++) 
-		expression(this[i], i, this);
+    //throw Error('🤡');
+    for (var i = 0; i < this.length; i++)
+        expression(this[i], i, this);
 };
 
 /**
@@ -27,11 +27,11 @@ Hooray.prototype.forEach = function(expression) {
  * 
  * @returns {number} The new lenth of the hooray.
  */
-Hooray.prototype.push = function() { 
-	for (var i = 0; i < arguments.length; i++)
-		this[this.length++] = arguments[i];
+Hooray.prototype.push = function () {
+    for (var i = 0; i < arguments.length; i++)
+        this[this.length++] = arguments[i];
 
-	return this.length;
+    return this.length;
 };
 
 
@@ -47,24 +47,24 @@ Hooray.prototype.push = function() {
  * @returns {Hooray} New hooray with the extracted values
  */
 
- Hooray.prototype.slice = function(begin, end) {
-	if (!this) throw Error( 'is not defined'); 
-	if (!(this instanceof Hooray)) throw Error( 'Is not a Hooray');
+Hooray.prototype.slice = function (begin, end) {
+    if (!this) throw Error('is not defined');
+    if (!(this instanceof Hooray)) throw Error('Is not a Hooray');
 
     //if (typeof end === 'undefined') end = hooray.length;
 
     var result = []; // {}; // WTF?
 
     begin = begin || 0;
-    begin = begin < 0? this.length + begin : begin;
+    begin = begin < 0 ? this.length + begin : begin;
     end = end || this.length;
-    end = end < 0? this.length + end : end;
+    end = end < 0 ? this.length + end : end;
 
     for (var i = begin; i < end; i++)
         result[i - begin] = this[i];
 
     //result.length = end - begin; // WTF?
-    
+
     return result;
 }
 
@@ -75,14 +75,14 @@ Hooray.prototype.push = function() {
  * @returns {number} returns de last item deleted on the array
  */
 Hooray.prototype.pop = function () {
-    
-    if (this.length===0) return undefined;
 
-    var result = this[this.length-1];
-    this.length-=1;
-    
+    if (this.length === 0) return undefined;
+
+    var result = this[this.length - 1];
+    this.length--;
+
     return result;
-} 
+}
 
 
 /**
@@ -93,17 +93,17 @@ Hooray.prototype.pop = function () {
  * @returns {element} the index of the element found. 
  * */
 
-Hooray.prototype.findIndex = function(expression) { 
+Hooray.prototype.findIndex = function (expression) {
     if (!(this instanceof Hooray)) throw TypeError(this + " is not defined");
     if (!(expression instanceof Function)) throw TypeError(expression + " is not a function");
-        
-    for (let i = 0; i < this.length; i++){
-            if(expression(this[i])) {
-                return i;
-            }  
-        } 
-         return -1;  
+
+    for (let i = 0; i < this.length; i++) {
+        if (expression(this[i])) {
+            return i;
+        }
     }
+    return -1;
+}
 
 
 
@@ -125,16 +125,16 @@ Hooray.prototype.findIndex = function(expression) {
 
 Hooray.prototype.filter = function (expression) {
     if (!(expression instanceof Function)) throw TypeError(expression + " is not a function");
-   
+
     var newHooray = new Hooray;
-    for (i=0; i<this.length;i++){
-        if (expression(this[i])){
+    for (i = 0; i < this.length; i++) {
+        if (expression(this[i])) {
             newHooray[newHooray.length] = this[i];
             newHooray.length++
         }
-    } 
+    }
     return newHooray
-    
+
 };
 
 
@@ -151,7 +151,7 @@ Hooray.prototype.map = function (expression) {
 
     var newHooray = new Hooray;
 
-    for (var i = 0; i < this.length; i++){
+    for (var i = 0; i < this.length; i++) {
         newHooray[newHooray.length] = expression(this[i])
         newHooray.length++
     }
@@ -170,6 +170,36 @@ Hooray.prototype.map = function (expression) {
 
 
 /**
+ * 
+ * El método some() comprueba si al menos un elemento del array cumple con 
+ * la condición implementada por la función proporcionada.
+ *
+ * @param {Array} array 
+ * @param {Function} expression we use to test the elements. 
+ * 
+ * @returns {boolean} true if any of the elements match with the condition or false if any of them match.
+ *  
+ */ 
+
+
+function checkCondition(item) {
+    return item > 5
+}
+
+Hooray.prototype.some = function(expression) {  
+    if (typeof expression !== "function") throw new TypeError(expression + " is not a function");
+
+    for (i=0; i< this.length; i++){
+        if (expression(this[i])){
+            return true 
+        }
+    } 
+    return false
+};
+
+
+
+/**
  * DESCRIPTION DE SPLICE AQUÍ!!!!!!!!!!!!!!
  * 
  * 
@@ -177,7 +207,7 @@ Hooray.prototype.map = function (expression) {
  * 
  */
 
-Hooray.prototype.splice = function(start, delCount) { 
+Hooray.prototype.splice = function (start, delCount) {
     //if (typeof end === 'undefined') end = array.length;
     // if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
     var result = new Hooray;
@@ -186,45 +216,45 @@ Hooray.prototype.splice = function(start, delCount) {
     var arrPos = 0;
     var itemsLen;
     var items = [];
-    
-    if(typeof delCount === 'undefined'){
-        itemsLen = arguments.length-1;
+
+    if (typeof delCount === 'undefined') {
+        itemsLen = arguments.length - 1;
         var index = 1;
-    }else{
-        itemsLen = arguments.length-2
+    } else {
+        itemsLen = arguments.length - 2
         var index = 2;
     }
-    for(var y = 0; y<itemsLen; y++){
+    for (var y = 0; y < itemsLen; y++) {
         items[y] = arguments[index];
         index++;
     }
-    
-    var finalLength = this.length-delCount+itemsLen;
-    
+
+    var finalLength = this.length - delCount + itemsLen;
+
     // Deleted elements
     for (var i = 0; i < delCount; i++) {
-        result[i] = this[i+start];
+        result[i] = this[i + start];
     }
     while (x < finalLength) {
-        if(x === start){
-            for(var y =0; y<delCount; y++){
+        if (x === start) {
+            for (var y = 0; y < delCount; y++) {
                 arrPos++
             }
-            for(var y = 0; y<itemsLen; y++){
+            for (var y = 0; y < itemsLen; y++) {
                 newHooray[x] = items[y]
                 x++
             }
-        }else{
-            newHooray[x] = this[arrPos] 
+        } else {
+            newHooray[x] = this[arrPos]
             x++
             arrPos++
         }
     }
     this.length = newHooray.length
-    for(var i = 0; i<this.length;i++){
+    for (var i = 0; i < this.length; i++) {
         this[i] = newHooray[i]
     }
-    
+
     return result;
 };
 

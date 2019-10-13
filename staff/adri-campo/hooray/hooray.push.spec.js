@@ -21,4 +21,15 @@ describe('Hooray.prototype.push', function () {
         var chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
             expect(hooray).toContain('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k');
     });
+
+    it("should push empty spaces, null or undefined", function () {
+        var initialHooray = new Hooray(1,2,3);
+
+        expect(initialHooray.push("")).toEqual(4);
+        expect(initialHooray.push(null)).toEqual(5);
+        expect(initialHooray.push(undefined)).toEqual(6);
+
+    });
+
+
 });
