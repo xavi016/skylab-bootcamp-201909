@@ -1,53 +1,54 @@
-describe('Hooray.prototype.concat', function () {
-    it('should concatenate the array passed with hooray elements and create a new hooray', function () {
-        var hooray = new Hooray(1, 2, 3);
+describe ('Hooray.prototype.concat', function() {
 
-        var array = [4,5,6]
+    it ('should join two or more hoorays on a new hooray', function () {
 
-        var result = hooray.concat(array);
+        var hooray1 = new Hooray (1,2,2,4);
+        var hooray2 = new Hooray (5,6,7,8);
 
-        expect(result.length).toBe(6);
-        expect(hooray.length).toBe(3);
-        expect(result).not.toBe(hooray);
-        expect(result).toBeInstanceOf(Hooray);
+        var result = hooray1.concat (hooray2);
 
-        expect(result[0]).toBe(1);
-        expect(result[1]).toBe(2);
-        expect(result[2]).toBe(3);
-        expect(result[3]).toBe(4);
-        expect(result[4]).toBe(5);
-        expect(result[5]).toBe(6);
+        expect(result).toContain(1,2,2,4,5,6,7,8);
 
-        expect(hooray[0]).toBe(1);
-        expect(hooray[1]).toBe(2);
-        expect(hooray[2]).toBe(3);
-    });
+        expect (result.length).toBe(hooray1.length+hooray2.length);
+       
+    }) 
 
-    it('should concatenate the elements passed with hooray elements and create a new hooray', function () {
-        var hooray = new Hooray(1, 2, 3);
 
-        var array = [4,5,6]
+    it ('should join the calling hooray on a new hooray when no parameters defined', function () {
 
-        var result = hooray.concat(array,7,8,9);
+        var hooray1 = new Hooray (1,2,2,4);
+        
+        var result = hooray1.concat ();
 
-        expect(result.length).toBe(9);
-        expect(hooray.length).toBe(3);
-        expect(result).not.toBe(hooray);
-        expect(result).toBeInstanceOf(Hooray);
+        
+        expect(result).toEqual(hooray1);
 
-        expect(result[0]).toBe(1);
-        expect(result[1]).toBe(2);
-        expect(result[2]).toBe(3);
-        expect(result[3]).toBe(4);
-        expect(result[4]).toBe(5);
-        expect(result[5]).toBe(6);
-        expect(result[6]).toBe(7);
-        expect(result[7]).toBe(8);
-        expect(result[8]).toBe(9);
+        expect (result.length).toBe(hooray1.length);
+    })
 
-        expect(hooray[0]).toBe(1);
-        expect(hooray[1]).toBe(2);
-        expect(hooray[2]).toBe(3);
-    });
+    it ('should join the hoorays sent by parameter on a new hooray when the calling hooray is empty', function () {
 
-});
+        var hooray1 = new Hooray ();
+        var hooray2 = new Hooray (1,2,2,4);
+        
+        var result = hooray1.concat (hooray2);
+
+        expect(result).toEqual(hooray2);
+
+        expect (result.length).toBe(hooray1.length+hooray2.length);
+    })
+
+    it ('should concat to the returned hooray the parameters sent even they are not a hooray', function () {
+
+        var hooray1 = new Hooray (2,4,6);
+        var number = 3;
+        var string ="abc";
+        var result = hooray1.concat (number, string);
+
+        
+        expect(result).toContain(2,4,6,4,"abc");
+
+        expect (result.length).toBe(5);
+    })
+
+}) 
