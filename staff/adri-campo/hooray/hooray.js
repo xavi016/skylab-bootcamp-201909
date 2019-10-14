@@ -9,9 +9,9 @@ function Hooray() {
  * Iterates the current hooray and evaluates an expression on each item.
  * 
  * @param {Function} expression The expression to evaluate in each item of the hooray.
- * 
  * @throws {TypeError} If expression is not a function.
  */
+
 Hooray.prototype.forEach = function (expression) {
     if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
 
@@ -24,7 +24,6 @@ Hooray.prototype.forEach = function (expression) {
  * Pushes a variable number of items into this hooray.
  * 
  * @param {...any} item The item (or items) to push.
- * 
  * @returns {number} The new lenth of the hooray.
  */
 Hooray.prototype.push = function () {
@@ -39,11 +38,8 @@ Hooray.prototype.push = function () {
  * Copies a part of the hooray within a new hooray starting from beginning
  * to end (end not included). The original hooray will not be modified.
  *
- * 
  * @param {number} begin  Item for the start position
- * 
  * @param {number} end  Item for the end position
- * 
  * @returns {Hooray} New hooray with the extracted values
  */
 
@@ -66,14 +62,15 @@ Hooray.prototype.slice = function (begin, end) {
     //result.length = end - begin; // WTF?
 
     return result;
-}
+};
 
 
 /**
  * Deletes the last item of an array and returns de deleted item.
- *  
+ * @param {Hooray} hooray we want to test.
  * @returns {number} returns de last item deleted on the array
  */
+
 Hooray.prototype.pop = function () {
 
     if (this.length === 0) return undefined;
@@ -88,7 +85,7 @@ Hooray.prototype.pop = function () {
 /**
  * Find the first element that accomplish a condition and returns its index. 
  * 
- * @param {Array} array we want to test.
+ * @param {Hooray} hooray we want to test.
  * @param {Function} expression that contains the condition. 
  * @returns {element} the index of the element found. 
  * */
@@ -106,17 +103,12 @@ Hooray.prototype.findIndex = function (expression) {
 }
 
 
-
-
 /**
  * Create a new array with all the elements that accomplish the condition of the function given.
  * 
  * @param {Function} expression we use to test the elements. 
- * 
  * @returns {Array} newArr with the items of the first array that accomplished the test.
  */
-
-
 
 // function checkCondition (item){
 //     return item < 25
@@ -137,12 +129,11 @@ Hooray.prototype.filter = function (expression) {
 
 };
 
-
 /**
  * Removes the last element of an array, and returns that element. This method change the lenght of the array.
  * 
- * @param {Hooray} The hooray to pop the value from
- * @returns {Function} The value deleted from the expression 
+ * @param {Hooray} Hooray to pop the value from
+ * @returns {Function} expression we use to test the elements.
  * 
  */
 
@@ -159,7 +150,6 @@ Hooray.prototype.map = function (expression) {
 
 };
 
-
 // var arrayexample = [2,3,5,6];
 
 // function modify (item) {
@@ -168,23 +158,16 @@ Hooray.prototype.map = function (expression) {
 
 // console.log(map,modify);
 
-
 /**
  * 
- * El método some() comprueba si al menos un elemento del array cumple con 
- * la condición implementada por la función proporcionada.
+ * The function checks if at least there is one argument in the array that 
+ * accomplish the implemented condition for the function that we introduced. 
  *
- * @param {Array} array 
+ * @param {Hooray} hooray The hooray the some should evaluate
  * @param {Function} expression we use to test the elements. 
- * 
  * @returns {boolean} true if any of the elements match with the condition or false if any of them match.
  *  
  */ 
-
-
-// function checkCondition(item) {
-//     return item > 5
-// }
 
 Hooray.prototype.some = function(expression) {  
     if (typeof expression !== "function") throw new TypeError(expression + " is not a function");
@@ -231,9 +214,7 @@ Hooray.prototype.fill = function(newItem){
  * Checks if all the elements in the array pass the condition implemented by the given function
  * 
  * @param {Array} array The array to evaluate elements to the condition given 
- * 
  * @param {Function} expression The expression to evaluate in each item of the array.
- * 
  * @returns {boolean} returns true if all the elements in the array pass the condition; otherwise, false.
  * 
  */
@@ -246,6 +227,7 @@ Hooray.prototype.every = function (expression) {
     }
     return true;
 };
+
 
 /**
  * It shows you all the items merged using a string value that is given at the beginning.
@@ -277,89 +259,14 @@ Hooray.prototype.join = function(hongda){
  * @param {item} item what you want to check inside the array 
  */
 
-// Hooray.prototype.indexOf = function(value, startIndex){
-    if (!(this instanceof Hooray)) throw TypeError(this + " is not an array");
+Hooray.prototype.indexOf = function(value, startIndex){
+    // if (!(this instanceof Hooray)) throw TypeError(this + " is not an array");
     if (!(this instanceof Hooray)) throw TypeError(null + " is not an array");
     if (arguments.length > 3) throw Error('too many arguments');
-//     !startIndex ? startIndex = 0 : parseInt(startIndex);
+    !startIndex ? startIndex = 0 : parseInt(startIndex);
  
-//     for (var i = startIndex; i < this.length; i++) {
-//      if (this[i] === value) return i;
-//    }
-//    return -1;
-//  }
-Hooray.prototype.indexOf = function(expression,item){
-//     // if (!(this instanceof Hooray)) throw TypeError(this + " is not an array");
-//     // if (!(this instanceof Hooray)) throw TypeError(null + " is not an array");
-    for (var i = 0; i < this.length; i++){
-        if (expression(this[i],item)){
-            return i
-        }
-    }
-    return -1
-};
-
-//    function findNumber(itemHooray,item){
-//    return itemHooray === item
-// };
-    
-
-/**
- * DESCRIPTION DE SPLICE AQUÍ!!!!!!!!!!!!!!
- * 
- * 
- * @returns {number}
- * 
- */
-
-Hooray.prototype.splice = function (start, delCount) {
-    //if (typeof end === 'undefined') end = array.length;
-    // if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
-    var result = new Hooray;
-    var newHooray = [];
-    var x = 0;
-    var arrPos = 0;
-    var itemsLen;
-    var items = [];
-
-    if (typeof delCount === 'undefined') {
-        itemsLen = arguments.length - 1;
-        var index = 1;
-    } else {
-        itemsLen = arguments.length - 2
-        var index = 2;
-    }
-    for (var y = 0; y < itemsLen; y++) {
-        items[y] = arguments[index];
-        index++;
-    }
-
-    var finalLength = this.length - delCount + itemsLen;
-
-    // Deleted elements
-    for (var i = 0; i < delCount; i++) {
-        result[i] = this[i + start];
-    }
-    while (x < finalLength) {
-        if (x === start) {
-            for (var y = 0; y < delCount; y++) {
-                arrPos++
-            }
-            for (var y = 0; y < itemsLen; y++) {
-                newHooray[x] = items[y]
-                x++
-            }
-        } else {
-            newHooray[x] = this[arrPos]
-            x++
-            arrPos++
-        }
-    }
-    this.length = newHooray.length
-    for (var i = 0; i < this.length; i++) {
-        this[i] = newHooray[i]
-    }
-
-    return result;
-};
-
+    for (var i = startIndex; i < this.length; i++) {
+     if (this[i] === value) return i;
+   }
+   return -1;
+ };

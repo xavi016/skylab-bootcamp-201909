@@ -18,15 +18,21 @@ describe('hooray.prototype.map', function() {
 
     it("Should show undefined is not a function", function () {
         var numbers = new Hooray (5,10,20);
-        function modify (item) {
-            return item * 2
-        };
-
         expect(function() { numbers.map(); }).toThrowError("undefined is not a function");
-        expect(function() { numbers.map(false); }).toThrowError("false is not a function");
-        expect(function() { numbers.map(1); }).toThrowError("1 is not a function");
+       
 
     });
     
+    it("Should show undefined is not a function", function () {
+        var numbers = new Hooray (5,10,20);
+        expect(function() { numbers.map(false); }).toThrowError("false is not a function");
+  
+    });
+
+    
+    it("Should show undefined is not a function", function () {
+        var numbers = new Hooray (5,10,20);
+        expect(function() { numbers.map(1); }).toThrowError("1 is not a function");
+    });
 
 });
