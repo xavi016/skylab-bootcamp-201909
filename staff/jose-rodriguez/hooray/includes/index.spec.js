@@ -21,14 +21,4 @@ describe('Hooray.prototype.includes', function () {
         expect(hooray.includes(expectedNumber,start)).toBe(true);
     });
 
-    // it('should fail on non-function expression', function () {
-    //     var hooray = new Hooray(1, 2, 3);
-
-
-    //     expect(function () { hooray.includes(undefined); }).toThrowError(TypeError, 'undefined is not a function');
-    //     expect(function() { hooray.includes(true); }).toThrowError(TypeError, 'true is not a function');
-    //     expect(function() { hooray.includes(1); }).toThrowError(TypeError, '1 is not a function');
-    // });
-
-
 });
