@@ -11,6 +11,7 @@
 * @return {Array}       the deleted elements of the array
 * @throws {TypeError}    If array is not an array
  */
+
 Hooray.prototype.splice = function() {
   var array = this;
   var indexIni = arguments[0];

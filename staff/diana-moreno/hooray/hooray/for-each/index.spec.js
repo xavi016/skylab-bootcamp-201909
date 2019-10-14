@@ -24,6 +24,7 @@ describe('forEach', function() {
     hooray.forEach(multiply);
 
     expect(result.length).toBe(hooray.length);
+
     for (var i = 0; i < result.length; i++)
       expect(result[i]).toBe(hooray[i] * 10);
   });

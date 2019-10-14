@@ -4,9 +4,7 @@ describe('shift', function() {
     var result = hooray.shift();
     var expected = ['b', 'c'];
 
-    for (var i = 0; i < expected.length - 1; i++)
-      expect(hooray[i]).toBe(expected[i]);
-
+    expect(hooray).toEqual(new Hooray('b', 'c'));
     expect(result).toBe('a');
     expect(hooray.length).toBe(2);
     expect(hooray[0]).not.toBe('a');

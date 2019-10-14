@@ -52,6 +52,5 @@ describe('includes', function() {
     expect(hooray.includes([1, 2])).toBe(false);
     expect(hooray.includes({ 1: 'hello' })).toBe(false);
     expect(hooray.includes(7)).toBe(true);
-
   });
 });

@@ -30,9 +30,8 @@ describe('shuffle', function() {
     expect(randomized.length).toBe(hooray.length);
 
     var expected = [1, 2, 3, 4, 5];
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
 
+    expect(hooray).toEqual(new Hooray(1, 2, 3, 4, 5));
     expect(randomized.length).toBe(expected.length);
     expect(randomized).not.toEqual(expected);
     expect(randomized).toContain(1, 2, 3, 4, 5);

@@ -13,23 +13,17 @@ describe('unshift', function() {
   it('should add a multiple items to the first positions of the array', function() {
     var hooray = new Hooray('a', 'b', 'c');
     var result = hooray.unshift('d', 'e', 'f');
-    var expected = ['d', 'e', 'f', 'a', 'b', 'c'];
 
     expect(result).toBe(6);
     expect(hooray.length).toBe(6);
-
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
+    expect(hooray).toEqual(new Hooray('d', 'e', 'f', 'a', 'b', 'c'));
   });
 
   it('should modify the original array', function() {
     var hooray = new Hooray('a', 'b', 'c');
     hooray.unshift(3, 5);
-    var expected = [3, 5, 'a', 'b', 'c'];
 
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
-
+    expect(hooray).toEqual(new Hooray(3, 5, 'a', 'b', 'c'));
     expect(hooray.length).toBe(5);
     expect(hooray.length).not.toBe(3);
   });

@@ -1,40 +1,33 @@
 describe('sort', function() {
   it('should sort the array ascending', function() {
     var hooray = new Hooray(5, 6, 2, 4, 9, 0);
-    var expected = [0, 2, 4, 5, 6, 9];
 
     var fn = function(a, b) { return a - b; };
     hooray.sort(fn);
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
+
+    expect(hooray).toEqual(new Hooray(0, 2, 4, 5, 6, 9))
 
     var fn2 = function(a, b) { return b === a; };
     hooray.sort(fn2);
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
+    expect(hooray).toEqual(new Hooray(0, 2, 4, 5, 6, 9))
 
     hooray.sort();
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
+    expect(hooray).toEqual(new Hooray(0, 2, 4, 5, 6, 9))
   });
 
   it('should sort the array descending', function() {
     var hooray = new Hooray(5, 6, 2, 4, 9, 0);
     var fn = function(a, b) { return b - a; };
     hooray.sort(fn);
-    var expected = [9, 6, 5, 4, 2, 0];
 
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
+    expect(hooray).toEqual(new Hooray(9, 6, 5, 4, 2, 0))
   });
 
   it('could receive a function or not, if not, sorts ascending', function() {
     var hooray = new Hooray(5, 6, 2, 4, 9, 0);
-    var expected = [0, 2, 4, 5, 6, 9];
     hooray.sort();
 
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
+    expect(hooray).toEqual(new Hooray(0, 2, 4, 5, 6, 9))
   })
 
   it('should modify the original array', function() {

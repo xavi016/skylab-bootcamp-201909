@@ -47,11 +47,8 @@ describe('slice', function() {
     var expected = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     expect(result).toBeInstanceOf(Array);
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
-
-    expected = [6, 7, 8, 9];
-    expect(result).toEqual(expected);
+    expect(hooray).toEqual(new Hooray(1, 2, 3, 4, 5, 6, 7, 8, 9));
+    expect(result).toEqual([6, 7, 8, 9]);
   });
 
   it('should return a new array with values of the original array from the beginning and ending, both negatives', function() {

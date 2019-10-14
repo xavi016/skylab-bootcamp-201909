@@ -1,15 +1,12 @@
 describe('hooray.pop', function() {
   it('should return the deleted item', function() {
     var hooray = new Hooray('a', 'b', 'c');
-    var expected = ['a', 'b', 'c'];
 
-    for (var i = 0; i < expected.length - 1; i++)
-      expect(hooray[i]).toBe(expected[i]);
-
+    expect(hooray).toEqual(new Hooray('a', 'b', 'c'));
     expect(hooray.pop()).toBe('c');
-    expect(hooray[Object.keys(hooray)[0]]).toBe('a');
-    expect(hooray[Object.keys(hooray)[1]]).toBe('b');
-    expect(hooray[Object.keys(hooray)[2]]).not.toBe('c');
+    expect(hooray[0]).toBe('a');
+    expect(hooray[1]).toBe('b');
+    expect(hooray[2]).not.toBe('c');
   });
 
   it('should modify the original array', function() {
