@@ -24,7 +24,7 @@ function reduce(array, expression) {
 
         if(i > 1) {
 
-            accumulator = expression(accumulator, array[i], i, array);
+            accumulator += expression(accumulator, array[i], i, array);
 
         } 
     };
