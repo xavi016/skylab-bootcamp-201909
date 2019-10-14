@@ -1,11 +1,11 @@
 describe('reverse', function(){
 
     it('Should succeed reversing array', function(){
-        var array = [1, 2, 3, 4];
+        var array = [10, 20, 30, 40];
         var result;
         var expected;
 
-        expected = [4, 3, 2, 1];
+        expected = [40, 30, 20, 10];
         result = reverse(array);
         
         expect(result).toEqual(expected);
@@ -13,12 +13,10 @@ describe('reverse', function(){
     });
 
     it('should return an empty array', function () {
-        var array = [1, 2, 3, 4];
+        var array = [];
         var result;
-        var expected;
+        var expected = [];
         
-        array = [];
-        expected = [];
         result = reverse(array);
         
         expect(result).toEqual(expected);

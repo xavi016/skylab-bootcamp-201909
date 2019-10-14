@@ -1,6 +1,6 @@
 describe('sort', function () {
     it('should sort numbers', function () {
-        var array = [3,6,1,2,8,5,7];
+        var array = [2, 1, 3, 6, 7, 8, 5];
         
         sort(array);
 
@@ -12,7 +12,7 @@ describe('sort', function () {
     });
 
     it('should insert a multiple items at the beginning of the array', function () {
-        var array = ['a', 'j', 'o', 'E', 'e'];
+        var array = ['a', 'o', 'j', 'e', 'E'];
         
         sort(array);
 
@@ -24,27 +24,17 @@ describe('sort', function () {
     });
 
     it('should fail on undefined array', function () {
-        var array; //= [1, 2, 3];
-
+        var array; 
         expect(function() { sort(array); }).toThrowError(TypeError, 'undefined is not an array');
     });
 
-    it('should fail in the array because it has been defined as a string', function () {
-        var array = 'd';
+    it('should fail on wrong array as parameter', function () {
 
-        expect(function() { sort(array); }).toThrowError(TypeError, array + ' is not an array');
-    });
-
-    it('should fail in the array because it has been defined as a number', function () {
-        var array = 1;
-
-        expect(function() { sort(array); }).toThrowError(TypeError, array + ' is not an array');
-    });
-
-    it('should fail in the array because it has been defined as a function', function () {
-        var array = console.log();
-
-        expect(function() { sort(array); }).toThrowError(TypeError, array + ' is not an array');
+        expect(function() { sort(1); }).toThrowError(TypeError, '1 is not an array');
+    
+        expect(function() { sort(true); }).toThrowError(TypeError, 'true is not an array');
+    
+        expect(function() { sort('Hello world'); }).toThrowError(TypeError, 'Hello world is not an array');
     });
 
 });

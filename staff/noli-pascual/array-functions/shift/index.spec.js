@@ -13,8 +13,10 @@ describe('shift', function () {
 
     it('should fail on non array as parameter', function() {
       
-        var array;
-        expect(function() { shift(array)}).toThrowError('undefined is not an array');
+       
+        expect(function() { shift()}).toThrowError('undefined is not an array');
+        expect(function() { shift(1)}).toThrowError('1 is not an array');
+        expect(function() { shift(true)}).toThrowError('true is not an array');
         
     })
 });

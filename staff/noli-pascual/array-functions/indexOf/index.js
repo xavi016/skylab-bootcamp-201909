@@ -4,20 +4,21 @@
  * 
  * @param {Array} array
  * @param {*} element to search in array
+ * @param {Number} index to start to search
  * 
  * @returns {number} the position of the first element equal to indicated
  */
 
-function indexOf(arr, searchElement) { 
-		
-	for(i = 0; i < arr.length; i++) {
+function indexOf(arr, searchElement, indexIni) { 
+
+	indexIni = indexIni || 0;	
+	for(i = indexIni; i < arr.length; i++) {
 		
 		if(arr[i] === searchElement) {
 			return i;
         }
 	}
-	
-	return newArray[0];
+	return -1;
 
 }
 

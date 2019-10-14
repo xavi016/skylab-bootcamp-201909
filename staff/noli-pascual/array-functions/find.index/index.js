@@ -3,8 +3,8 @@
  * FINDINDEX returns the index of the first element in the array that satisfies the provided 
  * testing function. Otherwise, it returns -1, indicating that no element passed the test.
  * 
- * @param {*[]} array 
- * @param {*} expresion 
+ * @param {Array} array 
+ * @param {Function} expresion 
  * 
  * @returns {Number} number is index of position. If does not find, returns -1
  * @throws {Error} error if array is not indicated, string, number;
