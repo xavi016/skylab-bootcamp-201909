@@ -197,6 +197,8 @@ Hooray.prototype.fill = function(newItem){
   };
 
 
+// Every //
+
    /**
  * Checks if all the elements in the array pass the condition implemented by the given function
  * 
@@ -217,4 +219,265 @@ Hooray.prototype.every = function (expression) {
         if (!expression(this[i])) return false;
     }
     return true;
+};
+
+// Concat //
+
+// --------------------------CONCAT--------------------------------------
+/**
+ * Concat array with arguments and return a new array with all array elements  + arguments
+ * 
+ * @param {*} array The array to concatenate elements to newArray
+ * 
+ * 
+ * @returns {*} newArray contains: array + arguments.
+ * 
+ */
+
+Hooray.prototype.concat = function() { 	
+	var hoorayAux = new Hooray();	
+	
+    for (var y = 0; y < this.length; y++){
+        hoorayAux[y] = this[y];
+    }
+		
+    for (var i = 0; i < arguments.length; i++) {
+		if (arguments[i] instanceof Array) {
+			for (var j = 0; j < arguments[i].length; j++){
+				hoorayAux[y] = arguments[i][j];
+				++y
+			}
+		} else {
+			hoorayAux[y] = arguments[i];
+			++y			
+		}
+	}      
+	hoorayAux.length = y;
+    return hoorayAux;
+    
+};
+
+// FIND //
+
+/**
+ * 
+ *
+ * @param {String} elementfind elemento que queremos buscar
+ */
+
+
+Hooray.prototype.find=function(elementfind){
+   
+    
+    if ((typeof elementfind ==='undefined')) throw TypeError (elementfind + ' is not');
+    
+    var isFound=false;
+ 
+    for(var i=0; i<this.length;i++){
+       if (this[i]===elementfind) {
+          isFound=true;
+          break;
+       }
+    }
+    return isFound;
+ }
+
+
+ // FIND INDEX //
+
+ /**
+ * 
+ * returns the index of the first element in the array that satisfies the provided 
+ * testing function. Otherwise, it returns -1, indicating that no element passed the test.
+ * 
+ * @param {*[]} array 
+ * @param {*} expresion 
+ * 
+ */
+function findIndex(array, expression) {
+
+    if (!(array instanceof Array)) throw TypeError(array + " is not defined");
+    if (typeof expression !== 'function') throw TypeError(expression + " is not a function");
+
+    var result = -1;
+
+    for (var a = 0; a < array.length; a++) {
+        if (expression(array[a])) return a;
+    }
+
+    return result;
+}
+
+// INCLUDES //
+
+/**
+ * 
+ * 
+ * @param {*} array The array to concatenate elements to newArray
+ * 
+ * 
+ * @returns newArray contains: array + arguments.
+ * 
+ */
+Hooray.prototype.includes  = function() { 	    
+    var finded = true;
+    var continua = true;
+    for (var i = 0; i < arguments.length && finded; i++) {
+        continua = true;
+        for (var j = 0; j < this.length&&continua; j++) {
+            if (arguments[i]===this[j]) {
+               continua = false               
+            }              
+        } 
+        if (continua) finded=false;     
+    }       
+    return finded;
+    
+};
+
+
+// JOIN //
+
+/**
+ * 
+ *  @param {...any} item the separator to join the elements with
+ * 
+ * @returns {...any} returns the string with all elements joined
+ */
+
+Hooray.prototype.join = function(sep){
+
+    if(sep === undefined)
+        sep =',';
+    result = '';
+    for (var i = 0; i < this.length; i++) {
+        if (i === this.length - 1)
+            result += this[i];
+        else
+            result +=this[i] + sep;
+	} 
+    return result;
+}
+
+
+
+// MAP //
+
+/**
+ * MAP. Iterates on every item of a hooray and manipuates it according to a function.
+ * It returns the new hooray with items modified.
+ * 
+ * @param {Hooray} hooray The to get items.
+ * @param {Function} function that specifies what to do with the array items (add 2)
+ * 
+ * @returns {Hooray} The new hooray.
+
+ * @throws {TypeError} If Function is not a function.
+ */
+
+Hooray.prototype.map = function(expression) { 
+  
+    if(!(expression instanceof Function)) throw TypeError(expression + ' is not a function');
+    
+    var result = new Hooray();
+    for (i = 0; i < this.length; i++) {
+		result[i] = expression(this[i]);
+		result.length++;
+    }
+    return result;
+}
+
+
+// POP //
+/**
+ * Deletes last item of an array
+ * 
+ * @param {Hooray} hooray The array to delete last item.
+ *  
+ * @returns {*} The item that was eliminated
+ */
+
+Hooray.prototype.pop = function (){
+    if (this.length === 0) { return undefined };
+	var aux = this[this.length -1];
+	
+	delete this[this.length - 1];
+	this.length--;
+    return aux;
+}
+
+// Reverse //
+ /**
+ * Invert the order of the elements of an array in place, the first element becomes the last and the last
+ * becomes the first.
+ * 
+ * @param {Hooray} hooray The array to evaluate elements to the condition given 
+ * 
+ * @returns {Hooray} returns the array inverted
+ * 
+ *  
+ */
+
+Hooray.prototype.reverse = function() {
+
+    var firstIndex = 0;
+    var endIndex = this.length - 1; 
+  
+      if(endIndex > firstIndex){
+        for(var i = 0; i < endIndex; i ++)
+          {var temp = this[firstIndex];
+          this[firstIndex] = this[endIndex];
+          this[endIndex] = temp;
+          firstIndex++;
+          endIndex--;
+          }
+      }
+
+    return this;
+};
+
+
+// SHIFT //
+
+/**
+ * Delete the first element of elements
+ * 
+ * 
+ * @returns {elementDeleted} return element deleted.
+ */
+
+
+Hooray.prototype.shift = function() { 
+	var elementDeleted = this[0]
+	for (var i = 1; i < this.length; i++) {
+		this[i-1] = this[i]; 
+	}
+	delete this[this.length-1]  
+    this.length = this.length - 1;
+    return elementDeleted;
+};
+
+// SOME //
+
+/**
+ * 
+ * Checks if at least one element of the array complies with the condition implemented by the specific function.
+ *
+ * @param {Array} array 
+ * @param {Function} expression we use to test the elements. 
+ * 
+ * @returns {boolean} true if any of the elements match with the condition or false if any of them match.
+ *  
+ */ 
+
+
+Hooray.prototype.some = function(expression) {  
+    if (typeof expression !== "function") throw new TypeError(expression + " is not a function");
+
+    for (i=0; i< this.length; i++){
+        if (expression(this[i])){
+            return true 
+        }
+    } 
+    return false
 };
