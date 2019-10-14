@@ -111,12 +111,12 @@ describe('slice', function() {
     });
 
     it('should fail on first parameter non-array', function() {
-        expect(function() { slice(); }).toThrow(TypeError, 'undefined is not an array');
+        expect(function() { slice(); }).toThrowError(TypeError, 'undefined is not an array');
 
-        expect(function() { slice(true); }).toThrow(TypeError, 'true is not an array');
+        expect(function() { slice(true); }).toThrowError(TypeError, 'true is not an array');
 
-        expect(function() { slice(1); }).toThrow(TypeError, '1 is not an array');
+        expect(function() { slice(1); }).toThrowError(TypeError, '1 is not an array');
 
-        expect(function() { slice('a'); }).toThrow(TypeError, 'a is not an array');
+        expect(function() { slice('a'); }).toThrowError(TypeError, 'a is not an array');
     });
 });
