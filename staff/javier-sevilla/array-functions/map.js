@@ -1,7 +1,13 @@
 /**
  * 
+ * creates a new array with the results of calling a provided 
+ * function on every element in the calling array.
+ * 
  * @param {*} array The array to iterate.
  * @param {*} expression The expression to evaluate in each item of the array.
+ * 
+ * @returns {newArrray} return new array with values calculated by the expression
+ * 
  */
 
 function map(array, expression) { 	
@@ -13,4 +19,4 @@ function map(array, expression) {
         newArray [i] = expression(array[i], i , array);
 
     return newArray;
-}
+};

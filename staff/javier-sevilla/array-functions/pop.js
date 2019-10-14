@@ -1,5 +1,7 @@
 /**
  * 
+ * removes the last element from an array and returns that element
+ * 
  * @param {*} array The array to delete elements to.
  * 
  * @returns {deletedElement} value of last array.
@@ -11,4 +13,4 @@ function pop(array) {
     array.length = array.length - 1;
     
     return deletedElement;
-}
+};

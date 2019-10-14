@@ -48,7 +48,7 @@ describe('Map', function () {
         //throw Error('hola mundo');
 
         expect(function () { map(array, undefined); }).toThrowError(TypeError, 'undefined is not a function');
-        expect(function() { map(array, true); }).toThrowError('true is not a function');
-        expect(function() { map(array, 1); }).toThrowError('1 is not a function');
+        expect(function() { map(array, true); }).toThrowError(TypeError, 'true is not a function');
+        expect(function() { map(array, 1); }).toThrowError(TypeError, '1 is not a function');
     });
 });
