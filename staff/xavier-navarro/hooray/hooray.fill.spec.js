@@ -1,4 +1,4 @@
-describe('fill', function () {
+describe('Hooray.prototype.fill', function () {
     it('should fill the function with a value', function () {
         var hooray = new Hooray(1, 3, 4, 6, 7, 8, 6);
         hooray.fill(7);
