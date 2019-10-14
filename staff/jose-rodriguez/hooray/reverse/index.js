@@ -1,4 +1,4 @@
-Hooray.protorype.reverse = function (){
+Hooray.prototype.reverse = function (){
     var stopper = Math.floor(this.length / 2) - 1;
     var first, last;
     for (var i = 0; i <= stopper; i++) {
