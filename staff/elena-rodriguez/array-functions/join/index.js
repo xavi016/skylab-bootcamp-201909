@@ -1,22 +1,30 @@
 /**
- * join all the elements into a single string.  
+ * Join all the elements of an array (or an object similar to an array) into a string and return this string.
  * 
- * @param {Array} arrays to join together.
- * @param {element} the element that separate each item. 
+ * @param {Array} array The array to join each element into a string.
+ *
+ *  @param {...any} item the separator to join the elements with
  * 
- * @returns {string} string with all the elements.
- * */
+ * @returns {...any} returns the string with all elements joined
+ */
 
 
- function join(array, caract) {
-    if(caract === undefined)
-        caract =',';
-    var result = '';
-    for (var i = 0; i < array.length; i++) {
-        if (i === array.length - 1)
-            result += array[i];
-        else
-            result += array[i] + caract;
+function join(array, item) { 
+    var string = '';
+
+    if(item === ''){
+        item = ',';
+    };
+
+    for (var i = 0; i < array.length; i++){
+       
+        if(array.length -1 === i){
+            string += array[i];
+        }else{
+            string += array[i] + item;
+        }
+        
     }
-    return result;
- }
+   
+	return string   
+}
