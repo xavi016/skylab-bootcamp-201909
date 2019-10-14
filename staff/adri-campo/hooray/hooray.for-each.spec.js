@@ -1,12 +1,17 @@
 describe('Hooray.prototype.forEach', function () {
     it('should succeed on correct hooray and expression, adding all numbers', function () {
         var numbers = new Hooray(1, 2, 3);
+
+        expect(numbers).toBeInstanceOf(Hooray);
+
         var result = 0;
         var add = function (number) { result += number; };
 
         numbers.forEach(add);
 
         expect(result).toBe(6);
+        expect(numbers).toEqual(new Hooray(1,2,3));
+
     });
 
     it('should succeed on correct hooray and expression, concatenating all numbers', function () {
@@ -17,6 +22,7 @@ describe('Hooray.prototype.forEach', function () {
         numbers.forEach(concatenate);
 
         expect(result).toBe('123');
+        expect(numbers).toEqual(new Hooray(1,2,3));
     });
 
 
