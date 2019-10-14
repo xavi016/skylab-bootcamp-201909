@@ -26,14 +26,11 @@ describe('every', function() {
 
   it('should not modify the original array', function() {
     var hooray = new Hooray(6, 7, 8, 9, 10);
-    var expected = [6, 7, 8, 9, 10];
     var fn = function(x) { return x > 5; };
     hooray.every(fn);
 
-    expect(hooray.length).toBe(expected.length);
-
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
+    expect(hooray.length).toBe(new Hooray(6, 7, 8, 9, 10).length);
+    expect(hooray).toEqual(new Hooray(6, 7, 8, 9, 10));
   });
 
   it('should return true on empty array received', function() {

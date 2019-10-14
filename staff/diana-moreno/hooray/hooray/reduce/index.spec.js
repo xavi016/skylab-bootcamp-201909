@@ -8,7 +8,6 @@ describe('reduce', function() {
     expect(hooray.reduce(fn)).toBe(24);
   });
 
-
   it('should add numeric array without initial value', function() {
     var hooray = new Hooray(1, 2, 3, 4);
     var fn = function(accumulator, value) {

@@ -22,9 +22,7 @@ describe('indexOf', function() {
     hooray.indexOf(9);
 
     expect(hooray.length).toBe(expected.length);
-
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
+    expect(hooray).toEqual(new Hooray(6, 7, 8, 9, 10));
   });
 
   it('should work with an empty array', function() {

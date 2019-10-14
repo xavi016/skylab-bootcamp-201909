@@ -30,13 +30,11 @@ describe('forEach', function() {
 
   it('should not modify the original array', function() {
     var hooray = new Hooray(1, 2, 3);
-    var expected = [1, 2, 3];
     var result = 0;
     var add = function(number) { result += number; };
     hooray.forEach(add);
 
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
+    expect(hooray).toEqual(new Hooray(1, 2, 3));
   });
 
   it('should return undefined on an empty array received', function() {

@@ -28,8 +28,7 @@ describe('join', function() {
     var expected = [1, 2, 3, 5, 3];
     hooray.join();
 
-    for (var i = 0; i < expected.length; i++)
-      expect(hooray[i]).toBe(expected[i]);
+    expect(hooray).toEqual(new Hooray(1, 2, 3, 5, 3));
   });
 
   it('should work with an empty array', function() {

@@ -19,6 +19,7 @@ describe('hooray.pop', function() {
 
     expect(hooray.length).toBe(expected.length);
     expect(hooray[hooray.length - 1]).not.toBe('c');
+    expect(hooray).not.toEqual(new Hooray('a', 'b', 'c'));
   });
 
   it('should return undefined when an empty array is passed', function() {

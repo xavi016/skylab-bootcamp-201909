@@ -19,7 +19,6 @@ describe('find', function() {
     expect(array[array.length - 1]).toBe(10);
   });
 
-
   it('should not modify the original array', function() {
     var hooray = new Hooray(6, 7, 8, 9, 10);
     var array = [6, 7, 8, 9, 10];

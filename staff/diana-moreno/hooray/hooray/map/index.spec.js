@@ -24,11 +24,12 @@ describe('map', function() {
 
   it('should return an empty array if receive an empty array',
     function() {
-      var emptyHooray = new Hooray();
-      var fn = function(x) { return x * 2; };
-      var result = emptyHooray.map(fn);
-      expect(result.length).toBe(0);
-    });
+    var emptyHooray = new Hooray();
+    var fn = function(x) { return x * 2; };
+    var result = emptyHooray.map(fn);
+
+    expect(result.length).toBe(0);
+  });
 
   it('should fail on non-function expression', function() {
     var hooray = new Hooray(1, 2, 3, 4);

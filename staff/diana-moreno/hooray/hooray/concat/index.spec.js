@@ -29,6 +29,7 @@ describe('concat', function() {
     var result = hooray.concat(array2);
 
     expect(result).toEqual(expected);
+    expect(hooray).toEqual(new Hooray(1, 2, 3, 5, 3));
   });
 
   it('should work with empty arrays', function() {
