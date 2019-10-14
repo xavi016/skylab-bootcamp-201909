@@ -4,15 +4,15 @@ describe('shift hooray', function () {
         var result = hor.shift();
         expect(hor.length).toBe(4);
         expect(result).toBe(1);
-        expect(ar).toEqual(new Hooray(2, 3, 4, 5));
+        expect(hor).toEqual(new Hooray(2, 3, 4, 5));
     });
 
     it('should returns an empty array if the array length at the beginning is 1', function () {
-        var hor = new Hooray(1);
+        var hor = new Hooray('a');
         var result = hor.shift();
         expect(hor.length).toBe(0);
         expect(hor).toEqual(new Hooray());
-        expect(result).toEqual(1);
+        expect(result).toEqual('a');
     });
 
     it('should returns undefined if the array is empty', function () {

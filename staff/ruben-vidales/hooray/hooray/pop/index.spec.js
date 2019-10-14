@@ -10,12 +10,12 @@ describe('pop hooray', function () {
     });
 
     it('should returns an empty hooray if the hooray length at the beginning is 1', function () {
-        var hor = new Hooray(1);
+        var hor = new Hooray('a');
         var result = hor.pop();
         var expected = new Hooray();
 
         expect(hor.length).toBe(0);
-        expect(result).toBe(1);
+        expect(result).toBe('a');
         expect(hor).toEqual(expected);
     });
 

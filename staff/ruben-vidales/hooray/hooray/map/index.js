@@ -1,6 +1,3 @@
-/**
- * 
- */
 Hooray.prototype.map = function (expression) {
     if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
 
