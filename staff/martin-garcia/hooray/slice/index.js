@@ -20,15 +20,3 @@ Hooray.prototype.slice = function(start, end) {
     }
     return auxHooray;
 }
-
-var hooray = new Hooray(1, 2, 3, 4);
-var start = 2;
-var end = 3;
-var expectedHooray = new Hooray(3);
-console.log("test")
-console.log(hooray.slice(start, end));
-console.log("inti ");
-console.log(hooray);
-
-console.log("expected ");
-console.log(expectedHooray);
