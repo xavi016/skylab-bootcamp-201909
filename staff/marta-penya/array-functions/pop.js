@@ -7,6 +7,8 @@
  */
 
 function pop(array) { 
+
+    if(array.length === 0) return undefined;
 	    
     var last = array[array.length - 1];
     
@@ -15,3 +17,6 @@ function pop(array) {
     return last;  
 
 }
+
+
+

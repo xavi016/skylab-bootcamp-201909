@@ -1,16 +1,4 @@
 
-var numbers =  [1, 5 , 2, 6];   //60
-
-
-
-var result = reduce(numbers, function (acc, cur, idx, arr) {
-    return acc / cur;
-});
-
-console.log(result);
-
-
-
 /**
  * Executes a reducing function on each element of an array
  * 

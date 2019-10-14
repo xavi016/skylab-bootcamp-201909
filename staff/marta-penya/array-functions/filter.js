@@ -12,10 +12,13 @@
 
 
 
-function filter(array,funcion) { 
+function filter(array,expression) { 
+    if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
+    if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+    
     var newArr = [];
         for (i = 0; i < array.length; i++) {
-        if(funcion(array[i])) {
+        if(expression(array[i])) {
         newArr[newArr.length] = array[i]
     }
 }

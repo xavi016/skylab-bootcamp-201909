@@ -9,6 +9,7 @@
 
 
 function sort(array) {
+    if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
     
     for (i = 1; i < array.length; i++) {
         for (j = 0; j < (array.length - i); j++) {
@@ -24,22 +25,5 @@ function sort(array) {
 }
 
 
-
-console.log('DEMO sort');
-
-var lista = ['v', 'l', 'n', 'a', 703, 247, 563, 224, 714, 464, 953, 708, 201, 887, 550, 515, 206, 131];
-
-console.log(lista);
-
-
-console.log('should print the array sorted'); 
-console.log(sort(lista)); 
-
-var list = ['v', 'L', 'n', 'a', 'M', 'r'];
-
-console.log(list);
-   
-console.log('should print the array sorted according to its unicode value'); 
-console.log(sort(list));
 
       

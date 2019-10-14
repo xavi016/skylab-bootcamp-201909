@@ -16,7 +16,7 @@
 function indexOf(array, item) { 
     var newArray = [] 
     
-    for(i = 1; i < array.length; i++) { 
+    for(i = 0; i < array.length; i++) { 
         
         if(array[i] === item) {
             newArray[newArray.length] = i;
@@ -31,19 +31,4 @@ function indexOf(array, item) {
 }
 
 
-console.log('DEMO IndexOf');
-
-var array = ['cat', 'lion', 'dog', 'rat'];
-
-console.log(array);
-
-
-console.log('should print the index of the element that meet the condition'); 
-console.log('condition: dog = 2')
-console.log(indexOf(array, 'dog')); 
-
-   
-console.log('should return -1 if the element in the array does not exist');
-console.log('condition: butterfly = -1')
-console.log(indexOf(array, 'butterfly')); 
       

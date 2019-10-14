@@ -10,21 +10,13 @@
  * 
  */
 
-var array = [2, 3, 4, 5, 7 , 8];
 
-function find(array,funcion) { 
-    for(i = 0; i < array.length; i++) {
-        if(funcion(array[i])) {
-           return array[i]
-        }  
+
+function find(array, expression) {
+    if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+    
+    for (i=0; i<array.length; i++) {
+        if (expression(array[i])) return array [i];
     }
-    return undefined
+    return undefined;
 }
-
-
-console.log('should prints -1 if there is no element that meets the condition');
-console.log('condition: item > 5')
-console.log(find(array, function(item){
-       return item > 5;
-   })); 
-      

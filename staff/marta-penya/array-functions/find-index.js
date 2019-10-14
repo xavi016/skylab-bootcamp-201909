@@ -11,19 +11,20 @@
  */
 
 
-function findIndex(array,funcion) { 
+function findIndex(array,expression) { 
     var newArray = []
     
-    for(i = 1; i < array.length; i++) {
+    for(i = 0; i < array.length; i++) {
         
-        if(funcion(array[i])) {
+        if(expression(array[i])) {
             newArray[newArray.length] = i;
         }
     }
+
     if(newArray.length === 0) {
         return -1;
     }
-    else {
+    else{
         return newArray[0];
     }
 }

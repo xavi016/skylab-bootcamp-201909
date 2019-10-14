@@ -26,13 +26,3 @@ function reverse(array) {
 
 
 
-console.log('DEMO reverse');
-
-var lenguajes = ["PHP", "C", "C#", ".Net", "Java", "JavaScript", "C++", "HTML"];
-console.log(lenguajes);
-
-console.log('should reverse the order of the items of the array');
-reverse(lenguajes);
-
-
-

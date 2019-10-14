@@ -13,10 +13,12 @@
 
 
 
-function some(array,funcion) { 
+function some(array,expression) { 
+    if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
+
     var isElement = false;
     for (i = 0; i < array.length; i++) {
-        if(funcion(array[i])) {
+        if(expression(array[i])) {
         isElement = true;
     }
 }
