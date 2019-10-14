@@ -14,13 +14,4 @@ describe('push' , function(){
         expect(function() { push (array, myNewElements); }).toThrowError(TypeError, array + ' is not an array');
     });
 
-    /*
-    it('should fail if the element given is not an array', function () {
-        var fakeArray = 'Im a string';
-        var myNewElements = 'Im just printing things';
-        expect(function() { push (fakeArray, myNewElements); }).toThrowError(fakeArray + ' is not an array')
-    });*(
-
-    )
-*/
 });
