@@ -10,8 +10,7 @@ Hooray.prototype.reduce = function(expression) {
     var expressionResult = 0;
 
     for (var a = 0; a < this.length; a++) {
-        debugger
-        console.log(expressionResult = expression(expressionResult, this[a]));
+        expressionResult = expression(expressionResult, this[a]);
     }
 
     return expressionResult;
