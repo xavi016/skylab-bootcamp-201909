@@ -12,25 +12,18 @@
  */
 
 
-function unshift(array, items) { 
-  var itemsLen = items.length;
-  var arrLen = array.length;
+function unshift(array) {
+    
+  if (!(array instanceof Array)) throw TypeError("unshift this is not an array");
+  var inc;
 
-  for(var i = 0; i< itemsLen; i++){
-    array[arrLen+i] = null;
+  var item = arguments.length - 1;
+  var length = array.length;
+  for (var i = length - 1; i >= 0; i--){
+      array[i + item] = array[i]
   }
-
-  var newLen = array.length-1;
-
-  for(var e = newLen; e >= 0; e--){
-    array[e] = array[e-itemsLen]
-    if(e === newLen-arrLen){
-       break;
-      }
-  }
-  for(var o = 0; o<itemsLen; o++){
-         array[o] = items[o];
-       }
-  return array;
+  for (var j = inc; j < arguments.length; j++)
+      array[j - inc] = arguments[j];
+  
+  return array.length;
 }
-
