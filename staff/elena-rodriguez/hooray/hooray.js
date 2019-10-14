@@ -114,7 +114,7 @@ Hooray.prototype.every = function (expression) {
  * @param {Hooray} hooray where it takes the initial items. 
  * @param {Function} function that apply changes. 
  * 
- * @returns {Hooray} A ner hooray with the modifications done. 
+ * @returns {Hooray} A new hooray with the modifications done. 
 
  * @throws {TypeError} If Function is not a function.
  */
@@ -197,11 +197,12 @@ Hooray.prototype.concat = function() {
     
 };
 
-/*
+/** 
  * SHIFT.
- * Deletes the first item of an hooray and shifts each item into a lower index.
+ * Deletes the first item of a hooray and shifts each item into a lower index.
  * Returns de removed item of the hooray.
- * 
+ * @param {Hooray} initial hooray array given. 
+ * @param {*} other arguments given. 
  * 
  * @returns {any} The item deleted from the hooray.
  */
@@ -243,8 +244,8 @@ Hooray.prototype.unshift = function () {
 /**
  * POP.
  * Deletes the last item of an hooray and returns de deleted item.
- *  
- * @returns {any} returns de last item deleted on the hooray
+ *  @param {hooray}  initial hooray where we pop things. 
+ * @returns {any} returns de last item deleted on the hooray.
  */
 Hooray.prototype.pop = function () {
     
@@ -258,8 +259,8 @@ Hooray.prototype.pop = function () {
     return result;
 };
 
-/*
-* JOIN.
+/** 
+ * JOIN.
  * Converts an Array into a String merging each item with the separator if it's provided.
  * 
  * @param {String} separator Optional -- Separator between each element. 
@@ -302,11 +303,8 @@ Hooray.prototype.find = function (expression) {
 /**
  * INDEX-OF.
  * Returns the index of an element found into the hooray. If the element is not found, returns -1.
- * 
- * 
- * 
- * 
- * 
+ * @param {Hooray} The initial hooray to look into it. 
+ * @Returns {*} element with the index of the element searched or -1 in case the element is not into de Hooray. 
  * 
  */
 
@@ -326,11 +324,10 @@ Hooray.prototype.indexOf = function (item) {
 /**
  * REDUCE.
  * 
- * 
+ * executes a provided function for each value of the array (from left-to-right).
  * 
  * 
  */
-
 
 Hooray.prototype.reduce = function (expression) {
     
@@ -347,9 +344,9 @@ Hooray.prototype.reduce = function (expression) {
 
 /**
  * REVERSE.
- * 
- * 
- * 
+ * Reverse the order of the elements of a hooray. 
+ * @param {hooray} Hooray that contains the initial elements.
+ * @return {hooray} Hooray with the values in order inverted. 
  * 
  */
 
@@ -371,10 +368,8 @@ Hooray.prototype.reverse = function () {
 
 /**
  * SLICE.
- * 
- * 
- * 
- * 
+ * @Returns {*} the selected elements in a hooray, as a new hooray.
+ *  
  */
 
 Hooray.prototype.slice = function () {
