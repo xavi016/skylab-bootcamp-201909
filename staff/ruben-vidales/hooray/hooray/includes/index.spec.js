@@ -30,10 +30,4 @@ describe('includes hooray', function () {
 
         expect(result).toBeFalsy();
     });
-    it('should fail on undefined array', function () {
-        var array //= [1,2,3,4,5];
-        var value = 15;
-
-        expect(function () { includes(undefined, value); }).toThrowError(TypeError, 'undefined is not an array');
-    });
 });

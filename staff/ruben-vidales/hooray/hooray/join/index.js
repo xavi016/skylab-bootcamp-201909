@@ -21,4 +21,4 @@ Hooray.prototype.join = function (separator) {
     else {
         return aux;
     }
-}
+};

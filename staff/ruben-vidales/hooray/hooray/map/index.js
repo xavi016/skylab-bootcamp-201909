@@ -4,10 +4,10 @@
 Hooray.prototype.map = function (expression) {
     if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
 
-    var newHooray = new Hooray();
+    var aux = new Hooray();
     for (var i = 0; i < this.length; i++) {
-        newHooray[i] = expression(this[i]);
-        newHooray.length++;
+        aux[i] = expression(this[i]);
+        aux.length++;
     }
-    return newHooray;
+    return aux;
 }
