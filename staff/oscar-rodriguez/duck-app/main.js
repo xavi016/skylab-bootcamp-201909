@@ -4,7 +4,7 @@ var _form = document.getElementsByClassName("form-0");
 _form[0].addEventListener('submit', search);
 
 var ducksRequest = new XMLHttpRequest;
-ducksRequest.open('GET', 'https://duckling-api.herokuapp.com/api/search?q=all');
+ducksRequest.open('GET', 'https://duckling-api.herokuapp.com/api/search?q=');
 
 ducksRequest.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 201) {
@@ -109,7 +109,13 @@ function search(e) {
     e.preventDefault()
     var ducksRequest = new XMLHttpRequest;
     var search = document.getElementById("search_box").value;
+    var duck_Panel = document.getElementById("duck-detail");
+    var list_Panel = document.getElementById("search-list");
 
+    if (duck_Panel.style.display !== "none") {
+        duck_Panel.style.display = "none";
+        list_Panel.style.display = "flex";
+    }
     search === '' ? 'all' : search;
 
     ducksRequest.open('GET', 'https://duckling-api.herokuapp.com/api/search?q='+search);
