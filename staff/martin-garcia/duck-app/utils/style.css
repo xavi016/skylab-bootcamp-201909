@@ -1,0 +1,14 @@
+.article {
+  width: 30%;
+}
+
+.search__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__nav {
+  cursor: alias;
+}
+
+/*# sourceMappingURL=style.css.map */

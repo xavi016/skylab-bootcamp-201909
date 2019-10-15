@@ -5,21 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/12f9d6a4c1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./utils/style.css">
     <title>Duck-App</title>
 </head>
 
 <body>
     <section class="search">
         <h1>Duck-App</h1>
-        <input type="text"><i class="fas fa-search"></i>
 
+        <nav class="search__nav nav">
+            <form class="myForm" onsubmit="search(event)">
+                <input type="text"> <button> <i class="fas fa-search" id="searchButton"></i></button>
+            </form>
+        </nav>
+
+        <main class="search__main main"></main>
     </section>
+
+
+
     <section class="result">
-        <i class="fas fa-search"></i>
-        <i class="fas fa-search"></i>
-        <i class="fas fa-search"></i>
+        <header class="result__header header" onclick="goBack()">
+            <nav class="header__nav"> <i class="fas fa-arrow-circle-left"></i> Wanna come back?</nav>
+        </header>
+
+        <main class="result__main main"> </main>
 
     </section>
+    <script src="./utils/main.js"></script>
 
 </body>
 
