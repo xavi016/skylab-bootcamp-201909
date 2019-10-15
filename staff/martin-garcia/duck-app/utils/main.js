@@ -2,33 +2,31 @@ var myForm = document.getElementsByClassName('myForm');
 var searchElement = document.getElementsByClassName('search')[0];
 var resultElement = document.getElementsByClassName('result')[0];
 resultElement.hidden = true;
-
+var landingEnable = true
 search();
 
-
+/**
+ * 
+ * @param {Event} e reference of the event
+ */
 function search(e) {
     var textToFind = myForm[0][0].value;
-
-    var xhr = new XMLHttpRequest;
-    xhr.open('GET', 'https://duckling-api.herokuapp.com/api/search?q=' + textToFind);
-    xhr.onreadystatechange = function() {
-
-        if (this.readyState == 4 && this.status == 201) {
-            var ducks = JSON.parse(xhr.responseText);
-            shuffle(ducks);
-            constructSearchHtml(ducks);
-        }
-    };
-
-    xhr.send();
+    var uri = 'https://duckling-api.herokuapp.com/api/search?q=' + textToFind;
+    xhr(uri, printDucks);
 
     if (typeof e === undefined)
         e.preventDefault();
 }
 
-
-function constructSearchHtml(ducks) {
-
+/**
+ * 
+ * Creates each article(duks) in the landing page
+ * using DOM
+ * 
+ * @param {object[]} ducks array of ducks
+ */
+function printDucks(ducks) {
+    console.log(ducks)
     var container = document.getElementsByClassName('search__main');
     container = container[0];
     container.innerHTML = "";
@@ -37,8 +35,7 @@ function constructSearchHtml(ducks) {
         var article = document.createElement('article');
         article.className = 'main__article article';
 
-        article.setAttribute('onclick', "constructResultHtml('" + duck.id + "')");
-        //article.addEventListener('click', constructResultHtml(duck.id));
+        article.setAttribute('onclick', "onDuckClick('" + duck.id + "')");
 
         var title = document.createElement('p');
         title.className = 'article__title';
@@ -57,60 +54,89 @@ function constructSearchHtml(ducks) {
     });
 }
 
+/**
+ * 
+ * Creates article(duk) in the article page
+ * using DOM
+ * 
+ * @param {object} duck That's an object with the duck description
+ */
+function printDuckSpecs(duck) {
+    console.log(duck)
+    var container = document.getElementsByClassName('result__main');
+    container = container[0];
+    container.innerHTML = "";
+
+    var article = document.createElement('article');
+    article.className = 'main__article article__specs';
 
 
-function constructResultHtml(id) {
+    var title = document.createElement('p');
+    title.className = 'article__title';
+    title.innerText = duck.title;
+
+    var image = document.createElement('img');
+    image.className = 'article__image';
+    image.src = duck.imageUrl;
+
+    var price = document.createElement('p');
+    price.className = 'article__price';
+    price.innerText = duck.price;
+
+
+    var description = document.createElement('p');
+    description.className = 'article__description';
+    description.innerText = duck.description;
+
+    article.append(title, image, description, price);
+    container.append(article);
+}
+
+
+
+/**
+ * 
+ * Creates a xhr to find a specific duck, and call
+ * a function to print it(printDuckSpecs)
+ * 
+ * @param {string} id that's the duck id to find into duck API
+ */
+function onDuckClick(id) {
+    landingEnable = false;
     searchElement.hidden = true;
     resultElement.hidden = false;
 
-    var xhr = new XMLHttpRequest;
-
-    xhr.open('GET', 'https://duckling-api.herokuapp.com/api/ducks/' + id);
-
-    xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 201) {
-            var duck = JSON.parse(xhr.responseText);
-            var container = document.getElementsByClassName('result__main');
-            container = container[0];
-            container.innerHTML = "";
-
-            var article = document.createElement('article');
-            article.className = 'main__article article__specs';
-
-
-            var title = document.createElement('p');
-            title.className = 'article__title';
-            title.innerText = duck.title;
-
-            var image = document.createElement('img');
-            image.className = 'article__image';
-            image.src = duck.imageUrl;
-
-            var price = document.createElement('p');
-            price.className = 'article__price';
-            price.innerText = duck.price;
-
-
-            var description = document.createElement('p');
-            description.className = 'article__description';
-            description.innerText = duck.description;
-
-            article.append(title, image, description, price);
-            container.append(article);
-        }
-    };
-
-    xhr.send();
+    var uri = 'https://duckling-api.herokuapp.com/api/ducks/' + id;
+    xhr(uri, printDuckSpecs);
 }
 
 
+/**
+ * 
+ * Swith from article page to landing page
+ * 
+ */
 function goBack() {
     searchElement.hidden = false;
     resultElement.hidden = true;
+    landingEnable = true;
 }
 
-function shuffle(list) {
-    for (var a = 0; a < list.length; a++) {
-        list[Math.round(Math.random() * (list.length - 1))] = list[Math.round(Math.random() * (list.length - 1))];
-    }
+
+/**
+ * 
+ * creates and xhr request, and executes the callback
+ * 
+ * @param {*} uri uri to request info 
+ * @param {*} callback function to execute after response
+ */
+function xhr(uri, callback) {
+    var xhr = new XMLHttpRequest;
+    xhr.open('GET', uri);
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 201) {
+            callback(JSON.parse(xhr.responseText));
+        }
+    };
+    xhr.send();
 }
