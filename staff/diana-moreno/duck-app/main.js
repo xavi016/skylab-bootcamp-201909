@@ -59,8 +59,9 @@ function resetHtml(view) {
   if(view === 'view-list') {
     duckDom.innerHTML = '';
     duckList.innerHTML = "";
-  } else if(view === 'view-single')
+  } else if(view === 'view-single') {
     duckDom.innerHTML = '';
+  }
 };
 
 function toogleViews(view) {
@@ -71,7 +72,7 @@ function toogleViews(view) {
     viewList.classList.add('view--hide');
     viewSingle.classList.remove('view--hide');
   }
-}
+};
 
 function createDomDucks(duck) {
   var li = document.createElement('li');
@@ -133,7 +134,6 @@ function clickForm(form) {
 
 function clickBackButton(button) {
   button.addEventListener('click', function() {
-    viewList.classList.remove('view--hide');
-    viewSingle.classList.add('view--hide');
-  })
+    toogleViews('view-list');
+  });
 };
