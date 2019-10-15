@@ -1,3 +1,11 @@
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+li {
+  list-style: none;
+}
+
 .header {
   display: flex;
   background-image: url(https://www.desktopbackground.org/t/2015/12/10/1055168_rubber-ducks-illustration-vector-art-graphics_1024x1325_h.jpg);
@@ -15,12 +23,27 @@
   width: 20%;
 }
 
-body {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+.duck-list {
+  display: flex;
+  flex-direction: column;
 }
-
-li {
-  list-style: none;
+.duck-list__duck {
+  display: flex;
+}
+.duck-list__title {
+  color: black;
+}
+.duck-list__image {
+  width: 100%;
+}
+.duck-list__price {
+  color: black;
+}
+.duck-list__desc {
+  color: black;
+}
+.duck-list__button {
+  color: red;
 }
 
 /*# sourceMappingURL=style.css.map */
