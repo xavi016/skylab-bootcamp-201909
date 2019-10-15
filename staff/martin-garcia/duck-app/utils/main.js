@@ -15,7 +15,7 @@ function search(e) {
 
         if (this.readyState == 4 && this.status == 201) {
             var ducks = JSON.parse(xhr.responseText);
-
+            shuffle(ducks);
             constructSearchHtml(ducks);
         }
     };
@@ -75,7 +75,7 @@ function constructResultHtml(id) {
             container.innerHTML = "";
 
             var article = document.createElement('article');
-            article.className = 'main__article article';
+            article.className = 'main__article article__specs';
 
 
             var title = document.createElement('p');
@@ -107,4 +107,10 @@ function constructResultHtml(id) {
 function goBack() {
     searchElement.hidden = false;
     resultElement.hidden = true;
+}
+
+function shuffle(list) {
+    for (var a = 0; a < list.length; a++) {
+        list[Math.round(Math.random() * (list.length - 1))] = list[Math.round(Math.random() * (list.length - 1))];
+    }
 }
