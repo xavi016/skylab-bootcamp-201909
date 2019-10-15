@@ -1,3 +1,11 @@
+.link {
+  text-decoration: none;
+  color: #00ad99;
+  cursor: pointer; }
+  .link:hover {
+    text-decoration: underline;
+    color: #fa7000; }
+
 .header {
   height: 35vh;
   margin: 0;
@@ -46,7 +54,10 @@
     flex-direction: row;
     justify-content: left;
     align-items: center;
-    cursor: pointer; }
+    cursor: pointer;
+    border-radius: 1rem;
+    border: 0.1rem solid #dbd833;
+    padding-left: 2rem; }
   .search-list__entry:hover {
     background: #cccccc80; }
 
@@ -61,7 +72,8 @@
   .duck-detail__description {
     font-size: 0.9rem; }
   .duck-detail__image {
-    align-self: center; }
+    align-self: center;
+    max-width: 99vw; }
   .duck-detail__back {
     width: 3rem;
     color: whitesmoke;

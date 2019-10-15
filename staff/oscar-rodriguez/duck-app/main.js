@@ -1,4 +1,4 @@
-
+var currentPage =1;
 var _form = document.getElementsByClassName("form-0");
 
 _form[0].addEventListener('submit', search);
@@ -14,44 +14,46 @@ ducksRequest.onreadystatechange = function() {
 };
 ducksRequest.send();
 
+
 function createList (ducks) {
     var ducksList = document.getElementById("search-list");
     ducksList.innerHTML="";
+    
     var ul = document.createElement('ul');
+    ul.className ="search-list";
 
-    ul.className ="search-list"
     ducksList.append(ul);
+    
     ducks.forEach(function(duck) {
 
-        var li = document.createElement('li');
-        li.className = "search-list__entry entry";
-        var img = document.createElement('img');
-        img.src = duck.imageUrl;
-        img.className = "entry__img";
-        var title = document.createElement('div');
-        title.className = "entry__tittle";
-        title.innerHTML = duck.title;
-        var price = document.createElement('div');
-        price.innerHTML = duck.price;
-        price.className = "entry__price";
+            var li = document.createElement('li');
+            li.className = "search-list__entry entry";
+            var img = document.createElement('img');
+            img.src = duck.imageUrl;
+            img.className = "entry__img";
+            var title = document.createElement('div');
+            title.className = "entry__tittle";
+            title.innerHTML = duck.title;
+            var price = document.createElement('div');
+            price.innerHTML = duck.price;
+            price.className = "entry__price";
 
-        li.append(img);
-        li.append(title);
-        li.append(price);
-        
-        var link = document.createElement("a");
+            li.append(img);
+            li.append(title);
+            li.append(price);
+            
+            var link = document.createElement("a");
 
-        link.className="link";
-        link.href="#"+duck.id;
-        link.append(li);
-        link.addEventListener('click',function (){
-                openDuck(duck.id)});
-        
-        ul.append(link);
-        
+            link.className="link";
+            link.href="#"+duck.id;
+            link.addEventListener('click',function (event){
+                    openDuck(duck.id)});
+
+            link.append(li);
+            ul.append(link);
+    
     });
 }
-
 
 function openDuck (id) {
 
@@ -60,6 +62,8 @@ function openDuck (id) {
     var duck_Panel = document.getElementById("duck-detail");
     duck_Panel.innerHTML = "";
     duck_Panel.style.display = "flex";
+
+
     
     var duckRequest = new XMLHttpRequest;
     duckRequest.open('GET', 'http://duckling-api.herokuapp.com/api/ducks/'+id);
@@ -94,11 +98,12 @@ function openDuck (id) {
             })
 
             duck_Panel.append(title);
+            duck_Panel.append(back);
             duck_Panel.append(description);
             duck_Panel.append(image);
             duck_Panel.append(price);
             duck_Panel.append(link);
-            duck_Panel.append(back);
+            
 
         }
     };
@@ -107,6 +112,7 @@ function openDuck (id) {
 
 function search(e) {
     e.preventDefault()
+    debugger
     var ducksRequest = new XMLHttpRequest;
     var search = document.getElementById("search_box").value;
     var duck_Panel = document.getElementById("duck-detail");
@@ -116,7 +122,6 @@ function search(e) {
         duck_Panel.style.display = "none";
         list_Panel.style.display = "flex";
     }
-    search === '' ? 'all' : search;
 
     ducksRequest.open('GET', 'https://duckling-api.herokuapp.com/api/search?q='+search);
     
