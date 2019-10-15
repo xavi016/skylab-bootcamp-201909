@@ -8,10 +8,14 @@ var buttonBack = document.getElementsByClassName('duck__button--back')[0];
 var query;
 
 function searchDucks(e) {
-  container.innerHTML = ""
+  container.innerHTML = "";
+  duckDom.innerHTML = '';
+  viewList.classList.remove('view--hide');
+  viewSingle.classList.add('view--hide');
 
   e.preventDefault();
   query = e.target.query.value;
+  console.log(query)
   var xhr = new XMLHttpRequest;
   xhr.open('GET', 'https://duckling-api.herokuapp.com/api/search?q=' + query);
   xhr.onreadystatechange = function() {
@@ -71,7 +75,6 @@ function searchDuck(id) {
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 201) {
       var duck = JSON.parse(xhr.responseText);
-      console.log(duck)
       var img = document.createElement('img');
       var h1 = document.createElement('h1');
       var p = document.createElement('p');
@@ -105,6 +108,7 @@ function searchDuck(id) {
         viewList.classList.remove('view--hide');
         viewSingle.classList.add('view--hide');
       })
+      form.addEventListener('submit', searchDucks);
     }
 
   };
