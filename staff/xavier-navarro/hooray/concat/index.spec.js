@@ -6,7 +6,6 @@ describe('Hooray.prototype.concat', function(){
         list3 = new Hooray (9, 10, 11, 12, 13 ,14);
         expected = new Hooray (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);
         result = list1.concat(list2, list3);
-        //console.log(result);
         
         expect(result).toEqual(expected);
     });
@@ -23,9 +22,7 @@ describe('Hooray.prototype.concat', function(){
         list2 = new Hooray (2, [3])
         
         result= list1.concat(list2);
-        console.log(result);
         expected= new Hooray ([1], 2, [3]);
-        console.log(expected);
         expect(result).toEqual(expected);
     });
 });

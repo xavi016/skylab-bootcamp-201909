@@ -7,9 +7,6 @@ describe('Hooray.prototype.reverse', function(){
         hooray = new Hooray (1, 2, 3, 4);
         expected = new Hooray (4, 3, 2, 1);
         result = hooray.reverse();
-
-        console.log(hooray);
-        console.log(result);
         
         expect(result).toEqual(expected);
         expect(result.length).toBe(4);
@@ -22,9 +19,6 @@ describe('Hooray.prototype.reverse', function(){
         hooray = new Hooray (1);
         expected = new Hooray (1);
         result = hooray.reverse();
-
-        console.log(hooray);
-        console.log(result);
         
         expect(result).toEqual(expected);
         expect(result.length).toBe(1);
@@ -37,9 +31,6 @@ describe('Hooray.prototype.reverse', function(){
         hooray = new Hooray ();
         expected = new Hooray ();
         result = hooray.reverse();
-
-        console.log(hooray);
-        console.log(result);
         
         expect(result).toEqual(expected);
         expect(result.length).toBe(0);

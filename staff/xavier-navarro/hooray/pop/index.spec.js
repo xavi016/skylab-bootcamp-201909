@@ -1,4 +1,4 @@
-describe('pop hooray', function () {
+describe('Hooray.prototype.pop', function () {
     it('should deletes the last item from the hooray and return the deleted element', function () {
         var hor = new Hooray(1, 2, 3, 4, 5);
         var result = hor.pop();

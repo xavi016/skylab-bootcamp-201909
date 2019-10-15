@@ -1,4 +1,4 @@
-describe ("hooray.prototype.some", function(){
+describe ("Hooray.prototype.some", function(){
     it("Should return true if any of the hooray items accomplish the condition", function(){
         var hoorayNumbers = new Hooray (1,4,5,53,23,37);
         function checkCondition(item) {
