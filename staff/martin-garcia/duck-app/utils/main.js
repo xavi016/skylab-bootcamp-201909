@@ -13,9 +13,9 @@ function search(e) {
     var textToFind = myForm[0][0].value;
     var uri = 'https://duckling-api.herokuapp.com/api/search?q=' + textToFind;
     xhr(uri, printDucks);
-
-    if (typeof e === undefined)
+    if (e !== undefined) {
         e.preventDefault();
+    }
 }
 
 /**
@@ -26,7 +26,6 @@ function search(e) {
  * @param {object[]} ducks array of ducks
  */
 function printDucks(ducks) {
-    console.log(ducks)
     var container = document.getElementsByClassName('search__main');
     container = container[0];
     container.innerHTML = "";
@@ -139,4 +138,5 @@ function xhr(uri, callback) {
         }
     };
     xhr.send();
+
 }
