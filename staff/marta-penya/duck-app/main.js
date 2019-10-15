@@ -63,6 +63,11 @@ button[0].addEventListener('submit', function (e) {
     
 });
 
+
+
+
+
+
 var result = document.getElementsByClassName('result');
 
 function showItem(id){
@@ -105,7 +110,7 @@ function showItem(id){
             var button = document.createElement('button');
             button.classList.add('duck-list__button');
             button.innerText = 'Back';
-            button.addEventListener('click', function(e){ backtothefuture() });
+            button.addEventListener('click', function(){ backtothefuture() });
 
             div.append(h2);
             div.append(img);

@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  background-image: url(https://www.desktopbackground.org/t/2015/12/10/1055168_rubber-ducks-illustration-vector-art-graphics_1024x1325_h.jpg);
+  background-size: contain;
+  width: 100%;
+  justify-items: center;
+  justify-content: space-evenly;
+}
+.header__title {
+  color: white;
+  align-self: center;
+  font-size: 40px;
+}
+.header__image {
+  width: 20%;
+}
+
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+li {
+  list-style: none;
+}
+
+/*# sourceMappingURL=style.css.map */
