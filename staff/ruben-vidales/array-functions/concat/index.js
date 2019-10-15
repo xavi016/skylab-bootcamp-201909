@@ -1,8 +1,7 @@
 /**
- * 
+ * Returns a new array with the values of the original array and the values of the parameters
  * @param {Array} array The original array to concatenate the others
- * @param {...Array} args 
- * 
+ * @param {...Array} args The rest of the elements to concatenate 
  * @returns {Array} The results to concatenate all arrays recived through the arguments
  */
 function concat(array) {
@@ -16,7 +15,8 @@ function concat(array) {
                 aux[cont] = arguments[i][j];
                 cont++;
             }
-        } else {
+        } else if (arguments[i] !== undefined){
+            console.log(arguments[i]);
             aux[cont] = arguments[i];
             cont++;
         }
