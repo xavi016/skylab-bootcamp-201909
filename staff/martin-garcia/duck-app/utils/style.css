@@ -1,10 +1,98 @@
-.article {
-  width: 30%;
+.search {
+  width: 100%;
 }
 
 .search__main {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.main__article {
+  margin: 20px 0px 20px 0px;
+}
+
+.article__image {
+  background-size: cover;
+  max-width: 300px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.main__article .article__title {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  font-weight: bold;
+  width: 70%;
+  height: 50px;
+}
+.main__article .article__price {
+  margin-top: 5px;
+}
+
+.header {
+  display: flex;
+  justify-items: flex-start;
+}
+.header h1 {
+  max-width: 200px;
+  background-color: #f45905;
+  padding: 20px;
+  border-radius: 5px;
+}
+.header * {
+  margin: 20px;
+}
+
+.myForm__search {
+  width: 220px;
+  height: 30px;
+}
+
+.result {
+  width: 100%;
+}
+
+.result__main .main__article {
   display: flex;
   flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+.result__main .main__article .article__title {
+  width: 100%;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.result__main .main__article .article__image {
+  background-size: cover;
+  max-width: 80%;
+  min-width: 100px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.result__main .main__article .article__description {
+  margin-bottom: 20px;
+}
+.result__main .main__article .article__price {
+  float: left;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+body {
+  background-color: #fbe555;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+  font-family: "Roboto", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
 }
 
 .header__nav {
