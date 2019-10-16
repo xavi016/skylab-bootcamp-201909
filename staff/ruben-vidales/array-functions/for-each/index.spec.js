@@ -1,5 +1,4 @@
 describe('forEach', function () {
-    /*
     it('should succeed on correct array and expression, adding all numbers', function () {
         var numbers = [1, 2, 3];
         var result = 0;
@@ -43,5 +42,4 @@ describe('forEach', function () {
         expect(function() { forEach(array, true); }).toThrowError('true is not a function');
         expect(function() { forEach(array, 1); }).toThrowError('1 is not a function');
     });
-    */
 });
