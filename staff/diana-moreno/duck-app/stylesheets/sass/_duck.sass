@@ -41,37 +41,22 @@
     padding: 0.2rem 0.3rem
     border-radius: 7px
     border: 0
-    font-size: 1.2
+    font-size: 1.2rem
 
   &__button--back
     background-color: $duckButtonBackgroundColorBack
-    padding: 0.25rem 1rem
+    padding: 0.15rem 1rem
 
 
-// medium-large smartphones
-@media screen and (min-device-width:480px)
-
-
-// Small tablets and large smartphones (landscape view)
-$screen-sm-min: 576px
-@media only screen and (min-width:576px)
 
 // Small tablets (portrait view)
 $screen-md-min: 768px
 @media only screen and (min-width:768px)
-
-// Tablets and small desktops
-$screen-lg-min: 992px
-@media only screen and (min-width:992px)
-
-// Large tablets and desktops
-$screen-xl-min: 1200px
-@media only screen and (min-width:1200px)
   .duck
     margin: 2rem 5rem
     &__list
-      margin: 0 5rem
-      padding-top: 6rem
+      margin: 0 2rem
+      padding-top: 5rem
 
     &__image
       width: 17rem
@@ -90,3 +75,8 @@ $screen-xl-min: 1200px
 
     &__button--back
       padding: 0.2rem 1rem
+    &__title
+      font-size: 2rem
+
+    &__description--litle
+      font-size: 1.5rem
