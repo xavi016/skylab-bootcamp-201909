@@ -46,9 +46,9 @@ var printDucks = function(ducks) {
         img.src = duck.imageUrl;
         title.innerText = duck.title;
         price.innerText = duck.price;
-
-        li.append(img);
-        ul.append(li, title, price);
+        li.classList.add('ducks__figure');
+        li.append(img, title, price);
+        ul.append(li);
 
         li.addEventListener('click', function(e) {
            ducksContainer.style.display = 'none';
@@ -87,6 +87,8 @@ var printDuck = function(duck) {
     var price = document.createElement('h4');
     var description = document.createElement('p');
     var backButton = document.createElement('button');
+        backButton.classList.add('duck__button');
+        backButton.innerText = "Go back";
 
         backButton.addEventListener('click', function() {
             ducksContainer.style.display = 'block';
@@ -94,9 +96,11 @@ var printDuck = function(duck) {
         })
 
     title.innerText = duck.title;
+    title.classListadd('duck__title');
     img.src = duck.imageUrl;
     price.innerText = duck.price;
     description.innerText = duck.description;
+    description.classList.add('duck__description');
 
     duckDetailContainer.append(title, img, price, description, backButton);
     
