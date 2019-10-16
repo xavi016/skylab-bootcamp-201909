@@ -6,85 +6,110 @@ var buttonBack = document.getElementsByClassName('duck__button--back')[0];
 var duckDom = document.getElementsByClassName('duck')[0];
 var duckList = document.getElementsByClassName('duck__list')[0];
 
-function searchDucks(e) {
-  duckList.innerHTML = "";
-  toogleViews('view-list');
 
-  e.preventDefault();
-  var query = e.target.query.value; // this
-  var xhr = new XMLHttpRequest;
-  xhr.open('GET', 'https://duckling-api.herokuapp.com/api/search?q=' + query);
-  xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 201) {
-      var ducks = JSON.parse(xhr.responseText);
+// recoge el evento cuando se hace una búsqueda en el formulario
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  var query = this.query.value;
+  listSearchResults(query)
+})
 
-      ducks.forEach(function(duck, index) {
-        createDomDucks(duck);
-        var id = duck.id;
-        duckImages[index].addEventListener('click', function() { // INDEX FOREACH!!
-        searchDuck(id);
-        })
-      });
-    }
-  };
-  xhr.send();
+// función intermedia que llama a otra función para buscar resultos
+function listSearchResults(query) {
+  searchDucks(query, paintResults);
+}
+
+// función que espera un click en el botón de retroceder
+function clickBackButton(button) {
+  button.addEventListener('click', function() {
+    toogleViews('view-list');
+  })
 };
 
-clickForm(form);
+// business
 
-function searchDuck(id) {
-  duckDom.innerHTML = '';
-  toogleViews('view-single');
+// función que hace una petición para buscar con el criterio query indicado y devuelve una callback para hacer algo después (renderizar el html)
+function searchDucks(query, callback) {
+  call('GET', query ? 'https://duckling-api.herokuapp.com/api/search?q=' + query : 'https://duckling-api.herokuapp.com/api/search', callback);
+}
 
-  var xhr = new XMLHttpRequest;
-  xhr.open('GET', 'https://duckling-api.herokuapp.com/api/ducks/' + id);
-  xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 201) {
-      var duck = JSON.parse(xhr.responseText);
-      var button = createDomDuck(duck);
+// función que hace una petición para buscar un pato en particular indicando su id y pasándole una función callback para hacer algo después (renderizar el html)
+function retrieveDuck(id, callback) {
+  call('GET', 'https://duckling-api.herokuapp.com/api/ducks/' + id, callback);
+}
 
-      clickBackButton(button);
-      clickForm(form);
+// helper
+
+function call(method, url, callback) {
+  fetch(method, url, function(response) {
+    if (response.readyState == 4 && response.status == 201) {
+      var results = JSON.parse(response.responseText);
+      callback(results);
     }
+  });
+}
+
+// utils
+
+function fetch(method, url, callback) {
+  var xhr = new XMLHttpRequest;
+  xhr.open(method, url);
+  xhr.onreadystatechange = function() {
+    callback(this);
   };
   xhr.send();
-};
+}
 
-
-// auxiliar functions
-
+// función que activa o desactiva pantallas
 function toogleViews(view) {
-  if(view === 'view-list') {
+  if (view === 'view-list') {
     viewList.classList.remove('view--hide');
     viewSingle.classList.add('view--hide');
-  } else if(view === 'view-single') {
+  } else if (view === 'view-single') {
     viewList.classList.add('view--hide');
     viewSingle.classList.remove('view--hide');
   }
 }
 
-function createDomDucks(duck) {
-  var li = document.createElement('li');
-  var img = document.createElement('img');
-  var h1 = document.createElement('h1');
-  var p = document.createElement('p');
+// imprime resultados cuando se hace una búsqueda general
+// además, se puede hacer click en cada una de las imágenes para ver más detalles
+function paintResults(ducks) {
+  duckList.innerHTML = "";
+  toogleViews('view-list');
 
-  li.classList.add("duck");
-  h1.classList.add('duck__title');
-  img.classList.add('duck__image');
-  p.classList.add('duck__button')
+  ducks.forEach(function(duck, index) {
+    var li = document.createElement('li');
+    var img = document.createElement('img');
+    var h1 = document.createElement('h1');
+    var p = document.createElement('p');
 
-  img.src = duck.imageUrl;
-  h1.innerHTML = duck.title;
-  p.innerHTML = duck.price;
+    li.classList.add("duck");
+    h1.classList.add('duck__title');
+    img.classList.add('duck__image');
+    p.classList.add('duck__button')
 
-  li.append(h1);
-  li.append(img);
-  li.append(p);
-  duckList.append(li);
+    img.src = duck.imageUrl;
+    h1.innerHTML = duck.title;
+    p.innerHTML = duck.price;
+
+    li.append(h1);
+    li.append(img);
+    li.append(p);
+    duckList.append(li);
+
+    var id = duck.id;
+    duckImages[index].addEventListener('click', function() { // INDEX FOREACH!!
+      duckDom.innerHTML = '';
+      toogleViews('view-single');
+      retrieveDuck(id, paintDetail);
+    })
+  });
 };
 
-function createDomDuck(duck) {
+
+// función que muestra el detalle de una búsqueda en concreto, mostrando los detalles
+// además, incluye un botón para retroceder a la pantalla anterior
+function paintDetail(duck) {
   var img = document.createElement('img');
   var h1 = document.createElement('h1');
   var p = document.createElement('p');
@@ -114,15 +139,5 @@ function createDomDuck(duck) {
   div.append(p);
   div.append(button);
 
-  return button;
-};
-
-function clickForm(form) {
-  form.addEventListener('submit', searchDucks);
-};
-
-function clickBackButton(button) {
-  button.addEventListener('click', function() {
-    toogleViews('view-list');
-  })
+  clickBackButton(button);
 };
