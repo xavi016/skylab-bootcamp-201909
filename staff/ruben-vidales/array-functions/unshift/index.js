@@ -1,6 +1,6 @@
 /**
- * 
- * @param {Array} array 
+ * Add new elements in the beggining of the array
+ * @param {Array} array The array to keep the elements
  * @param {...arguments} elements to add in the beggining of the array
  * 
  * @returns {number} the array length after add the elements

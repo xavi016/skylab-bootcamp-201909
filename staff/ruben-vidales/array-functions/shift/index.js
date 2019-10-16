@@ -1,3 +1,11 @@
+/**
+ * Delete the first position element in the array
+ * 
+ * @param {Array} array The array to operate
+ * 
+ * @returns {*} The deleted element
+ */
+
 function shift (array){
     if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
   

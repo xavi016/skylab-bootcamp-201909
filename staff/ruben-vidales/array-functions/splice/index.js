@@ -1,4 +1,10 @@
-
+/**
+ * Add and delete elements in the array
+ * @param {Array} array The array with the values
+ * @param {number} start The start position to operate
+ * 
+ * @returns {Array} The deleted elements 
+ */
 function splice(array, start) {
 
     if (!(array instanceof Array)) throw TypeError(array + 'is not an array');

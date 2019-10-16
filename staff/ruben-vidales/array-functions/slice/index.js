@@ -1,3 +1,12 @@
+/**
+ * Create an a result array from slice an original
+ * 
+ * @param {Array} array The array to operate 
+ * @param {number} begin The start position
+ * @param {number} end The end position
+ * 
+ * @return {Array} The new calculated array
+ */
 function slice (array, begin, end) {
     if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
 
