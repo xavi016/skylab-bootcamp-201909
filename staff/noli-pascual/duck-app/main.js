@@ -1,66 +1,104 @@
 
-    
-        
- var input = document.getElementsByClassName('ducks__input')[0];
- var buttonRequest = document.getElementsByClassName('ducks__form')[0];
- var detailDuck = document.getElementsByClassName('main__detail')[0];
- var ducksContainer = document.getElementsByClassName('ducks')[0];
- var duckDetailContainer = document.getElementsByClassName('duck')[0];
+var detailDuck = document.getElementsByClassName('main__detail')[0];
+var ducksContainer = document.getElementsByClassName('ducks')[0];
+var duckDetailContainer = document.getElementsByClassName('duck')[0];
 
-var search = function() {
-     
-    
-    var newRequest = new XMLHttpRequest;
 
-    newRequest.open('GET', 'http://duckling-api.herokuapp.com/api/search?q=' + input.value);
+//PRESENTATION
 
-    newRequest.onreadystatechange = function() {
+function printDucks(ducks) {
 
-        if(this.readyState == 4 && this.status == 201) {
-    
-            var ducks = JSON.parse(newRequest.responseText);
-            printDucks(ducks);
-        }
-
-    }
-    newRequest.send();
-    
-}
-
-var printDucks = function(ducks) {
-    // var list = document.createElement('div');
     var list = document.getElementsByClassName('ducks__list')[0];
-         
+            
     var ul = document.createElement('ul');
     list.innerHTML = '';
-    
-    // document.body.append(list);
-    list.append(ul);
-    
-    ducks.forEach(function(duck) {
-        var li = document.createElement('li');
-        var img = document.createElement('img');
-        var title = document.createElement('h3');
-        var price = document.createElement('p');
 
-        img.src = duck.imageUrl;
-        title.innerText = duck.title;
-        price.innerText = duck.price;
+    list.append(ul);
+
+    ducks.forEach(function(duck) {
+        
+        var li = document.createElement('li');
         li.classList.add('ducks__figure');
+
+        var img = document.createElement('img');
+        img.src = duck.imageUrl;
+
+        var title = document.createElement('h3');
+        title.innerText = duck.title;
+
+        var price = document.createElement('p');
+        price.innerText = duck.price;
+
         li.append(img, title, price);
         ul.append(li);
 
         li.addEventListener('click', function(e) {
-           ducksContainer.style.display = 'none';
-           e.preventDefault();
-           searchDuck(duck.id);
-
+            e.preventDefault();
+            ducksContainer.classList.toggle('off');
+            searchDuck(duck.id);
         })
-        
     });
 }
 
-var searchDuck = function(duckId) {
+// PRESENTATION
+
+function printSingleDuck(duck) {
+    duckDetailContainer.innerHTML = '';
+
+    var title = document.createElement('h1');
+    title.innerText = duck.title;
+    title.classList.add('duck__title');
+
+    var img = document.createElement('img');
+    img.src = duck.imageUrl;
+
+    var price = document.createElement('h4');
+    price.innerText = duck.price;
+    
+    var description = document.createElement('p');
+    description.innerText = duck.description;
+    description.classList.add('duck__description');
+
+    var backButton = document.createElement('button');
+    backButton.classList.add('duck__button');
+    backButton.innerText = "Go back";
+
+    backButton.addEventListener('click', function() {
+        ducksContainer.classList.toggle('off');   
+    })
+
+    duckDetailContainer.append(title, img, price, description, backButton);
+}
+
+//BUSINESS
+
+var search = document.getElementsByClassName('search')[0];
+
+function searchDucks(input) {
+    
+    var newRequest = new XMLHttpRequest;
+
+    newRequest.open('GET', 'http://duckling-api.herokuapp.com/api/search?q=' + input);
+
+    newRequest.onreadystatechange = function() {
+
+        if(this.readyState == 4 && this.status == 201) {
+            var ducks = JSON.parse(newRequest.responseText);
+            printDucks(ducks);
+        }
+    }
+    newRequest.send();
+}
+
+search.addEventListener('submit', function(event) {
+    var input = this.query.value;
+    event.preventDefault();
+    searchDucks(input);
+});
+
+
+function searchDuck(duckId) {
+
     var detailReq = new XMLHttpRequest;
     detailReq.open('GET', 'http://duckling-api.herokuapp.com/api/ducks/' + duckId);
 
@@ -68,46 +106,10 @@ var searchDuck = function(duckId) {
 
         if(this.readyState == 4 && this.status == 201) {
 
-            
-
             var duck = JSON.parse(detailReq.responseText);
+            printSingleDuck(duck);
             
-            printDuck(duck);
-            
-
         };
     }
     detailReq.send();
 }
-
-var printDuck = function(duck) {
-    duckDetailContainer.innerHTML = '';
-    var title = document.createElement('h1');
-    var img = document.createElement('img');
-    var price = document.createElement('h4');
-    var description = document.createElement('p');
-    var backButton = document.createElement('button');
-        backButton.classList.add('duck__button');
-        backButton.innerText = "Go back";
-
-        backButton.addEventListener('click', function() {
-            ducksContainer.style.display = 'block';
-            
-        })
-
-    title.innerText = duck.title;
-    title.classListadd('duck__title');
-    img.src = duck.imageUrl;
-    price.innerText = duck.price;
-    description.innerText = duck.description;
-    description.classList.add('duck__description');
-
-    duckDetailContainer.append(title, img, price, description, backButton);
-    
-}
-
-buttonRequest.addEventListener('click', function(event) {
-    
-    event.preventDefault();
-    search()
-});
