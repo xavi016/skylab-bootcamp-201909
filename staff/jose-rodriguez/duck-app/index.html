@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="style.css">
-        <script src="https://kit.fontawesome.com/80c46885ed.js"></script>
-        <title>SPA duck-app</title>
-    </head>
-    <body>
-        <header class="header">
-            <h1 class="header__title">DUCK-APP SPA</h1>
-        </header>
-        <main class="main__content">
-            <section id="searching" class="searching">
-                
-                <div class="navigation__content">
-                    <input id="search" class="navigation__input" type="text" placeholder="Search..." name="q" autofocus>
-                        <div class= "navigation__button" onclick=searchRequest()>
-                            <i class="fas fa-search"></i>
-                        </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/80c46885ed.js"></script>
+    <title>SPA duck-app</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="header__title">DUCK-APP SPA</h1>
+    </header>
+    <main class="main__content">
+        <section id="searching" class="searching">
+
+            <div class="navigation__content">
+                <input id="search" class="navigation__input" type="text" placeholder="Search..." name="q" autofocus>
+                <div id = "search_button" class="navigation__button" onclick=searchRequest()>
+                    <i class="fas fa-search"></i>
                 </div>
-            </section>
-            <section id="results" class="results">
+            </div>
+        </section>
+        <section id="results" class="results">
 
-            </section>
-            <section id="details" class="details">
+        </section>
+        <section id="details" class="details">
 
-            </section>
-        </main>
-        <footer class="footer footer__information">
-            <p class="information__text">@developed by Jose Rodríguez</p>
-            <a href="#" class="information__text">Volver arriba</a>
-            
-        </footer>
-        <script src="main.js"></script>
-    </body>
+        </section>
+    </main>
+    <footer class="footer footer__information">
+        <p class="information__text">@developed by Jose Rodríguez</p>
+        <a href="#" class="information__text">Volver arriba</a>
+
+    </footer>
+    <script src="main.js"></script>
+</body>
+
 </html>

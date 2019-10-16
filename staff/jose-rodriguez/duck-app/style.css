@@ -1,4 +1,4 @@
-.results, .searching {
+.back__button, .price__detail, .results, #search {
   border: solid 0.2rem rgba(235, 234, 232, 0.753);
   border-radius: 0.2rem;
   background: linear-gradient(to bottom, #fff 0, #f1f1f1 100%);
@@ -6,56 +6,102 @@
 }
 
 .bodycontent {
-  font-family: fantasy;
+  font-family: Fantasy;
   font-size: 0.8rem;
   margin: 2rem;
 }
 
-.searching {
-  display: flex;
-  justify-content: space-between;
+.header__title {
+  text-align: center;
+  letter-spacing: 0.2rem;
+  font-family: Fantasy;
 }
 
-.navigation__input {
+.main__content {
+  height: 60vh;
+}
+
+.navigation__content {
+  display: flex;
+  justify-content: space-between;
+  width: 30vw;
+  height: 5vh;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+#search {
   width: 20rem;
   height: 2rem;
-  background: #d1d2d46c;
-  border: 0.1rem;
-  font-size: 10pt;
-  color: #63717f;
-  border-radius: 0.2rem;
-  margin-left: 0.1rem;
+  font-family: Arial;
+  font-size: inherit;
+  text-align: end;
+  letter-spacing: 0.1rem;
+}
+
+#search_button {
+  color: goldenrod;
+  margin-left: 0.5rem;
 }
 
 .results {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 0.5rem;
+  height: 70vh;
+  overflow: scroll;
 }
 
-.duck__content {
+.article__content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 95%;
 }
 
-ul {
-  list-style: none;
-  display: flex;
-  justify-content: flex-start;
+img {
+  max-width: 30vw;
 }
 
-img {
-  height: 15vh;
-  width: 10vw;
+#img__detail {
+  max-width: 70vw;
+  height: 30vh;
+}
+
+.detail__title {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin: 0.2rem;
+}
+
+.show__options {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.price__detail {
+  font-size: 2rem;
+  font-family: Arial;
+}
+
+.back__button {
+  font-size: 2rem;
+  font-family: Arial;
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  height: 5vh;
+  height: 25vh;
   border-top: 0.1rem solid rgba(235, 234, 232, 0.753);
   color: black;
   font-family: Arial, Helvetica, sans-serif;
