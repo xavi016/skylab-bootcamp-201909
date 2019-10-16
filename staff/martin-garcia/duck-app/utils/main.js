@@ -61,10 +61,12 @@ function printDucks(ducks) {
  * @param {object} duck That's an object with the duck description
  */
 function printDuckSpecs(duck) {
-    console.log(duck)
     var container = document.getElementsByClassName('result__main');
     container = container[0];
     container.innerHTML = "";
+
+    img_desc_container = document.createElement('div');
+    img_desc_container.className = 'article__specs__container';
 
     var article = document.createElement('article');
     article.className = 'main__article article__specs';
@@ -87,7 +89,9 @@ function printDuckSpecs(duck) {
     description.className = 'article__description';
     description.innerText = duck.description;
 
-    article.append(title, image, description, price);
+    img_desc_container.append(image, description);
+
+    article.append(title, img_desc_container, price);
     container.append(article);
 }
 
