@@ -8,12 +8,12 @@ ul {
   padding-inline-start: 0;
 }
 
-.header {
+.header__form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.header__logo {
+.header__form-logo {
   width: 100%;
 }
 
@@ -29,21 +29,40 @@ ul {
 .duck {
   background-color: #ccc;
   border: 0.15em solid black;
-  padding: 1em;
-  margin: 1em;
+  padding: 0.5em;
+  margin: 0.5em;
   border-radius: 0.5em;
   text-align: center;
   cursor: pointer;
 }
 .duck__title {
   text-transform: uppercase;
-  font-size: 1.2em;
+  min-height: 4em;
+  font-size: 0.9em;
 }
 .duck__image {
   width: 90%;
   margin: 5% 5%;
 }
 
+@media screen and (min-width: 420px) {
+  .ducks-panel__list-item {
+    width: 50%;
+  }
+
+  .duck__title {
+    min-height: 4em;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .ducks-panel__list {
+    width: 78vw;
+    margin: 2em 11vw;
+  }
+  .ducks-panel__list-item {
+    width: 25%;
+  }
+}
 .footer__copyright {
   text-align: center;
   font-weight: bold;

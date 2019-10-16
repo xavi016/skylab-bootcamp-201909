@@ -1,11 +1,13 @@
-var searchInput = document.getElementsByClassName('header__search-input')[0];
-var searchButton = document.getElementsByClassName('header__search-button')[0];
+var searchInput = document.getElementsByClassName('header__form-input')[0];
+var searchForm = document.getElementsByClassName('header__form')[0];
 var ducksPanel = document.getElementsByClassName('ducks-panel')[0];
 var detailPanel = document.getElementsByClassName('detail-panel')[0];
 
 var searchResult;
 
-searchButton.addEventListener('click', function (e) {
+searchForm.addEventListener('submit', function (e) {
+
+    e.preventDefault();
 
     var xhr = new XMLHttpRequest;
     var url = 'https://duckling-api.herokuapp.com/api/search?q=' + searchInput.value;
