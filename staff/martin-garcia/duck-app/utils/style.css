@@ -9,6 +9,11 @@
   justify-content: space-around;
 }
 
+.myForm__search {
+  width: 220px;
+  height: 30px;
+}
+
 .header {
   display: flex;
   justify-items: flex-start;
@@ -31,11 +36,6 @@
 .header__logo {
   width: 250px;
   min-width: 100px;
-}
-
-.myForm__search {
-  width: 220px;
-  height: 30px;
 }
 
 .result {
