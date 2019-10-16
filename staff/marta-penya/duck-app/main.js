@@ -92,18 +92,21 @@ function showItem(id){
 
             var img = document.createElement('img');
             img.classList.add('duck-list__image');
+            img.classList.add('duck-list__image--modif');
             img.src = duck.imageUrl;
                 
 
             var h2 = document.createElement('h2');
             var text = document.createTextNode(duck.title);
             h2.classList.add('duck-list__title');
+            h2.classList.add('duck-list__title--modif');
             h2.appendChild(text);
                 
 
             var price = document.createElement('p');
             var pric = document.createTextNode(duck.price);
             price.classList.add('duck-list__price');
+            price.classList.add('duck-list__price--modif');
             price.appendChild(pric);
 
             var desc = document.createElement('p');

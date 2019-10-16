@@ -2,9 +2,10 @@ body {
   font-family: "Mansalva", cursive;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  justify-content: center;
   box-sizing: border-box;
   background-color: Lavender;
+  margin-bottom: 20%;
 }
 
 li {
@@ -28,9 +29,18 @@ li {
   width: 20%;
 }
 
+@media (min-width: 768px) {
+  .header {
+    width: 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .header__title {
+    font-size: 80px;
+  }
+}
 .search {
   display: flex;
-  background-color: PaleGoldenRod;
   height: 10vh;
   justify-content: center;
   align-items: center;
@@ -52,12 +62,11 @@ li {
 .duck-list {
   display: flex;
   flex-direction: column;
-  border: 4px dotted yellow;
   padding: 0;
 }
 .duck-list__duck {
   display: flex;
-  border: 4px dotted blue;
+  border-radius: 20px;
 }
 .duck-list__link {
   display: flex;
@@ -76,7 +85,7 @@ li {
 }
 .duck-list__image {
   width: 90%;
-  border-radius: 50px;
+  border-radius: 60px;
 }
 .duck-list__description {
   padding: 0 2%;
@@ -107,18 +116,70 @@ li {
   margin-bottom: 3%;
 }
 
+@media (min-width: 768px) {
+  .ducks {
+    display: flex;
+    justify-content: center;
+  }
+
+  .duck-list {
+    flex-flow: row wrap;
+    justify-content: space-around;
+    max-width: 90%;
+  }
+  .duck-list__image {
+    max-width: 300px;
+    background-size: cover;
+  }
+}
+@media (min-width: 1024px) {
+  .duck-list__image {
+    max-width: 200px;
+    background-size: cover;
+  }
+  .duck-list__title {
+    font-size: 15px;
+    text-align: center;
+  }
+  .duck-list__image--modif {
+    max-width: 400px;
+  }
+  .duck-list__description {
+    font-size: 20px;
+  }
+  .duck-list__title--modif {
+    font-size: 30px;
+  }
+  .duck-list__price--modif {
+    font-size: 30px;
+  }
+  .duck-list__button {
+    font-size: 30px;
+  }
+}
 .footer {
   display: flex;
+  align-self: flex-end;
   background-image: url(https://www.desktopbackground.org/t/2015/12/10/1055168_rubber-ducks-illustration-vector-art-graphics_1024x1325_h.jpg);
   background-size: contain;
   width: 100%;
   justify-items: center;
   justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
 }
 .footer__title {
   color: white;
   align-self: center;
   font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    width: 100%;
+    align-self: center;
+    font-size: 30px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
