@@ -1,0 +1,116 @@
+.footer, .results .duck__price, .header__company-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer, .results .duck__price, .header__company-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  display: grid;
+  grid-template-areas: "logo company-name company-name" "logo home search";
+  grid-template-columns: 1fr 1fr 2fr;
+  border-bottom: 2px solid;
+  padding-bottom: 25px;
+  grid-gap: 15px;
+}
+.header__logo {
+  grid-area: logo;
+}
+.header__company-name {
+  grid-area: company-name;
+}
+.header__home {
+  grid-area: home;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.header__search {
+  grid-area: search;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.header__search .search__input {
+  border: none;
+  border-bottom: 2px solid;
+}
+
+@media (min-width: 768px) {
+  .header {
+    grid-template-areas: "logo company-name home search";
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+  }
+  .header__logo {
+    width: 100px;
+    margin: 0 auto;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.results {
+  list-style: none;
+}
+.results .duck {
+  display: grid;
+  grid-template-areas: "title price" "img img";
+}
+.results .duck__title {
+  grid-area: title;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+.results .duck__price {
+  grid-area: price;
+  color: #01664e;
+  font-weight: bold;
+}
+.results .duck__price .price {
+  background-color: #ffff71;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+}
+.results .duck__img {
+  grid-area: img;
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.img {
+  width: 100%;
+  max-width: 250px;
+}
+
+@media (min-width: 768px) {
+  .results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+  }
+  .results .duck {
+    grid-template-areas: "title" "img" "price";
+    grid-auto-rows: 85px auto 60px;
+  }
+  .results .duck__img {
+    border-radius: 50%;
+    border: 1px solid #f2ac00;
+  }
+  .results .duck__price {
+    text-align: left;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

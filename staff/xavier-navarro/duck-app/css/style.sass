@@ -1,0 +1,49 @@
+@import flex-center
+@import header
+*
+    box-sizing: border-box
+body
+    font-family: 'Roboto Condensed', sans-serif
+    
+.results
+    list-style: none
+    .duck
+        display: grid
+        grid-template-areas: "title price" "img img"
+        &__title
+            grid-area: title
+            text-decoration: none
+            color: #000
+            cursor: pointer
+        &__price
+            grid-area: price
+            color: #01664e
+            font-weight: bold
+            @extend %flex-center
+            .price
+                background-color:#ffff71
+                padding: .5rem
+                border-radius: 0.4rem
+        &__img
+            grid-area: img
+            width: 100%
+            max-width: 250px
+            margin: 0 auto
+.footer
+    @extend %flex-center
+.img
+    width: 100%
+    max-width: 250px
+@media (min-width: 768px)
+    .results
+        display: grid
+        grid-template-columns: repeat(3,1fr)
+        grid-gap: 1rem
+        .duck
+            grid-template-areas: "title" "img" "price"
+            grid-auto-rows: 85px auto 60px
+            &__img
+                border-radius: 50%
+                border: 1px solid #f2ac00
+            &__price
+                text-align: left
