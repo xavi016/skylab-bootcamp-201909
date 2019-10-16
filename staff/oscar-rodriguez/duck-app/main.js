@@ -20,39 +20,26 @@ allButton.addEventListener('click', function () {
     ducksRequest.send();
 })();
 
-
-
 function createList (ducks) {
     var ducksList = document.getElementById("search-list");
     ducksList.innerHTML="";
     
-    var ul = document.createElement('ul');
-    ul.className ="search-list";
-
+    var ul = createElement('ul','class','search-list');
     ducksList.append(ul);
 
     ducks.forEach(function(duck) {
 
-            var li = document.createElement('li');
-            li.className = "search-list__entry entry";
-            var img = document.createElement('img');
-            img.src = duck.imageUrl;
-            img.className = "entry__img";
-            var title = document.createElement('div');
-            title.className = "entry__tittle";
-            title.innerHTML = duck.title;
-            var price = document.createElement('div');
-            price.innerHTML = duck.price;
-            price.className = "entry__price";
+            var li = createElement('li','class',"search-list__entry entry");
+            var img = createElement('img','class','entry__img','src',duck.imageUrl);
+            var title = createElement('div','class','entry__tittle',"innerHtml",duck.title);
+            var price = createElement('div',"innerHtml",duck.price,"class","entry__price");
 
             li.append(img);
             li.append(title);
             li.append(price);
             
-            var link = document.createElement("a");
+            var link = createElement("a",'class',"link",'href', '#'+duck.id);
 
-            link.className="link";
-            link.href="#"+duck.id;
             link.addEventListener('click',function (event){
                     openDuck(duck.id)});
 
@@ -80,26 +67,13 @@ function openDuck (id) {
             
             var duckInfo = JSON.parse(duckRequest.responseText);
 
-            var title = document.createElement("h1");
-            title.className = "duck-detail__title";
-            title.innerHTML=duckInfo.title;
-            var description = document.createElement("p");
-            description.className = "duck-detail__description";
-            description.innerHTML=duckInfo.description;
-            var image = document.createElement("img");
-            image.className = "duck-detail__image";
-            image.src=duckInfo.imageUrl;
-            var price = document.createElement("div");
-            price.className = "duck-detail__price";
-            price.innerHTML = duckInfo.price;
-            var link = document.createElement("a");
-            link.className = "link";
-            link.innerHTML = "Go to Duck's shopping page";
-            link.href = duckInfo.link;
+            var title = createElement("h1",'class','duck-detail__title','innerHtml',duckInfo.title);
+            var description = createElement("p","class","duck-detail__description","innerHtml",duckInfo.description);
+            var image = createElement("img",'class',"duck-detail__image",'src',duckInfo.imageUrl);
+            var price = createElement("div",'class','duck-detail__price','innerHtml',duckInfo.price);
+            var link = createElement("a", 'class','link',"innerHtml","Go to Duck's shopping page","href",duckInfo.link);
 
-            var back = document.createElement("button");
-            back.innerHTML="Atrás";
-            back.className = "duck-detail__back"
+            var back = createElement("button","innerHtml","Atrás",'class','duck-detail__back');
             back.addEventListener('click', function (){
                 list_Panel.style.display = "flex";
                 duck_Panel.style.display = "none";
@@ -144,4 +118,16 @@ function search(e) {
     
 }
 
+function createElement (elem) {
+    var element = document.createElement(elem);
 
+    for ( let i=1; i<arguments.length; i+=2) {
+
+        if (arguments[i].toLowerCase() === "innerhtml") {
+            element.innerHTML=arguments[i+1];
+        } else {
+            element.setAttribute(arguments[i],arguments[i+1]);
+        }
+    }
+	return element;
+}
