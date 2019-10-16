@@ -90,11 +90,11 @@ search.addEventListener('submit', function (e) {
     searchRequest(query);
 })
 
-function searchRequest() {
+function searchRequest(query) {
 
     var request = new XMLHttpRequest;
-    var input = document.getElementById('search');
-    request.open('GET', 'https://duckling-api.herokuapp.com/api/search?q=' + input.value);
+    // var input = document.getElementById('search');
+    request.open('GET', 'https://duckling-api.herokuapp.com/api/search?q=' + query);
     request.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 201) {
             var ducks = JSON.parse(request.responseText);
