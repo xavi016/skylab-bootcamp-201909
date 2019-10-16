@@ -35,21 +35,22 @@ button[0].addEventListener('submit', function (e) {
                 img.classList.add('duck-list__image');
                 img.src = duck.imageUrl;
                 
-
                 var h2 = document.createElement('h2');
+                var text = document.createTextNode(duck.title);
                 h2.classList.add('duck-list__title');
-                h2 = duck.title;
+                h2.appendChild(text);
+                    
                 
-
-                var p = document.createElement('p');
-                p.classList.add('duck-list__price');
-                p = duck.price;
+                var price = document.createElement('p');
+                var pric = document.createTextNode(duck.price);
+                price.classList.add('duck-list__price');
+                price.appendChild(pric);
                 
 
 
                 link.append(h2);
                 link.append(img);
-                link.append(p);
+                link.append(price);
 
                 li.append(link);
 
@@ -84,7 +85,7 @@ function showItem(id){
             var duck = JSON.parse(xhr.responseText);
 
             var div = document.createElement('div');
-            div.classList.add('duck-list');
+            div.classList.add('duck-list--modif');
 
             result[0].append(div);    
 
@@ -95,17 +96,20 @@ function showItem(id){
                 
 
             var h2 = document.createElement('h2');
+            var text = document.createTextNode(duck.title);
             h2.classList.add('duck-list__title');
-            h2 = duck.title;
+            h2.appendChild(text);
                 
 
             var price = document.createElement('p');
+            var pric = document.createTextNode(duck.price);
             price.classList.add('duck-list__price');
-            price = duck.price;
+            price.appendChild(pric);
 
             var desc = document.createElement('p');
+            var description = document.createTextNode(duck.description);
             desc.classList.add('duck-list__description');
-            desc = duck.description;
+            desc.appendChild(description);
             
             var button = document.createElement('button');
             button.classList.add('duck-list__button');

@@ -1,5 +1,10 @@
 body {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Mansalva", cursive;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: Lavender;
 }
 
 li {
@@ -23,27 +28,97 @@ li {
   width: 20%;
 }
 
+.search {
+  display: flex;
+  background-color: PaleGoldenRod;
+  height: 10vh;
+  justify-content: center;
+  align-items: center;
+}
+.search__form {
+  display: flex;
+}
+.search__input {
+  border-radius: 20px;
+}
+.search__button {
+  border-radius: 20px;
+  background: MintCream;
+  border: 2px solid black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .duck-list {
   display: flex;
   flex-direction: column;
+  border: 4px dotted yellow;
+  padding: 0;
 }
 .duck-list__duck {
   display: flex;
+  border: 4px dotted blue;
+}
+.duck-list__link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3%;
 }
 .duck-list__title {
-  color: black;
+  color: white;
+  background-color: LightSteelBlue;
+  border: 2px dotted black;
+  border-radius: 15px;
+  font-size: 20px;
+  padding: 0 2%;
 }
 .duck-list__image {
-  width: 100%;
+  width: 90%;
+  border-radius: 50px;
+}
+.duck-list__description {
+  padding: 0 2%;
 }
 .duck-list__price {
   color: black;
-}
-.duck-list__desc {
-  color: black;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+  align-self: center;
+  font-size: 20px;
 }
 .duck-list__button {
-  color: red;
+  border-radius: 20px;
+  background: MintCream;
+  border: 2px solid black;
+  font-size: 20px;
+  font-weight: bold;
+  align-self: center;
+}
+
+.duck-list--modif {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.footer {
+  display: flex;
+  background-image: url(https://www.desktopbackground.org/t/2015/12/10/1055168_rubber-ducks-illustration-vector-art-graphics_1024x1325_h.jpg);
+  background-size: contain;
+  width: 100%;
+  justify-items: center;
+  justify-content: space-evenly;
+}
+.footer__title {
+  color: white;
+  align-self: center;
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */
