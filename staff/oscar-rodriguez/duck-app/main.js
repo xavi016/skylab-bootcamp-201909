@@ -1,18 +1,25 @@
-var currentPage =1;
 var _form = document.getElementsByClassName("form-0");
-
 _form[0].addEventListener('submit', search);
+var allButton = document.getElementById("all");
+allButton.addEventListener('click', function () {
+    document.getElementById("search_box").value='';
+    search();
+});
 
-var ducksRequest = new XMLHttpRequest;
-ducksRequest.open('GET', 'https://duckling-api.herokuapp.com/api/search?q=');
+(function listAll() {
+    var ducksRequest = new XMLHttpRequest;
+    ducksRequest.open('GET', 'https://duckling-api.herokuapp.com/api/search?q=');
+    
+    ducksRequest.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 201) {
+            var ducks = JSON.parse(ducksRequest.responseText);
+            createList(ducks);
+        }
+    };
+    
+    ducksRequest.send();
+})();
 
-ducksRequest.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 201) {
-        var ducks = JSON.parse(ducksRequest.responseText);
-        createList(ducks);
-    }
-};
-ducksRequest.send();
 
 
 function createList (ducks) {
@@ -23,7 +30,7 @@ function createList (ducks) {
     ul.className ="search-list";
 
     ducksList.append(ul);
-    
+
     ducks.forEach(function(duck) {
 
             var li = document.createElement('li');
@@ -54,6 +61,7 @@ function createList (ducks) {
     
     });
 }
+
 
 function openDuck (id) {
 
