@@ -1,5 +1,5 @@
 var form = document.getElementsByClassName('form')[0];
-var duckImage = document.getElementsByClassName('duck__image');
+var duckImages = document.getElementsByClassName('duck__image');
 var viewList = document.getElementsByClassName('view__list')[0];
 var viewSingle = document.getElementsByClassName('view__single')[0];
 var buttonBack = document.getElementsByClassName('duck__button--back')[0];
@@ -21,7 +21,7 @@ function searchDucks(e) {
       ducks.forEach(function(duck, index) {
         createDomDucks(duck);
         var id = duck.id;
-        duckImage[index].addEventListener('click', function() { // INDEX FOREACH!!
+        duckImages[index].addEventListener('click', function() { // INDEX FOREACH!!
         searchDuck(id);
         })
       });
@@ -103,7 +103,7 @@ function createDomDuck(duck) {
   p.classList.add('duck__button');
   description.classList.add('duck__description');
   description.classList.add('duck__description--litle');
-  div.classList.add('duck__buttons');
+  div.classList.add('duck__container-buttons');
   button.classList.add('duck__button');
   button.classList.add('duck__button--back');
 
