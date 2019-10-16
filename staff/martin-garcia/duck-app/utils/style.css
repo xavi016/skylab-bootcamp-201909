@@ -98,6 +98,13 @@
   cursor: pointer;
 }
 
+.article__specs__container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
 @media only screen and (min-width: 768px) {
   .article__specs__container {
     display: flex;
