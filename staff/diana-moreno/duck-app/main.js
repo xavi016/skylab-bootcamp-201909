@@ -11,7 +11,7 @@ function searchDucks(e) {
   toogleViews('view-list');
 
   e.preventDefault();
-  var query = e.target.query.value;
+  var query = e.target.query.value; // this
   var xhr = new XMLHttpRequest;
   xhr.open('GET', 'https://duckling-api.herokuapp.com/api/search?q=' + query);
   xhr.onreadystatechange = function() {

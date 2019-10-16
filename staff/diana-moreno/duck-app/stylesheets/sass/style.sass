@@ -2,15 +2,24 @@
 body
   margin: 0
   padding: 0
+  height: 83%
+
+main, html
+  height: 100%
 
 @import header
 
 .view
   margin-top: 7rem
+  height: 100%
 
 .view--hide
   display: none
 
 @import duck
 
+
+@media only screen and (min-width:1200px)
+  .view__single
+    font-size: 1.5rem
 

@@ -5,6 +5,7 @@
   flex-direction: column
   align-items: center
   margin: 0 1rem
+  justify-content: center
 
   &__list
     display: flex
@@ -14,6 +15,7 @@
 
   &--litle
     margin: 0
+    height: 100%
 
   &__description--litle
     text-align: justify
@@ -29,7 +31,7 @@
 
   &__container-buttons
     display: flex
-    align-items: baseline
+    align-items: center
     width: 7rem
     justify-content: space-between
 
@@ -39,7 +41,52 @@
     padding: 0.2rem 0.3rem
     border-radius: 7px
     border: 0
+    font-size: 1.2
 
   &__button--back
     background-color: $duckButtonBackgroundColorBack
-    padding: 0.25rem 01rem
+    padding: 0.25rem 1rem
+
+
+// medium-large smartphones
+@media screen and (min-device-width:480px)
+
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px
+@media only screen and (min-width:576px)
+
+// Small tablets (portrait view)
+$screen-md-min: 768px
+@media only screen and (min-width:768px)
+
+// Tablets and small desktops
+$screen-lg-min: 992px
+@media only screen and (min-width:992px)
+
+// Large tablets and desktops
+$screen-xl-min: 1200px
+@media only screen and (min-width:1200px)
+  .duck
+    margin: 2rem 5rem
+    &__list
+      margin: 0 5rem
+      padding-top: 6rem
+
+    &__image
+      width: 17rem
+
+    &--litle
+      max-width: 40rem
+      margin: 0 auto
+      padding-top: 5rem
+      height: 90%
+
+    &__container-buttons
+      width: 9rem
+
+    &__button
+      font-size: 1.5rem
+
+    &__button--back
+      padding: 0.2rem 1rem

@@ -2,6 +2,11 @@
 body {
   margin: 0;
   padding: 0;
+  height: 83%;
+}
+
+main, html {
+  height: 100%;
 }
 
 .header {
@@ -14,9 +19,18 @@ body {
 .header__title {
   text-align: center;
   color: white;
-  margin-top: 0;
+  margin: 0.6rem;
+  letter-spacing: 0.2rem;
 }
 
+@media only screen and (min-width: 1200px) {
+  .header__title {
+    font-size: 3rem;
+    padding: 1.5rem;
+    letter-spacing: 0.8rem;
+    margin-top: 0;
+  }
+}
 .form {
   text-align: center;
 }
@@ -40,8 +54,17 @@ body {
   cursor: pointer;
 }
 
+@media only screen and (min-width: 1200px) {
+  .form {
+    padding-bottom: 1rem;
+  }
+  .form__input {
+    width: 20%;
+  }
+}
 .view {
   margin-top: 7rem;
+  height: 100%;
 }
 
 .view--hide {
@@ -53,6 +76,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin: 0 1rem;
+  justify-content: center;
 }
 .duck__list {
   display: flex;
@@ -62,6 +86,7 @@ body {
 }
 .duck--litle {
   margin: 0;
+  height: 100%;
 }
 .duck__description--litle {
   text-align: justify;
@@ -77,7 +102,7 @@ body {
 }
 .duck__container-buttons {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   width: 7rem;
   justify-content: space-between;
 }
@@ -87,10 +112,44 @@ body {
   padding: 0.2rem 0.3rem;
   border-radius: 7px;
   border: 0;
+  font-size: 1.2;
 }
 .duck__button--back {
   background-color: #d26464;
   padding: 0.25rem 1rem;
+}
+
+@media only screen and (min-width: 1200px) {
+  .duck {
+    margin: 2rem 5rem;
+  }
+  .duck__list {
+    margin: 0 5rem;
+    padding-top: 6rem;
+  }
+  .duck__image {
+    width: 17rem;
+  }
+  .duck--litle {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding-top: 5rem;
+    height: 90%;
+  }
+  .duck__container-buttons {
+    width: 9rem;
+  }
+  .duck__button {
+    font-size: 1.5rem;
+  }
+  .duck__button--back {
+    padding: 0.2rem 1rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .view__single {
+    font-size: 1.5rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
