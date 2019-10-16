@@ -1,10 +1,25 @@
+if (typeof Array.prototype.shuffle === 'undefined')
+    Array.prototype.shuffle = function () {
+        var result = [];
 
-var detailDuck = document.getElementsByClassName('main__detail')[0];
-var ducksContainer = document.getElementsByClassName('ducks')[0];
-var duckDetailContainer = document.getElementsByClassName('duck')[0];
+        for (var i = 0; i < this.length; i++) result[i] = this[i];
+
+        for (var i = 0; i < result.length; i++) {
+            var random = Math.floor(Math.random() * result.length);
+
+            var value = result[i];
+
+            result[i] = result[random];
+
+            result[random] = value;
+        }
+
+        return result;
+};
 
 
 //PRESENTATION
+var ducksContainer = document.getElementsByClassName('ducks')[0];
 
 function printDucks(ducks) {
 
@@ -42,6 +57,8 @@ function printDucks(ducks) {
 
 // PRESENTATION
 
+var duckDetailContainer = document.getElementsByClassName('duck')[0];
+
 function printSingleDuck(duck) {
     duckDetailContainer.innerHTML = '';
 
@@ -54,6 +71,7 @@ function printSingleDuck(duck) {
 
     var price = document.createElement('h4');
     price.innerText = duck.price;
+    price.classList.add('duck__price');
     
     var description = document.createElement('p');
     description.innerText = duck.description;

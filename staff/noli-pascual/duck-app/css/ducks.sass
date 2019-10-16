@@ -10,22 +10,22 @@
     justify-content: center
 
     &__list
+        height: 70%
         display: flex
         justify-content: space-arund
 
     &__form
         width: 100%
-        display: flex
-        justify-content: space-around
-        padding-bottom: 1.5em
+        height: 5vh
+        @extend %flex-row
+        margin-bottom: 5em
 
     &__input
         text-align: center
-        font-size: 2em
+        font-size: 1.2em
 
     &__button
-        width: 30vw
-        font-size: 2em
+        font-size: 1.2em
     
     &__item
         width: 90%
@@ -33,11 +33,8 @@
         flex-direction: row
         flex-wrap: wrap
 
-    &__input
-        width: 30%
-
     &__figure
-        width: 80%
+        width: 70%
         display: flex
         flex-direction: column
         margin-bottom: 1.5em

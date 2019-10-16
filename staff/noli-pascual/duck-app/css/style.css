@@ -11,19 +11,26 @@
   height: 20vh;
 }
 .header__logo {
-  width: 100%;
-  height: 80%;
+  width: 60%;
+  max-height: 60%;
 }
 .header__title {
   width: 100%;
   text-align: center;
-  height: 90%;
+  height: 100%;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .duck, .header {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.ducks__form {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-content: center;
 }
@@ -35,22 +42,21 @@
   justify-content: center;
 }
 .ducks__list {
+  height: 70%;
   display: flex;
   justify-content: space-arund;
 }
 .ducks__form {
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  padding-bottom: 1.5em;
+  height: 5vh;
+  margin-bottom: 5em;
 }
 .ducks__input {
   text-align: center;
-  font-size: 2em;
+  font-size: 1.2em;
 }
 .ducks__button {
-  width: 30vw;
-  font-size: 2em;
+  font-size: 1.2em;
 }
 .ducks__item {
   width: 90%;
@@ -58,11 +64,8 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-.ducks__input {
-  width: 30%;
-}
 .ducks__figure {
-  width: 80%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   margin-bottom: 1.5em;
@@ -81,6 +84,13 @@
   align-content: center;
 }
 
+.ducks__form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
 .duck {
   width: 70vw;
 }
@@ -89,6 +99,9 @@
 }
 .duck__img {
   width: 70vw;
+}
+.duck__price {
+  color: red;
 }
 .duck__description {
   font-size: 1.5em;
@@ -107,6 +120,13 @@
 .header, .duck {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.ducks__form {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-content: center;
 }
