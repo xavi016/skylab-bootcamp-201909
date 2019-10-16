@@ -1,8 +1,32 @@
+if (typeof Array.prototype.shuffle === 'undefined')
+    Array.prototype.shuffle = function() {
+        var result = [];
+
+        for (var i = 0; i < this.length; i++) result[i] = this[i];
+
+        for (var i = 0; i < result.length; i++) {
+            var random = Math.floor(Math.random() * result.length); // 0 <> length-1
+
+            var value = result[i];
+
+            result[i] = result[random];
+
+            result[random] = value;
+        }
+
+        //result[0] = ':P';
+
+        return result;
+    }
+
+
 var xhr = new XMLHttpRequest;
 xhr.open('GET', 'https://duckling-api.herokuapp.com/api/search?q=');
 xhr.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 201) {
         var ducks = JSON.parse(xhr.responseText);
+
+        ducks = ducks.shuffle().slice(0,6);
         createListDuck(ducks);
     }
 }
@@ -59,15 +83,12 @@ function createListDuck(obj) {
 
 }
 
-document.getElementById('search').addEventListener('submit', function (e) {
+var search = document.getElementsByClassName('navigation__content')[0]
+search.addEventListener('submit', function (e) {
+    var query = this.q.value
     e.preventDefault();
-    searchRequest();
-
+    searchRequest(query);
 })
-
-// document.getElementById('button').addEventListener('click', function () {
-//     searchRequest();
-// })
 
 function searchRequest() {
 
