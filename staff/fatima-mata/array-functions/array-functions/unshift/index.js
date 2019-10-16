@@ -4,7 +4,7 @@
  * @param  {[Array]} array The array to add items to.
  * @param {...any} item The item (or items) to add.
  * 
- * @return {[Number]}       The new array length
+ * @return {[Number]} The new array length
  */
 
 
