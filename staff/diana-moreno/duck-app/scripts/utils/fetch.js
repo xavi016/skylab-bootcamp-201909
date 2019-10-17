@@ -8,4 +8,4 @@ function fetch(method, url, callback) {
   };
 
   xhr.send();
-}
+};

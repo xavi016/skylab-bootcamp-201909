@@ -1,7 +1,9 @@
 function Detail(container) {
-  this.__container__ = container;
+  Component.call(this, container);
   container.innerHTML = '';
 };
+
+Detail.extend(Component);
 
 Detail.prototype.onBack = undefined;
 
@@ -36,8 +38,7 @@ Detail.prototype.render = function(item) {
   divDuck.append(div);
   div.append(p);
   div.append(button);
-  this.__container__.append(divDuck);
+  this.container.append(divDuck);
 
   button.addEventListener('click', this.onBack);
 };
-

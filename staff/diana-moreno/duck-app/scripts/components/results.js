@@ -1,8 +1,10 @@
 function Results(container) {
-  this.__container__ = container;
+  Component.call(this, container);
   container.innerHTML = '';
   this.render = this.render.bind(this); // EYE!
 };
+
+Results.extend(Component);
 
 Results.prototype.onItemRender = undefined;
 
@@ -13,6 +15,6 @@ Results.prototype.render = function(results) {
     var item = this.onItemRender();
     item.render(result);
 
-    this.__container__.append(item.__container__);
+    this.add(item);
   }.bind(this));
 };

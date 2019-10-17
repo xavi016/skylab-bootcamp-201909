@@ -1,7 +1,9 @@
 function ResultItem(container) {
-  this.__container__ = container;
+  Component.call(this, container);
   container.innerHTML = '';
 };
+
+ResultItem.extend(Component);
 
 ResultItem.prototype.onClick = undefined;
 
@@ -18,7 +20,7 @@ ResultItem.prototype.render = function(result) {
   h1.innerHTML = result.title;
   p.innerHTML = result.price;
 
-  this.__container__.append(h1, img, p);
+  this.container.append(h1, img, p);
 
   img.addEventListener('click', function() {
     var id = result.id;

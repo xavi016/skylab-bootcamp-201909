@@ -8,7 +8,8 @@
 var form = document.getElementsByClassName('form')[0];
 var search = new Search(form);
 search.onSubmit( function(query) {
-  searchDucks(query, results.render); //ojo
+  searchDucks(query, results.render); // NOTE it works thanks to the internal binding that takes place in Results constructor
+  // searchDucks(query, results.render.bind(results));
 });
 
 var duckList = document.getElementsByClassName('duck__list')[0];
