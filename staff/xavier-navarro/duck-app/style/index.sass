@@ -7,6 +7,7 @@ body
     
 .results
     list-style: none
+    padding: 0
     .duck
         display: grid
         grid-template-areas: "title price" "img img"
@@ -20,20 +21,40 @@ body
             color: #01664e
             font-weight: bold
             @extend %flex-center
-            .price
-                background-color:#ffff71
-                padding: .5rem
-                border-radius: 0.4rem
         &__img
             grid-area: img
             width: 100%
             max-width: 250px
             margin: 0 auto
+.details
+    display: grid
+    grid-template-areas: "title" "img" "description" "price" "back"
+    &__title
+        grid-area: title
+    &__img
+        grid-area: img
+    &__description
+        grid-area: description
+    .go-home
+        grid-area: back
+    &__price
+        grid-area: price
+        &-tag
+            background-color:#ffff71
+            padding: .5rem
+            border-radius: 0.4rem
 .footer
     @extend %flex-center
 .img
     width: 100%
     max-width: 250px
+.price-tag
+    background-color:#ffff71
+    padding: .5rem
+    border-radius: 0.4rem
+.hidden
+    display: none
+
 @media (min-width: 768px)
     .results
         display: grid
@@ -47,3 +68,5 @@ body
                 border: 1px solid #f2ac00
             &__price
                 text-align: left
+    .details
+        grid-template-areas: "title price" "img description" ". back"
