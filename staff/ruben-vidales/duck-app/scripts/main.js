@@ -1,25 +1,9 @@
-if (typeof Array.prototype.shuffle === 'undefined')
-    Array.prototype.shuffle = function () {
-        var result = [];
-
-        for (var i = 0; i < this.length; i++) result[i] = this[i];
-        for (var i = 0; i < result.length; i++) {
-            var random = Math.floor(Math.random() * result.length);
-            var value = result[i];
-            result[i] = result[random];
-            result[random] = value;
-        }
-        return result;
-    };
-
-listInitialRandomDucks();
-
 var searchInput = document.getElementsByClassName('form__part-input')[0];
 var searchForm = document.getElementsByClassName('header__form')[0];
 var ducksPanel = document.getElementsByClassName('ducks-panel')[0];
 var detailPanel = document.getElementsByClassName('detail-panel')[0];
 
-var searchResult;
+listInitialRandomDucks();
 
 searchForm.addEventListener('submit', function (e) {
 
