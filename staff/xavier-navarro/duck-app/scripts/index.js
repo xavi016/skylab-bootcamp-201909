@@ -1,7 +1,5 @@
-var main = document.getElementById("main");
 var form = document.getElementById("duck-search");
 var ul = document.getElementsByClassName("results")[0];
-// var duck = document.getElementsByClassName("duck");
 var goHome = document.getElementsByClassName("go-home")[0];
 
 // Create object Search and give it the container element
@@ -9,28 +7,19 @@ var search = new Search(form);
 // on submit form call listSearchResults
 search.onSubmit(listSearchResults);
 // Create new object to print results
-var results = new Results(document.getElementsByClassName("results")[0]);
+var results = new Results(ul);
+
+// results.onItemClick = function(duck) {
+//     var detail = new Detail(document.getElementsByClassName('details')[0]);
+//     detail.render(duck);
+//     switchViews();
+// };
 
 function newElement(item, itemClass, text){
     var newItem = document.createElement(item);
     if(itemClass) newItem.classList.add(itemClass);
     if(text) newItem.innerText = text
     return newItem;
-}
-function createTemplate(duck){
-    var item = newElement('li','results__item');
-    var link = newElement('a','duck');
-    link.href = "#";
-    link.dataset.duckId = duck.id
-    var h2 = newElement('h2','duck__title',duck.title);
-    var p = newElement('p','duck__price');
-    var span = newElement('span','price-tag',duck.price);
-    var img = newElement('img','duck__img');
-    img.src = duck.imageUrl;
-    ul.append(item);
-    item.append(link);
-    link.append(h2,p,img);
-    p.append(span);
 }
 
 function getRandomDuck(){
@@ -66,9 +55,9 @@ function printDetail(duck){
     document.getElementsByClassName('details__img')[0].src = duck.imageUrl;
     document.getElementsByClassName('details__description')[0].innerText = duck.description;
     document.getElementsByClassName('details__price-tag')[0].innerText = duck.price;
-    toggleClass();
+    // switchViews();
 }
-function toggleClass(){
+function switchViews(){
     document.getElementsByClassName('main')[0].classList.toggle('hidden')
     document.getElementsByClassName('details')[0].classList.toggle('hidden')
 }
@@ -80,10 +69,14 @@ function searchDucks(query, callback) {
 
 ul.addEventListener("click", function (e) {
     var t = e.target;
-    var parent = t.parentElement
+    var parent = t.parentElement;
     var d = parent.dataset;
-    retrieveDuck(d.duckId, printDetail)
+    var detail = new Detail(document.getElementsByClassName('details')[0]);
+    retrieveDuck(d.duckId, function (duck) {
+        detail.render(duck)
+    });
+    switchViews();
 });
 
-goHome.addEventListener("click", toggleClass);
+goHome.addEventListener("click", switchViews);
 getRandomDuck();
