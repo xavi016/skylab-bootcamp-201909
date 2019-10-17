@@ -117,6 +117,10 @@ main, html {
 .duck__button--back {
   background-color: #d26464;
   padding: 0.15rem 1rem;
+  cursor: pointer;
+}
+.duck--clicked {
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {
