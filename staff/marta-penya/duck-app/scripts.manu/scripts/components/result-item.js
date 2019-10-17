@@ -1,33 +1,36 @@
 function ResultItem(container) {
-    this.__container__ = container;
+    Component.call(this, container);
+    
     container.classList.add('results__item');
 }
 
-ResultItem.prototype.onClick = function (duck) { console.log('clicked', duck) };
+ResultItem.extend(Component);
 
-ResultItem.prototype.render = function (duck) {
+ResultItem.prototype.onClick = undefined;
+
+ResultItem.prototype.render = function (result) {
     var item = document.createElement('a');
     item.classList.add('item');
 
-    item.addEventListener('click', function (event) {
-        var id = duck.id;
+    item.addEventListener('click', function () {
+        var id = result.id;
 
-        retrieveDuck(id, this.onClick);
+        this.onClick(id);
     }.bind(this));
 
     var title = document.createElement('h2');
     title.classList.add('item__title');
-    title.innerText = duck.title;
+    title.innerText = result.title;
 
     var image = document.createElement('img');
     image.classList.add('item__image');
-    image.src = duck.imageUrl;
+    image.src = result.imageUrl;
 
     var price = document.createElement('span');
     price.classList.add('item__price');
-    price.innerText = duck.price;
+    price.innerText = result.price;
 
     item.append(title, image, price);
 
-    this.__container__.append(item);
+    this.container.append(item);
 };
