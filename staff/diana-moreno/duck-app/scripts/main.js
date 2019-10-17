@@ -1,3 +1,6 @@
+var viewList = new View(document.getElementsByClassName('view__list')[0]);
+var viewSingle = new View(document.getElementsByClassName('view__single')[0]);
+
 (function () {
   searchDucks('', function (ducks) {
     ducks = ducks.shuffle().splice(0, 8);
@@ -26,11 +29,13 @@ results.onItemRender = function() {
       var detail = new Detail(document.getElementsByClassName('duck--litle')[0]);
 
       detail.onBack = function() {
-        toogleViews('view-list');
+        viewList.show();
+        viewSingle.hide();
       };
 
       detail.render(duck);
-      toogleViews('view-single');
+      viewList.hide();
+      viewSingle.show();
     })
   }
   return item;

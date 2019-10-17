@@ -9,6 +9,7 @@ Search.prototype.onSubmit = function(expression) {
     event.preventDefault();
     var query = this.query.value;
     expression(query);
-    toogleViews('view-list');
+    viewList.show();
+    viewSingle.hide();
   });
 };

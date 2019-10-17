@@ -9,7 +9,7 @@ Results.extend(Component);
 Results.prototype.onItemRender = undefined;
 
 Results.prototype.render = function(results) {
-  this.__container__.innerHTML = '';
+  this.container.innerHTML = '';
 
   results.forEach(function(result) {
     var item = this.onItemRender();

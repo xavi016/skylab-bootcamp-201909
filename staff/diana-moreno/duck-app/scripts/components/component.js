@@ -13,3 +13,13 @@ Component.prototype.add = function(child) {
 
   this.container.append(child.container);
 };
+
+Component.prototype.show = function() {
+  console.log('show')
+    this.container.classList.remove('view--hide');
+};
+
+Component.prototype.hide = function() {
+  console.log('hide')
+    this.container.classList.add('view--hide');
+};
