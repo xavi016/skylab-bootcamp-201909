@@ -1,4 +1,4 @@
-var searchInput = document.getElementsByClassName('header__form-input')[0];
+var searchInput = document.getElementsByClassName('form__part-input')[0];
 var searchForm = document.getElementsByClassName('header__form')[0];
 var ducksPanel = document.getElementsByClassName('ducks-panel')[0];
 var detailPanel = document.getElementsByClassName('detail-panel')[0];
@@ -54,8 +54,10 @@ searchForm.addEventListener('submit', function (e) {
                 ul.append(li);
             });
             ducksPanel.innerHTML = '';
+            detailPanel.innerHTML = '';
             ducksPanel.append(ul);
 
+            ducksPanel.classList.remove('hide');
         }
     };
 
@@ -63,10 +65,9 @@ searchForm.addEventListener('submit', function (e) {
 });
 
 function showDetail(id) {
-    ducksPanel.innerHTML = '';
-    ducksPanel.style.display = 'none';
 
-    //detailPanel.innerText = id;
+    ducksPanel.classList.add('hide')
+
     detailPanel.innerHTML = '';
 
     var xhr = new XMLHttpRequest;
@@ -77,32 +78,46 @@ function showDetail(id) {
         if (this.readyState == 4 && this.status == 201) {
             var duck = JSON.parse(xhr.responseText);
 
-            console.log(duck);
-
             var article = document.createElement('article');
             article.classList.add('duck');
+
             var title = document.createElement('h3');
             title.classList.add('duck__title');
             title.innerText = duck.title;
+
             var img = document.createElement('img');
             img.classList.add('duck__image');
             img.src = duck.imageUrl;
+
             var descript = document.createElement('p');
             descript.classList.add('duck__description');
             descript.innerText = duck.description;
+
             var price = document.createElement('p');
             price.classList.add('duck__price');
             price.innerText = duck.price;
+
+            var back = document.createElement('button');
+            back.classList.add('duck__back-button');
+            back.innerText = 'Back';
+            back.addEventListener('click', function(e){ goBack() });
 
             article.append(title);
             article.append(img);
             article.append(descript);
             article.append(price);
+            article.append(back);
 
             detailPanel.append(article);
+            detailPanel.classList.remove('hide');
         }
     };
 
     xhr.send();
 
+}
+
+function goBack () {
+    ducksPanel.classList.remove('hide');
+    detailPanel.classList.add ('hide');
 }

@@ -6,21 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Duck App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
     <header class="header">
-        <form class="header__form">
-            <img class="header__form-image" src="./logo.svg">
-            <input class="header__form-input">
-            <button class="header__form-button">🔎</button>
+        <form class="header__form form">
+                <img class="form__logo" src="img/logo.svg">
+            <div class="form__part">
+                <input class="form__part-input">
+                <button class="form__part-button">🔎</button>
+            </div>
         </form>
     </header>
     <main>
         <section class="ducks-panel">
         </section>
-        <section class="detail-panel">
+        <section class="detail-panel hide">
         </section>
     </main>
     <footer>

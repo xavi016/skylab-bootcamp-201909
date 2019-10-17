@@ -8,12 +8,16 @@ ul {
   padding-inline-start: 0;
 }
 
-.header__form {
+.form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.header__form-logo {
+.form__part {
+  display: flex;
+  align-items: center;
+}
+.form-logo {
   width: 100%;
 }
 
@@ -26,9 +30,15 @@ ul {
   width: 100%;
 }
 
+.detail-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .duck {
-  background-color: #ccc;
-  border: 0.15em solid black;
+  background-color: #c3dadf;
+  border: 0.15em solid #488a97;
   padding: 0.5em;
   margin: 0.5em;
   border-radius: 0.5em;
@@ -50,6 +60,11 @@ ul {
     width: 50%;
   }
 
+  .detail-panel {
+    width: 80%;
+    padding: 10%;
+  }
+
   .duck__title {
     min-height: 4em;
   }
@@ -62,12 +77,26 @@ ul {
   .ducks-panel__list-item {
     width: 25%;
   }
+
+  .detail-panel {
+    width: 70vw;
+    padding: 2em 15vw;
+  }
+
+  .duck__image {
+    width: 80%;
+    margin: 2em 10%;
+  }
 }
 .footer__copyright {
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 0.8em;
+}
+
+.hide {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
