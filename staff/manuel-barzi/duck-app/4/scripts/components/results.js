@@ -1,6 +1,8 @@
 function Results(container) {
     this.__container__ = container;
     container.innerHTML = '';
+
+    this.render = this.render.bind(this); // EYE!
 }
 
 Results.prototype.onItemRender = undefined;
