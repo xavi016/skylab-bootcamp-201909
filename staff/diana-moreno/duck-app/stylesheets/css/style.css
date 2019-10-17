@@ -75,8 +75,8 @@ main, html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 1rem;
   justify-content: center;
+  margin: 0 1rem;
 }
 .duck__list {
   display: flex;
@@ -121,24 +121,27 @@ main, html {
 }
 .duck--clicked {
   cursor: pointer;
+  width: 20rem;
+  display: flex;
+  justify-content: space-between;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 576px) {
   .duck {
-    margin: 2rem 5rem;
+    margin: 2rem 4rem;
   }
   .duck__list {
     margin: 0 2rem;
     padding-top: 5rem;
   }
   .duck__image {
-    width: 17rem;
+    width: 15rem;
   }
   .duck--litle {
     max-width: 40rem;
     margin: 0 auto;
     padding-top: 5rem;
-    height: 90%;
+    height: 95%;
   }
   .duck__container-buttons {
     width: 9rem;
@@ -156,7 +159,7 @@ main, html {
     font-size: 1.5rem;
   }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 576px) {
   .view__single {
     font-size: 1.5rem;
   }

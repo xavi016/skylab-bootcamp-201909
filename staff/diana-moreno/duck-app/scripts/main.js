@@ -1,6 +1,6 @@
 (function () {
   searchDucks('', function (ducks) {
-    ducks = ducks.shuffle().splice(0, 6);
+    ducks = ducks.shuffle().splice(0, 8);
     results.render(ducks);
   });
 })();
