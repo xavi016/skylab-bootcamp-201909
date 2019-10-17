@@ -21,12 +21,22 @@ if (typeof Array.prototype.shuffle === 'undefined')
 
 initRandomDucks();
 
-var search = document.getElementsByClassName('navigation__content')[0]
-search.addEventListener('submit', function (e) {
-    var query = this.q.value
-    e.preventDefault();
-    searchRequest(query);
-})
+function Search (container) {
+    this.__container__ = container;
+}
+
+Search.prototype.onSubmit = function (expression) {
+    this.__container__.addEventListener('submit', function (e){
+        e.preventDefault();
+        var query = this.q.value;
+
+        expression(query);
+    })
+}
+
+var search = new Search(document.getElementsByClassName('navigation__content')[0]);
+search.onSubmit(searchRequest)
+  
 
 function initRandomDucks() {
     searchDucks('', function (ducks) {
@@ -42,6 +52,11 @@ function searchDucks (query,callback) {
 function searchRequest(query) {
     searchDucks(query,createListDuck);
 }
+
+function List (container){
+    this.__container__ = container;
+}
+
 
 function createListDuck(ducks) {
 
