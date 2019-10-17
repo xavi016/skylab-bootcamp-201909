@@ -3,7 +3,9 @@ function Detail(container) {
   container.innerHTML = '';
 };
 
-Detail.prototype.render = function(duck) {
+Detail.prototype.onBack = undefined;
+
+Detail.prototype.render = function(item) {
   var img = document.createElement('img');
   var h1 = document.createElement('h1');
   var p = document.createElement('p');
@@ -12,10 +14,10 @@ Detail.prototype.render = function(duck) {
   var button = document.createElement('button');
   var divDuck = document.createElement('div');
 
-  img.src = duck.imageUrl;
-  h1.innerHTML = duck.title;
-  p.innerHTML = duck.price;
-  description.innerHTML = duck.description;
+  img.src = item.imageUrl;
+  h1.innerHTML = item.title;
+  p.innerHTML = item.price;
+  description.innerHTML = item.description;
   button.innerHTML = '◀'
 
   h1.classList.add('duck__title');
@@ -36,8 +38,6 @@ Detail.prototype.render = function(duck) {
   div.append(button);
   this.__container__.append(divDuck);
 
-  button.addEventListener('click', function() {
-    toogleViews('view-list');
-  });
+  button.addEventListener('click', this.onBack);
 };
 

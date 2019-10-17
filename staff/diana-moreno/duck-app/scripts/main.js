@@ -1,30 +1,36 @@
-var form = document.getElementsByClassName('form')[0];
-var duckList = document.getElementsByClassName('duck__list')[0];
-
-listInitialRandomDucks();
-
-function listInitialRandomDucks() {
+(function () {
   searchDucks('', function (ducks) {
     ducks = ducks.shuffle().splice(0, 6);
-    paintResults(ducks);
-  })
-};
+    results.render(ducks);
+  });
+})();
 
+var form = document.getElementsByClassName('form')[0];
 var search = new Search(form);
-search.onSubmit(listSearchResults);
+search.onSubmit( function(query) {
+  searchDucks(query, results.render); //ojo
+});
 
-function listSearchResults(query) {
-  searchDucks(query, paintResults);
-};
-
+var duckList = document.getElementsByClassName('duck__list')[0];
 var results = new Results(duckList);
 
-function paintResults(ducks) {
-  results.render(ducks);
-};
+results.onItemRender = function() {
+  var li = document.createElement('li');
+  li.classList.add("duck");
+  li.classList.add("duck--clicked");
+  var item = new ResultItem(li);
 
-results.onItemClick = function(duck) {
-  var detail = new Detail(document.getElementsByClassName('duck--litle')[0]);
-  detail.render(duck);
-  toogleViews('view-single');
+  item.onClick = function(id) {
+    retrieveDuck(id, function(duck) {
+      var detail = new Detail(document.getElementsByClassName('duck--litle')[0]);
+
+      detail.onBack = function() {
+        toogleViews('view-list');
+      };
+
+      detail.render(duck);
+      toogleViews('view-single');
+    })
+  }
+  return item;
 };

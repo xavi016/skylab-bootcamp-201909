@@ -1,21 +1,18 @@
 function Results(container) {
   this.__container__ = container;
   container.innerHTML = '';
+  this.render = this.render.bind(this); // EYE!
 };
 
-Results.prototype.onItemClick = function(duck) { console.log('clicked on duck', duck); };
+Results.prototype.onItemRender = undefined;
 
-Results.prototype.render = function(ducks) {
+Results.prototype.render = function(results) {
   this.__container__.innerHTML = '';
 
-  ducks.forEach(function(duck) {
-    var li = document.createElement('li');
-    li.classList.add("duck");
+  results.forEach(function(result) {
+    var item = this.onItemRender();
+    item.render(result);
 
-    var result = new ResultItem(li);
-    result.onClick = this.onItemClick; // ?
-    result.render(duck);
-
-    this.__container__.append(result.__container__);
+    this.__container__.append(item.__container__);
   }.bind(this));
 };

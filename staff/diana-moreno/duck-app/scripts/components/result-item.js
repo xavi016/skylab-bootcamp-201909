@@ -3,9 +3,9 @@ function ResultItem(container) {
   container.innerHTML = '';
 };
 
-ResultItem.prototype.onClick = function(duck) { console.log('clicked', duck) };
+ResultItem.prototype.onClick = undefined;
 
-ResultItem.prototype.render = function(duck) {
+ResultItem.prototype.render = function(result) {
   var img = document.createElement('img');
   var h1 = document.createElement('h1');
   var p = document.createElement('p');
@@ -14,15 +14,14 @@ ResultItem.prototype.render = function(duck) {
   img.classList.add('duck__image');
   p.classList.add('duck__button');
 
-  img.src = duck.imageUrl;
-  h1.innerHTML = duck.title;
-  p.innerHTML = duck.price;
+  img.src = result.imageUrl;
+  h1.innerHTML = result.title;
+  p.innerHTML = result.price;
 
   this.__container__.append(h1, img, p);
 
   img.addEventListener('click', function() {
-    var id = duck.id;
-    toogleViews('view-single');
-    retrieveDuck(id, this.onClick);
+    var id = result.id;
+    this.onClick(id);
   }.bind(this));
 };
