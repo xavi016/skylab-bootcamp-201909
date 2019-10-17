@@ -27,4 +27,4 @@ results.onItemClick = function(duck) {
   var detail = new Detail(document.getElementsByClassName('duck--litle')[0]);
   detail.render(duck);
   toogleViews('view-single');
-}
+};

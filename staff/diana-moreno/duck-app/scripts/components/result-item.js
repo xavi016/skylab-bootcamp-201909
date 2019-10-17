@@ -1,7 +1,7 @@
 function ResultItem(container) {
   this.__container__ = container;
   container.innerHTML = '';
-}
+};
 
 ResultItem.prototype.onClick = function(duck) { console.log('clicked', duck) };
 
