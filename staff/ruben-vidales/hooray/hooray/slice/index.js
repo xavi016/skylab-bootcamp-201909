@@ -1,5 +1,10 @@
 /**
- * TODO
+ * Slice the hooray indicating the beggining and the end
+ * 
+ * @param {number} begin The start position
+ * @param {number} end The end position to slice
+ * 
+ * @returns {Hooray} The new hooray created from slicing the original
  */
 Hooray.prototype.slice = function (begin, end) {
     begin = begin || 0;

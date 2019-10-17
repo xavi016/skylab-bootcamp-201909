@@ -1,4 +1,4 @@
-describe('Hooray.prototype.forEach', function () {
+describe('forEach hooray', function () {
     it('should succeed on correct hooray and expression, adding all numbers', function () {
         var numbers = new Hooray(1, 2, 3);
 

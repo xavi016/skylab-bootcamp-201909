@@ -1,3 +1,9 @@
+/**
+ * Checks if every element of the array comply the expression
+ * @param {function} expression The expression to evaluate the values
+ * 
+ * @returns {boolean} True if every element comply, false if not
+ */
 Hooray.prototype.every = function (expression) {
     if (typeof expression !== 'function') throw TypeError(expression + ' is not a function');
 

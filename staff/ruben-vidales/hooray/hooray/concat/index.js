@@ -1,3 +1,8 @@
+/**
+ * Concat every hoorays recibed by paramentes and returns the new one
+ * 
+ * @returns The array that concatenates every hooray
+ */
 Hooray.prototype.concat = function () {
     var aux = new Hooray();
 
@@ -16,6 +21,5 @@ Hooray.prototype.concat = function () {
             cont++;
         }
     }
-
     return aux;
 }

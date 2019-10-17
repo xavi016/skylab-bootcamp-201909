@@ -1,3 +1,10 @@
+/**
+ * Concatenate every element of the hooray in a unique string with the separator indicated
+ * 
+ * @param {string} separator The separator for the strinf
+ * 
+ * @returns {string} The resultant array
+ */
 Hooray.prototype.join = function (separator) {
     var sep = '';
     if (separator === undefined) {

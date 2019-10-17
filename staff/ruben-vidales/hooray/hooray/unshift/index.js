@@ -1,3 +1,10 @@
+/**
+ * Add an element in the beggining of the hooray
+ * 
+ * @param {*} arguments The elements to put in the hooray
+ * 
+ * @returns {number} The new length of the hooray
+ */
 Hooray.prototype.unshift = function () {
     var aux = new Hooray();
     for(var c = 0; c < this.length; c++){

@@ -1,3 +1,8 @@
+/**
+ * Turn the hooray in reverse order
+ * 
+ * @returns {Hooray} The same hooray turned
+ */
 Hooray.prototype.reverse = function () {
     var firstIndex = 0;
     var endIndex = this.length - 1;

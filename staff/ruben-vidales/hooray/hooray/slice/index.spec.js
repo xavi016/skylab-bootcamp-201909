@@ -1,4 +1,4 @@
-describe('Hooray.prototype.slice', function () {
+describe('slice hooray', function () {
     it('should return a new Hooray with the values in the given limits', function () {
         var numbers = new Hooray(1, 2, 3, 4, 5, 6, 7, 8, 9);
 

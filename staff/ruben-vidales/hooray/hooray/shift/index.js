@@ -1,3 +1,8 @@
+/**
+ * Delete the first element of the Hooray
+ * 
+ * @returns the deleted element
+ */
 Hooray.prototype.shift = function () {
   
     var deleted = this[0];
