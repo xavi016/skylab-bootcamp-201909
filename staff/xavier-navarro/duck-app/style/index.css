@@ -1,10 +1,4 @@
-.footer, .results .duck__price, .header__company-name {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer, .results .duck__price, .header__company-name {
+.footer, .results .duck__price, .login, .header__company-name {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,6 +53,15 @@ body {
   font-family: "Roboto Condensed", sans-serif;
 }
 
+.login {
+  min-height: 25vh;
+}
+.login .form {
+  display: grid;
+  border: 1px solid #f2aa03;
+  padding: 1rem;
+  grid-gap: 1rem;
+}
 .results {
   list-style: none;
   padding: 0;

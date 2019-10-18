@@ -1,9 +1,10 @@
 function ResultItem(container) {
-    this.__container__ = container;
+    Component.call(this, container);
     container.classList.add('results__item');
 }
 
-ResultItem.prototype.onClick = function (duck) { console.log('clicked', duck) };
+ResultItem.extend(Component);
+// ResultItem.prototype.onClick = undefined;
 
 ResultItem.prototype.render = function (duck) {
     var item = newElement('a','duck');
@@ -19,5 +20,5 @@ ResultItem.prototype.render = function (duck) {
     price.append(priceTag);
     item.append(title, image, price);
 
-    this.__container__.append(item); 
+    this.container.append(item); 
 };
