@@ -12,7 +12,8 @@ describe('Hooray.prototype.concat', function () {
         expect(result).toBeInstanceOf(Hooray);
 
         expect(result[0]).toBe(1);
-        
+        expect(result[1]).toBe(2);
+      
     });
 
     it('should concatenate the elements passed with hooray elements and create a new hooray', function () {
@@ -28,6 +29,9 @@ describe('Hooray.prototype.concat', function () {
         expect(result).toBeInstanceOf(Hooray);
 
         expect(result[0]).toBe(1);
+        expect(result[1]).toBe(2);
+        expect(result[2]).toBe(3);
+        expect(result[3]).toBe(4);
        
     });
 
