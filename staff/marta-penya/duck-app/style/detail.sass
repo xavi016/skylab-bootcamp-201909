@@ -1,16 +1,16 @@
-.item-list
+.detail-list
     display: flex
+    align-self: center
     flex-direction: column
     padding: 0
-    &__item
+    justify-content: center
+    align-items: center
+    text-align: center
+    margin-bottom: 3%
+    width: 50%
+    &__detail
         display: flex
-        border-radius: 20px
-    &__link
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
-        margin-bottom: 3%      
+        border-radius: 20px   
     &__title
         color: white
         background-color: LightSteelBlue 
@@ -19,7 +19,7 @@
         font-size: 1.2em
         padding: 0 2%
     &__image
-        width: 90%
+        width: 40%
         border-radius: 60px
     &__description
         padding: 0 2%        
@@ -37,7 +37,9 @@
         font-weight: bold
         align-self: center
 
-   
+
+
+    
 
 @media (min-width: 768px)
     .items
@@ -54,10 +56,7 @@
             
 
 @media (min-width: 1024px)
-    .item-list 
-        flex-direction: row
-        justify-content: center
-        flex-wrap: wrap    
+    .item-list
         &__image
             max-width: 13em
             background-size: cover
@@ -65,7 +64,7 @@
             font-size: .9em
             text-align: center
         &__image--modif
-            max-width: 30em
+            max-width: 25em
         &__description
             font-size: 1.2em
         &__title--modif

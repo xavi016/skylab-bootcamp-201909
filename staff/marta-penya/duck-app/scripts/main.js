@@ -42,11 +42,12 @@ button.onSubmit(function (query) {
 
 
 
-var results = new Results(document.getElementsByClassName('ducks')[0]);
+var results = new Results(document.getElementsByClassName('item-list')[0]);
+
 
 results.onItemRender = function () {
     var item = new ResultItem(document.createElement('li'));
-
+    
     item.onClick = function (id) {
         retrieveDuck(id, function (error, duck) {
             if (error) {
@@ -70,6 +71,7 @@ results.onItemRender = function () {
 var detail = new Detail(document.getElementsByClassName('result')[0]);
 
 detail.onBack = function () {
+   
     detailView.hide();
     searchView.show();
 };

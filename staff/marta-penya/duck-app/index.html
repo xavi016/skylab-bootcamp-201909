@@ -16,6 +16,17 @@
                 <img class="header__image" src="https://www.favicon.cc/logo3d/75350.png" alt="duck image">
         </header>
         <main>
+
+            <section class="login">
+                <div>
+                    <form class="login__form">               
+                        <input type="text" name="username" placeholder="username" class="login__input">
+                        <input type="password" name="password" placeholder="password" class="login__input">
+                        <button class="login__button"> Login</button>
+                    </form>
+                </div>       
+            </section>
+
             <section class="search">
                 <div>
                     <form class="search__form">               
@@ -25,22 +36,29 @@
                 </div>       
             </section>
        
-
+         
             <section class="ducks view">
-
+                <ul class="item-list"></ul>
             </section>
-
+            
             <section class="feedback hide">
                 <span class="feedback__icon">🤡</span>
                 <p class="feedback__message">Come with me...</p>
                 <span class="feedback__icon">🎈</span>
             </section>
 
-            <section class="result view hide">
-         
-
-            </section>
-
+            <div class="detail view hide">
+                <section class = "result view">
+                    <div class="detail-list">
+                        <h2 class="detail-list__title"></h2>
+                        <img class="detail-list__image" src="">
+                        <p class="detail-list__description"></p>
+                        <a href="" class="detail-list__store">Store</a>
+                        <p class="detail-list__price"></p>
+                        <button class="detail-list__button">Back</button>
+                    </div>
+                </section>
+            </div>
     </main>
     <footer class="footer"> 
         <h2 class="footer__title"> Made with Love - M</h2>

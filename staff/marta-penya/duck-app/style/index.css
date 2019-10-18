@@ -16,6 +16,11 @@ li {
   display: none;
 }
 
+.result {
+  display: flex;
+  justify-content: center;
+}
+
 .header {
   display: flex;
   background-image: url(https://www.desktopbackground.org/t/2015/12/10/1055168_rubber-ducks-illustration-vector-art-graphics_1024x1325_h.jpg);
@@ -43,6 +48,26 @@ li {
     font-size: 5em;
   }
 }
+.login {
+  display: flex;
+  height: 10vh;
+  justify-content: center;
+  align-items: center;
+}
+.login__form {
+  display: flex;
+}
+.login__input {
+  border-radius: 20px;
+}
+.login__button {
+  border-radius: 20px;
+  background: MintCream;
+  border: 2px solid black;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
 .search {
   display: flex;
   height: 10vh;
@@ -110,14 +135,96 @@ li {
   align-self: center;
 }
 
-.item-list--modif {
+@media (min-width: 768px) {
+  .items {
+    display: flex;
+    justify-content: center;
+  }
+
+  .item-list {
+    flex-flow: row wrap;
+    justify-content: space-around;
+    max-width: 90%;
+  }
+  .item-list__image {
+    max-width: 19em;
+    background-size: cover;
+  }
+}
+@media (min-width: 1024px) {
+  .item-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .item-list__image {
+    max-width: 13em;
+    background-size: cover;
+  }
+  .item-list__title {
+    font-size: 0.9em;
+    text-align: center;
+  }
+  .item-list__image--modif {
+    max-width: 30em;
+  }
+  .item-list__description {
+    font-size: 1.2em;
+  }
+  .item-list__title--modif {
+    font-size: 1.8em;
+  }
+  .item-list__price--modif {
+    font-size: 1.8em;
+  }
+  .item-list__button {
+    font-size: 1.8em;
+  }
+}
+.detail-list {
   display: flex;
+  align-self: center;
   flex-direction: column;
   padding: 0;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin-bottom: 3%;
+  width: 50%;
+}
+.detail-list__detail {
+  display: flex;
+  border-radius: 20px;
+}
+.detail-list__title {
+  color: white;
+  background-color: LightSteelBlue;
+  border: 2px dotted black;
+  border-radius: 0.9em;
+  font-size: 1.2em;
+  padding: 0 2%;
+}
+.detail-list__image {
+  width: 40%;
+  border-radius: 60px;
+}
+.detail-list__description {
+  padding: 0 2%;
+}
+.detail-list__price {
+  color: black;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+  align-self: center;
+  font-size: 1.2em;
+}
+.detail-list__button {
+  border-radius: 20px;
+  background: MintCream;
+  border: 2px solid black;
+  font-size: 1.2em;
+  font-weight: bold;
+  align-self: center;
 }
 
 @media (min-width: 768px) {
