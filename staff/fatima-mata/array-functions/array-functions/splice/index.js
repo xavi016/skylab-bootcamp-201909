@@ -10,43 +10,39 @@
  * @return An array containing the deleted elements. If only one element is removed, an array of one element is returned. If no elements are removed, an empty array is returned.
  */
 
-function splice(array, inicio, eliminar, añadir1, añadir2) {
+function splice (array, start) {
 
-    if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
-    if (!(typeof inicio === 'number')) throw TypeError(inicio + ' is not a number');
+    if (!(array instanceof Array)) throw TypeError (array + 'is not an array');
 
-    var newArray = [];
-    var n = 0;
-    var elim = eliminar;
+    var deleteCount = arguments [2] || 0; 
+    if (start < 0) start = (array.length)+start;
+    
+    var deleted = [];
+    if (start >= array.length) start = array.length-1;
+    if (start+deleteCount > array.length) deleteCount=array.length-start;
 
-    for (var i = 0; i < array.length; i++) {
-        if (i < inicio) {
-            newArray[n++] = array[i];
-        } else if (elim >= 0) {
-            if (elim === 0) {
-                newArray[n++] = array[i];
-                if (añadir1 != 0) {
-                    newArray[n++] = añadir1;
-                    añadir1 = 0;
-                    if (añadir2 != 0) {
-                        newArray[n++] = añadir2;
-                        añadir2 = 0;
-                    }
-                }
-            } else if (elim-- === 1) {
-                if (añadir1 != 0) {
-                    newArray[n++] = añadir1;
-                    añadir1 = 0;
-                    if (añadir2 != 0) {
-                        newArray[n++] = añadir2;
-                        añadir2 = 0;
-                    }
-                }
-            }
+    if (deleteCount) {
+        
+        for (var i=start; i<start+deleteCount; i++) {
+            deleted[deleted.length]=array[i];
+        }
+    
+        for (var i=start; i<array.length; i++) {
+            if ((i+deleteCount)<array.length)
+                array[i]=array[i+deleteCount];
+        }
 
-        } else if (array.length > inicio + eliminar) {
-            newArray[n++] = array[i];
+        array.length-=deleteCount;
+    }
+
+    if (arguments.length>3) {
+        for (var i=array.length-1; i>=start; i--) {
+            array[i+(arguments.length-3)]=array[i];
+        }
+        for (i=0; i<(arguments.length-3); i++) {
+            array[start+i]=arguments[i+3];
         }
     }
-    return newArray;
+                
+    return deleted;
 }
