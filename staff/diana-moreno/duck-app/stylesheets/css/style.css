@@ -66,11 +66,18 @@ main, html {
   margin-top: 7rem;
   height: 100%;
 }
-
-.view--hide {
-  display: none;
+.view__feedback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
 }
 
+@media only screen and (min-width: 576px) {
+  .view__single {
+    font-size: 1.5rem;
+  }
+}
 .duck {
   display: flex;
   flex-direction: column;
@@ -159,10 +166,46 @@ main, html {
     font-size: 1.5rem;
   }
 }
-@media only screen and (min-width: 576px) {
-  .view__single {
-    font-size: 1.5rem;
-  }
+.feedback {
+  border: 1px solid red;
+  min-width: 34rem;
+  text-align: center;
+}
+.feedback__icon {
+  background-color: #eb6565;
+  height: 5rem;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100%;
+}
+.feedback__message {
+  border: 2px solid #eb6565;
+  padding: 2rem 0;
+  font-size: 1.5rem;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  color: #505355;
+}
+
+.feedback {
+  min-width: 0rem;
+  font-size: 1rem;
+}
+.feedback__icon {
+  font-size: 1.5rem;
+  height: 3rem;
+}
+.feedback__message {
+  padding: 1rem;
+  font-size: 1.3rem;
+}
+
+.hide {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

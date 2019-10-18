@@ -8,6 +8,8 @@ Detail.extend(Component);
 Detail.prototype.onBack = undefined;
 
 Detail.prototype.render = function(item) {
+  this.container.innerHTML = '';
+
   var img = document.createElement('img');
   var h1 = document.createElement('h1');
   var p = document.createElement('p');
@@ -20,7 +22,7 @@ Detail.prototype.render = function(item) {
   h1.innerHTML = item.title;
   p.innerHTML = item.price;
   description.innerHTML = item.description;
-  button.innerHTML = '◀'
+  button.innerHTML = '◀';
 
   h1.classList.add('duck__title');
   img.classList.add('duck__image');
