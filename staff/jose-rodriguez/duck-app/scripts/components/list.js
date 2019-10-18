@@ -12,15 +12,14 @@ List.prototype.onItemCreate = undefined;
 
 List.prototype.render = function (ducks) {
     this.container.innerHTML = "";
-
     var div = document.createElement('div');
-    this.add(div)
+    div.classList.add('article__container');
+    this.container.append(div)
     ducks.forEach(function (duck) {
     
         var item = this.onItemCreate();
         item.render(duck);
-        debugger
-        this.add(div)
+        div.append(item.container)
 
     }.bind(this));
 }
