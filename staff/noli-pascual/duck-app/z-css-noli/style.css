@@ -1,0 +1,148 @@
+.duck, .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.header {
+  width: 100%;
+  align-items: center;
+  height: 20vh;
+}
+.header__logo {
+  width: 60%;
+  max-height: 60%;
+}
+.header__title {
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.duck, .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.ducks__form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.ducks {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+.ducks__list {
+  height: 70%;
+  display: flex;
+  justify-content: space-arund;
+}
+.ducks__form {
+  width: 100%;
+  height: 5vh;
+  margin-bottom: 5em;
+}
+.ducks__input {
+  text-align: center;
+  font-size: 1.2em;
+}
+.ducks__button {
+  font-size: 1.2em;
+}
+.ducks__item {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.ducks__figure {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5em;
+  border: 0.5em solid black;
+  border-radius: 20%;
+}
+
+.off {
+  display: none;
+}
+
+.duck, .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.ducks__form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.duck {
+  width: 70vw;
+}
+.duck__title {
+  font-size: 1.6em;
+}
+.duck__img {
+  width: 70vw;
+}
+.duck__price {
+  color: red;
+}
+.duck__description {
+  font-size: 1.5em;
+}
+.duck__button {
+  width: 20%;
+  height: 5vh;
+  background-color: black;
+  color: #ffffff;
+}
+
+.off {
+  display: none;
+}
+
+.header, .duck {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.ducks__form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+* {
+  margin: 0 auto;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 90%;
+  border-radius: 20%;
+}
+
+/*# sourceMappingURL=style.css.map */
