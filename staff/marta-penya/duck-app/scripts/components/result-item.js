@@ -1,33 +1,58 @@
 function ResultItem(container) {
-    this.__container__ = container;
-    container.classList.add('results__item');
+    Component.call(this, container);
+    
+    container.classList.add('item-list');
 }
 
-ResultItem.prototype.onClick = function (duck) { console.log('clicked', duck) };
+ResultItem.extend(Component);
 
-ResultItem.prototype.render = function (duck) {
-    var item = document.createElement('a');
-    item.classList.add('item');
+ResultItem.prototype.onClick = undefined;
 
-    item.addEventListener('click', function (event) {
-        var id = duck.id;
+ResultItem.prototype.render = function (result) {
 
-        retrieveDuck(id, this.onClick);
+    var li = document.createElement('li');
+    li.classList.add('item-list__item');
+
+    var link = document.createElement('a');
+    link.classList.add('item-list__link');
+
+    link.addEventListener('click', function () {
+        var id = result.id;
+
+        this.onClick(id);
     }.bind(this));
 
-    var title = document.createElement('h2');
-    title.classList.add('item__title');
-    title.innerText = duck.title;
+    li.append(link);
 
-    var image = document.createElement('img');
-    image.classList.add('item__image');
-    image.src = duck.imageUrl;
 
-    var price = document.createElement('span');
-    price.classList.add('item__price');
-    price.innerText = duck.price;
+    var h2 = document.createElement('h2');
+    var text = document.createTextNode(result.title);
+    h2.classList.add('item-list__title');
+    h2.appendChild(text);
 
-    item.append(title, image, price);
+    // var title = document.createElement('h2');
+    // title.classList.add('item__title');
+    // title.innerText = result.title;
 
-    this.__container__.append(item);
+    var img = document.createElement('img');
+    img.classList.add('item-list__image');
+    img.src = result.imageUrl;
+
+    // var image = document.createElement('img');
+    // image.classList.add('item__image');
+    // image.src = result.imageUrl;
+
+    var price = document.createElement('p');
+    var pric = document.createTextNode(result.price);
+    price.classList.add('item-list__price');
+    price.appendChild(pric);
+
+
+    // var price = document.createElement('span');
+    // price.classList.add('item__price');
+    // price.innerText = result.price;
+
+    link.append(h2, img, price);
+
+    this.container.append(li);
 };

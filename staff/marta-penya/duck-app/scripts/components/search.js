@@ -1,9 +1,11 @@
 function Search(container) {
-    this.__container__ = container;
+    Component.call(this, container);
 }
 
+Search.extend(Component);
+
 Search.prototype.onSubmit = function (expression) {
-    this.__container__.addEventListener('submit', function (event) {
+    this.container.addEventListener('submit', function (event) {
         event.preventDefault();
 
         var query = this.query.value;

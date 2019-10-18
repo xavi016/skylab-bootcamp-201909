@@ -1,10 +1,7 @@
-
-//instancias de view para abrir y cerrar paneles
 var views = document.getElementsByClassName('view');
 var searchView = new View(views[0]);
 var detailView = new View(views[1]);
 
-//funcion para que salgan patos random al cargar la pagina
 (function () {
     searchDucks('', function (error, ducks) {
         if (error) {
@@ -20,11 +17,8 @@ var detailView = new View(views[1]);
     });
 })();
 
-
-//panel de búsqueda, si se introduce algun input que no concuerda con ningun pato
-//saltará error, sino la lista con todos los patos que cumplan
-var button = new Search(document.getElementsByClassName('search__form')[0]);
-button.onSubmit(function (query) {
+var search = new Search(document.getElementsByClassName('search')[0]);
+search.onSubmit(function (query) {
     searchDucks(query, function (error, ducks) {
         if (error) {
             feedback.render(error.message);
@@ -40,10 +34,7 @@ button.onSubmit(function (query) {
     });
 });
 
-
-
-var results = new Results(document.getElementsByClassName('ducks')[0]);
-
+var results = new Results(document.getElementsByClassName('results')[0]);
 results.onItemRender = function () {
     var item = new ResultItem(document.createElement('li'));
 
@@ -66,8 +57,7 @@ results.onItemRender = function () {
     return item;
 };
 
-
-var detail = new Detail(document.getElementsByClassName('result')[0]);
+var detail = new Detail(document.getElementsByClassName('detail')[0]);
 
 detail.onBack = function () {
     detailView.hide();
@@ -75,4 +65,3 @@ detail.onBack = function () {
 };
 
 var feedback = new Feedback(document.getElementsByClassName('feedback')[0]);
-

@@ -12,6 +12,10 @@ li {
   list-style: none;
 }
 
+.hide {
+  display: none;
+}
+
 .header {
   display: flex;
   background-image: url(https://www.desktopbackground.org/t/2015/12/10/1055168_rubber-ducks-illustration-vector-art-graphics_1024x1325_h.jpg);
@@ -59,23 +63,23 @@ li {
   font-weight: bold;
 }
 
-.duck-list {
+.item-list {
   display: flex;
   flex-direction: column;
   padding: 0;
 }
-.duck-list__duck {
+.item-list__item {
   display: flex;
   border-radius: 20px;
 }
-.duck-list__link {
+.item-list__link {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 3%;
 }
-.duck-list__title {
+.item-list__title {
   color: white;
   background-color: LightSteelBlue;
   border: 2px dotted black;
@@ -83,21 +87,21 @@ li {
   font-size: 1.2em;
   padding: 0 2%;
 }
-.duck-list__image {
+.item-list__image {
   width: 90%;
   border-radius: 60px;
 }
-.duck-list__description {
+.item-list__description {
   padding: 0 2%;
 }
-.duck-list__price {
+.item-list__price {
   color: black;
   font-weight: bold;
   border-bottom: 2px solid black;
   align-self: center;
   font-size: 1.2em;
 }
-.duck-list__button {
+.item-list__button {
   border-radius: 20px;
   background: MintCream;
   border: 2px solid black;
@@ -106,7 +110,7 @@ li {
   align-self: center;
 }
 
-.duck-list--modif {
+.item-list--modif {
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -117,46 +121,64 @@ li {
 }
 
 @media (min-width: 768px) {
-  .ducks {
+  .items {
     display: flex;
     justify-content: center;
   }
 
-  .duck-list {
+  .item-list {
     flex-flow: row wrap;
     justify-content: space-around;
     max-width: 90%;
   }
-  .duck-list__image {
+  .item-list__image {
     max-width: 19em;
     background-size: cover;
   }
 }
 @media (min-width: 1024px) {
-  .duck-list__image {
+  .item-list__image {
     max-width: 13em;
     background-size: cover;
   }
-  .duck-list__title {
+  .item-list__title {
     font-size: 0.9em;
     text-align: center;
   }
-  .duck-list__image--modif {
+  .item-list__image--modif {
     max-width: 25em;
   }
-  .duck-list__description {
+  .item-list__description {
     font-size: 1.2em;
   }
-  .duck-list__title--modif {
+  .item-list__title--modif {
     font-size: 1.8em;
   }
-  .duck-list__price--modif {
+  .item-list__price--modif {
     font-size: 1.8em;
   }
-  .duck-list__button {
+  .item-list__button {
     font-size: 1.8em;
   }
 }
+.feedback {
+  border: 0.3rem solid orange;
+  border-radius: 1rem;
+  border-style: dotted;
+  padding: 1rem;
+  margin: 0.5rem;
+  background-color: olive;
+}
+.feedback__icon {
+  font-size: 1.5rem;
+}
+.feedback__message {
+  display: inline;
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .footer {
   display: flex;
   align-self: flex-end;
@@ -184,4 +206,4 @@ li {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=index.css.map */
