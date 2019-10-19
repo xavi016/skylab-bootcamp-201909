@@ -23,9 +23,40 @@
     color: $formButtonColor
     cursor: pointer
 
+    &--login
+      width: 13rem
+
+    &--register
+      width: 13rem
+      background-color: $buttonRegister
+      border-color: $buttonRegister
+
+    &--register-back
+      width: 13rem
+      background-color: $buttonRegisterBack
+      border-color: $buttonRegisterBack
+
+  &__label
+    font-size: 1.2rem
+    color: $labelColor
+
+  &__confirmation
+    color: $formMessage
+
 @media only screen and (min-width: $screen-md-min)
   .form
     padding-bottom: 1rem
 
     &__input
-      width: 20%
+      width: 20rem
+
+    &__button
+
+      &--login
+        width: 22rem
+
+      &--register
+        width: 22rem
+
+      &--register-back
+        width: 22rem

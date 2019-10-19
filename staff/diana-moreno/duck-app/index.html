@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <header class='header'>
+  <header class='header view__header hide'>
     <h1 class='header__title'>Duck Store</h1>
     <form class='form'>
       <input class='form__input' type="text" name="query" placeholder="search...">
@@ -21,7 +21,50 @@
     </form>
   </header>
   <main>
-    <section class='view view__list'>
+    <section class='view view__register hide'>
+      <h2 class='view__register--title'>Please, introduce your details</h2>
+      <form class="form form--login" method="POST">
+        <label class='form__label' for="username">Name</label><br>
+        <input class='form__input' type="text" name="name"
+          placeholder="">
+        <br><br>
+        <label class='form__label' for="username">Surname</label><br>
+        <input class='form__input' type="text" name="surname"
+          placeholder="">
+        <br><br>
+        <label class='form__label' for="username">Email</label><br>
+        <input class='form__input' type="text" name="email"
+          placeholder="">
+        <br><br>
+        <label class='form__label' for="password">Password</label><br>
+        <input class='form__input' type="password" name="password"
+          placeholder="">
+        <br><br>
+        <button class='form__button form__button--register'>Create account</button>
+        <br><br>
+      </form>
+        <button class='form__button form__button--register-back'>Back to login</button>
+        <br><br>
+        <div class='form__confirmation'></div>
+    </section>
+    <section class='view view__login'>
+      <h1 class='view__login--title'>Welcome to Duck Store</h1>
+      <form class="form form--login" method="POST">
+        <label class='form__label' for="username">Username</label><br>
+        <input class='form__input' type="text" name="username"
+          placeholder="email">
+        <br><br>
+        <label class='form__label' for="password">Password</label><br>
+        <input class='form__input' type="password" name="password"
+          placeholder="password">
+        <br><br>
+        <button class='form__button form__button--login'>Login</button><br><br>
+      </form>
+      <button class='form__button form__button--register'>Create account</button>
+      <br><br>
+      <div class='form__confirmation'></div>
+    </section>
+    <section class='view view__list hide'>
       <ul class='duck__list'>
       </ul>
     </section>
@@ -43,14 +86,18 @@
   <script src="scripts/utils/array-shuffle.js"></script>
   <script src="scripts/utils/fetch.js"></script>
   <script src="scripts/utils/function-extend.js"></script>
+  <script src="scripts/logic/register-user/index.js"></script>
+  <script src="scripts/logic/authenticate-user/index.js"></script>
   <script src="scripts/logic/retrieve-duck/index.js"></script>
   <script src="scripts/logic/search-ducks/index.js"></script>
   <script src="scripts/helpers/call.js"></script>
   <script src="scripts/components/component.js"></script>
+  <script src="scripts/components/register.js"></script>
+  <script src="scripts/components/login.js"></script>
   <script src="scripts/components/search.js"></script>
   <script src="scripts/components/results.js"></script>
   <script src="scripts/components/result-item.js"></script>
-  <script src="scripts/components/details.js"></script>
+  <script src="scripts/components/detail.js"></script>
   <script src="scripts/components/feedback.js"></script>
   <script src="scripts/components/view.js"></script>
   <script src="scripts/main.js"></script>

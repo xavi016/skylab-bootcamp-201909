@@ -53,13 +53,42 @@ main, html {
   color: white;
   cursor: pointer;
 }
+.form__button--login {
+  width: 13rem;
+}
+.form__button--register {
+  width: 13rem;
+  background-color: #7fb57f;
+  border-color: #7fb57f;
+}
+.form__button--register-back {
+  width: 13rem;
+  background-color: #ebaf55;
+  border-color: #ebaf55;
+}
+.form__label {
+  font-size: 1.2rem;
+  color: #566369;
+}
+.form__confirmation {
+  color: red;
+}
 
 @media only screen and (min-width: 768px) {
   .form {
     padding-bottom: 1rem;
   }
   .form__input {
-    width: 20%;
+    width: 20rem;
+  }
+  .form__button--login {
+    width: 22rem;
+  }
+  .form__button--register {
+    width: 22rem;
+  }
+  .form__button--register-back {
+    width: 22rem;
   }
 }
 .view {
@@ -71,6 +100,30 @@ main, html {
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+}
+.view__register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+}
+.view__register--title {
+  color: #566369;
+}
+.view__login {
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.view__login--title {
+  font-size: 3rem;
+  color: #6d6262;
+  margin-bottom: 8rem;
+  letter-spacing: 0.1rem;
+  text-align: center;
 }
 
 @media only screen and (min-width: 576px) {

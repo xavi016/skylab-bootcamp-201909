@@ -1,8 +1,30 @@
 var viewList = new View(document.getElementsByClassName('view__list')[0]);
 var viewSingle = new View(document.getElementsByClassName('view__single')[0]);
+var viewRegister = new View(document.getElementsByClassName('view__register')[0]);
+var viewLogin = new View(document.getElementsByClassName('view__login')[0]);
+var viewHeader = new View(document.getElementsByClassName('view__header')[0]);
 var feedback = new Feedback(document.getElementsByClassName('view__feedback')[0]);
+var buttonRegister = document.getElementsByClassName('form__button--register')[1];
+var buttonBackToLogin = document.getElementsByClassName('form__button--register-back')[0];
+let errorMessageLogin = document.getElementsByClassName("form__confirmation")[1]
+let errorMessageRegister = document.getElementsByClassName("form__confirmation")[0]
 
-(function() {
+
+buttonRegister.addEventListener('click', switchToRegister);
+function switchToRegister() {
+  viewLogin.hide();
+  viewRegister.show();
+  errorMessageLogin.innerHTML = ''
+}
+
+buttonBackToLogin.addEventListener('click', switchToLogin);
+function switchToLogin() {
+  viewLogin.show();
+  viewRegister.hide();
+}
+
+
+function initialRandomDucks() {
   searchDucks('', function(error, ducks) {
     if (error) {
       feedback.render(error.message);
@@ -13,14 +35,44 @@ var feedback = new Feedback(document.getElementsByClassName('view__feedback')[0]
       results.render(ducks);
     }
   });
-})();
+}
+
+var register = new Register(document.getElementsByClassName('form')[1]);
+register.onSubmit(function(name, surname, email, password) {
+  registerUser(name, surname, email, password, function(error) {
+    if(error) {
+      errorMessageRegister.innerHTML = error.message;
+      feedback.render(error.message);
+      viewList.hide();
+      feedback.show();
+    } else {
+      viewRegister.hide()
+      viewLogin.show()
+    }
+  })
+})
+
+var login = new Login(document.getElementsByClassName('form')[2]);
+login.onSubmit(function(email, password) {
+  authenticateUser(email, password, function(error) {
+    if(error) {
+      viewList.hide();
+      feedback.hide();
+      errorMessageLogin.innerHTML = 'Ups! Your username and/or password is not correct'
+    } else {
+      viewLogin.hide()
+      viewHeader.show()
+      viewList.show()
+      initialRandomDucks()
+    }
+  })
+})
 
 var form = document.getElementsByClassName('form')[0];
 var search = new Search(form);
 search.onSubmit(function(query) {
   searchDucks(query, function(error, ducks) {
     if (error) {
-      console.log('error')
       feedback.render(error.message);
       viewList.hide();
       feedback.show();
@@ -34,7 +86,6 @@ search.onSubmit(function(query) {
 
 var duckList = document.getElementsByClassName('duck__list')[0];
 var results = new Results(duckList);
-
 results.onItemRender = function() {
   var li = document.createElement('li');
   li.classList.add("duck");
@@ -58,7 +109,6 @@ results.onItemRender = function() {
 };
 
 var detail = new Detail(document.getElementsByClassName('duck--litle')[0]);
-
 detail.onBack = function() {
   viewList.show();
   viewSingle.hide();
