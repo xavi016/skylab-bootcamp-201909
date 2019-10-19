@@ -1,17 +1,17 @@
-function Register(container) {
-  Component.call(this, container);
-}
+class Register extends Component {
+  constructor(container) {
+    super(container)
+  }
 
-Register.extend(Component);
+  onSubmit(expression) {
+    this.container.addEventListener('submit', event => {
+      event.preventDefault();
+      const name = this.name.value
+      const surname = this.surname.value
+      const email = this.email.value
+      const password = this.password.value
 
-Register.prototype.onSubmit = function(expression) {
-  this.container.addEventListener('submit', function(event) {
-    event.preventDefault();
-    var name = this.name.value
-    var surname = this.surname.value
-    var email = this.email.value
-    var password = this.password.value
-
-    expression(name, surname, email, password)
-  })
+      expression(name, surname, email, password)
+    })
+  }
 }

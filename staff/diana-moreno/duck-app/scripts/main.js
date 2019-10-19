@@ -1,50 +1,50 @@
-var viewList = new View(document.getElementsByClassName('view__list')[0]);
-var viewSingle = new View(document.getElementsByClassName('view__single')[0]);
-var viewRegister = new View(document.getElementsByClassName('view__register')[0]);
-var viewLogin = new View(document.getElementsByClassName('view__login')[0]);
-var viewHeader = new View(document.getElementsByClassName('view__header')[0]);
-var feedback = new Feedback(document.getElementsByClassName('view__feedback')[0]);
-var buttonRegister = document.getElementsByClassName('form__button--register')[1];
-var buttonBackToLogin = document.getElementsByClassName('form__button--register-back')[0];
+const viewList = new View(document.getElementsByClassName('view__list')[0])
+const viewSingle = new View(document.getElementsByClassName('view__single')[0])
+const viewRegister = new View(document.getElementsByClassName('view__register')[0])
+const viewLogin = new View(document.getElementsByClassName('view__login')[0])
+const viewHeader = new View(document.getElementsByClassName('view__header')[0])
+const feedback = new Feedback(document.getElementsByClassName('view__feedback')[0])
+const buttonRegister = document.getElementsByClassName('form__button--register')[1]
+const buttonBackToLogin = document.getElementsByClassName('form__button--register-back')[0]
 let errorMessageLogin = document.getElementsByClassName("form__confirmation")[1]
 let errorMessageRegister = document.getElementsByClassName("form__confirmation")[0]
 
 
-buttonRegister.addEventListener('click', switchToRegister);
+buttonRegister.addEventListener('click', switchToRegister)
 function switchToRegister() {
-  viewLogin.hide();
-  viewRegister.show();
+  viewLogin.hide()
+  viewRegister.show()
   errorMessageLogin.innerHTML = ''
 }
 
-buttonBackToLogin.addEventListener('click', switchToLogin);
+buttonBackToLogin.addEventListener('click', switchToLogin)
 function switchToLogin() {
-  viewLogin.show();
-  viewRegister.hide();
+  viewLogin.show()
+  viewRegister.hide()
 }
 
 
 function initialRandomDucks() {
-  searchDucks('', function(error, ducks) {
+  searchDucks('', (error, ducks) => {
     if (error) {
-      feedback.render(error.message);
-      viewList.hide();
-      feedback.show();
+      feedback.render(error.message)
+      viewList.hide()
+      feedback.show()
     } else {
-      ducks = ducks.shuffle().splice(0, 8);
-      results.render(ducks);
+      ducks = ducks.shuffle().splice(0, 8)
+      results.render(ducks)
     }
-  });
+  })
 }
 
-var register = new Register(document.getElementsByClassName('form')[1]);
-register.onSubmit(function(name, surname, email, password) {
-  registerUser(name, surname, email, password, function(error) {
+const register = new Register(document.getElementsByClassName('form')[1])
+register.onSubmit((name, surname, email, password) => {
+  registerUser(name, surname, email, password, error => {
     if(error) {
-      errorMessageRegister.innerHTML = error.message;
-      feedback.render(error.message);
-      viewList.hide();
-      feedback.show();
+      errorMessageRegister.innerHTML = error.message
+      feedback.render(error.message)
+      viewList.hide()
+      feedback.show()
     } else {
       viewRegister.hide()
       viewLogin.show()
@@ -52,12 +52,12 @@ register.onSubmit(function(name, surname, email, password) {
   })
 })
 
-var login = new Login(document.getElementsByClassName('form')[2]);
-login.onSubmit(function(email, password) {
+const login = new Login(document.getElementsByClassName('form')[2])
+login.onSubmit((email, password) => {
   authenticateUser(email, password, function(error) {
     if(error) {
-      viewList.hide();
-      feedback.hide();
+      viewList.hide()
+      feedback.hide()
       errorMessageLogin.innerHTML = 'Ups! Your username and/or password is not correct'
     } else {
       viewLogin.hide()
@@ -68,48 +68,48 @@ login.onSubmit(function(email, password) {
   })
 })
 
-var form = document.getElementsByClassName('form')[0];
-var search = new Search(form);
-search.onSubmit(function(query) {
-  searchDucks(query, function(error, ducks) {
+const form = document.getElementsByClassName('form')[0]
+const search = new Search(form)
+search.onSubmit(query => {
+  searchDucks(query, (error, ducks) => {
     if (error) {
-      feedback.render(error.message);
-      viewList.hide();
-      feedback.show();
+      feedback.render(error.message)
+      viewList.hide()
+      feedback.show()
     } else {
-      results.render(ducks);
-      feedback.hide();
-      results.show();
+      results.render(ducks)
+      feedback.hide()
+      results.show()
     }
-  }); // NOTE it works thanks to the internal binding that takes place in Results constructor
-});
+  }) // NOTE it works thanks to the internal binding that takes place in Results constructor
+})
 
-var duckList = document.getElementsByClassName('duck__list')[0];
-var results = new Results(duckList);
-results.onItemRender = function() {
-  var li = document.createElement('li');
-  li.classList.add("duck");
-  li.classList.add("duck--clicked");
-  var item = new ResultItem(li);
+const duckList = document.getElementsByClassName('duck__list')[0]
+const results = new Results(duckList)
+results.onItemRender = () => {
+  const li = document.createElement('li')
+  li.classList.add("duck")
+  li.classList.add("duck--clicked")
+  const item = new ResultItem(li)
 
   item.onClick = function(id) {
     retrieveDuck(id, function(error, duck) {
       if (error) {
-        feedback.render(error.message);
-        results.hide();
-        feedback.show();
+        feedback.render(error.message)
+        results.hide()
+        feedback.show()
       } else {
-        detail.render(duck);
-        viewList.hide();
-        viewSingle.show();
+        detail.render(duck)
+        viewList.hide()
+        viewSingle.show()
       }
     })
   }
-  return item;
-};
+  return item
+}
 
-var detail = new Detail(document.getElementsByClassName('duck--litle')[0]);
-detail.onBack = function() {
-  viewList.show();
-  viewSingle.hide();
-};
+const detail = new Detail(document.getElementsByClassName('duck--litle')[0])
+detail.onBack = () => {
+  viewList.show()
+  viewSingle.hide()
+}

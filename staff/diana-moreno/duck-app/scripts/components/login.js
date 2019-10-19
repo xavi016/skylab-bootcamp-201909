@@ -1,15 +1,14 @@
-function Login(container) {
-  Component.call(this, container);
-}
+class Login extends Component {
+  constructor(container) {
+    super(container)
+  }
 
-Login.extend(Component);
-
-Login.prototype.onSubmit = function(expression) {
-  this.container.addEventListener('submit', function(event) {
-    event.preventDefault();
-    var username = this.username.value
-    var password = this.password.value
-
-    expression(username, password)
-  })
+  onSubmit(expression) {
+    this.container.addEventListener('submit', function(event) {
+      event.preventDefault()
+      const username = this.username.value
+      const password = this.password.value
+      expression(username, password)
+    })
+  }
 }

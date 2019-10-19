@@ -1,15 +1,15 @@
-function Search(container) {
-  Component.call(this, container);
-};
+class Search extends Component {
+  constructor(container) {
+    super(container)
+  }
 
-Search.extend(Component);
-
-Search.prototype.onSubmit = function(expression) {
-  this.container.addEventListener('submit', function(event) {
-    event.preventDefault();
-    var query = this.query.value;
-    expression(query);
-    viewList.show();
-    viewSingle.hide();
-  });
-};
+  onSubmit(expression) {
+    this.container.addEventListener('submit', function(event) {
+      event.preventDefault()
+      const query = this.query.value
+      expression(query)
+      viewList.show()
+      viewSingle.hide()
+    })
+  }
+}

@@ -3,11 +3,11 @@ function call(method, url, body, callback) {
 
   if (body) headers['Content-Type'] = 'application/json;charset=UTF-8'
 
-  fetch(method, url, headers, body, function(response) {
-    if (response.readyState == 4) { // && response.status == 201 no todas serán correctas!
-      var result = JSON.parse(response.responseText);
+  fetch(method, url, headers, body, response => {
+    if (response.readyState == 4) { // && response.status == 201 to make all responses correct
+      const result = JSON.parse(response.responseText)
 
-      callback(result);
+      callback(result)
     }
-  });
+  })
 }

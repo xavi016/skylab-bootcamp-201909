@@ -1,20 +1,18 @@
-function Results(container) {
-  Component.call(this, container);
-  container.innerHTML = '';
-  this.render = this.render.bind(this); // EYE!
-};
+class Results extends Component {
+  constructor(container) {
+    super(container)
+    container.innerHTML = ''
+  }
 
-Results.extend(Component);
+  onItemRender() { undefined }
 
-Results.prototype.onItemRender = undefined;
+  render(results) {
+    this.container.innerHTML = ''
 
-Results.prototype.render = function(results) {
-  this.container.innerHTML = '';
-
-  results.forEach(function(result) {
-    var item = this.onItemRender();
-    item.render(result);
-
-    this.add(item);
-  }.bind(this));
-};
+    results.forEach(result => {
+      const item = this.onItemRender()
+      item.render(result)
+      this.add(item)
+    })
+  }
+}
