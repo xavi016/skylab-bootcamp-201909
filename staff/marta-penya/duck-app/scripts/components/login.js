@@ -9,7 +9,9 @@ Login.prototype.onSubmit = function (expression) {
         event.preventDefault();
 
         var username = this.username.value;
-
-        expression(username);
+        var password = this.password.value;
+        
+        expression(username, password);
     });
 };
+

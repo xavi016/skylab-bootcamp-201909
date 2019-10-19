@@ -113,7 +113,7 @@ li {
   padding: 0 2%;
 }
 .item-list__image {
-  width: 90%;
+  width: 60%;
   border-radius: 60px;
 }
 .item-list__description {
@@ -147,18 +147,17 @@ li {
     max-width: 90%;
   }
   .item-list__image {
-    max-width: 19em;
+    max-width: 50%;
     background-size: cover;
   }
 }
 @media (min-width: 1024px) {
   .item-list {
-    display: flex;
+    flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
   }
   .item-list__image {
-    max-width: 13em;
     background-size: cover;
   }
   .item-list__title {

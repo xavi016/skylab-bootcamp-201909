@@ -4,6 +4,30 @@ var views = document.getElementsByClassName('view');
 var searchView = new View(views[0]);
 var detailView = new View(views[1]);
 
+//variables para pass y usuario
+
+
+var mail = 'pepitogrillo@hotmail.com';
+var pass = 'pepitogrillo';
+
+
+var login = new Login(document.getElementsByClassName('login__button')[0]);
+var message = document.getElementById('message');
+
+login.onSubmit(function (username, password){
+    if(username !== mail && pass !== password){
+        feedback.render(error.message);
+
+        results.hide();
+        feedback.show();
+    } else {
+        event.preventDefault();
+        message.innerHTML = "Hello " + event.target.username.value;
+        message.style.display = 'block';
+    }
+
+});
+
 //funcion para que salgan patos random al cargar la pagina
 (function () {
     searchDucks('', function (error, ducks) {
