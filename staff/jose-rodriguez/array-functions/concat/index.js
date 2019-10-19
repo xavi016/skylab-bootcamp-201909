@@ -1,5 +1,5 @@
-function concat() {
-    if(typeof(arguments) !== 'object') throw TypeError('argunments is not an object'); 
+function concat(array) {
+    if (!(array instanceof Array)) throw TypeError('undefined is not an array'); 
 
     var newArray = [];
     for (var x = 0; x < arguments.length; x++) {

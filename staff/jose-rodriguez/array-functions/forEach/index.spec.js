@@ -23,14 +23,14 @@ describe('forEach', function () {
         var array; //= [1, 2, 3];
         var expression = console.log;
 
-        expect(function() { forEach(array, expression); }).toThrow(TypeError, 'undefined is not an array');
+        expect(function() { forEach(array, expression); }).toThrowError('undefined is not an array');
     });
 
     it('should fail on undefined expression', function () {
         var array = [1, 2, 3];
         var expression; // = console.log;
 
-        expect(function() { forEach(array, expression); }).toThrow(TypeError, 'undefined is not a function');
+        expect(function() { forEach(array, expression); }).toThrowError('undefined is not a function');
     });
 
     it('should fail on non-function expression', function () {
@@ -38,7 +38,7 @@ describe('forEach', function () {
 
         //throw Error('hola mundo');
 
-        expect(function () { forEach(array, undefined); }).toThrow(TypeError, 'undefined is not a function');
+        expect(function () { forEach(array, undefined); }).toThrowError('undefined is not a function');
         expect(function() { forEach(array, true); }).toThrowError('true is not a function');
         expect(function() { forEach(array, 1); }).toThrowError('1 is not a function');
     });
