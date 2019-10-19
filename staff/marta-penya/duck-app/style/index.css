@@ -12,10 +12,6 @@ li {
   list-style: none;
 }
 
-.hide {
-  display: none;
-}
-
 .result {
   display: flex;
   justify-content: center;
@@ -50,17 +46,40 @@ li {
 }
 .login {
   display: flex;
-  height: 10vh;
+  height: 40vh;
   justify-content: center;
   align-items: center;
 }
 .login__form {
-  display: flex;
+  display: grid;
+  grid-gap: 1rem;
 }
 .login__input {
   border-radius: 20px;
 }
 .login__button {
+  border-radius: 20px;
+  background: MintCream;
+  border: 2px solid black;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  justify-content: center;
+  align-items: center;
+}
+.register__form {
+  display: grid;
+  grid-gap: 1rem;
+}
+.register__input {
+  border-radius: 20px;
+}
+.register__button {
   border-radius: 20px;
   background: MintCream;
   border: 2px solid black;
@@ -147,7 +166,7 @@ li {
     max-width: 90%;
   }
   .item-list__image {
-    max-width: 50%;
+    max-width: 19em;
     background-size: cover;
   }
 }
@@ -164,16 +183,16 @@ li {
     font-size: 0.9em;
     text-align: center;
   }
-  .item-list__image--modif {
+  .item-list__image {
     max-width: 30em;
   }
   .item-list__description {
     font-size: 1.2em;
   }
-  .item-list__title--modif {
+  .item-list__title {
     font-size: 1.8em;
   }
-  .item-list__price--modif {
+  .item-list__price {
     font-size: 1.8em;
   }
   .item-list__button {
@@ -310,6 +329,9 @@ li {
     align-self: center;
     font-size: 1.8em;
   }
+}
+.hide {
+  display: none;
 }
 
 /*# sourceMappingURL=index.css.map */

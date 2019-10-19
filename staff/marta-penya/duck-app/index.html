@@ -16,23 +16,40 @@
                 <img class="header__image" src="https://www.favicon.cc/logo3d/75350.png" alt="duck image">
         </header>
         <main>
-
+            
             <section class="login">
                 <div>
                     <form class="login__form">               
                         <input type="text" name="username" placeholder="username" class="login__input">
                         <input type="password" name="password" placeholder="password" class="login__input">
                         <button class="login__button"> Login</button>
+                        
                     </form>
+                    <button class="login__goregistrer"> Go to Register</button>
                 </div>       
             </section>
-            <section class="incorrect hide">
+
+            <section class="register hide">
+                <div>
+                    <form class="register__form">
+                        <input type="text" name="name" placeholder="name" class="register__input" autofocus required>
+                        <input type="text" name="surname" placeholder="surname" class="register__input" required>               
+                        <input type="email" name="email" placeholder="email" class="register__input" required>
+                        <input type="password" name="password" placeholder="password" class="register__input" required>
+                        <button class="register__button"> Register</button>
+                            
+                    </form>
+                    <button class="register__gologin"> Go to Login</button>
+                </div>       
+            </section>
+            
+            <!-- <section class="incorrect hide">
                     <span class="incorrect__icon">🤡</span>
                     <span class="hide" id="message">Message here</span>
                     <span class="incorrect__icon">🎈</span>
-            </section>
+            </section> -->
 
-            <section class="search">
+            <section class="search hide">
                 <div>
                     <form class="search__form">               
                         <input type="search" name="query" id="search__formitem" class="search__input">
@@ -42,7 +59,7 @@
             </section>
        
          
-            <section class="ducks view">
+            <section class="ducks view hide">
                 <ul class="item-list"></ul>
             </section>
             
@@ -73,8 +90,12 @@
     <script src="scripts/utils/function-extend.js"></script>
     <script src="scripts/logic/retrieve-duck/index.js"></script>
     <script src="scripts/logic/search-ducks/index.js"></script>
+    <script src="scripts/logic/register-user/index.js"></script>
+    <script src="scripts/logic/authenticate-user/index.js"></script>
+    <script src="scripts/logic/retrieve-user/index.js"></script>
     <script src="scripts/helpers/call.js"></script>
     <script src="scripts/components/component.js"></script>
+    <script src="scripts/components/register-user.js"></script>
     <script src="scripts/components/login.js"></script>
     <script src="scripts/components/search.js"></script>
     <script src="scripts/components/results.js"></script>

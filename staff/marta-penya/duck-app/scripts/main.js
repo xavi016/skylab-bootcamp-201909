@@ -4,27 +4,41 @@ var views = document.getElementsByClassName('view');
 var searchView = new View(views[0]);
 var detailView = new View(views[1]);
 
+
+
 //variables para pass y usuario
 
+var register = new Register(document.getElementsByClassName('register__form')[0])
 
-var mail = 'pepitogrillo@hotmail.com';
-var pass = 'pepitogrillo';
+register.onSubmit(function(){
 
+   registerUser(name, surname, email, password, function(){
+    
+   })
+
+    document.getElementsByClassName('register')[0].classList.add('hide')
+    document.getElementsByClassName('search')[0].classList.remove('hide')
+    document.getElementsByClassName('ducks')[0].classList.remove('hide')
+})
 
 var login = new Login(document.getElementsByClassName('login__button')[0]);
 var message = document.getElementById('message');
 
 login.onSubmit(function (username, password){
-    if(username !== mail && pass !== password){
-        feedback.render(error.message);
+    retrieveUser(username, password, function(error, username){
+        if(username !== mail && pass !== password){
+            feedback.render(error.message);
+    
+            feedback.show();
+        } else {
+            event.preventDefault();
+            login.hide();
+            searchView.show();            
+            message.innerHTML = "Hello " + event.target.username.value;
+            message.style.display = 'block';
+        }
 
-        results.hide();
-        feedback.show();
-    } else {
-        event.preventDefault();
-        message.innerHTML = "Hello " + event.target.username.value;
-        message.style.display = 'block';
-    }
+    })
 
 });
 
@@ -102,3 +116,20 @@ detail.onBack = function () {
 
 var feedback = new Feedback(document.getElementsByClassName('feedback')[0]);
 
+var gologin = document.getElementsByClassName('register__gologin')[0];
+var goregistrer = document.getElementsByClassName('login__goregistrer')[0];
+
+
+
+goregistrer.addEventListener('click', function(){
+    
+    document.getElementsByClassName('login')[0].classList.add('hide')
+    document.getElementsByClassName('register')[0].classList.remove('hide')
+})
+
+
+gologin.addEventListener('click', function(){
+    
+    document.getElementsByClassName('login')[0].classList.remove('hide')
+    document.getElementsByClassName('register')[0].classList.add('hide')
+})
