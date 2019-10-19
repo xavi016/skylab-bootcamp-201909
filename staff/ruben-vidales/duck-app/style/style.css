@@ -54,6 +54,17 @@ ul {
   width: 90%;
   margin: 5% 5%;
 }
+.duck__price {
+  background: pink;
+  border: 0.2em solid red;
+  text-align: center;
+  margin: 1em 33%;
+  padding: 4% 1%;
+  position: relative;
+  width: 30%;
+  font-size: 1.3em;
+  font-weight: bold;
+}
 
 @media screen and (min-width: 420px) {
   .ducks-panel__list-item {

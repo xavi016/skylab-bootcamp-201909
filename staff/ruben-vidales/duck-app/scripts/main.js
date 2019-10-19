@@ -9,13 +9,13 @@ searchForm.addEventListener('submit', function (e) {
 
     e.preventDefault();
     var url = 'https://duckling-api.herokuapp.com/api/search?q=' + searchInput.value;
-    xhrCall('GET', url, paintResults);
+    fetch('GET', url, paintResults);
 });
 
 function showDetail(id) {
     detailPanel.innerHTML = '';
     var url = 'https://duckling-api.herokuapp.com/api/ducks/' + id;
-    xhrCall('GET', url, paintDetail);    
+    fetch('GET', url, paintDetail);    
 
 }
 
@@ -101,6 +101,12 @@ function paintDetail(duck) {
     price.classList.add('duck__price');
     price.innerText = duck.price;
 
+    var store = document.createElement('a');
+    store.classList.add('duck__store-button');
+    store.innerText = 'Go to Shop';
+    store.href = duck.link;
+    store.setAttribute('target', '_blank');
+
     var back = document.createElement('button');
     back.classList.add('duck__back-button');
     back.innerText = 'Back';
@@ -109,6 +115,7 @@ function paintDetail(duck) {
     article.append(title);
     article.append(img);
     article.append(descript);
+    article.append(store);
     article.append(price);
     article.append(back);
 
@@ -128,25 +135,6 @@ function listInitialRandomDucks() {
 }
 
 function searchDucks(query, callback) {
-    xhrCall('GET', query ? 'https://duckling-api.herokuapp.com/api/search?q=' + query : 'https://duckling-api.herokuapp.com/api/search', callback);
-}
-
-/**
- * Do the request via AJAX and execute the callback function
- * @param {*} method 
- * @param {*} url 
- * @param {*} callback 
- */
-function xhrCall(method, url, callback) {
-    var xhr = new XMLHttpRequest;
-    xhr.open(method, url);
-
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 201) {
-            var results = JSON.parse(xhr.responseText);
-            callback(results);
-        }
-    }
-
-    xhr.send();
+    q = query ? 'https://duckling-api.herokuapp.com/api/search?q=' + query : 'https://duckling-api.herokuapp.com/api/search';
+    fetch('GET', q, callback);
 }
