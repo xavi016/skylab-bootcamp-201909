@@ -41,6 +41,7 @@
 .results
     @extend %panel
     display: flex
+    justify-content: space-between
     flex-wrap: wrap
     margin-bottom: .5rem
     height: 70vh
@@ -51,7 +52,7 @@
     display: flex
     justify-content: space-between
     align-items: center
-    width: 95%
+    width: 70vw
 
 img
     max-width: 30vw
@@ -104,5 +105,15 @@ img
 .information__text 
     text-decoration: underline
     text-shadow: #63717f
+
+.register__button
+    width: 4rem
+    margin-top: 0.5rem
+    background-color: #020afbc9
+    color: whitesmoke
+    border-radius: 5rem
+    text-align: center
+    &:hover
+        filter: brightness(1.2)
 
 

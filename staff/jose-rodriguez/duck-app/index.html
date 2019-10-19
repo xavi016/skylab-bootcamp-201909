@@ -15,21 +15,38 @@
         <h1 class="header__title">DUCK-APP SPA</h1>
     </header>
     <main class="main__content">
-        <section class = "login">
-            <form action="" class="login__form">
+        <section class="login">
+            <form class="login__form">
                 <label for="email">e-mail</label>
                 <input type="text" class="form__email" name="email">
-                <label for="password"></label>
+                <label for="password">password</label>
                 <input type="password" class="form__password" name="password">
-                <input type="submit"  class = "form__submit" name="login" value="Sign In!">
+                <input type="submit" class="form__submit" name="login" value="Sign In!">
+                <div class="register__button">Sign Up</div>
             </form>
-
+        </section>
+        <section class="register">
+            <form class="register__form">
+                <label for="name">Name: </label>
+                <input type="text" class="form__name" name="name">
+                <label for="surname">surname</label>
+                <input type="text" class="form__surname" name="surname">
+                <label for="email">e-mail</label>
+                <input type="text" class="form__email" name="email">
+                <label for="password">password</label>
+                <input type="password" class="form__password" name="password">
+                <input type="submit" class="form__submit" name="login" value="Sign In!">
+                <div class="register__button">Register User</div>
+            </form>
+        </section>
+        <section class="feedback">
+            <p class="feedback__message"></p>
         </section>
         <section id="searching" class="searching">
 
             <form class="navigation__content">
                 <input id="search" class="navigation__input" type="text" placeholder="Search..." name="q" autofocus>
-                <div id = "search_button" class="navigation__button" onclick=searchRequest()>
+                <div id="search_button" class="navigation__button" onclick=searchRequest()>
                     <i class="fas fa-search"></i>
                 </div>
             </form>
@@ -50,14 +67,19 @@
     <script src="scripts/utils/fetch.js"></script>
     <script src="scripts/utils/function-extend.js"></script>
     <script src="scripts/helper/request.js"></script>
-    <script src="scripts/logic/search-ducks.js"></script>
-    <script src="scripts/logic/get-duck.js"></script>
+    <script src="scripts/logic/search-duck/index.js"></script>
+    <script src="scripts/logic/get-duck/index.js"></script>
+    <script src="scripts/logic/authenticate-user/index.js"></script>
+    <script src="scripts/logic/register-user/index.js"></script>
     <script src="scripts/components/component.js"></script>
     <script src="scripts/components/detail.js"></script>
     <script src="scripts/components/item.js"></script>
     <script src="scripts/components/item.js"></script>
     <script src="scripts/components/list.js"></script>
     <script src="scripts/components/search.js"></script>
+    <script src="scripts/components/feedback.js"></script>
+    <script src="scripts/components/login.js"></script>
+    <script src="scripts/components/register.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 
