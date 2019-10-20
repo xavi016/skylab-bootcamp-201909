@@ -16,13 +16,14 @@
                 <img class="form__logo" src="img/logo.svg">
             </a>
             <div class="form__part">
-                <input class="form__part-input">
+                <input class="form__part-input" name="query">
                 <button class="form__part-button">🔎</button>
             </div>
         </form>
     </header>
     <main>
         <section class="ducks-panel">
+            <ul class="ducks-panel__list"></ul>
         </section>
         <section class="detail-panel hide">
         </section>
@@ -31,6 +32,13 @@
         <p class="footer__copyright">Ru for Skylab - 2019</p>
     </footer>
 </body>
+<script src="./scripts/logic/search-ducks/index.js"></script>
+<script src="./scripts/logic/retrieve-duck/index.js"></script>
+<script src="./scripts/components/results.js"></script>
+<script src="./scripts/components/result-item.js"></script>
+<script src="./scripts/components/search.js"></script>
+<script src="./scripts/components/detail.js"></script>
+<script src="./scripts/helpers/call.js"></script>
 <script src="./scripts/utils/array-shuffle.js"></script>
 <script src="./scripts/utils/fetch.js"></script>
 <script src="./scripts/main.js"></script>
