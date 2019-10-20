@@ -2,9 +2,9 @@ var form = document.getElementById("duck-search");
 var ul = document.getElementsByClassName("results")[0];
 var goHome = document.getElementsByClassName("go-home")[0];
 var views = document.getElementsByClassName('view');
+var newAccount = document.getElementsByClassName('btn__new-account')[0];
+var btnLogin = document.getElementsByClassName('btn__login')[0];
 var feedback = new Feedback(document.getElementsByClassName('feedback')[0]);
-// var searchView = new View(views[0]);
-// var detailView = new View(views[1]);
 
 
 function getRandomDuck(){
@@ -27,8 +27,36 @@ function newElement(item, itemClass, text){
     return newItem;
 }
 var search = new Search(form);
-var login = new Login(document.getElementsByClassName('login')[0]);
-login.onSubmit();
+var login = new Login(document.getElementsByClassName('login__form')[0]);
+login.onSubmit(function (username, password) {
+    try {
+        authenticateUser(username, password, (x,result)=> {
+            retrieveUser(result.id, result.token, (result)=>{
+                console.log(result)
+                document.getElementsByClassName('login')[0].classList.add('hidden')
+                document.getElementsByClassName('main')[0].classList.remove('hidden')
+            })
+
+        });
+    } catch (error) {
+        feedback.render(error.message);
+        document.getElementsByClassName('feedback')[0].classList.remove('hidden')
+        document.getElementsByClassName('main')[0].classList.add('hidden')
+    }
+});
+var register = new Register(document.getElementsByClassName('register__form')[0]);
+register.onSubmit(function (name, surname, email, password) {
+    try {
+        registerUser(name, surname, email, password, function(){
+            document.getElementsByClassName('register')[0].classList.add('hidden')
+            document.getElementsByClassName('main')[0].classList.remove('hidden')
+        });
+    } catch (error) {
+        feedback.render(error.message);
+        document.getElementsByClassName('feedback')[0].classList.remove('hidden')
+        document.getElementsByClassName('main')[0].classList.add('hidden')
+    }
+});
 var results = new Results(ul);
 results.onItemRender = function () {
     var item = new ResultItem(newElement('li','results__item'));
@@ -42,7 +70,6 @@ results.onItemRender = function () {
     return item;
 };
 search.onSubmit(function (query) {
-    debugger
     searchDucks(query, function (error, ducks) {
         if (error) {
             feedback.render(error.message);
@@ -74,13 +101,20 @@ ul.addEventListener("click", function (e) {
     var parent = t.parentElement;
     var d = parent.dataset;
     var detail = new Detail(document.getElementsByClassName('details')[0]);
-    debugger
     retrieveDuck(d.duckId, detail.render);
     switchViews();
-});
+})
 function switchViews(){
     document.getElementsByClassName('main')[0].classList.toggle('hidden')
     document.getElementsByClassName('details')[0].classList.toggle('hidden')
 }
 goHome.addEventListener("click", switchViews);
-getRandomDuck();
+newAccount.addEventListener("click", function(){
+    document.getElementsByClassName("login")[0].classList.add("hidden")
+    document.getElementsByClassName("register")[0].classList.remove("hidden")
+})
+btnLogin.addEventListener("click", function(){
+    document.getElementsByClassName("login")[0].classList.remove("hidden")
+    document.getElementsByClassName("register")[0].classList.add("hidden")
+})
+getRandomDuck()

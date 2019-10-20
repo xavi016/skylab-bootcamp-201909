@@ -28,12 +28,25 @@
                 </form>
             </div>
         </header>
+        <section class="register__container register hidden">
+            <form class="register__form form">
+                <h1>Register</h1>
+                <input type="text" placeholder="Name" class="form__pasword input" name="name" autofocus required>
+                <input type="text" placeholder="Surname" class="form__pasword input" name="surname"required>
+                <input type="email" placeholder="Email" class="form__email input" name="email" required>
+                <input type="password" placeholder="Password" class="form__pasword input" name="password" required>
+                <button type="submit">Registrarse</button>
+            </form>
+            <a href="#" class="btn btn__login">DuckIn</a>
+        </section>
         <section class="login__container login">
             <form class="login__form form">
-                <input type="text" placeholder="Username" class="form__username input" name="username" autofocus>
+                <h1>DuckIn</h1>
+                <input type="text" placeholder="Username" class="form__username input" name="email" autofocus>
                 <input type="password" placeholder="Password" class="form__pasword input" name="password">
                 <button type="submit">Entrar</button>
             </form>
+            <a href="#" class="btn btn__new-account">Crear cuenta nueva</a>
         </section>
         <main class="main__container main view hidden" id="main">
             <ul class="results" id="duck-list"></ul>
@@ -56,11 +69,15 @@
     </div>
     <script src="scripts/utils/function-extend.js"></script>
     <script src="scripts/utils/fetch.js"></script>
+    <script src="scripts/logic/register-user/index.js"></script>
+    <script src="scripts/logic/authenticate-user/index.js"></script>
     <script src="scripts/logic/retrieve-duck/index.js"></script>
+    <script src="scripts/logic/retrieve-user/index.js"></script>
     <script src="scripts/logic/search-ducks/index.js"></script>
-    <script src="scripts/helpers.js"></script>
+    <script src="scripts/helpers/call.js"></script>
     <script src="scripts/components/component.js"></script>
     <script src="scripts/components/login.js"></script>
+    <script src="scripts/components/register.js"></script>
     <script src="scripts/components/search.js"></script>
     <script src="scripts/components/detail.js"></script>
     <script src="scripts/components/result-item.js"></script>
