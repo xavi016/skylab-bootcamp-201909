@@ -33,5 +33,8 @@ describe('logic - authenticate user', () => {
         })
     })
 
+
+// fail with incorrect credentials??
+
     // TODO other cases
 })
