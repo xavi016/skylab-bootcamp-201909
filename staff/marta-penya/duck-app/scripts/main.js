@@ -25,26 +25,21 @@ register.onSubmit(function (name, surname, email, password) {
 
 //panel de login
 
-// var login = new Login(document.getElementsByClassName('login__button')[0]);
-// var message = document.getElementById('message');
+// const login = new Login(document.getElementsByClassName('login__form')[0])
 
-// login.onSubmit(function (username, password){
-//     retrieveUser(username, password, function(error, username){
-//         if(username !== mail && pass !== password){
-//             feedback.render(error.message);
-    
-//             feedback.show();
-//         } else {
-//             event.preventDefault();
-//             login.hide();
-//             searchView.show();            
-//             message.innerHTML = "Hello " + event.target.username.value;
-//             message.style.display = 'block';
-//         }
-
-//     })
-
-// });
+// login.onSubmit(function(email, password){
+//     try {
+//         authenticateUser(email, password, function(){
+//             document.getElementsByClassName('login')[0].classList.add('hide')
+//             document.getElementsByClassName('search')[0].classList.remove('hide')
+//             document.getElementsByClassName('ducks')[0].classList.remove('hide')
+//         });
+//     } catch (error) {
+//         feedback.render(error.message);
+//         document.getElementsByClassName('feedback')[0].classList.remove('hide')
+//         document.getElementsByClassName('main')[0].classList.add('hide')
+//     }
+// })
 
 
 //funcion para que salgan patos random al cargar la pagina
