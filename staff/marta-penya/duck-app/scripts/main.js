@@ -4,8 +4,7 @@ var views = document.getElementsByClassName('view');
 var searchView = new View(views[0]);
 var detailView = new View(views[1]);
 
-//registro usuario
-
+//panel para el registro de usuario
 
 var register = new Register(document.getElementsByClassName('register__form')[0]);
 
@@ -24,7 +23,7 @@ register.onSubmit(function (name, surname, email, password) {
    }
 });
 
-//variables para pass y usuario
+//panel de login
 
 // var login = new Login(document.getElementsByClassName('login__button')[0]);
 // var message = document.getElementById('message');
@@ -84,11 +83,9 @@ button.onSubmit(function (query) {
     });
 });
 
-
+//panel para mostrar los resultados de búsqueda, añadiendo el onclick para que cada pato pueda ser pulsado
 
 var results = new Results(document.getElementsByClassName('item-list')[0]);
-
-
 results.onItemRender = function () {
     var item = new ResultItem(document.createElement('li'));
     
@@ -103,8 +100,8 @@ results.onItemRender = function () {
                 detail.render(duck);
                 document.getElementsByClassName('ducks')[0].classList.add('hide')
                 document.getElementsByClassName('detail')[0].classList.remove('hide')
-                searchView.hide();
-                detailView.show();
+                // searchView.hide();
+                // detailView.show();
             }
         });
     };
@@ -112,31 +109,29 @@ results.onItemRender = function () {
     return item;
 };
 
-
+//panel de detalles, cuando un pato es pulsado se abre un nuevo panel con los detalles
 var detail = new Detail(document.getElementsByClassName('result')[0]);
 
 detail.onBack = function () {
-   
-    detailView.hide();
-    searchView.show();
+    document.getElementsByClassName('ducks')[0].classList.remove('hide')
+    document.getElementsByClassName('detail')[0].classList.add('hide')
+    // detailView.hide();
+    // searchView.show();
 };
 
+//panel de feedback
 var feedback = new Feedback(document.getElementsByClassName('feedback')[0]);
 
+
+//botones para cambiar de registro a login y viceversa 
 var gologin = document.getElementsByClassName('register__gologin')[0];
 var goregistrer = document.getElementsByClassName('login__goregistrer')[0];
 
-
-
-goregistrer.addEventListener('click', function(){
-    
+goregistrer.addEventListener('click', function(){  
     document.getElementsByClassName('login')[0].classList.add('hide')
     document.getElementsByClassName('register')[0].classList.remove('hide')
 })
-
-
-gologin.addEventListener('click', function(){
-    
+gologin.addEventListener('click', function(){    
     document.getElementsByClassName('login')[0].classList.remove('hide')
     document.getElementsByClassName('register')[0].classList.add('hide')
 })

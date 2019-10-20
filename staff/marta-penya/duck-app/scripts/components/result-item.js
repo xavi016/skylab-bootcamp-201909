@@ -8,13 +8,11 @@ ResultItem.extend(Component);
 
 ResultItem.prototype.onClick = undefined;
 
-ResultItem.prototype.render = function (result) {
+ResultItem.prototype.render = function (result) {    
+    var item = document.createElement('a');
+    item.classList.add('item-list__link');
 
-    
-    var link = document.createElement('a');
-    link.classList.add('item-list__link');
-
-    link.addEventListener('click', function () {
+    item.addEventListener('click', function () {
         var id = result.id;
 
         this.onClick(id);
@@ -34,7 +32,7 @@ ResultItem.prototype.render = function (result) {
     price.classList.add('item-list__price');
     price.appendChild(pric);
 
-    link.append(h2, img, price);
+    item.append(h2, img, price);
 
-    this.container.append(link);
+    this.container.append(item);
 };

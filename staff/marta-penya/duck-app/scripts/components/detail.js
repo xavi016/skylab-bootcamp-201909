@@ -6,9 +6,7 @@ Detail.extend(Component);
 
 Detail.prototype.onBack = undefined;
 
-Detail.prototype.render = function (item) {
-
-     
+Detail.prototype.render = function (item) {   
     var title = this.container.getElementsByClassName('detail-list__title')[0];
     title.innerText = item.title;
 
@@ -26,5 +24,4 @@ Detail.prototype.render = function (item) {
 
     var back = this.container.getElementsByClassName('detail-list__button')[0];
     back.addEventListener('click', this.onBack);
-
 };
