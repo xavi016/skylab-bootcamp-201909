@@ -7,7 +7,7 @@ describe('logic - authenticate user', () => {
         email = `email-${Math.random()}@mail.com`
         password = `password-${Math.random()}`
 
-        call('POST', 'https://skylabcoders.herokuapp.com/api/user', { name, surname, username: email, password }, result => {
+        call('POST', 'https://skylabcoders.herokuapp.com/api/user', undefined, { name, surname, username: email, password }, result => {
             if (result.error) done(new Error(result.error))
             else done()
         })
@@ -33,8 +33,17 @@ describe('logic - authenticate user', () => {
         })
     })
 
+    it('should fail on incorrect credentials', done => {
+        const wrongEmail = 'pepito'
+        const wrongPassword = 'pepito-password'
+        authenticateUser(wrongEmail, password, (error, response) => {
+          expect(error).toBeDefined()
+          expect(response).toBeUndefined()
+          expect(error.message).toBeDefined()
+          expect(typeof error.message).toBe('string')
+          expect(error.message.length).toBeGreaterThan(0)
 
-// fail with incorrect credentials??
-
-    // TODO other cases
+          done()
+        })
+      })
 })
