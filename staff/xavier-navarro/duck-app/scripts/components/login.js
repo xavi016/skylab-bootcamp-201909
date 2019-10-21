@@ -8,9 +8,6 @@ Login.prototype.onSubmit = function (expression) {
         event.preventDefault()
         const email = this.email.value
         const password = this.password.value
-        expression(email, password) 
-        // document.getElementsByClassName('login')[0].classList.add('hidden')
-        // document.getElementsByClassName('main')[0].classList.remove('hidden')
-        
+        expression(email, password)        
     });
 };

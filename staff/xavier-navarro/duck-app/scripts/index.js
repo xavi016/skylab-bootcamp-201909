@@ -30,12 +30,18 @@ var search = new Search(form);
 var login = new Login(document.getElementsByClassName('login__form')[0]);
 login.onSubmit(function (username, password) {
     try {
-        authenticateUser(username, password, (x,result)=> {
-            retrieveUser(result.id, result.token, (result)=>{
-                console.log(result)
-                document.getElementsByClassName('login')[0].classList.add('hidden')
-                document.getElementsByClassName('main')[0].classList.remove('hidden')
-            })
+        authenticateUser(username, password, (error,result)=> {
+            if (error) {
+                feedback.render(error.message);
+                document.getElementsByClassName('feedback')[0].classList.remove('hidden')
+            } else {
+                retrieveUser(result.id, result.token, (result)=>{
+                    document.getElementsByClassName('login')[0].classList.add('hidden')
+                    document.getElementsByClassName('main')[0].classList.remove('hidden')
+                    document.getElementsByClassName('search__form')[0].classList.remove('hidden')
+                    document.getElementsByClassName('user')[0].innerText = result.data.name+" |"
+                })
+            }
 
         });
     } catch (error) {
@@ -118,3 +124,7 @@ btnLogin.addEventListener("click", function(){
     document.getElementsByClassName("register")[0].classList.add("hidden")
 })
 getRandomDuck()
+var popupOff = document.getElementsByClassName("feedback__cross")[0]
+popupOff.addEventListener("click", ()=>{
+    document.getElementsByClassName("feedback")[0].classList.add("hidden")
+})

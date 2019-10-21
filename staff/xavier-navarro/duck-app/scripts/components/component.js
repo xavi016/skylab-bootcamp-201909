@@ -19,5 +19,26 @@ Component.prototype.show = function() {
 };
 
 Component.prototype.hide = function() {
-    this.container.classList.add('hide');
+    this.container.classList.add('hidden');
 };
+// class Component {
+//     constructor (container) {
+//         this.__container__ = container;
+//         // this.add()
+//         // this.show()
+//         // this.hide()
+//     }
+//     get container() { 
+//         return this.__container__;
+//     }
+//     add () {
+//         if (!(child instanceof Component)) throw TypeError(child + ' is not a Component');
+//         this.container.append(child.container);
+//     }
+//     show () {
+//         this.container.classList.remove('hide');
+//     }
+//     hide () {
+//         this.container.classList.add('hidden');
+//     }
+// }

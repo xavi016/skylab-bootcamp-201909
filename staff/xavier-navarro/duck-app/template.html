@@ -26,6 +26,26 @@
                 </form>
             </div>
         </header>
+        <section class="register__container register hidden">
+            <form class="register__form form">
+                <h1>Register</h1>
+                <input type="text" placeholder="Name" class="form__pasword input" name="name" autofocus required>
+                <input type="text" placeholder="Surname" class="form__pasword input" name="surname"required>
+                <input type="email" placeholder="Email" class="form__email input" name="email" required>
+                <input type="password" placeholder="Password" class="form__pasword input" name="password" required>
+                <button type="submit">Registrarse</button>
+            </form>
+            <a href="#" class="btn btn__login">DuckIn</a>
+        </section>
+        <section class="login__container login">
+            <form class="login__form form">
+                <h1>DuckIn</h1>
+                <input type="text" placeholder="Username" class="form__username input" name="email" autofocus>
+                <input type="password" placeholder="Password" class="form__pasword input" name="password">
+                <button type="submit">Entrar</button>
+            </form>
+            <a href="#" class="btn btn__new-account">Crear cuenta nueva</a>
+        </section>
         <main class="main__container main" id="main">
             <ul class="results" id="duck-list">
                 <li class="results__item">

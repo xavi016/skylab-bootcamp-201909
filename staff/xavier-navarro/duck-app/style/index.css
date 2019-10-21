@@ -1,4 +1,4 @@
-.footer, .results .duck__price, .login, .register, .header__company-name {
+.feedback__cross, .feedback__container, .footer, .results .duck__price, .login, .register, .header__company-name {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,9 +76,24 @@ body {
 .login .form {
   display: grid;
   border: 1px solid #f2aa03;
+  border-radius: 10px;
   padding: 1rem;
   grid-gap: 1rem;
   margin-top: 5%;
+}
+.login .form__title {
+  text-align: center;
+}
+.login .form button {
+  border: 1px solid;
+  margin: 11px;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  background-color: #26d370;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .results {
@@ -143,10 +158,6 @@ body {
   border-radius: 0.4rem;
 }
 
-.hidden {
-  display: none;
-}
-
 .btn {
   border: 1px solid;
   margin: 11px;
@@ -154,6 +165,44 @@ body {
   border-radius: 10px;
   text-decoration: none;
   color: #000;
+}
+
+.feedback {
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: #f2f2f2a1;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.feedback__container {
+  position: absolute;
+  background-color: #fff;
+  width: 300px;
+  height: 100px;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0px 0px 5px #565656;
+}
+.feedback__cross {
+  right: 25px;
+  position: absolute;
+  top: 25px;
+  border-radius: 50%;
+  border: 1px solid;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
 }
 
 @media (min-width: 768px) {

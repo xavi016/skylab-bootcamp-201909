@@ -20,17 +20,17 @@
                 <h1 class="title">*DUCKSTAR*</h1>
             </div>
             <div class="header__home">
-                <!-- <a href="#" class="go-home"><i class="fas fa-home"></i></a> -->
+                <p class="user"></p>
             </div>
             <div class="header__search search">
-                <form action="" id="duck-search" class="search__form">
+                <form action="" id="duck-search" class="search__form hidden">
                     <input type="search" class="search__input" name="search" placeholder="Search">
                 </form>
             </div>
         </header>
         <section class="register__container register hidden">
             <form class="register__form form">
-                <h1>Register</h1>
+                <h1 class="form__title">Register</h1>
                 <input type="text" placeholder="Name" class="form__pasword input" name="name" autofocus required>
                 <input type="text" placeholder="Surname" class="form__pasword input" name="surname"required>
                 <input type="email" placeholder="Email" class="form__email input" name="email" required>
@@ -41,7 +41,7 @@
         </section>
         <section class="login__container login">
             <form class="login__form form">
-                <h1>DuckIn</h1>
+                <h1 class="form__title">DuckIn</h1>
                 <input type="text" placeholder="Username" class="form__username input" name="email" autofocus>
                 <input type="password" placeholder="Password" class="form__pasword input" name="password">
                 <button type="submit">Entrar</button>
@@ -59,9 +59,12 @@
             <p class="details__price"><span class="details__price-tag"></span></p> 
         </section>
         <section class="feedback hidden">
-            <span class="feedback__icon">🤡</span>
-            <p class="feedback__message">Come with me...</p>
-            <span class="feedback__icon">🎈</span>
+            <a class="feedback__cross">X</a>
+            <div class="feedback__container">
+                <span class="feedback__icon">🤡</span>
+                <p class="feedback__message">Come with me...</p>
+                <span class="feedback__icon">🎈</span>
+            </div>
         </section>
         <footer class="footer__container footer">
             <p class="copyright">© DUCK APP S.A.</p>
@@ -83,7 +86,7 @@
     <script src="scripts/components/result-item.js"></script>
     <script src="scripts/components/results.js"></script>
     <script src="scripts/components/feedback.js"></script>
-    <!-- <script src="scripts/components/views.js"></script> -->
+    <script src="scripts/components/view.js"></script>
     <script src="scripts/index.js"></script>
 </body>
 </html>
