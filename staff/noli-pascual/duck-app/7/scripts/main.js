@@ -21,12 +21,13 @@ var detailView = new View(views[3]);
 })();
 
 var register = new Register(document.getElementsByClassName('register')[0]);
+var userArea = document.getElementsByClassName('userArea__text')[0];
 
 register.onSubmit(function(name, surname, email, password) {
 
     try {
         registerUser(name, surname, email, password, function() {
-
+            
             registerView.hide();
             loginView.show();
             
@@ -50,11 +51,12 @@ goRegister.addEventListener('click', function() {
 
 login.onSubmit(function(email, password){
     try {
-       
+      
         authenticateUser(email, password, function(result) { //callback(undefined, { id, token })
- 
+          
             retrieveUser(result.id, result.token, function(result) {
                 
+                userArea.innerHTML = 'Welcome '+ result.data.name + '!';
                 loginView.hide();
                 searchView.show();
             })

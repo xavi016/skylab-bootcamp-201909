@@ -6,7 +6,7 @@ function retrieveUser(id, token, callback) {
     const url = 'https://skylabcoders.herokuapp.com/api/user/' + id
   
  
-    call('GET', url, {'token': token}, function (result) {
+    call('GET', url, { 'Authorization': 'Bearer ' + token }, undefined, function (result) {
         result.error ? callback(new Error(result.error)) : callback(result);
     });
  }
