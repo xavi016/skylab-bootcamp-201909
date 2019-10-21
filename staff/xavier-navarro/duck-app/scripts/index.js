@@ -1,36 +1,36 @@
-var form = document.getElementById("duck-search");
-var ul = document.getElementsByClassName("results")[0];
-var goHome = document.getElementsByClassName("go-home")[0];
-var views = document.getElementsByClassName('view');
-var newAccount = document.getElementsByClassName('btn__new-account')[0];
-var btnLogin = document.getElementsByClassName('btn__login')[0];
-var feedback = new Feedback(document.getElementsByClassName('feedback')[0]);
+const form = document.getElementById("duck-search");
+const ul = document.getElementsByClassName("results")[0];
+const goHome = document.getElementsByClassName("go-home")[0];
+const views = document.getElementsByClassName('view');
+const newAccount = document.getElementsByClassName('btn__new-account')[0];
+const btnLogin = document.getElementsByClassName('btn__login')[0];
+const feedback = new Feedback(document.getElementsByClassName('feedback')[0]);
 
 
 function getRandomDuck(){
-    var xhr = new XMLHttpRequest;
+    const xhr = new XMLHttpRequest;
     xhr.open('GET', 'https://duckling-api.herokuapp.com/api/search?q=');
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 201) {
-            var ducks = JSON.parse(xhr.responseText);
-            var randomDuck = Math.floor(Math.random()*286 )
-            var logo = document.getElementsByClassName('logo')[0];
+            const ducks = JSON.parse(xhr.responseText);
+            const randomDuck = Math.floor(Math.random()*286 )
+            const logo = document.getElementsByClassName('logo')[0];
             logo.src = ducks[randomDuck].imageUrl;
         }
     };
     xhr.send(); 
 }
 function newElement(item, itemClass, text){
-    var newItem = document.createElement(item);
-    if(itemClass) newItem.classList.add(itemClass);
+    const newItem = document.createElement(item)
+    if(itemClass) newItem.classList.add(itemClass)
     if(text) newItem.innerText = text
     return newItem;
 }
-var search = new Search(form);
-var login = new Login(document.getElementsByClassName('login__form')[0]);
-login.onSubmit(function (username, password) {
+const search = new Search(form);
+const login = new Login(document.getElementsByClassName('login__form')[0]);
+login.onSubmit = (email, password) => {
     try {
-        authenticateUser(username, password, (error,result)=> {
+        authenticateUser(email, password, (error,result)=> {
             if (error) {
                 feedback.render(error.message);
                 document.getElementsByClassName('feedback')[0].classList.remove('hidden')
@@ -49,9 +49,10 @@ login.onSubmit(function (username, password) {
         document.getElementsByClassName('feedback')[0].classList.remove('hidden')
         document.getElementsByClassName('main')[0].classList.add('hidden')
     }
-});
-var register = new Register(document.getElementsByClassName('register__form')[0]);
-register.onSubmit(function (name, surname, email, password) {
+};
+const register = new Register(document.getElementsByClassName('register__form')[0]);
+
+register.onSubmit = (name, surname, email, password) => {
     try {
         registerUser(name, surname, email, password, function(){
             document.getElementsByClassName('register')[0].classList.add('hidden')
@@ -62,35 +63,39 @@ register.onSubmit(function (name, surname, email, password) {
         document.getElementsByClassName('feedback')[0].classList.remove('hidden')
         document.getElementsByClassName('main')[0].classList.add('hidden')
     }
-});
-var results = new Results(ul);
-results.onItemRender = function () {
-    var item = new ResultItem(newElement('li','results__item'));
+}
+const results = new Results(ul);
+results.onItemRender = () =>{
+    const item = new ResultItem(newElement('li','results__item'));
     item.onClick = function (id) {
         retrieveDuck(id, function (duck) {
-            var detail = new Detail(document.getElementsByClassName('details')[0]);
+            const detail = new Detail(document.getElementsByClassName('details')[0]);
             detail.render(duck);
             switchViews();
         });
     };
     return item;
-};
-search.onSubmit(function (query) {
-    searchDucks(query, function (error, ducks) {
+}
+
+search.onSubmit = query => {
+    searchDucks(query, (error, ducks) => {
         if (error) {
             feedback.render(error.message);
             document.getElementsByClassName('feedback')[0].classList.remove('hidden')
             document.getElementsByClassName('main')[0].classList.add('hidden')
+            
         } else {
+            document.getElementsByClassName('details')[0].classList.add('hidden')
+            document.getElementsByClassName('main')[0].classList.remove('hidden')
             ducks = ducks.splice(0, 9);
             results.render(ducks);
         }
     });
-});
+}
 
 // Selfie to print 9 ducks at the beginning
 (function () {
-    searchDucks('', function (error, ducks) {
+    searchDucks('', (error, ducks) => {
         if (error) {
             feedback.render(error.message);
             document.getElementsByClassName('feedback')[0].classList.remove('hidden')
@@ -102,11 +107,11 @@ search.onSubmit(function (query) {
     });
 })();
 
-ul.addEventListener("click", function (e) {
-    var t = e.target;
-    var parent = t.parentElement;
-    var d = parent.dataset;
-    var detail = new Detail(document.getElementsByClassName('details')[0]);
+ul.addEventListener("click", (e)=> {
+    const t = e.target;
+    const parent = t.parentElement;
+    const d = parent.dataset;
+    const detail = new Detail(document.getElementsByClassName('details')[0]);
     retrieveDuck(d.duckId, detail.render);
     switchViews();
 })
@@ -115,16 +120,16 @@ function switchViews(){
     document.getElementsByClassName('details')[0].classList.toggle('hidden')
 }
 goHome.addEventListener("click", switchViews);
-newAccount.addEventListener("click", function(){
+newAccount.addEventListener("click", ()=>{
     document.getElementsByClassName("login")[0].classList.add("hidden")
     document.getElementsByClassName("register")[0].classList.remove("hidden")
 })
-btnLogin.addEventListener("click", function(){
+btnLogin.addEventListener("click", () =>{
     document.getElementsByClassName("login")[0].classList.remove("hidden")
     document.getElementsByClassName("register")[0].classList.add("hidden")
 })
 getRandomDuck()
-var popupOff = document.getElementsByClassName("feedback__cross")[0]
+const popupOff = document.getElementsByClassName("feedback__cross")[0]
 popupOff.addEventListener("click", ()=>{
     document.getElementsByClassName("feedback")[0].classList.add("hidden")
 })
