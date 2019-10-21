@@ -17,7 +17,7 @@
         </header>
         <main>
             
-            <section class="login">
+            <section class="view login">
                 <div class="login__div">
                     <form class="login__form">               
                         <input type="text" name="email" placeholder="email" class="login__input">
@@ -26,10 +26,15 @@
                         
                     </form>
                     <button class="login__goregistrer"> Go to Register</button>
-                </div>       
+                </div>
+                <section class="view feedback hide">
+                    <span class="feedback__icon">🤡</span>
+                    <p class="feedback__message">Come with me...</p>
+                    <span class="feedback__icon">🎈</span>
+                </section>       
             </section>
 
-            <section class="register hide">
+            <section class=" view register hide">
                 <div class="register__div">
                     <form class="register__form">
                         <input type="text" name="name" placeholder="name" class="register__input" autofocus required>
@@ -40,36 +45,34 @@
                             
                     </form>
                     <button class="register__gologin"> Go to Login</button>
-                </div>       
+                </div>
+                <section class="view feedback hide">
+                    <span class="feedback__icon">🤡</span>
+                    <p class="feedback__message">Come with me...</p>
+                    <span class="feedback__icon">🎈</span>
+                </section>       
             </section>
-            
-            <!-- <section class="incorrect hide">
-                    <span class="incorrect__icon">🤡</span>
-                    <span class="hide" id="message">Message here</span>
-                    <span class="incorrect__icon">🎈</span>
-            </section> -->
-
-            <section class="search hide">
+    
+            <section class=" view search hide">
                 <div>
                     <form class="search__form">               
                         <input type="search" name="query" id="search__formitem" class="search__input">
                         <button class="search__button"><i class="fas fa-search"></i>  Search</button>
                     </form>
-                </div>       
+                </div> 
+                <section class="view feedback hide">
+                    <span class="feedback__icon">🤡</span>
+                    <p class="feedback__message">Come with me...</p>
+                    <span class="feedback__icon">🎈</span>
+                </section>      
             </section>
        
          
-            <section class="ducks hide">
-                <ul class="item-list"></ul>
-            </section>
-            
-            <section class="feedback hide">
-                <span class="feedback__icon">🤡</span>
-                <p class="feedback__message">Come with me...</p>
-                <span class="feedback__icon">🎈</span>
+            <section class="view ducks">
+                <ul class="item-list view hide"></ul>
             </section>
 
-            <div class="detail hide">
+            <div class="view detail hide">
                 <section class = "result view">
                     <div class="detail-list">
                         <h2 class="detail-list__title"></h2>
@@ -81,6 +84,13 @@
                     </div>
                 </section>
             </div>
+
+            <section class="global-feedback feedback hide">
+                <span class="feedback__icon">🤡</span>
+                <p class="feedback__message">Come with me...</p>
+                <span class="feedback__icon">🎈</span>
+            </section>
+        
     </main>
     <footer class="footer"> 
         <h2 class="footer__title"> Made with Love - M</h2>
@@ -102,7 +112,6 @@
     <script src="scripts/components/result-item.js"></script>
     <script src="scripts/components/detail.js"></script>
     <script src="scripts/components/feedback.js"></script>
-    <script src="scripts/components/view.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 </html>

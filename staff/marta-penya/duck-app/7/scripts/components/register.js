@@ -1,18 +1,18 @@
 class Register extends Component {
-    constructor(container){
+    constructor(container) {
         super(container)
 
         this.__feedback__ = new Feedback(container.getElementsByTagName('section')[0])
     }
 
-    get feedback(){
+    get feedback() {
         return this.__feedback__
     }
 
-    set onSubmit(expression){
+    set onSubmit(expression) {
         const form = this.container.getElementsByTagName('form')[0]
 
-        form.addEventListener('submit', function (event){
+        form.addEventListener('submit', function (event) {
             event.preventDefault()
 
             const { name: { value: name }, surname: { value: surname }, email: { value: email }, password: { value: password } } = this
@@ -21,20 +21,20 @@ class Register extends Component {
         })
     }
 
-    set onGoLogin(expression){
-        const button = this.container.getElementsByClassName('register__gologin')[0];
+    set onBack(expression) {
+        const link = this.container.getElementsByTagName('a')[0]
 
-        button.addEventListener('click', event =>{
+        link.addEventListener('click', event => {
             event.preventDefault()
 
             expression()
         })
     }
 
-    hide(){
-        const form = this.container.getElementsByClassName('register__form')[0]
-
-        const {name, surname, email, password} = form
+    hide() {
+        const form = this.container.getElementsByTagName('form')[0]
+        
+        const { name, surname, email, password } = form
 
         name.value = ''
         surname.value = ''
@@ -46,6 +46,3 @@ class Register extends Component {
         super.hide()
     }
 }
-
-
-
