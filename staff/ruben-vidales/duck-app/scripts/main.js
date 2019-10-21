@@ -1,51 +1,28 @@
-var views = document.getElementsByClassName('view');
-var searchView = new View(views[0]);
-var detailView = new View(views[1]);
+const search = new Search(document.getElementsByClassName('ducks-panel')[0])
 
-var search = new Search(document.getElementsByClassName('header__form')[0]);
+const ducksPanel = new Results(document.getElementsByClassName('ducks-panel__list')[0])
 
-var ducksPanel = new Results(document.getElementsByClassName('ducks-panel__list')[0]); 
+const detailPanel = new Detail(document.getElementsByClassName('detail-panel')[0])
 
-var detailPanel = new Detail(document.getElementsByClassName('detail-panel')[0]);
+const feedback = new Feedback(document.getElementsByClassName('global-feedback')[0])
 
-var feedback = new Feedback(document.getElementsByClassName('feedback')[0]);
-
-(function () {
-    searchDucks('', function (error, ducks) {
+search.onSubmit = query => {
+    searchDucks(query, (error, ducks) => {
         if (error) {
-            feedback.render(error.message);
+            feedback.render(error.message)
 
-            ducksPanel.hide();
-            feedback.show();
+            ducksPanel.hide()
         } else {
-            ducks = ducks.shuffle().splice(0, 4);
+            search.feedback.hide()
 
-            ducksPanel.render(ducks);
+            ducksPanel.render(ducks)
+            ducksPanel.show()
         }
-    });
-})();
-
-search.onSubmit(function (query) {
-    searchDucks(query, function (error, ducks) {
-        if (error) {
-            feedback.render(error.message);
-
-            ducksPanel.hide();
-            detailView.hide();
-            feedback.show();
-        } else {
-            ducksPanel.render(ducks);
-
-            feedback.hide();
-            ducksPanel.show();
-            detailView.hide();
-            searchView.show();
-        }
-    });
-});
+    })
+}
 
 ducksPanel.onItemRender = function () {
-    var item = new ResultItem(document.createElement('li'));
+    const item = new ResultItem(document.createElement('li'));
 
     item.onClick = function (id) {
         retrieveDuck(id, function (error, duck) {
@@ -57,8 +34,8 @@ ducksPanel.onItemRender = function () {
             } else {
                 detailPanel.render(duck);
 
-                searchView.hide();
-                detailView.show();
+                ducksPanel.hide();
+                detailPanel.show();
             }
         });
     };
@@ -67,6 +44,69 @@ ducksPanel.onItemRender = function () {
 };
 
 detailPanel.onBack = function () {
-    detailView.hide();
-    searchView.show();
+    detailPanel.hide();
+    ducksPanel.show();
 };
+
+const landing = new Landing(document.getElementsByClassName('landing')[0])
+landing.onRegister = () => {
+    landing.hide()
+    register.show()
+}
+landing.onLogin = () => {
+    landing.hide()
+    login.show()
+}
+
+const register = new Register(document.getElementsByClassName('register')[0])
+register.onSubmit = (name, surname, email, password) => {
+    try {
+        registerUser(name, surname, email, password, error => {
+            if (error) {
+                register.feedback.render(error.message) 
+            } else {
+                register.hide()
+                landing.show()
+            }
+        })
+    } catch (error) {
+        register.feedback.render(error.message)
+    }
+}
+register.onBack = () => {
+    register.hide()
+    landing.show()
+}
+
+const login = new Login(document.getElementsByClassName('login')[0])
+login.onSubmit = (email, password) => {
+    try {
+        authenticateUser(email, password, (error, response) => {
+            if (error) {
+                login.feedback.render(error.message)
+            } else {
+                login.hide()
+                search.show() // TODO store id and token somewhere to retrieve user later on...
+
+                searchDucks('', (error, ducks) => {
+                    if (error) {
+                        feedback.render(error.message)
+                        feedback.show()
+
+                        ducksPanel.hide()
+                    } else {
+                        ducks = ducks.shuffle().splice(0, 6)
+
+                        ducksPanel.render(ducks)
+                    }
+                })
+            }
+        })
+    } catch (error) {
+        login.feedback.render(error.message)
+    }
+}
+login.onBack = () => {
+    login.hide()
+    landing.show()
+}

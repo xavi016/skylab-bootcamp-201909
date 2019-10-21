@@ -1,11 +1,22 @@
-function Search(container) {
-    this.__container__ = container;
-}
+class Search extends Component {
+    constructor(container) {
+        super(container)
+        this.__feedback__ = new Feedback(container.getElementsByTagName('section')[0])
+    }
 
-Search.prototype.onSubmit = function (expression) {
-    this.__container__.addEventListener('submit', function (event) {
-        event.preventDefault();
-        var query = this.query.value;
-        expression(query);
-    });
-};
+    get feedback() {
+        return this.__feedback__
+    }
+
+    set onSubmit(expression) {
+        const form = this.container.getElementsByTagName('form')[0]
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault()
+
+            const query = this.query.value
+
+            expression(query)
+        })
+    }
+}

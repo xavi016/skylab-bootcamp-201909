@@ -1,11 +1,48 @@
 body {
   background-color: #E6F0F2;
   box-sizing: border-box;
+  margin: 0;
 }
 
 ul {
   list-style: none;
   padding-inline-start: 0;
+}
+
+.logo-bloc {
+  display: block;
+  text-align: center;
+}
+
+.landing__options {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0.6em;
+}
+
+.register {
+  padding: 0.6em;
+}
+.register__form {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+.register__title {
+  margin: 0;
+}
+
+.login {
+  padding: 0.6em;
+}
+.login__form {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+.login__title {
+  margin: 0;
 }
 
 .form {
@@ -16,9 +53,6 @@ ul {
 .form__part {
   display: flex;
   align-items: center;
-}
-.form-logo {
-  width: 100%;
 }
 
 .feedback {
