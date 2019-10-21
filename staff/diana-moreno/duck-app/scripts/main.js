@@ -12,13 +12,12 @@ let errorMessageLogin = document.getElementsByClassName("form__confirmation")[1]
 let errorMessageRegister = document.getElementsByClassName("form__confirmation")[0]
 
 
-buttonRegister.addEventListener('click', switchToRegister)
-
 function switchToRegister() {
   viewLogin.hide()
   viewRegister.show()
   errorMessageLogin.innerHTML = ''
 }
+buttonRegister.addEventListener('click', switchToRegister)
 
 function switchToLogin() {
   viewRegister.hide()
@@ -27,7 +26,6 @@ function switchToLogin() {
   errorMessageRegister.innerHTML = '';
 }
 buttonBackToLogin.addEventListener('click', switchToLogin)
-
 buttonBackToLogin2.addEventListener('click', switchToLogin)
 
 
@@ -45,7 +43,7 @@ function initialRandomDucks() {
 }
 
 const register = new Register(document.getElementsByClassName('form')[1])
-register.onSubmit((name, surname, email, password) => {
+register.onSubmit = (name, surname, email, password) => {
   try {
     registerUser(name, surname, email, password, function(error) {
       if(error) {
@@ -59,10 +57,10 @@ register.onSubmit((name, surname, email, password) => {
   } catch (error) {
     errorMessageRegister.innerHTML = error.message;
   }
-})
+}
 
 const login = new Login(document.getElementsByClassName('form')[2])
-login.onSubmit((email, password) => {
+login.onSubmit = (email, password) => {
   try {
     authenticateUser(email, password, function(error) {
       if (error) {
@@ -77,11 +75,11 @@ login.onSubmit((email, password) => {
   } catch(error) {
     errorMessageLogin.innerHTML = 'Username and/or password incorrect'
   }
-})
+}
 
 const form = document.getElementsByClassName('form')[0]
 const search = new Search(form)
-search.onSubmit(query => {
+search.onSubmit = query => {
   searchDucks(query, (error, ducks) => {
     if (error) {
       feedback.render(error.message)
@@ -93,7 +91,7 @@ search.onSubmit(query => {
       results.show()
     }
   }) // NOTE it works thanks to the internal binding that takes place in Results constructor
-})
+}
 
 const duckList = document.getElementsByClassName('duck__list')[0]
 const results = new Results(duckList)

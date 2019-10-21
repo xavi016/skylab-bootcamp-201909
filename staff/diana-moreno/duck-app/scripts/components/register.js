@@ -3,7 +3,7 @@ class Register extends Component {
     super(container)
   }
 
-  onSubmit(expression) {
+  set onSubmit(expression) {
     this.container.addEventListener('submit', function(event) {
       event.preventDefault();
       const name = this.name.value

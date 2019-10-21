@@ -1,13 +1,3 @@
-class ContentError extends Error {
-    constructor(message) {
-        super(message)
-
-        Error.captureStackTrace(this, ContentError)
-
-        this.name = ContentError.name
-    }
-}
-
 function registerUser(name, surname, email, password, callback) {
     if (typeof name !== 'string') throw new TypeError(name + ' is not a string')
     if (!name.trim().length) throw new ContentError('name is empty or blank')

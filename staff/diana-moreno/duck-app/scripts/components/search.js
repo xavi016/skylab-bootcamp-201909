@@ -3,7 +3,7 @@ class Search extends Component {
     super(container)
   }
 
-  onSubmit(expression) {
+  set onSubmit(expression) {
     this.container.addEventListener('submit', function(event) {
       event.preventDefault()
       const query = this.query.value

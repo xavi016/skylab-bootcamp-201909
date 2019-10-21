@@ -8,6 +8,8 @@ function retrieveUser(id, token) {
     else {
       const { data: { id, name, surname, username } } = result
       console.log(id, name, surname, username)
+      let greeting = document.getElementsByClassName('header__greeting')[0]
+      greeting.innerHTML = 'Hello ' + name
     }
   })
 }

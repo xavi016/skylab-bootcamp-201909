@@ -2,6 +2,9 @@
 
 .form
   text-align: center
+  display: flex
+  flex-direction: column
+  align-items: center
 
   &__input
     font-size: 1.2rem
@@ -10,6 +13,7 @@
     border-radius: 7px
     color: $formInputColor
     padding: 0.2rem 1rem
+    margin: 0.5rem 0
 
   &__input:hover,
   &__button:hover
@@ -22,6 +26,7 @@
     background-color: $formButtonBackgroundColor
     color: $formButtonColor
     cursor: pointer
+    margin: 0.5rem 0
 
     &--login
       width: 13rem
@@ -46,8 +51,6 @@
 
 @media only screen and (min-width: $screen-md-min)
   .form
-    padding-bottom: 1rem
-
     &__input
       width: 20rem
 
