@@ -13,6 +13,7 @@ let errorMessageRegister = document.getElementsByClassName("form__confirmation")
 
 
 buttonRegister.addEventListener('click', switchToRegister)
+
 function switchToRegister() {
   viewLogin.hide()
   viewRegister.show()
@@ -23,6 +24,7 @@ function switchToLogin() {
   viewRegister.hide()
   viewRegisterSuccess.hide()
   viewLogin.show()
+  errorMessageRegister.innerHTML = '';
 }
 buttonBackToLogin.addEventListener('click', switchToLogin)
 
@@ -44,34 +46,37 @@ function initialRandomDucks() {
 
 const register = new Register(document.getElementsByClassName('form')[1])
 register.onSubmit((name, surname, email, password) => {
-  registerUser(name, surname, email, password, function(error) {
-    if(error) {
-      errorMessageRegister.innerHTML = error.message
-      feedback.render(error.message)
-      viewList.hide()
-      feedback.show()
-    } else {
-      viewRegister.hide()
-      feedback.hide()
-      viewRegisterSuccess.show()
-    }
-  })
+  try {
+    registerUser(name, surname, email, password, function(error) {
+      if(error) {
+      errorMessageRegister.innerHTML = error.message;
+      } else {
+        viewRegister.hide()
+        feedback.hide()
+        viewRegisterSuccess.show()
+      }
+    })
+  } catch (error) {
+    errorMessageRegister.innerHTML = error.message;
+  }
 })
 
 const login = new Login(document.getElementsByClassName('form')[2])
 login.onSubmit((email, password) => {
-  authenticateUser(email, password, function(error) {
-    if(error) {
-      viewList.hide()
-      feedback.hide()
-      errorMessageLogin.innerHTML = 'Username and/or password incorrect'
-    } else {
-      viewLogin.hide()
-      viewHeader.show()
-      viewList.show()
-      initialRandomDucks()
-    }
-  })
+  try {
+    authenticateUser(email, password, function(error) {
+      if (error) {
+        errorMessageLogin.innerHTML = 'Username and/or password incorrect'
+      } else {
+        viewLogin.hide()
+        viewHeader.show()
+        viewList.show()
+        initialRandomDucks()
+      }
+    })
+  } catch(error) {
+    errorMessageLogin.innerHTML = 'Username and/or password incorrect'
+  }
 })
 
 const form = document.getElementsByClassName('form')[0]
