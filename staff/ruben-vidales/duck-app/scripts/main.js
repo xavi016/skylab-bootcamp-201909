@@ -31,6 +31,7 @@ search.onSubmit(function (query) {
             feedback.render(error.message);
 
             ducksPanel.hide();
+            detailView.hide();
             feedback.show();
         } else {
             ducksPanel.render(ducks);
