@@ -3,9 +3,11 @@ const viewSingle = new View(document.getElementsByClassName('view__single')[0])
 const viewRegister = new View(document.getElementsByClassName('view__register')[0])
 const viewLogin = new View(document.getElementsByClassName('view__login')[0])
 const viewHeader = new View(document.getElementsByClassName('view__header')[0])
+const viewRegisterSuccess = new View(document.getElementsByClassName('view__registerSuccess')[0])
 const feedback = new Feedback(document.getElementsByClassName('view__feedback')[0])
 const buttonRegister = document.getElementsByClassName('form__button--register')[1]
 const buttonBackToLogin = document.getElementsByClassName('form__button--register-back')[0]
+const buttonBackToLogin2 = document.getElementsByClassName('form__button--register-back')[1]
 let errorMessageLogin = document.getElementsByClassName("form__confirmation")[1]
 let errorMessageRegister = document.getElementsByClassName("form__confirmation")[0]
 
@@ -17,11 +19,14 @@ function switchToRegister() {
   errorMessageLogin.innerHTML = ''
 }
 
-buttonBackToLogin.addEventListener('click', switchToLogin)
 function switchToLogin() {
-  viewLogin.show()
   viewRegister.hide()
+  viewRegisterSuccess.hide()
+  viewLogin.show()
 }
+buttonBackToLogin.addEventListener('click', switchToLogin)
+
+buttonBackToLogin2.addEventListener('click', switchToLogin)
 
 
 function initialRandomDucks() {
@@ -39,7 +44,7 @@ function initialRandomDucks() {
 
 const register = new Register(document.getElementsByClassName('form')[1])
 register.onSubmit((name, surname, email, password) => {
-  registerUser(name, surname, email, password, error => {
+  registerUser(name, surname, email, password, function(error) {
     if(error) {
       errorMessageRegister.innerHTML = error.message
       feedback.render(error.message)
@@ -47,7 +52,8 @@ register.onSubmit((name, surname, email, password) => {
       feedback.show()
     } else {
       viewRegister.hide()
-      viewLogin.show()
+      feedback.hide()
+      viewRegisterSuccess.show()
     }
   })
 })
@@ -58,7 +64,7 @@ login.onSubmit((email, password) => {
     if(error) {
       viewList.hide()
       feedback.hide()
-      errorMessageLogin.innerHTML = 'Ups! Your username and/or password is not correct'
+      errorMessageLogin.innerHTML = 'Username and/or password incorrect'
     } else {
       viewLogin.hide()
       viewHeader.show()

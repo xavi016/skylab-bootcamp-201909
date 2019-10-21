@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  height: 83%;
+  height: 100%;
 }
 
 main, html {
@@ -72,6 +72,7 @@ main, html {
 }
 .form__confirmation {
   color: red;
+  height: 1rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -92,7 +93,6 @@ main, html {
   }
 }
 .view {
-  margin-top: 7rem;
   height: 100%;
 }
 .view__feedback {
@@ -100,6 +100,9 @@ main, html {
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+}
+.view__list {
+  margin-top: 7rem;
 }
 .view__register {
   display: flex;
@@ -110,33 +113,63 @@ main, html {
 }
 .view__register--title {
   color: #566369;
+  font-size: 1.5rem;
+  color: #6d6262;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+.view__registerSuccess {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: green;
+}
+.view__registerSuccess--image {
+  width: 20rem;
+}
+.view__registerSuccess--title {
+  text-align: center;
 }
 .view__login {
-  margin-top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100%;
 }
 .view__login--title {
   font-size: 3rem;
   color: #6d6262;
-  margin-bottom: 8rem;
+  margin-bottom: 4rem;
   letter-spacing: 0.1rem;
   text-align: center;
+}
+.view__login--image {
+  width: 20rem;
 }
 
 @media only screen and (min-width: 576px) {
   .view__single {
     font-size: 1.5rem;
   }
+  .view__login--title {
+    color: #566369;
+    font-size: 3.5rem;
+    letter-spacing: 0.5rem;
+  }
+  .view__login--image {
+    width: 34rem;
+  }
+  .view__registerSuccess--image {
+    width: 35rem;
+  }
 }
 .duck {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: 0 1rem;
+  justify-content: flex-end;
 }
 .duck__list {
   display: flex;
@@ -145,8 +178,10 @@ main, html {
   justify-content: center;
 }
 .duck--litle {
-  margin: 0;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
 }
 .duck__description--litle {
   text-align: justify;
@@ -188,7 +223,8 @@ main, html {
 
 @media only screen and (min-width: 576px) {
   .duck {
-    margin: 2rem 4rem;
+    margin: 4rem 4rem;
+    height: 100%;
   }
   .duck__list {
     margin: 0 2rem;
@@ -200,8 +236,7 @@ main, html {
   .duck--litle {
     max-width: 40rem;
     margin: 0 auto;
-    padding-top: 5rem;
-    height: 95%;
+    padding-top: 0rem;
   }
   .duck__container-buttons {
     width: 9rem;

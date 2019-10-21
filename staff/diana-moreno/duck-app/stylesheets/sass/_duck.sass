@@ -4,8 +4,7 @@
   display: flex
   flex-direction: column
   align-items: center
-  justify-content: center
-  margin: 0 1rem
+  justify-content: flex-end
 
   &__list
     display: flex
@@ -14,8 +13,10 @@
     justify-content: center
 
   &--litle
-    margin: 0
     height: 100%
+    display: flex
+    justify-content: center
+    margin-top: 3rem
 
   &__description--litle
     text-align: justify
@@ -57,7 +58,9 @@
 // Small tablets (portrait view)
 @media only screen and (min-width: $screen-sm-min)
   .duck
-    margin: 2rem 4rem
+    margin: 4rem 4rem
+    height: 100%
+
     &__list
       margin: 0 2rem
       padding-top: 5rem
@@ -68,8 +71,7 @@
     &--litle
       max-width: 40rem
       margin: 0 auto
-      padding-top: 5rem
-      height: 95%
+      padding-top: 0rem
 
     &__container-buttons
       width: 9rem

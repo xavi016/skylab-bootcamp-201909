@@ -1,5 +1,4 @@
 .view
-  margin-top: 7rem
   height: 100%
 
   &__feedback
@@ -7,6 +6,9 @@
     justify-content: center
     align-items: center
     margin-top: 2rem
+
+  &__list
+    margin-top: 7rem
 
   &__register
     display: flex
@@ -17,21 +19,57 @@
 
     &--title
       color: $titleColor
+      font-size: 1.5rem
+      color: #6d6262
+      margin-bottom: 2.5rem
+      text-align: center
+
+  &__registerSuccess
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    align-items: center
+    color: $confirmationMessage
+
+    &--image
+      width: 20rem
+
+    &--title
+      text-align: center
 
   &__login
-    margin-top: 0
     display: flex
     justify-content: center
     align-items: center
     flex-direction: column
+    height: 100%
 
     &--title
       font-size: 3rem
       color: $viewTitle
-      margin-bottom: 8rem
+      margin-bottom: 4rem
       letter-spacing: 0.1rem
       text-align: center
 
+    &--image
+      width: 20rem
+
 @media only screen and (min-width: $screen-sm-min)
-  .view__single
-    font-size: 1.5rem
+  .view
+    &__single
+      font-size: 1.5rem
+
+    &__login
+
+      &--title
+        color: $titleColor
+        font-size: 3.5rem
+        letter-spacing: 0.5rem
+
+      &--image
+        width: 34rem
+
+    &__registerSuccess
+
+      &--image
+        width: 35rem
