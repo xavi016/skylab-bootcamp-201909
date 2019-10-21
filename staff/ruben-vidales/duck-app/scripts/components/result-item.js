@@ -1,17 +1,21 @@
 function ResultItem(container) {
-    this.__container__ = container;
+    Component.call(this, container);
+    
     container.classList.add('ducks-panel__list-item');
 }
 
-ResultItem.prototype.onClick = function (duck) { console.log('clicked', duck) };
+ResultItem.extend(Component);
+
+ResultItem.prototype.onClick = undefined;
 
 ResultItem.prototype.render = function (duck) {
 
     var item = document.createElement('a');
 
-    item.addEventListener('click', function (event) {
+    item.addEventListener('click', function () {
         var id = duck.id;
-        retrieveDuck(id, this.onClick);
+
+        this.onClick(id);
     }.bind(this));
 
     var duckItem = document.createElement('article');

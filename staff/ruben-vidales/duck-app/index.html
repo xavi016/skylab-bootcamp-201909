@@ -22,25 +22,34 @@
         </form>
     </header>
     <main>
-        <section class="ducks-panel">
+        <section class="feedback hide">
+            <span class="feedback__icon">🤡</span>
+            <p class="feedback__message">Come with me...</p>
+            <span class="feedback__icon">🎈</span>
+        </section>
+        <section class="ducks-panel view">
             <ul class="ducks-panel__list"></ul>
         </section>
-        <section class="detail-panel hide">
+        <section class="detail-panel view hide">
         </section>
     </main>
     <footer>
         <p class="footer__copyright">Ru for Skylab - 2019</p>
     </footer>
 </body>
+<script src="./scripts/utils/function-extend.js"></script>
+<script src="./scripts/utils/array-shuffle.js"></script>
+<script src="./scripts/utils/fetch.js"></script>
 <script src="./scripts/logic/search-ducks/index.js"></script>
 <script src="./scripts/logic/retrieve-duck/index.js"></script>
+<script src="./scripts/components/component.js"></script>
 <script src="./scripts/components/results.js"></script>
 <script src="./scripts/components/result-item.js"></script>
 <script src="./scripts/components/search.js"></script>
 <script src="./scripts/components/detail.js"></script>
+<script src="./scripts/components/feedback.js"></script>
+<script src="./scripts/components/view.js"></script>
 <script src="./scripts/helpers/call.js"></script>
-<script src="./scripts/utils/array-shuffle.js"></script>
-<script src="./scripts/utils/fetch.js"></script>
 <script src="./scripts/main.js"></script>
 
 </html>

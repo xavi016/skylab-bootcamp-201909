@@ -2,6 +2,10 @@ function Detail(container) {
     this.__container__ = container;
 }
 
+Detail.extend(Component);
+
+Detail.prototype.onBack = undefined;
+
 Detail.prototype.render = function (duck) {
     this.__container__.innerHTML = '';
 
@@ -33,9 +37,7 @@ Detail.prototype.render = function (duck) {
     var back = document.createElement('button');
     back.classList.add('duck__back-button');
     back.innerText = 'Back';
-    back.addEventListener('click', function (e) { 
-        //goBack() 
-    });
+    back.addEventListener('click', this.onBack);
 
     article.append(title);
     article.append(img);
