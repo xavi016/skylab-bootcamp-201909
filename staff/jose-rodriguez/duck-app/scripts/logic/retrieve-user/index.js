@@ -1,26 +1,8 @@
-function login(){
-    document.getElementById("searching").style.display = 'none';
-    document.getElementById("results").style.display = 'none';
+function retrieveUser(id,token, callback) {
+    if (typeof id !== 'string') throw new TypeError(id + ' is not a string')
+    if (typeof token !== 'string') throw new TypeError(token + ' is not a string')
+    // if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
 
-    var login = document.getElementsByClassName('login__form')[0];
-    
-    login.addEventListener('submit', function(e){
-        e.preventDefault();
+    request('GET', 'https://skylabcoders.herokuapp.com/api/user/'+id,{"token":token}, callback)
 
-        var email = this.email.value;
-        var password = this.password.value;
-
-        if (!(email == 'pepito.grillo@mail.com') && !(password == '123')) {
-            throw Error (TypeError + ' invalid user/password');
-            var message = document.getElementsByClassName('login')[0];
-            var error = document.createElement('p');
-            error.innerText = "invalid user/password";
-            message.append(error);
-        } else {
-            document.getElementById("searching").style.display = 'flex';
-            document.getElementById("results").style.display = 'flex';
-            document.getElementsByClassName('login__form')[0].style.display = 'none';
-            initRandomDucks();
-        }
-    })
 }

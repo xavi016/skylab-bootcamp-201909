@@ -27,7 +27,7 @@ Item.prototype.render = function (duck) {
         this.onClick(id);
     }.bind(this));
     
-    this.container.className = "article__content";
+    this.container.className = "article";
     link.append(img,title,price)
     this.container.append(link)
 

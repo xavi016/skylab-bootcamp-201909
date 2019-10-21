@@ -6,9 +6,9 @@ function Detail (container){
 Detail.extend(Component);
 
 Detail.prototype.render = function(duck){
-    document.getElementById("results").style.display = 'none';
-    document.getElementById("searching").style.display = 'none';
-    document.getElementById("details").style.display = 'block';
+    document.getElementsByClassName("results")[0].style.display = 'none';
+    document.getElementsByClassName("search").style.display = 'none';
+    document.getElementsByClassName("details")[0].style.display = 'block';
 
     var article = document.createElement('article');
     details.append(article)
