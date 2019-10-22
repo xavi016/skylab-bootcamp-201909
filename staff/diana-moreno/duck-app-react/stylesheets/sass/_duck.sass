@@ -4,7 +4,6 @@
   display: flex
   flex-direction: column
   align-items: center
-  justify-content: flex-end
 
   &__list
     display: flex
@@ -26,6 +25,7 @@
   &__title
     color: $duckTitleColor
     text-align: center
+    font-size: 1.5rem
 
   &__image
     width: 10rem
@@ -51,16 +51,16 @@
 
   &--clicked
     cursor: pointer
-    width: 20rem
-    display: flex
-    justify-content: space-between
-    margin: 1rem 4rem !important
+    width: 18rem
+    height: 17rem
+    justify-content: space-around
 
 // Small tablets (portrait view)
 @media only screen and (min-width: $screen-sm-min)
   .duck
-    margin: 4rem 4rem
-    height: 100%
+    margin: 4rem 4rem 0 4rem
+    &--clicked
+      height: 28rem
 
     &__list
       margin: 0 2rem
@@ -72,7 +72,9 @@
     &--litle
       max-width: 40rem
       margin: 0 auto
-      padding-top: 0rem
+      padding-top: 11rem
+      display: flex
+      height: 80%
 
     &__container-buttons
       width: 9rem

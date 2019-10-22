@@ -5,7 +5,7 @@ body {
   height: 100%;
 }
 
-main, html {
+main, html, #root {
   height: 100%;
 }
 
@@ -189,7 +189,6 @@ main, html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
 }
 .duck__list {
   display: flex;
@@ -211,6 +210,7 @@ main, html {
 .duck__title {
   color: #566369;
   text-align: center;
+  font-size: 1.5rem;
 }
 .duck__image {
   width: 10rem;
@@ -236,16 +236,17 @@ main, html {
 }
 .duck--clicked {
   cursor: pointer;
-  width: 20rem;
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem 4rem !important;
+  width: 18rem;
+  height: 17rem;
+  justify-content: space-around;
 }
 
 @media only screen and (min-width: 576px) {
   .duck {
-    margin: 4rem 4rem;
-    height: 100%;
+    margin: 4rem 4rem 0 4rem;
+  }
+  .duck--clicked {
+    height: 28rem;
   }
   .duck__list {
     margin: 0 2rem;
@@ -257,7 +258,9 @@ main, html {
   .duck--litle {
     max-width: 40rem;
     margin: 0 auto;
-    padding-top: 0rem;
+    padding-top: 11rem;
+    display: flex;
+    height: 80%;
   }
   .duck__container-buttons {
     width: 9rem;
