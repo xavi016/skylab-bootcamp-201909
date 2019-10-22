@@ -12,53 +12,66 @@
 
 <body>
     <header class = "header" >
-        <a href = #index.html>
-                <img class = "header__logo" src="patito.png" alt="patitas" srcset="">
-        </a>
+        <a><img class = "header__logo" src="patito.png" alt="patitas" srcset=""></a>
         <h1 class = "header__title">DUCK APP</h1>
-        <section class = "userArea">
-            <p class = "userArea__text"></p>
+        <section>
+            <p class = "header__userArea"></p>
         </section>
     </header>
 
     <section class="view hide">
         <form class = "register container">
             
-            <input class="userName" type="text" name="name" placeholder="enter username">
-            <input class="userSurname" type="text" name="surname" placeholder="enter user Surname">
-            <input class="email" type="text" name="email" placeholder="enter E-mail">
-            <input class="password" type="password" name="password" placeholder="enter password">
-            <button type = "submit" class="submit">Enviar</button>
+            <input class="userName input" type="text" name="name" placeholder="enter username">
+            <input class="userSurname input" type="text" name="surname" placeholder="enter user Surname">
+            <input class="email input" type="text" name="email" placeholder="enter E-mail">
+            <input class="password input" type="password" name="password" placeholder="enter password">
+            <button type = "submit input" class="submit">Enviar</button>
+            <button class = "back-button" type = "button">Back</button>
         </form>
     </section>
 
     <section class="view">
        
-            <form class="login container">
-                <input class="login__email" type="text" name="email" placeholder="enter E-mail">
-                <input class="login__password" type="password" name="password" placeholder="enter password">
-                <button class="login__submit">Enviar</button>
-                <h4>Not Registered??</h4>
-                <button class="login__goRegister">Register HERE</button>
+        <form class="login container">
+            <input class="login__email input" type="text" name="email" placeholder="enter E-mail">
+            <input class="login__password input" type="password" name="password" placeholder="enter password">
+            <button class="login__submit">Enviar</button>
+            <h4>Not Registered??</h4>
+            <div class="login__goRegister input">Register HERE</div>
+            
+
         </form>
         
     </section>
 
     <section class="view hide">
         <form class="search">
-            <span class="search__icon">🐣</span>
             <input class="search__criteria" type="text" name="query" placeholder="criteria">
+
             <button class="search__submit">🔍</button>
         </form>
-        <ul class="results">
-        </ul>
+
+        <ul class="results"></ul>
+
     </section>
 
+
+    <!-- The Modal -->
     <section class="feedback hide">
-        <span class="feedback__icon">🤡</span>
-        <p class="feedback__message">Come with me...</p>
-        <span class="feedback__icon">🎈</span>
-    </section>
+
+        <!-- Modal content -->
+        <div class="feedback__content">
+            
+            <span class = "feedback__close" class = "closeModal">&times;</span>
+
+            <h2>OOOPSSS!</h2>
+            <p class="feedback__message">Default error message</p>
+            
+        </div>  
+
+    </section> 
+
 
     <section class="view detail hide">
         <h2 class="detail__title">Duck X</h2>
@@ -68,7 +81,7 @@
             voluptatem dolor nobis! Perspiciatis, vero maiores!</p>
         <a class="detail__store" href="#">Go to store</a>
         <span class="detail__price">10€</span>
-        <a class="detail__back" href="#">Go back</a>
+        <button type = "button" class = "detail__back" href="#">Back</button>
     </section>
 
     <script src="scripts/utils/array-shuffle.js"></script>
@@ -77,9 +90,8 @@
     <script src="scripts/logic/retrieve-duck/index.js"></script>
     <script src="scripts/logic/search-ducks/index.js"></script>
     <script src="scripts/logic/register-user/index.js"></script>
-    <script src="scripts/logic/retrieve-user/index.js"></script>
     <script src="scripts/logic/authenticate-user/index.js"></script>
-
+    <script src="scripts/logic/retrieve-user/index.js"></script>
     <script src="scripts/helpers/call.js"></script>
     <script src="scripts/components/component.js"></script>
     <script src="scripts/components/search.js"></script>
@@ -87,8 +99,9 @@
     <script src="scripts/components/result-item.js"></script>
     <script src="scripts/components/detail.js"></script>
     <script src="scripts/components/feedback.js"></script>
-    <script src="scripts/components/view.js"></script>
+   
     <script src="scripts/components/register.js"></script>
+    <script src="scripts/components/view.js"></script>
     <script src="scripts/components/login.js"></script>
     <script src="scripts/main.js"></script>
 </body>

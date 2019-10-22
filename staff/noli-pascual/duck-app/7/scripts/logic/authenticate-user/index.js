@@ -14,7 +14,7 @@ function authenticateUser(email, password, callback) {
             const { data: { id, token } } = result
             
             
-            callback({ id, token })
+            callback(undefined, { id, token })
         }
     })
 }
