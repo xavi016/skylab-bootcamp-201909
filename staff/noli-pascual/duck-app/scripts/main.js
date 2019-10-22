@@ -1,96 +1,164 @@
-var views = document.getElementsByClassName('view');
+const views = document.getElementsByClassName('view')
 
-var loginView = new View(views[0]);
-var searchView = new View(views[1]);
-var detailView = new View(views[2]);
+const registerView = new View(views[0])
+const loginView= new View(views[1])
+const searchView = new View(views[2])
+const detailView = new View(views[3])
 
-//LOGIN
-
-var login = new Login(document.getElementsByClassName('login')[0]);
-login.onSubmit(function (userEnter, passwordEnter) {
-    checkLogin(userEnter, passwordEnter, function() {
-        if (error) {
-            feedback.render(error.message);
-
-            results.hide();
-            feedback.show();
-        } else {
-            results.render(ducks);
-
-            feedback.hide();
-            results.show();
-        }
-    });
-});
+const header = document.getElementsByClassName('header')[0]
 
 
-var feedbackLogin = new Feedback(document.getElementsByClassName('feedback')[0]);
+//para mostrar errores
 
-(function () {
-    searchDucks('', function (error, ducks) {
-        if (error) {
-            feedback.render(error.message);
+const feedback = new Feedback(document.getElementsByClassName('feedback')[0])
 
-            results.hide();
-            feedback.show();
-        } else {
-            ducks = ducks.shuffle().splice(0, 3);
+const register = new Register(document.getElementsByClassName('register')[0])
 
-            results.render(ducks);
-        }
-    });
-})();
 
-var search = new Search(document.getElementsByClassName('search')[0]);
-search.onSubmit(function (query) {
+register.onSubmit = (name, surname, email, password) => {
+
+    try {
+        registerUser(name, surname, email, password, function(error) {
+            
+            if (error) { //error asincrono
+                feedback.render(error.message) 
+            } else {
+                registerView.hide()
+                loginView.show()
+            }
+            
+        })
+
+    } catch (error) { //error sincrono
+        feedback.render(error.message)
+        feedback.show()
+    }
+}
+
+
+//go back in register, aplicamos su método onBack
+
+register.onBack = () => {
+    registerView.hide()
+    loginView.show() //todo landing
+}
+
+
+const login = new Login(document.getElementsByClassName('login')[0])
+
+const goRegister = document.getElementsByClassName('login__goRegister')[0]
+
+
+goRegister.addEventListener('click', function() {
+    loginView.hide()
+    registerView.show()
+})
+
+login.onSubmit = (email, password) => {
+    
+    try {
+      
+        authenticateUser(email, password, (error, result) => {
+            //devuelve id y token. callback({ id, token })
+        
+            if (error) {
+                feedback.show()
+                feedback.render(error.message)
+                const closeX = feedback.container.getElementsByClassName('feedback__close')[0]
+
+                closeX.addEventListener('click', () => {
+                    feedback.hide()
+                })
+
+
+            } else {
+
+                loginView.hide()
+                searchView.show()
+
+                //iife
+                searchDucks('', (error, ducks) => {
+                        if (error) {
+                            feedback.render(error.message)
+                
+                            results.hide()
+                            feedback.show()
+
+                        } else {
+                            ducks = ducks.shuffle().splice(0, 3)
+                
+                            results.render(ducks)
+                        }
+                })
+                    retrieveUser(result.id, result.token, function(result) { 
+                    const userArea = document.getElementsByClassName('header__userArea')[0]
+                    const wellcomeMessage = 'Welcome'
+                    userArea.innerHTML = wellcomeMessage + result.data.name + '!'
+                    loginView.hide()
+                    searchView.show()
+                    }) 
+            }
+                
+        })
+    } catch (error) {
+        
+        feedback.render(error.message)
+        feedback.show()
+    }
+}
+
+    
+const search = new Search(document.getElementsByClassName('search')[0])
+search.onSubmit = (query) => {
     searchDucks(query, function (error, ducks) {
         if (error) {
-            feedback.render(error.message);
+            feedback.render(error.message)
 
-            results.hide();
-            feedback.show();
+            results.hide()
+            feedback.show()
+            const closeX = feedback.container.getElementsByClassName('feedback__close')[0]
+
+                closeX.addEventListener('click', () => {
+                    feedback.hide()
+            })
+
         } else {
-            results.render(ducks);
+            
+            feedback.hide()
+            results.render(ducks)
 
-            feedback.hide();
-            results.show();
+            results.show()
         }
-    });
-});
+    })
+}
 
-var results = new Results(document.getElementsByClassName('results')[0]);
-results.onItemRender = function () {
-    var item = new ResultItem(document.createElement('li'));
+const results = new Results(document.getElementsByClassName('results')[0])
+results.onItemRender = () => {
+    const item = new ResultItem(document.createElement('li'))
 
-    item.onClick = function (id) {
+    item.onClick = (id) => {
         retrieveDuck(id, function (error, duck) {
             if (error) {
-                feedback.render(error.message);
+                feedback.render(error.message)
 
-                results.hide();
-                feedback.show();
+                results.hide()
+                feedback.show()
             } else {
-                detail.render(duck);
+                detail.render(duck)
 
-                searchView.hide();
-                detailView.show();
+                searchView.hide()
+                detailView.show()
             }
-        });
-    };
+        })
+    }
 
-    return item;
-};
+    return item
+}
 
-var detail = new Detail(document.getElementsByClassName('detail')[0]);
+const detail = new Detail(document.getElementsByClassName('detail')[0])
 
-detail.onBack = function () {
-    detailView.hide();
-    searchView.show();
-};
-
-var feedback = new Feedback(document.getElementsByClassName('feedback')[0]);
-
-
-
-
+detail.onBack = () => {
+    detailView.hide()
+    searchView.show()
+}
 
