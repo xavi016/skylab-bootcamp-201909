@@ -1,4 +1,4 @@
-function Detail({ item }) {
+function Detail({ item, onBack }) {
   return (
     <div className='duck duck--litle'>
       <h1 className='duck__title'>{item.title}</h1>
@@ -7,7 +7,10 @@ function Detail({ item }) {
       <div className='duck__container-buttons'>
         <p className='duck__button'>{item.price}</p>
         <button
-
+          onClick={event => {
+            event.preventDefault()
+            onBack()
+          }}
         className='duck__button duck__button--back'>◀</button>
       </div>
     </div>

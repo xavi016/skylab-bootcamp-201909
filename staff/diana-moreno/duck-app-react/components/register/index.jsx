@@ -21,9 +21,8 @@ function Register({ onRegister, onBack }) {
       </form>
       <button className='form__button form__button--register-back'
         onClick={event => {
-                  event.preventDefault()
-
-                  onBack()
+          event.preventDefault()
+          onBack()
         }}>Back to login
       </button>
       <div className='form__confirmation'></div>

@@ -1,9 +1,8 @@
-function Header({searchDucks}) {
+function Search({searchDucks, username}) {
   return (
     <header className='header view__header'>
       <h1 className='header__title'>Duck Store</h1>
-      <form
-        onSubmit={event => {
+      <form onSubmit={event => {
           event.preventDefault()
           const query = event.target.query.value
           searchDucks(query)
@@ -14,7 +13,7 @@ function Header({searchDucks}) {
           <i className="fas fa-search"></i>
         </button>
       </form>
-      <p className='header__greeting'></p>
+      <p className='header__greeting'>Hello, {username}</p>
     </header>
   )
 }
