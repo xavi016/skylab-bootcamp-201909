@@ -1,9 +1,5 @@
-function handleStart () {
-
-}
-
 
 ReactDOM.render(<>
 
-    <Header onStart={handleStart}/>
+    <Header />
 </>, document.getElementById('root'))

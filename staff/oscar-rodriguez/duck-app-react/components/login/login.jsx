@@ -4,7 +4,7 @@ function Login ({onLogin}) {
         <form className="login__form" onSubmit = {function (event) {
             event.preventDefault();
             const { username : {value : username},
-                    password : {vale : password}
+                    password : {value : password}
                 } = event.target;
             onLogin(username, password); }
         }>
