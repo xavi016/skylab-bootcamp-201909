@@ -7,6 +7,15 @@ main.style.display = 'none';
 reg.style.display = 'none';
 
 (function init() {
+    const landing = new Landing(document.getElementsByClassName('landing')[0])
+landing.onRegister = () => {
+    landing.hide()
+    register.show()
+}
+landing.onLogin = () => {
+    landing.hide()
+    login.show()
+}
 
     var register = new Register(document.getElementsByClassName('form')[1]);
     register.onSignUp(function (name, surname, email, password) {
