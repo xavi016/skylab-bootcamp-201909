@@ -33,6 +33,22 @@ login.onSubmit = (email, password) => {
             if(error){
                 login.feedback.render(error.message)
             } else {
+                
+                retrieveUser(response.id, response.token, (error, result) =>{
+                    
+                    const hello = new Hello(document.getElementsByClassName('hello')[0])
+                    hello.show()
+                    hello.render(result)
+                    hello.onBack = () => {
+                        login.show()
+                        search.hide()
+                        results.hide()
+                        hello.hide()
+                    }
+                    // document.getElementsByClassName('hello__user')[0].innerHTML = `hello ${result.data.name}`
+
+                })
+                
                 login.hide()
                 search.show() //store id and token somewhere to retrieve user later
                 searchDucks('', (error, ducks) => {
@@ -47,7 +63,6 @@ login.onSubmit = (email, password) => {
                         results.render(ducks)
                     }
                 })
-
                 results.show()
                 // ducks.show()
             }
