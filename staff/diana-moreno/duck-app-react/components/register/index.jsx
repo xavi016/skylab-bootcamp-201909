@@ -1,4 +1,4 @@
-function Register({ onRegister, onBack }) {
+function Register({ onRegister, onBack, error}) {
   return(
     <section className='view view__register'>
       <img className='view__register--image' src="./images/pato-goma-amarillo-plano-brillante_23-2148275403.jpg" alt="" />
@@ -25,7 +25,9 @@ function Register({ onRegister, onBack }) {
           onBack()
         }}>Back to login
       </button>
-      <div className='form__confirmation'></div>
+      <div className='feedback'>
+        {error && <Feedback message={error} />}
+      </div>
     </section>
   )
 }

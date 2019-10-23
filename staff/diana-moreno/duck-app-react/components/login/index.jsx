@@ -1,4 +1,4 @@
-function Login({ onLogin, onRegister }) {
+function Login({ onLogin, onRegister, error }) {
   return (
     <div className='view view__login'>
       <h1 className='view__login--title'>Duck Store</h1>
@@ -19,7 +19,9 @@ function Login({ onLogin, onRegister }) {
           onRegister()
         }}
         className='form__button form__button--register'>Create account</button>
-      <div className='form__confirmation'></div>
+      <div className='feedback'>
+        {error && <Feedback message={error} />}
+      </div>
       <img  className='view__login--image' src="./images/pato-madre-plano-patitos_23-2148282441.jpg" alt="family-ducks"/>
     </div>
   )

@@ -119,7 +119,7 @@ main, html, #root {
   align-items: center;
 }
 .view__list {
-  margin-top: 7rem;
+  padding-top: 7rem;
 }
 .view__register {
   display: flex;
@@ -279,41 +279,16 @@ main, html, #root {
   }
 }
 .feedback {
-  border: 1px solid red;
-  min-width: 34rem;
   text-align: center;
+  height: 2.5rem;
 }
-.feedback__icon {
-  background-color: #eb6565;
-  height: 5rem;
-  font-size: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  width: 100%;
+.feedback--search {
+  padding-top: 8rem;
 }
 .feedback__message {
-  border: 2px solid #eb6565;
-  padding: 2rem 0;
-  font-size: 1.5rem;
-  margin: 0;
-  width: 100%;
-  box-sizing: border-box;
-  color: #505355;
-}
-
-.feedback {
-  min-width: 0rem;
-  font-size: 1rem;
-}
-.feedback__icon {
-  font-size: 1.5rem;
-  height: 3rem;
-}
-.feedback__message {
-  padding: 1rem;
-  font-size: 1.3rem;
+  color: red;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .hide {

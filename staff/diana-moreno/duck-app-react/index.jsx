@@ -7,10 +7,10 @@ class App extends Component {
     this.state = {
       view: 'login',
       error: undefined,
-      query: '',
       ducks: undefined,
       id: '',
-      token: ''
+      token: '',
+      name: ''
     }
     this.handleGoToRegister = this.handleGoToRegister.bind(this)
     this.handleGoToLogin = this.handleGoToLogin.bind(this)
@@ -54,9 +54,7 @@ class App extends Component {
     try {
       authenticateUser(email, password, (error, result) => {
         if (error) {
-          console.log(email, password)
           this.setState({ error: error.message })
-          //errorMessageLogin.innerHTML = 'Username and/or password incorrect'
         } else {
           this.setState({
             ...this.state,
@@ -69,7 +67,7 @@ class App extends Component {
         }
       })
     } catch (error) {
-      //errorMessageLogin.innerHTML = 'Username and/or password incorrect'
+      this.setState({ error: error.message })
       console.log('error')
     }
   }
@@ -87,7 +85,7 @@ class App extends Component {
   initialRandomDucks() {
     searchDucks('', (error, ducks) => {
       if (error) {
-
+        this.setState({ error: error.message })
       } else {
         ducks = ducks.shuffle().splice(0, 8)
         this.setState({
@@ -101,11 +99,15 @@ class App extends Component {
 
   handleSearchDucks(query) {
     searchDucks(query, (error, ducks) => {
-      if (query === "") console.log(ducks)
-      if (error) {} else {
+      if (error) {
+        this.setState({
+          error: error.message,
+          ducks: ''
+        })
+        console.log(error)
+      } else {
         this.setState({
           ...this.state,
-          query: query,
           ducks: ducks,
           view: 'list-ducks'
         })
@@ -117,7 +119,7 @@ class App extends Component {
     const id = item.id
     retrieveDuck(id, (error, duck) => {
       if (error) {
-
+        this.setState({ error: error.message })
       } else {
         this.setState({
           ...this.state,
@@ -130,23 +132,21 @@ class App extends Component {
 
 
   render() {
-    const { state: { view, error }, handleGoToRegister, handleGoToLogin, handleRegister, handleBackFromRegister, handleLogin, handleSearchDucks, handleDetail, handleGoToList } = this
+    const { state: { view, error, item, ducks, name }, handleGoToRegister, handleGoToLogin, handleRegister, handleBackFromRegister, handleLogin, handleSearchDucks, handleDetail, handleGoToList } = this
 
     return <>
-      { view === 'login' && <Login onLogin={handleLogin} onRegister={handleGoToRegister} /> }
+      { view === 'login' && <Login onLogin={handleLogin} onRegister={handleGoToRegister} error={error} /> }
 
-      { view === 'register' && <Register onRegister={handleRegister} onBack={handleBackFromRegister} /> }
+      { view === 'register' && <Register onRegister={handleRegister} onBack={handleBackFromRegister} error={error} /> }
 
       { view === 'register-success' && <RegisterSuccess onBack={handleBackFromRegister} /> }
 
       { (view === 'search-ducks' || view === 'list-ducks' || view === 'detail')
-       && <Search searchDucks={handleSearchDucks} username={this.state.name} /> }
+       && <Search searchDucks={handleSearchDucks} username={name} /> }
 
-      { view === 'random-ducks' && <DucksList ducks={this.state.ducks} item={handleDetail}/> }
+      { view === 'random-ducks' || view === 'list-ducks'  && <DucksList ducks={ducks} item={handleDetail} error={error}/> }
 
-      { view === 'list-ducks' && <DucksList ducks={this.state.ducks} item={handleDetail}/> }
-
-      { view === 'detail' && <Detail item={this.state.item} onBack={handleGoToList}/> }
+      { view === 'detail' && <Detail item={item} onBack={handleGoToList}/> }
       </>
   }
 }

@@ -12,7 +12,6 @@ function authenticateUser(email, password, callback) {
       const { data: { id, token } } = result
 
       callback(undefined, { id, token })
-      retrieveUser(id, token)
     }
   })
 }
