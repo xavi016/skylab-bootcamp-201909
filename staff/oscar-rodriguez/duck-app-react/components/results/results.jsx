@@ -1,26 +1,7 @@
-const { Component } = React
+function Results ({ducks, onClickItem}) {
 
-class Results extends Component {
-    constructor () {
-        debugger
-    }
-
-    render() {
-
-    }
+    const list = ducks.map ((duck,i) =>
+        <ListItem key={i.toString()} onClickItem={onClickItem} value={duck}/>
+    )
+    return <ul className='search-list'>{list}</ul>
 }
-     /*   container.innerHTML ="";
-    }
-
-     render ()
-    (results_list) {
-    this.container.innerHTML ="";
-    results_list.forEach(function(item) {
-
-        var register = this.onItemRender();
-
-        register.pintar(item);
-
-        this.add(register);
-    }.bind(this));
-*/

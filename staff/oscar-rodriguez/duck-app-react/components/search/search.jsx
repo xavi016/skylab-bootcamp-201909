@@ -1,5 +1,5 @@
 function Search ({onSearch}) {
- 
+    
     return <nav className="search-bar">
         <form className='form-0' onSubmit={ event => {
                 event.preventDefault();
