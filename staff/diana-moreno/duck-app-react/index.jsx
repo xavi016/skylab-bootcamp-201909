@@ -89,7 +89,8 @@ class App extends Component {
         this.setState({
           ...this.state,
           ducks: ducks,
-          view: 'list-ducks'
+          view: 'list-ducks',
+          error: undefined
         })
       }
     })
