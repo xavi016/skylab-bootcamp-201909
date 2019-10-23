@@ -17,12 +17,14 @@ main, html, #root {
   top: 0;
   z-index: 2;
 }
+
 .header__title {
   text-align: center;
   color: white;
   margin: 0.6rem;
   letter-spacing: 0.2rem;
 }
+
 .header__greeting {
   position: absolute;
   color: white;
@@ -30,6 +32,7 @@ main, html, #root {
   right: 1.2rem;
   font-size: 1rem;
 }
+
 .header__form {
   flex-direction: row !important;
   justify-content: center;
@@ -41,6 +44,7 @@ main, html, #root {
     right: 4rem;
     font-size: 1.3rem;
   }
+
   .header__title {
     font-size: 3.5rem;
     padding: 1.5rem;
@@ -54,6 +58,7 @@ main, html, #root {
   flex-direction: column;
   align-items: center;
 }
+
 .form__input {
   font-size: 1.2rem;
   width: 11rem;
@@ -63,9 +68,11 @@ main, html, #root {
   padding: 0.2rem 1rem;
   margin: 0.5rem 0;
 }
+
 .form__input:hover, .form__button:hover {
   outline: 0;
 }
+
 .form__button {
   font-size: 1.2rem;
   border-radius: 7px;
@@ -75,23 +82,28 @@ main, html, #root {
   cursor: pointer;
   margin: 0.5rem 0;
 }
+
 .form__button--login {
   width: 13rem;
 }
+
 .form__button--register {
   width: 13rem;
   background-color: #7fb57f;
   border-color: #7fb57f;
 }
+
 .form__button--register-back {
   width: 13rem;
   background-color: #ebaf55;
   border-color: #ebaf55;
 }
+
 .form__label {
   font-size: 1.2rem;
   color: #566369;
 }
+
 .form__confirmation {
   color: red;
   height: 1rem;
@@ -101,12 +113,15 @@ main, html, #root {
   .form__input {
     width: 20rem;
   }
+
   .form__button--login {
     width: 22rem;
   }
+
   .form__button--register {
     width: 22rem;
   }
+
   .form__button--register-back {
     width: 22rem;
   }
@@ -114,14 +129,17 @@ main, html, #root {
 .view {
   height: 100%;
 }
+
 .view__feedback {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .view__list {
   padding-top: 7rem;
 }
+
 .view__register {
   display: flex;
   flex-direction: column;
@@ -129,6 +147,7 @@ main, html, #root {
   margin-top: 0;
   justify-content: center;
 }
+
 .view__register--title {
   color: #566369;
   font-size: 1.5rem;
@@ -136,9 +155,11 @@ main, html, #root {
   margin-bottom: 2.5rem;
   text-align: center;
 }
+
 .view__register--image {
   width: 12rem;
 }
+
 .view__registerSuccess {
   display: flex;
   flex-direction: column;
@@ -146,12 +167,15 @@ main, html, #root {
   align-items: center;
   color: green;
 }
+
 .view__registerSuccess--image {
   width: 20rem;
 }
+
 .view__registerSuccess--title {
   text-align: center;
 }
+
 .view__login {
   display: flex;
   justify-content: center;
@@ -159,6 +183,7 @@ main, html, #root {
   flex-direction: column;
   height: 100%;
 }
+
 .view__login--title {
   font-size: 3rem;
   color: #6d6262;
@@ -166,6 +191,7 @@ main, html, #root {
   letter-spacing: 0.1rem;
   text-align: center;
 }
+
 .view__login--image {
   width: 20rem;
 }
@@ -174,14 +200,17 @@ main, html, #root {
   .view__single {
     font-size: 1.5rem;
   }
+
   .view__login--title {
     color: #566369;
     font-size: 3.5rem;
     letter-spacing: 0.5rem;
   }
+
   .view__login--image {
     width: 34rem;
   }
+
   .view__registerSuccess--image {
     width: 35rem;
   }
@@ -191,38 +220,44 @@ main, html, #root {
   flex-direction: column;
   align-items: center;
 }
+
 .duck__list {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
   justify-content: center;
 }
+
 .duck--litle {
   height: 100%;
   display: flex;
   justify-content: center;
   margin-top: 4rem;
-  position: relative;
 }
+
 .duck__description--litle {
   text-align: justify;
   padding: 0 1rem;
   margin: 0.2rem;
 }
+
 .duck__title {
   color: #566369;
   text-align: center;
   font-size: 1.5rem;
 }
+
 .duck__image {
   width: 10rem;
 }
+
 .duck__container-buttons {
   display: flex;
   align-items: center;
   width: 7rem;
   justify-content: space-between;
 }
+
 .duck__button {
   background-color: #00BCD4;
   color: white;
@@ -231,41 +266,45 @@ main, html, #root {
   border: 0;
   font-size: 1.2rem;
 }
+
 .duck__button--back {
   background-color: #d26464;
   padding: 0.15rem 1rem;
   cursor: pointer;
 }
+
 .duck--clicked {
   cursor: pointer;
   width: 18rem;
   height: 17rem;
-  justify-content: space-between;
-  position: relative;
+  justify-content: space-around;
 }
-.duck__favorite {
+
+.duck--clicked__favorite {
   color: red;
   font-size: 2rem;
   position: absolute;
   z-index: 0;
-  right: 1rem;
-  top: 4.5rem;
 }
 
 @media only screen and (min-width: 576px) {
   .duck {
     margin: 4rem 4rem 0 4rem;
   }
+
   .duck--clicked {
-    height: 26rem;
+    height: 28rem;
   }
+
   .duck__list {
     margin: 0 2rem;
     padding-top: 2rem;
   }
+
   .duck__image {
     width: 15rem;
   }
+
   .duck--litle {
     max-width: 40rem;
     margin: 0 auto;
@@ -273,38 +312,36 @@ main, html, #root {
     display: flex;
     height: 80%;
   }
+
   .duck__container-buttons {
     width: 9rem;
   }
+
   .duck__button {
     font-size: 1.5rem;
   }
+
   .duck__button--back {
     padding: 0.2rem 1rem;
   }
+
   .duck__title {
     font-size: 1.7rem;
   }
+
   .duck__description--litle {
     font-size: 1.5rem;
-  }
-  .duck__favorite {
-    top: 6.5rem;
-    right: 0;
-  }
-  .duck__favorite--detail {
-    right: 43px;
-    top: 22rem;
-    font-size: 3rem;
   }
 }
 .feedback {
   text-align: center;
   height: 2.5rem;
 }
+
 .feedback--search {
   padding-top: 8rem;
 }
+
 .feedback__message {
   color: red;
   font-size: 1.2rem;
@@ -314,5 +351,12 @@ main, html, #root {
 .hide {
   display: none;
 }
+
+/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=style.css.map */

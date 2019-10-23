@@ -16,6 +16,7 @@
     display: flex
     justify-content: center
     margin-top: 4rem
+    position: relative
 
   &__description--litle
     text-align: justify
@@ -53,14 +54,24 @@
     cursor: pointer
     width: 18rem
     height: 17rem
-    justify-content: space-around
+    justify-content: space-between
+    position: relative
+
+  &__favorite
+    color: red
+    font-size: 2rem
+    position: absolute
+    z-index: 0
+    right: 1rem
+    top: 4.5rem
 
 // Small tablets (portrait view)
 @media only screen and (min-width: $screen-sm-min)
   .duck
     margin: 4rem 4rem 0 4rem
+
     &--clicked
-      height: 28rem
+      height: 26rem
 
     &__list
       margin: 0 2rem
@@ -84,8 +95,18 @@
 
     &__button--back
       padding: 0.2rem 1rem
+
     &__title
-      font-size: 2rem
+      font-size: 1.7rem
 
     &__description--litle
       font-size: 1.5rem
+
+    &__favorite
+      top: 6.5rem
+      right: 0
+
+      &--detail
+        right: 43px
+        top: 22rem
+        font-size: 3rem

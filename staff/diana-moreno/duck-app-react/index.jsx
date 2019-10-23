@@ -106,13 +106,12 @@ class App extends Component {
   handleSearch = (query) => {
     searchDucks(query, (error, ducks) => {
       if (error) {
-        location.query = query
-
         this.setState({
           error: error.message,
           ducks: ''
         })
       } else {
+        location.query = query;
         this.setState({
           ...this.state,
           ducks: ducks,
