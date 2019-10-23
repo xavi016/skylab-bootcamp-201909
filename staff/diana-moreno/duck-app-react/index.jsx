@@ -8,10 +8,9 @@ class App extends Component {
       view: 'login',
       error: undefined,
       ducks: undefined,
-      id: '',
-      token: '',
       name: ''
     }
+
     this.handleGoToRegister = this.handleGoToRegister.bind(this)
     this.handleGoToLogin = this.handleGoToLogin.bind(this)
     this.handleRegister = this.handleRegister.bind(this)
@@ -68,7 +67,6 @@ class App extends Component {
       })
     } catch (error) {
       this.setState({ error: error.message })
-      console.log('error')
     }
   }
 
@@ -104,7 +102,6 @@ class App extends Component {
           error: error.message,
           ducks: ''
         })
-        console.log(error)
       } else {
         this.setState({
           ...this.state,
