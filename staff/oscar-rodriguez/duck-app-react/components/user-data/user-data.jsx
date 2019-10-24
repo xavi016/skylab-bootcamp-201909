@@ -1,7 +1,20 @@
-function UserData ({user}) {
+function UserData ({user, onLogOut, onShowFavorites}) {
     
-    const {name} = user.data
-    return <div>Bienvenido
-                <a className="link">{name}</a>
+    
+    return <div>Bienvenido  <div>{user}</div>
+                            <div>
+                                <a className="link" onClick={ e => {
+                                        e.preventDefault()
+                                        onLogOut()
+                                }
+                                }> LogOut </a>
+                            </div>
+                            <div>
+                                <a className="link" onClick={ e => {
+                                        e.preventDefault()
+                                        onShowFavorites()
+                                }
+                                }> Show Favorites </a>
+                            </div>
            </div>
 }

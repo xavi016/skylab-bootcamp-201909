@@ -1,36 +1,13 @@
-const { Component } = React
-
-class Register extends Component { 
-    constructor( { onRegister, error }) {
-        super()
-        
-        this.state = { showMe : false }
-        this.onRegister = onRegister
-        this.error = error
-
-        this.onShowMe = this.onShowMe.bind(this)
-    }
-    
-    onShowMe() {
-
-        const { state: { showMe } } = this
-        this.setState ({showMe: !(showMe)})
-    }
-
-    render () { 
-        const { state: { showMe, error }, onShowMe, onRegister } = this
-        return <>
-            <section className="sign-up">
-                <h1 className="sign-up__title _hide"><a className="link" onClick={event=>{
+function Register ({onShowForm,onRegister, error, showMe}) {
+    return <>
+            <section className="sign-up" onClick={event=>{
                     event.preventDefault()
-                    debugger
-                    onShowMe()
-                }}>Sign up</a></h1>
-            {showMe && <>
-                <form onSubmit={function (e){
-                    debugger
+                    onShowForm()
+                }}>
+                <h1 className="sign-up__title _hide"><a className="link">Sign up</a></h1>
+            {showMe && 
+                <form onClick={ e => e.stopPropagation() } onSubmit={function (e){
                     e.preventDefault();
-                    
                     const { username : { value : username },
                             password : { value : password },
                             name     : { value : name },
@@ -45,9 +22,8 @@ class Register extends Component {
                     <label className="label">Surname: <br/><input type="text" name="surname" placeholder="surname"/></label>
                     <button className="sign-up__button" name="sign-up">LOGIN</button>
                 </form>
-                {error && <Feedback message={error} />}
-                </>}
+            }
+            {error && showMe && <Feedback message={error} />}
             </section>
         </>
-    }
 }

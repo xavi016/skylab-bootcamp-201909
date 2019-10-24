@@ -129,6 +129,11 @@
 .entry__price {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 1rem; }
+.entry__like {
+  font-size: 2rem;
+  margin-right: 1rem; }
+  .entry__like--fav {
+    color: green; }
 
 .search-list {
   margin: 0;
