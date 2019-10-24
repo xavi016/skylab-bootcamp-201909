@@ -57,3 +57,20 @@ slash('/1/2/3')
 
 slash('/4/5/6')
 // url changed to .../1/2/3/4/5/6
+
+// DEMO change query string
+
+function query(path) {
+    const { protocol, host, pathname } = location
+    const url = `${protocol}//${host}${pathname}?${path}`
+    history.pushState({ path: url }, '', url)
+    window.dispatchEvent(new Event('popstate'))
+}
+
+window.addEventListener('popstate', function () { console.log('url changed to', location.href) })
+
+query('q=hello world')
+// url changed to ...?q=hello%20world
+
+query('query=hola mundo')
+// url changed to ...?query=hola%20mundo
