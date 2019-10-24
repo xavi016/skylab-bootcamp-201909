@@ -1,7 +1,6 @@
 function ResultsItem({ duck, item, add, handleFavorite }) {
   return(
     <li className="duck duck--clicked">
-
       <i className={duck.icon
                     ? "duck__favorite fas fa-heart"
                     : 'duck__favorite far fa-heart'}

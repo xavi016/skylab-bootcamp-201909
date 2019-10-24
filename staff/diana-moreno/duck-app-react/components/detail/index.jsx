@@ -1,8 +1,9 @@
 function Detail({ item, onBack }) {
   return (
     <div className='duck duck--litle'>
-      <i className="duck__favorite duck__favorite--detail far fa-heart"></i>
-  {/*      <i className="fas fa-heart"></i>*/}
+      <i className={item.icon
+                    ? "duck__favorite duck__favorite--litle fas fa-heart"
+                    : 'duck__favorite duck__favorite--litle far fa-heart'}></i>
       <h1 className='duck__title'>{item.title}</h1>
       <img className='duck__image' src={item.imageUrl} />
       <p className='duck__description duck__description--litle'>{item.description}</p>

@@ -252,6 +252,9 @@ main, html, #root {
   right: 1rem;
   top: 4.5rem;
 }
+.duck__favorite--litle {
+  top: 10rem;
+}
 
 @media only screen and (min-width: 576px) {
   .duck {
@@ -292,6 +295,9 @@ main, html, #root {
   .duck__favorite {
     top: 6.5rem;
     right: 0;
+  }
+  .duck__favorite--litle {
+    top: 19rem;
   }
   .duck__favorite--detail {
     right: 43px;
