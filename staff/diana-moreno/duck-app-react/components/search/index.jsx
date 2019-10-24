@@ -1,4 +1,4 @@
-function Search({searchDucks, username}) {
+function Search({searchDucks, username, onFavs}) {
   return (
     <header className='header view__header'>
       <h1 className='header__title'>Duck Store</h1>
@@ -13,7 +13,8 @@ function Search({searchDucks, username}) {
           <i className="fas fa-search"></i>
         </button>
       </form>
-      <p className='header__greeting'>Hello, {username}</p>
+      <p onClick={event => onFavs()}
+      className='header__greeting'>Hello, {username}</p>
     </header>
   )
 }

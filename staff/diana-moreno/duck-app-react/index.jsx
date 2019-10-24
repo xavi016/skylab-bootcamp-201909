@@ -11,6 +11,7 @@ class App extends Component {
     item: undefined,
     name: '',
     query,
+    favorites: []
   }
 
   componentWillMount() {
@@ -41,6 +42,10 @@ class App extends Component {
 
   handleGoToList = () => {
     this.setState({ view: 'search' })
+  }
+
+  handleGoToFavs = () => {
+    this.setState({ view: 'favorites' })
   }
 
   handleBackFromRegister = () => {
@@ -118,7 +123,29 @@ class App extends Component {
           view: 'search'
         })
       }
+    const userId = sessionStorage.id
+    const userToken = sessionStorage.token
+    const favorites = []
+
+    retrieveFavDucks(userId, userToken, favs => {
+      favs.forEach(fav => {
+
+        retrieveDuck(fav, (error, duck) => {
+          duck.icon = true
+          favorites.push(duck)
+        });
+
+        ducks.forEach(duck => {
+          if(duck.id === fav) duck.icon = true
+
+          this.setState({
+            ...this.state,
+            favorites: favorites
+          })
+        })
+      })
     })
+  })
   }
 
   handleDetail = (item) => {
@@ -162,19 +189,11 @@ class App extends Component {
     toggleFavDuck(userId, userToken, id, result => {
       console.log(result)
     })
-
   }
-
-  /*  showFavorites = () => {
-      this.setState({
-        ...this.state,
-        showFavorites: true
-      })
-    }*/
 
 
   render() {
-    const { state: { view, error, item, ducks, name }, handleGoToRegister, handleGoToLogin, handleRegister, handleBackFromRegister, handleLogin, handleSearch, handleDetail, handleGoToList, handleFavorite } = this
+    const { state: { view, error, item, ducks, name, favorites }, handleGoToRegister, handleGoToLogin, handleRegister, handleBackFromRegister, handleLogin, handleSearch, handleDetail, handleGoToList, handleFavorite, handleGoToFavs } = this
 
     return < > { view === 'login' && <Login onLogin={handleLogin} onRegister={handleGoToRegister} error={error} /> }
 
@@ -183,11 +202,13 @@ class App extends Component {
     { view === 'register-success' && <RegisterSuccess onBack={handleBackFromRegister} /> }
 
     {
-      (view === 'search' || view === 'detail') &&
-      <Search searchDucks={handleSearch} username={name} />
+      (view === 'search' || view === 'detail' || view === 'favorites') &&
+      <Search searchDucks={handleSearch} username={name} onFavs={handleGoToFavs} />
     }
 
     { view === 'search' && <DucksList ducks={ducks} item={handleDetail} error={error} handleFavorite= {handleFavorite} /> }
+
+    { view === 'favorites' && <DucksList ducks={favorites} item={handleDetail} error={error} handleFavorite= {handleFavorite} /> }
 
     { view === 'detail' && <Detail item={item} onBack={handleGoToList}/> } <
     />

@@ -29,6 +29,7 @@ main, html, #root {
   top: -0.8rem;
   right: 1.2rem;
   font-size: 1rem;
+  cursor: pointer;
 }
 .header__form {
   flex-direction: row !important;
