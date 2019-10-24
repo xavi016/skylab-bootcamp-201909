@@ -13,7 +13,7 @@ hash('hello world')
 setTimeout(() => hash('hola mundo'), 1000)
 // url changed to ...#hola%20mundo
 
-// DEMO change full slash path with forced event dispatch alerting
+// DEMO change full slash path with forced event dispatch alerting (otherwise it does not automatically happens)
 
 function slash(path) {
     history.pushState({}, '', path)
@@ -58,7 +58,7 @@ slash('/1/2/3')
 slash('/4/5/6')
 // url changed to .../1/2/3/4/5/6
 
-// DEMO change query string
+// DEMO change query string with forced event dispatch alerting (otherwise it does not automatically happens)
 
 function query(path) {
     const { protocol, host, pathname } = location
