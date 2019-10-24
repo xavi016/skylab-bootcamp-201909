@@ -18,3 +18,4 @@ function Detail({ item, onBack }) {
     </div>
   )
 }
+

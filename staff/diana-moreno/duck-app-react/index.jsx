@@ -10,7 +10,8 @@ class App extends Component {
     ducks: undefined,
     item: undefined,
     name: '',
-    query
+    query,
+    favorites: []
   }
 
   componentWillMount() {
@@ -80,7 +81,7 @@ class App extends Component {
   }
 
   handleRetrieveUser = (id, token) => {
-    retrieveUser(id, token, ({name}) => { //result.data.name
+    retrieveUser(id, token, ({ name }) => { //result.data.name
       this.setState({
         ...this.state,
         name: name,
@@ -111,6 +112,9 @@ class App extends Component {
           ducks: ''
         })
       } else {
+        /*        ducks.forEach(elem => { // !!!!!!!!!!!!!!!
+                  [elem.icon] = false
+                })*/
         location.query = query;
         this.setState({
           ...this.state,
@@ -135,14 +139,65 @@ class App extends Component {
       }
     })
   }
+  /*
+    handleFavorite = (id) => {
+      // TODO toggleFavDuck(user-id, user-token, id)
+      //console.log(id)
+  */
 
-  handleFav = (id) => {
-    // TODO toggleFavDuck(user-id, user-token, id)
+  addDeleteFav = (id) => {
+    let favorites = [...this.state.favorites]
+
+    this.state.ducks.forEach(duck => {
+      if (duck.id === id && !duck.icon) {
+        duck.icon = true; //true es favorito
+        favorites.push(id);
+
+      } else if (duck.id === id && duck.icon) {
+        duck.icon = false;
+        let index = this.state.favorites.indexOf(duck.id)
+        favorites.splice(index, 1);
+      }
+
+      this.setState({
+        ...this.state,
+        favorites
+      })
+    })
+  }
+
+  handleFavorite = () => {
+    const userId = sessionStorage.id
+    const userToken = sessionStorage.token
+
+    console.log(this.state.favorites)
+
+    toggleFavDuck(userId, userToken, this.state.favorites, result => {
+      console.log(result)
+    })
+
   }
 
 
+  /*  showFavorites = () => {
+      this.setState({
+        ...this.state,
+        showFavorites: true
+      })
+    }*/
+
+/*  addOrDeleteFavorites = (duck) => {
+
+
+    if (!this.state.item.icon) {
+      this.addFavorites(this.state.item);
+    } else {
+      this.deleteFavorites(this.state.item)
+    }
+  }*/
+
   render() {
-    const { state: { view, error, item, ducks, name }, handleGoToRegister, handleGoToLogin, handleRegister, handleBackFromRegister, handleLogin, handleSearch, handleDetail, handleGoToList } = this
+    const { state: { view, error, item, ducks, name }, handleGoToRegister, handleGoToLogin, handleRegister, handleBackFromRegister, handleLogin, handleSearch, handleDetail, handleGoToList, handleFavorite, addDeleteFav } = this
 
     return < > { view === 'login' && <Login onLogin={handleLogin} onRegister={handleGoToRegister} error={error} /> }
 
@@ -150,16 +205,16 @@ class App extends Component {
 
     { view === 'register-success' && <RegisterSuccess onBack={handleBackFromRegister} /> }
 
-    { (view === 'search' || view === 'detail') &&
-      <Search searchDucks={handleSearch} username={name} /> }
+    {
+      (view === 'search' || view === 'detail') &&
+      <Search searchDucks={handleSearch} username={name} />
+    }
 
-    { view === 'search' && <DucksList ducks={ducks} item={handleDetail} error={error}/> }
+    { view === 'search' && <DucksList ducks={ducks} item={handleDetail} error={error} handleFavorite= {handleFavorite} addDeleteFav={addDeleteFav} /> }
 
     { view === 'detail' && <Detail item={item} onBack={handleGoToList}/> } <
     />
   }
 }
-
-// TODO login and search
 
 ReactDOM.render(<App />, document.getElementById('root'))
