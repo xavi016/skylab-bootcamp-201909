@@ -1,4 +1,4 @@
-function Login ({onLogin}) {
+function Login ({onLogin, error}) {
     return <section className="login">
         <h1 className="login__title"><a className="link">Sign in</a></h1>
         <form className="login__form" onSubmit = {function (event) {
@@ -17,5 +17,6 @@ function Login ({onLogin}) {
             <p className="feedback__message">Come with me...</p>
             <span className="feedback__icon">🎈</span>
         </section>
+        {error && <Feedback message={error} />}
     </section>
 }

@@ -1,7 +1,6 @@
 function Results ({ducks, onClickItem}) {
 
-    const list = ducks.map ((duck,i) =>
-        <ListItem key={i.toString()} onClickItem={onClickItem} value={duck}/>
-    )
-    return <ul className='search-list'>{list}</ul>
+    return <ul className='search-list'>
+        { ducks.map ((duck) => <ListItem key={duck.id} onClickItem={onClickItem} value={duck}/> )}
+    </ul>
 }

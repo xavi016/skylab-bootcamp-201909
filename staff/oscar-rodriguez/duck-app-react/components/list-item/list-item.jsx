@@ -2,7 +2,7 @@ function ListItem ({value, onClickItem}) {
 
     const { id, imageUrl, title, price } = value
 
-return  <li className="search-list__entry entry" onClick={event => {
+    return  <li className="search-list__entry entry" onClick={event => {
             event.preventDefault();
             onClickItem(id)
         }}>

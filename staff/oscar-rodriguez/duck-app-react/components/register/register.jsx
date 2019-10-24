@@ -11,10 +11,9 @@ class Register extends Component {
         this.onShowMe = this.onShowMe.bind(this)
     }
     
-     onShowMe() {
+    onShowMe() {
 
         const { state: { showMe } } = this
-debugger
         this.setState ({showMe: !(showMe)})
     }
 
