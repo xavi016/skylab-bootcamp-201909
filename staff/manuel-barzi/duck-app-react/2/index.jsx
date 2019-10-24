@@ -1,22 +1,20 @@
 const { Component } = React
 
-const { id, token } = sessionStorage
-
 const { query } = location
+
+const { id, token } = sessionStorage
 
 class App extends Component {
     state = { view: id && token ? 'search' : 'landing', error: undefined, query }
 
     componentWillMount() {
-        const { id, token } = sessionStorage
-
         if (id && token)
             try {
                 retrieveUser(id, token, (error, user) => {
                     if (error) this.setState({ error: error.message })
                     else {
                         const { name } = user
-                        
+
                         this.setState({ user: name })
                     }
                 })
