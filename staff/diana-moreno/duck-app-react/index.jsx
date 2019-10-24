@@ -11,7 +11,6 @@ class App extends Component {
     item: undefined,
     name: '',
     query,
-    favorites: []
   }
 
   componentWillMount() {
@@ -112,9 +111,6 @@ class App extends Component {
           ducks: ''
         })
       } else {
-        /*        ducks.forEach(elem => { // !!!!!!!!!!!!!!!
-                  [elem.icon] = false
-                })*/
         location.query = query;
         this.setState({
           ...this.state,
@@ -145,39 +141,29 @@ class App extends Component {
       //console.log(id)
   */
 
-  addDeleteFav = (id) => {
-    let favorites = [...this.state.favorites]
-
+  paintHeartsFav(id) {
     this.state.ducks.forEach(duck => {
       if (duck.id === id && !duck.icon) {
         duck.icon = true; //true es favorito
-        favorites.push(id);
-
       } else if (duck.id === id && duck.icon) {
         duck.icon = false;
-        let index = this.state.favorites.indexOf(duck.id)
-        favorites.splice(index, 1);
       }
-
       this.setState({
         ...this.state,
-        favorites
       })
     })
   }
 
-  handleFavorite = () => {
+  handleFavorite = (id) => {
     const userId = sessionStorage.id
     const userToken = sessionStorage.token
 
-    console.log(this.state.favorites)
-
-    toggleFavDuck(userId, userToken, this.state.favorites, result => {
+    this.paintHeartsFav(id)
+    toggleFavDuck(userId, userToken, id, result => {
       console.log(result)
     })
 
   }
-
 
   /*  showFavorites = () => {
       this.setState({
@@ -186,18 +172,9 @@ class App extends Component {
       })
     }*/
 
-/*  addOrDeleteFavorites = (duck) => {
-
-
-    if (!this.state.item.icon) {
-      this.addFavorites(this.state.item);
-    } else {
-      this.deleteFavorites(this.state.item)
-    }
-  }*/
 
   render() {
-    const { state: { view, error, item, ducks, name }, handleGoToRegister, handleGoToLogin, handleRegister, handleBackFromRegister, handleLogin, handleSearch, handleDetail, handleGoToList, handleFavorite, addDeleteFav } = this
+    const { state: { view, error, item, ducks, name }, handleGoToRegister, handleGoToLogin, handleRegister, handleBackFromRegister, handleLogin, handleSearch, handleDetail, handleGoToList, handleFavorite } = this
 
     return < > { view === 'login' && <Login onLogin={handleLogin} onRegister={handleGoToRegister} error={error} /> }
 
@@ -210,7 +187,7 @@ class App extends Component {
       <Search searchDucks={handleSearch} username={name} />
     }
 
-    { view === 'search' && <DucksList ducks={ducks} item={handleDetail} error={error} handleFavorite= {handleFavorite} addDeleteFav={addDeleteFav} /> }
+    { view === 'search' && <DucksList ducks={ducks} item={handleDetail} error={error} handleFavorite= {handleFavorite} /> }
 
     { view === 'detail' && <Detail item={item} onBack={handleGoToList}/> } <
     />
