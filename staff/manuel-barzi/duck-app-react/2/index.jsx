@@ -1,8 +1,8 @@
 const { Component } = React
 
-const { id, token } = sessionStorage
-
 const { query } = location
+
+const { id, token } = sessionStorage
 
 class App extends Component {
     state = { view: id && token ? 'search' : 'landing', error: undefined, query }
