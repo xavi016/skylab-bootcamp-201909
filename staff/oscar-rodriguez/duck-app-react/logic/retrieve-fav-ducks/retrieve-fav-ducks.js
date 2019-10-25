@@ -9,11 +9,13 @@ function retrieveFavDucks(id, token, callback) {
                     const {favs} = user.data
                     const favDucksResult = []
                     favs.forEach (duck => {
-                        call('GET',`https://duckling-api.herokuapp.com/api/ducks/${duck}`, undefined, undefined, (result) => {
+                        call('GET',`https://duckling-api.herokuapp.com/api/ducks/${duck}`, undefined, undefined, result => {
                             if (result.error) callback(error = new Error(result.error))
                             else {
                                 result.fav = true
                                 favDucksResult.push(result)
+                                callback(undefined,favDucksResult)
+
                             }
                         })
                     })

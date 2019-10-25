@@ -1,7 +1,7 @@
 function UserData ({user, onLogOut, onShowFavorites}) {
     
     
-    return <div>Bienvenido  <div>{user}</div>
+    return <div className='user-data'>Bienvenido {user}
                             <div>
                                 <a className="link" onClick={ e => {
                                         e.preventDefault()

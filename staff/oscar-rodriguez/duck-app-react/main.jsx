@@ -169,9 +169,7 @@ class App extends Component {
         retrieveFavDucks( id , token, ((error, results) => {
             if (error) this.setState ({ error : error.message })
             else this.setState( {ducksList : results})
-            
         }))        
-       
     }
 
     render() {
