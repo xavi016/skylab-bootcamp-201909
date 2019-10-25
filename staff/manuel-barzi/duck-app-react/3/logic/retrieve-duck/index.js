@@ -8,22 +8,20 @@ function retrieveDuck(id, token, duckId, callback) {
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
 
     call('GET', undefined, `https://duckling-api.herokuapp.com/api/ducks/${duckId}`, undefined, result => {
-        if (result.error)
-            callback(new Error(result.error))
-        else {
-            call('GET', token, `https://skylabcoders.herokuapp.com/api/user/${id}`, undefined, result2 => {
-                if (result2.error) return callback(new Error(result2.error))
+        if (result.error) return callback(new Error(result.error))
 
-                const { data: { favs = [] } } = result2
+        call('GET', token, `https://skylabcoders.herokuapp.com/api/user/${id}`, undefined, result2 => {
+            if (result2.error) return callback(new Error(result2.error))
 
-                result.image = result.imageUrl
+            const { data: { favs = [] } } = result2
 
-                delete result.imageUrl
+            result.image = result.imageUrl
 
-                result.isFav = favs.includes(result.id)
+            delete result.imageUrl
 
-                callback(undefined, result)
-            })
-        }
+            result.isFav = favs.includes(result.id)
+
+            callback(undefined, result)
+        })
     })
 }

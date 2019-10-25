@@ -1,8 +1,12 @@
-function Search({ onSubmit, results, error, onResultsRender, user, query }) {
+function Search({ onSubmit, results, error, onResultsRender, user, query, onLogout }) {
     return <section className="view search">
         <h1 className="search__title">Search</h1>
-        <h2 className="search__user">{user}</h2>
-        <form onSubmit={event => {
+        <h2 className="search__user">{user}</h2><button className="search__logout" onClick={event => {
+            event.preventDefault()
+
+            onLogout()
+        }}>Logout</button>
+        <form className="search__form" onSubmit={event => {
             event.preventDefault()
 
             const query = event.target.query.value
