@@ -78,9 +78,11 @@ class App extends Component {
         }
     }
 
-    handleSearch = (query) => {
+    handleSearch = query => {
         try {
-            searchDucks(query, (error, ducks) => {
+            const { id, token } = sessionStorage
+
+            searchDucks(id, token, query, (error, ducks) => {
                 if (error) this.setState({ error: error.message })
                 else {
                     location.query = query
@@ -93,9 +95,11 @@ class App extends Component {
         }
     }
 
-    handleDetail = (id) => {
+    handleDetail = duckId => {
         try {
-            retrieveDuck(id, (error, duck) => {
+            const { id, token } = sessionStorage
+
+            retrieveDuck(id, token, duckId, (error, duck) => {
                 if (error) this.setState({ error: error.message })
                 else this.setState({ view: 'detail', duck })
             })
@@ -108,7 +112,7 @@ class App extends Component {
         this.setState({ view: 'search' })
     }
 
-    handleFav = (id) => {
+    handleFav = duckId => {
         // TODO toggleFavDuck(user-id, user-token, id)
     }
 
@@ -127,5 +131,3 @@ class App extends Component {
         </>
     }
 }
-
-ReactDOM.render(<App />, document.getElementById('root'))
