@@ -10,7 +10,7 @@ class App extends Component {
     ducks: undefined,
     item: undefined,
     name: '',
-    query,
+    query: '',
     favorites: []
   }
 
@@ -38,8 +38,9 @@ class App extends Component {
     this.setState({ view: 'login' })
   }
 
-  handleGoToList = () => {
+  handleGoToList = () => { debugger
     this.setState({ view: 'search' })
+    if(this.state.query) this.handleSearch(this.state.query)
   }
 
   handleGoToFavs = () => {
@@ -141,7 +142,8 @@ class App extends Component {
         this.setState({
           ...this.state,
           ducks: ducks,
-          view: 'search'
+          view: 'search',
+          query: query
         })
       }
       this.retrieveAndPrintFavs(ducks)
