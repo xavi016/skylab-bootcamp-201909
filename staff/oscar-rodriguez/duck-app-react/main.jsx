@@ -165,7 +165,12 @@ class App extends Component {
     }
 
     handleShowFavorites (){
-                
+        const { id , token } = this.state
+        retrieveFavDucks( id , token, ((error, results) => {
+            if (error) this.setState ({ error : error.message })
+            else this.setState( {ducksList : results})
+            
+        }))        
        
     }
 
