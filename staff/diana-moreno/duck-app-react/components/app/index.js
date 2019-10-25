@@ -14,7 +14,7 @@ class App extends Component {
     favorites: []
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
 
     if (id && token)
       try {
@@ -27,7 +27,7 @@ class App extends Component {
 
     const { state: { query } } = this
 
-    query && this.handleSearch(query)
+    query ? this.handleSearch(query) : this.initialRandom()
   }
 
   handleGoToRegister = () => {
@@ -73,7 +73,8 @@ class App extends Component {
             ...this.state,
             view: 'search'
           })
-          //this.initialRandom()
+          this.initialRandom()
+
           this.handleRetrieveUser(result.id, result.token);
         }
       })
@@ -92,20 +93,23 @@ class App extends Component {
   }
 
   retrieveAndPrintFavs = (ducks) => {
-    retrieveFavDucks(id, token, (error, favs) => {
-      favs.forEach(fav => {
-        fav.icon = true
-        ducks.forEach(duck => {
-          if (duck.id === fav.id) {
-            duck.icon = true
-          }
+    const {id, token } = sessionStorage
+    if(id && token) {
+      retrieveFavDucks(id, token, (error, favs) => {
+        favs.forEach(fav => {
+          fav.icon = true
+          ducks.forEach(duck => {
+            if (duck.id === fav.id) {
+              duck.icon = true
+            }
+          })
+        })
+        this.setState({
+          ...this.state,
+          favorites: favs
         })
       })
-      this.setState({
-        ...this.state,
-        favorites: favs
-      })
-    })
+    }
   }
 
   initialRandom = () => {
@@ -120,6 +124,7 @@ class App extends Component {
           error: undefined
         })
       }
+
       this.retrieveAndPrintFavs(ducks)
     })
   }
