@@ -7,10 +7,10 @@ describe('logic - retrieve fav ducks', () => {
         email = `email-${Math.random()}@mail.com`
         password = `password-${Math.random()}`
 
-        call('POST', undefined, 'https://skylabcoders.herokuapp.com/api/user', { name, surname, username: email, password }, result => {
+        call('POST', 'https://skylabcoders.herokuapp.com/api/user', undefined, { name, surname, username: email, password }, result => {
             if (result.error) done(new Error(result.error))
             else {
-                call('POST', undefined, 'https://skylabcoders.herokuapp.com/api/auth', { username: email, password }, result => {
+                call('POST', 'https://skylabcoders.herokuapp.com/api/auth', undefined, { username: email, password }, result => {
                     if (result.error) done(new Error(result.error))
                     else {
                         const { data } = result
@@ -38,7 +38,7 @@ describe('logic - retrieve fav ducks', () => {
 
     describe('when favs already exists', () => {
         beforeEach(done => {
-            call('PUT', token, `https://skylabcoders.herokuapp.com/api/user/${id}`, { favs: duckIds }, result => {
+            call('PUT', `https://skylabcoders.herokuapp.com/api/user/${id}`, { "Content-Type": "application/json", 'Authorization': 'Bearer ' + token }, { favs: duckIds }, result => {
                 result.error ? done(new Error(result.error)) : done()
             })
         })
@@ -59,9 +59,9 @@ describe('logic - retrieve fav ducks', () => {
                     expect(typeof duck.title).toBe('string')
                     expect(duck.title.length).toBeGreaterThan(0)
 
-                    expect(duck.image).toBeDefined()
-                    expect(typeof duck.image).toBe('string')
-                    expect(duck.image.length).toBeGreaterThan(0)
+                    expect(duck.imageUrl).toBeDefined()
+                    expect(typeof duck.imageUrl).toBe('string')
+                    expect(duck.imageUrl.length).toBeGreaterThan(0)
 
                     expect(duck.price).toBeDefined()
                     expect(typeof duck.price).toBe('string')

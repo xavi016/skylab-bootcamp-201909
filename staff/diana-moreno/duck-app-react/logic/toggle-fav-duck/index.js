@@ -17,7 +17,7 @@ function toggleFavDuck(id, token, duckId, callback) {
     index > -1 ? favs.splice(index, 1) : favs.push(duckId)
 
     call('PUT', 'https://skylabcoders.herokuapp.com/api/user/' + id, { "Content-Type": "application/json", 'Authorization': 'Bearer ' + token }, { favs }, result => {
-      result.error ? callback(new Error(result.error)) : callback(result)
+      result.error ? callback(new Error(result.error)) : callback(undefined, result)
     })
   })
 

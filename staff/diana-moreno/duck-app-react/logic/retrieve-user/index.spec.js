@@ -7,10 +7,10 @@ describe('logic - retrieve user', () => {
         email = `email-${Math.random()}@mail.com`
         password = `password-${Math.random()}`
 
-        call('POST', undefined, 'https://skylabcoders.herokuapp.com/api/user', { name, surname, username: email, password }, result => {
+        call('POST', 'https://skylabcoders.herokuapp.com/api/user', undefined, { name, surname, username: email, password }, result => {
             if (result.error) done(new Error(result.error))
             else {
-                call('POST', undefined, 'https://skylabcoders.herokuapp.com/api/auth', { username: email, password }, result => {
+                call('POST', 'https://skylabcoders.herokuapp.com/api/auth', undefined,{ username: email, password }, result => {
                     if (result.error) done(new Error(result.error))
                     else {
                         const { data } = result

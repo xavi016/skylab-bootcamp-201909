@@ -6,6 +6,6 @@ function retrieveUser(id, token, callback) {
   if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
 
   call('GET', 'https://skylabcoders.herokuapp.com/api/user/' + id, { 'Authorization': 'Bearer ' + token }, undefined, result => {
-    result.error ? callback(new Error(result.error)) : callback(result.data)
+    result.error ? callback(new Error(result.error)) : callback(undefined, result.data)
   })
 }

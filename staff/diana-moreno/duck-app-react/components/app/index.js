@@ -1,9 +1,11 @@
 const { Component } = React
+
+const App = (() => {
+
 const { id, token } = sessionStorage
 const { pathname, query, hash } = location
 
-class App extends Component {
-
+return class extends Component {
   state = {
     view: id && token ? (hash? 'detail' : 'search') : 'login',
     error: undefined,
@@ -17,8 +19,8 @@ class App extends Component {
   UNSAFE_componentWillMount() {
     if (id && token)
       try {
-        retrieveUser(id, token, ({ name }) => { // falta errores
-          this.setState({ name: name, view: 'search' })
+        retrieveUser(id, token, (error, results) => { // falta errores
+          this.setState({ name: results.name, view: 'search' })
         })
       } catch (error) {
         this.setState({ error: error.message })
@@ -93,10 +95,10 @@ class App extends Component {
   }
 
   handleRetrieveUser = (id, token) => {
-    retrieveUser(id, token, ({ name }) => { //result.data.name
+    retrieveUser(id, token, (error, results) => { //result.data.name
       this.setState({
         ...this.state,
-        name: name,
+        name: results.name,
       })
     })
   }
@@ -143,23 +145,27 @@ class App extends Component {
   }
 
   handleSearch = (query) => {
-    searchDucks(query, (error, ducks) => {
-      if (error) {
-        this.setState({
-          error: error.message,
-          ducks: ''
-        })
-      } else {
-        location.query = query;
-        this.setState({
-          ...this.state,
-          ducks: ducks,
-          view: 'search',
-          query: query
-        })
-      }
-      this.retrieveAndPrintFavs(ducks)
-    })
+    try {
+      searchDucks(query, (error, ducks) => {
+        if (error) {
+          this.setState({
+            error: error.message,
+            ducks: ''
+          })
+        } else {
+          location.query = query;
+          this.setState({
+            ...this.state,
+            ducks: ducks,
+            view: 'search',
+            query: query
+          })
+        }
+        this.retrieveAndPrintFavs(ducks)
+      })
+    } catch(error) {
+      this.setState({ error: error.message })
+    }
   }
 
   handleDetail = (item) => {
@@ -205,8 +211,8 @@ class App extends Component {
   handleFavorite = (idItem) => {
     const { id, token } = sessionStorage
     this.paintHeartsFav(idItem)
-    toggleFavDuck(id, token, idItem, result => {
-
+    toggleFavDuck(id, token, idItem, (error, result) => {
+      console.log(error, result)
     })
   }
 
@@ -233,3 +239,4 @@ class App extends Component {
     />
   }
 }
+})()
