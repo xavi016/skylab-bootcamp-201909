@@ -1,6 +1,13 @@
-function Search({searchDucks, username, onFavs}) {
+function Search({searchDucks, username, onFavs, logout}) {
   return (
     <header className='header view__header'>
+      <div className='nav'>
+        <div className='nav__links-container'>
+        <a className='nav__link' onClick={event => onFavs()}>Favorites</a>
+        <a className='nav__link' onClick={event => logout()}>Logout</a>
+        </div>
+        <p className='header__greeting nav__greeting'>Hello, {username}</p>
+      </div>
       <h1 className='header__title'>Duck Store</h1>
       <form onSubmit={event => {
           event.preventDefault()
@@ -13,8 +20,6 @@ function Search({searchDucks, username, onFavs}) {
           <i className="fas fa-search"></i>
         </button>
       </form>
-      <p onClick={event => onFavs()}
-      className='header__greeting'>Hello, {username}</p>
     </header>
   )
 }

@@ -1,7 +1,7 @@
 function Detail({ item, onBack }) {
   return (
     <div className='duck duck--litle'>
-      <i className={item.icon
+      <i className={item.isFav
                     ? "duck__favorite duck__favorite--litle fas fa-heart"
                     : 'duck__favorite duck__favorite--litle far fa-heart'}></i>
       <h1 className='duck__title'>{item.title}</h1>
