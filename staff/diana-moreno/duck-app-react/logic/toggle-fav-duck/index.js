@@ -1,4 +1,4 @@
-function toggleFavDuck(userId, userToken, duckId, callback) {
+function toggleFavDuck(id, token, duckId, callback) {
     if (typeof id !== 'string') throw new TypeError(id + ' is not a string')
     if (!id.trim().length) throw new ContentError('id is empty or blank')
     if (typeof token !== 'string') throw new TypeError(token + ' is not a string')
@@ -7,9 +7,6 @@ function toggleFavDuck(userId, userToken, duckId, callback) {
     if (!duckId.trim().length) throw new ContentError('duck id is empty or blank')
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
 
-  /*  call('PUT', 'https://skylabcoders.herokuapp.com/api/user/' + userId, {"Content-Type": "application/json", 'Authorization': 'Bearer ' + token}, { favs }, result => {
-      result.error ? callback(new Error(result.error)) : callback(result)
-    })*/
 
   call('GET', `https://skylabcoders.herokuapp.com/api/user/${id}`, { "Content-Type": "application/json", 'Authorization': 'Bearer ' + token }, undefined, result => {
 
@@ -19,7 +16,7 @@ function toggleFavDuck(userId, userToken, duckId, callback) {
     const index = favs.findIndex(fav => fav === duckId)
     index > -1 ? favs.splice(index, 1) : favs.push(duckId)
 
-    call('PUT', 'https://skylabcoders.herokuapp.com/api/user/' + userId, { "Content-Type": "application/json", 'Authorization': 'Bearer ' + token }, { favs }, result => {
+    call('PUT', 'https://skylabcoders.herokuapp.com/api/user/' + id, { "Content-Type": "application/json", 'Authorization': 'Bearer ' + token }, { favs }, result => {
       result.error ? callback(new Error(result.error)) : callback(result)
     })
   })

@@ -1,11 +1,11 @@
 const { Component } = React
 const { id, token } = sessionStorage
-const { query } = location
+const { pathname, query, hash } = location
 
 class App extends Component {
 
   state = {
-    view: 'login',
+    view: id && token ? (hash? 'detail' : 'search') : 'login',
     error: undefined,
     ducks: undefined,
     item: undefined,
@@ -15,7 +15,6 @@ class App extends Component {
   }
 
   UNSAFE_componentWillMount() {
-
     if (id && token)
       try {
         retrieveUser(id, token, ({ name }) => { // falta errores
@@ -25,9 +24,16 @@ class App extends Component {
         this.setState({ error: error.message })
       }
 
-    const { state: { query } } = this
+    if (hash) {
+      if(this.state.view !== 'login' && this.state.view !== 'register') {
+        const [, duckId] = hash.split('/duck/')
+        this.handleDetail(duckId)
+      }
+    } else {
+      const { state: { query } } = this
 
-    query ? this.handleSearch(query) : this.initialRandom()
+      query ? this.handleSearch(query) : this.initialRandom()
+    }
   }
 
   handleGoToRegister = () => {
@@ -38,13 +44,15 @@ class App extends Component {
     this.setState({ view: 'login' })
   }
 
-  handleGoToList = () => { debugger
+  handleGoToList = () => {
+    location.hash = ''
     this.setState({ view: 'search' })
-    if(this.state.query) this.handleSearch(this.state.query)
+    if (this.state.query) this.handleSearch(this.state.query)
   }
 
   handleGoToFavs = () => {
-    this.setState({ view: 'favorites' })
+    this.retrieveAndPrintFavs(this.state.ducks)
+    this.setState({ ...this.state, view: 'favorites' })
   }
 
   handleBackFromRegister = () => {
@@ -94,21 +102,26 @@ class App extends Component {
   }
 
   retrieveAndPrintFavs = (ducks) => {
-    const {id, token } = sessionStorage
-    if(id && token) {
+    const { id, token } = sessionStorage
+    if (id && token) {
       retrieveFavDucks(id, token, (error, favs) => {
-        favs.forEach(fav => {
-          fav.icon = true
-          ducks.forEach(duck => {
-            if (duck.id === fav.id) {
-              duck.icon = true
-            }
+        if (error) return this.setState({ error: error.message })
+        try{
+          favs.forEach(fav => {
+            fav.icon = true
+            ducks.forEach(duck => {
+              if (duck.id === fav.id) {
+                duck.icon = true
+              }
+            })
+          });
+          this.setState({
+            ...this.state,
+            favorites: favs
           })
-        })
-        this.setState({
-          ...this.state,
-          favorites: favs
-        })
+        } catch {
+          this.setState({ error: error.message })
+        }
       })
     }
   }
@@ -125,7 +138,6 @@ class App extends Component {
           error: undefined
         })
       }
-
       this.retrieveAndPrintFavs(ducks)
     })
   }
@@ -151,22 +163,29 @@ class App extends Component {
   }
 
   handleDetail = (item) => {
-    const id = item.id //cambiar
-    retrieveDuck(id, (error, duck) => { //falta try catch
-      if (error) {
-        this.setState({ error: error.message })
-      } else {
-        const ducks = [duck]
-        this.retrieveAndPrintFavs(ducks);
-        this.setState({
-          ...this.state,
-          item: duck,
-          view: 'detail'
-        })
-      }
+    try {
+      const idItem = typeof item === 'string' ? item : item.id
+      location.slash = pathname
+      location.hash = `/duck/${idItem}`
 
-    })
+      retrieveDuck(idItem, (error, duck) => {
+        if (error) {
+          this.setState({ error: error.message })
+        } else {
+          const ducks = [duck];
+          this.retrieveAndPrintFavs(ducks);
+          this.setState({
+            ...this.state,
+            item: duck,
+            view: 'detail'
+          })
+        }
+      })
+    } catch (error) {
+      this.setState({ error: error.message })
+    }
   }
+
 
   paintHeartsFav(id) {
     const allDucks = [...this.state.ducks, ...this.state.favorites]
@@ -184,8 +203,10 @@ class App extends Component {
   }
 
   handleFavorite = (idItem) => {
+    const { id, token } = sessionStorage
     this.paintHeartsFav(idItem)
     toggleFavDuck(id, token, idItem, result => {
+
     })
   }
 

@@ -1,12 +1,16 @@
 function retrieveFavDucks(id, token, callback) {
-  if(typeof id !== 'string') throw new TypeError(`${id} is not a string`);
-  if(typeof token !== 'string') throw new TypeError(`${token} is not a string`)
+  validate.string(id)
+  validate.string.notVoid('id', id)
+  validate.string(token)
+  validate.string.notVoid('token', token)
+  validate.function(callback)
 
   call('GET', 'https://skylabcoders.herokuapp.com/api/user/' + id, { "Content-Type": "application/json", 'Authorization': 'Bearer ' + token }, undefined, result => {
 
     if (result.error) return callback(new Error(result.error))
     const { data: { favs = [] } } = result
-    let counter = 0, error
+    let counter = 0,
+      error
 
     if (favs.length) {
       favs.forEach((fav, i) => {
@@ -15,7 +19,7 @@ function retrieveFavDucks(id, token, callback) {
 
           favs[i] = result2
 
-          if(++counter === favs.length) callback(undefined, favs) // this condicional solves to repeat the callback in each iteration
+          if (++counter === favs.length) callback(undefined, favs) // this condicional solves to repeat the callback in each iteration
         })
       })
     } else {
