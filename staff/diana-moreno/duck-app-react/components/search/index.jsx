@@ -6,7 +6,7 @@ function Search({searchDucks, username, onFavs, logout}) {
         <a className='nav__link' onClick={event => onFavs()}>Favorites</a>
         <a className='nav__link' onClick={event => logout()}>Logout</a>
         </div>
-        <p className='header__greeting nav__greeting'>Hello, {username}</p>
+        <p className='header__greeting nav__link'>Hello, {username}</p>
       </div>
       <h1 className='header__title'>Duck Store</h1>
       <form onSubmit={event => {

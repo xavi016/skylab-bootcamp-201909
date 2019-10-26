@@ -2,27 +2,26 @@
   display: flex
   justify-content: space-between
   align-items: center
-  margin: 0 1rem
+  margin: 0 auto
 
   &__links-container
     margin: 0
 
-  &__link, &__greeting
+  &__link
     margin: 0 1rem
-    font-size: 1.3rem
+    font-size: 1rem
     color: white
     cursor: pointer
     margin: 0 1rem
 
 @media only screen and (min-width: $screen-md-min)
+  .nav
+    margin: 0 3rem
 
-.nav
-  margin: 0 3rem
+    &__links-container
+      margin: 0
 
-  &__links-container
-    margin: 0
-
-  &__link &__greeting
-    margin: 0 1rem
-    font-size: 1.6rem
-    margin: 0 1rem
+    &__link
+      margin: 0 1rem
+      font-size: 1.6rem
+      margin: 0 1rem

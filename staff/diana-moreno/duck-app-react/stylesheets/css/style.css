@@ -22,6 +22,8 @@ main, html, #root {
   color: white;
   margin: 0.6rem;
   letter-spacing: 0.2rem;
+  padding-top: 0;
+  margin-top: 0;
 }
 .header__form {
   flex-direction: row !important;
@@ -34,6 +36,7 @@ main, html, #root {
     padding: 1.5rem;
     letter-spacing: 0.8rem;
     margin-top: 0;
+    padding-top: 0;
   }
 }
 .form {
@@ -103,31 +106,32 @@ main, html, #root {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 1rem;
+  margin: 0 auto;
 }
 .nav__links-container {
   margin: 0;
 }
-.nav__link, .nav__greeting {
+.nav__link {
   margin: 0 1rem;
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: white;
   cursor: pointer;
   margin: 0 1rem;
 }
 
-.nav {
-  margin: 0 3rem;
+@media only screen and (min-width: 768px) {
+  .nav {
+    margin: 0 3rem;
+  }
+  .nav__links-container {
+    margin: 0;
+  }
+  .nav__link {
+    margin: 0 1rem;
+    font-size: 1.6rem;
+    margin: 0 1rem;
+  }
 }
-.nav__links-container {
-  margin: 0;
-}
-.nav__link .nav__greeting {
-  margin: 0 1rem;
-  font-size: 1.6rem;
-  margin: 0 1rem;
-}
-
 .view {
   height: 100%;
 }
