@@ -113,7 +113,16 @@ class App extends Component {
     }
 
     handleFav = duckId => {
-        // TODO toggleFavDuck(user-id, user-token, id)
+        try {
+            const { id, token } = sessionStorage
+
+            retrieveDuck(id, token, duckId, (error, duck) => {
+                if (error) this.setState({ error: error.message })
+                else this.setState({ view: 'detail', duck })
+            })
+        } catch (error) {
+            this.setState({ error: error.message })
+        }
     }
 
     render() {
