@@ -54,7 +54,7 @@ const App = (() => {
 
     handleGoToFavs = () => {
       this.retrieveAndPrintFavs(this.state.ducks)
-      this.setState({ ...this.state, view: 'favorites' })
+      this.setState({ ...this.state, error: undefined, view: 'favorites' })
     }
 
     handleBackFromRegister = () => {
@@ -197,7 +197,7 @@ const App = (() => {
       })
     }
 
-    handleFavorite = (idItem) => { debugger
+    handleFavorite = (idItem) => {
       const { id, token } = sessionStorage
       this.paintHeartsFav(idItem)
       toggleFavDuck(id, token, idItem, (error, result) => {
@@ -225,11 +225,11 @@ const App = (() => {
 
       { view === 'search' && <DucksList ducks={ducks} item={handleDetail} error={error} handleFavorite= {handleFavorite} /> }
 
-      { view === 'favorites' && <DucksList ducks={favorites} item={handleDetail} error={error} handleFavorite= {handleFavorite} /> }
+      { view === 'favorites' && !error && <DucksList ducks={favorites} item={handleDetail} error={error} handleFavorite= {handleFavorite} /> }
 
       { view === 'detail' && item && !error && <Detail item={item} onBack={handleGoToList} handleFavorite= {handleFavorite} error={error}/> }
 
-      { view === 'detail' && error && <Feedback message={error} /> }
+      { (view === 'detail' || view === 'favorites') && error && <Feedback message={error} /> }
       </>
     }
   }
