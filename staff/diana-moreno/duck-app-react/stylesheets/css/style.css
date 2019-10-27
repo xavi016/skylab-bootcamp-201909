@@ -111,12 +111,14 @@ main, html, #root {
 .nav__links-container {
   margin: 0;
 }
-.nav__link {
+.nav__elems {
   margin: 0 1rem;
   font-size: 1rem;
   color: white;
-  cursor: pointer;
   margin: 0 1rem;
+}
+.nav__link {
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {
@@ -126,7 +128,7 @@ main, html, #root {
   .nav__links-container {
     margin: 0;
   }
-  .nav__link {
+  .nav__elems {
     margin: 0 1rem;
     font-size: 1.6rem;
     margin: 0 1rem;

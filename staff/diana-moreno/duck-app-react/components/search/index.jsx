@@ -3,10 +3,10 @@ function Search({searchDucks, username, onFavs, logout}) {
     <header className='header view__header'>
       <div className='nav'>
         <div className='nav__links-container'>
-        <a className='nav__link' onClick={event => onFavs()}>Favorites</a>
-        <a className='nav__link' onClick={event => logout()}>Logout</a>
+        <a className='nav__elems nav__link' onClick={event => onFavs()}>Favorites</a>
+        <a className='nav__elems nav__link' onClick={event => logout()}>Logout</a>
         </div>
-        <p className='header__greeting nav__link'>Hello, {username}</p>
+        <p className='nav__elems'>Hello, {username}</p>
       </div>
       <h1 className='header__title'>Duck Store</h1>
       <form onSubmit={event => {
