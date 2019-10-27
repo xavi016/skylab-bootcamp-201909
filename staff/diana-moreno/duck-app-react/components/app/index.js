@@ -180,8 +180,8 @@ const App = (() => {
       }
     }
 
-    paintHeartsFav(id) {
-      const allDucks = [...this.state.ducks, ...this.state.favorites]
+    paintHeartsFav(id) { debugger
+      const allDucks = [...this.state.ducks, ...this.state.favorites, this.state.item]
 
       allDucks.forEach(duck => {
         if (duck.id === id && !duck.isFav) {
@@ -195,7 +195,7 @@ const App = (() => {
       })
     }
 
-    handleFavorite = (idItem) => {
+    handleFavorite = (idItem) => { debugger
       const { id, token } = sessionStorage
       this.paintHeartsFav(idItem)
       toggleFavDuck(id, token, idItem, (error, result) => {
@@ -225,7 +225,7 @@ const App = (() => {
 
       { view === 'favorites' && <DucksList ducks={favorites} item={handleDetail} error={error} handleFavorite= {handleFavorite} /> }
 
-      { view === 'detail' && <Detail item={item} onBack={handleGoToList}/> } <
+      { view === 'detail' && <Detail item={item} onBack={handleGoToList} handleFavorite= {handleFavorite}/> } <
       />
     }
   }
