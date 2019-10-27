@@ -1,4 +1,4 @@
-function Detail({ item, onBack, handleFavorite }) {
+function Detail({ item, onBack, handleFavorite, error }) {
   return (
     <div className='duck duck--litle'>
       <i className={item.isFav

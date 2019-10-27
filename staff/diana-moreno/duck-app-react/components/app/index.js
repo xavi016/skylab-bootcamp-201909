@@ -132,7 +132,8 @@ const App = (() => {
           if (error) {
             this.setState({
               error: error.message,
-              ducks: ''
+              ducks: '',
+              query
             })
           } else {
             if(query === '') {
@@ -142,6 +143,7 @@ const App = (() => {
             }
             this.setState({
               ...this.state,
+              error: undefined,
               ducks: ducks,
               view: 'search',
               query: query
@@ -225,7 +227,9 @@ const App = (() => {
 
       { view === 'favorites' && <DucksList ducks={favorites} item={handleDetail} error={error} handleFavorite= {handleFavorite} /> }
 
-      { view === 'detail' && item && <Detail item={item} onBack={handleGoToList} handleFavorite= {handleFavorite}/> }
+      { view === 'detail' && item && !error && <Detail item={item} onBack={handleGoToList} handleFavorite= {handleFavorite} error={error}/> }
+
+      { view === 'detail' && error && <Feedback message={error} /> }
       </>
     }
   }

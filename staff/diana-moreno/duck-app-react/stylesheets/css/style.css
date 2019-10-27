@@ -340,6 +340,9 @@ main, html, #root {
   font-size: 1.2rem;
   text-align: center;
 }
+.feedback__inDetail {
+  padding-top: 15rem;
+}
 
 .hide {
   display: none;
