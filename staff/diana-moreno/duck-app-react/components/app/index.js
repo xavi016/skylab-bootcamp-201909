@@ -26,16 +26,14 @@ const App = (() => {
           this.setState({ error: error.message })
         }
 
-      if (hash) {
-        if (this.state.view !== 'login' && this.state.view !== 'register') {
+      if (this.state.view !== 'login' && this.state.view !== 'register') {
+        if (hash) {
           const [, duckId] = hash.split('/duck/')
           this.handleDetail(duckId)
+        } else {
+          const { state: { query } } = this
+          query ? this.handleSearch(query) : this.handleSearch('')
         }
-      }
-      if (this.state.view !== 'login' && this.state.view !== 'register') {
-        const { state: { query } } = this
-
-        query ? this.handleSearch(query) : this.handleSearch('')
       }
     }
 
@@ -50,7 +48,8 @@ const App = (() => {
     handleGoToList = () => {
       location.hash = ''
       this.setState({ view: 'search' })
-      if (this.state.query) this.handleSearch(this.state.query)
+      if (location.query) this.handleSearch(location.query)
+      //if (this.state.query) this.handleSearch(this.state.query)
     }
 
     handleGoToFavs = () => {
@@ -180,8 +179,9 @@ const App = (() => {
       }
     }
 
-    paintHeartsFav(id) { debugger
-      const allDucks = [...this.state.ducks, ...this.state.favorites, this.state.item]
+    paintHeartsFav(id) {
+      let allDucks = [...this.state.ducks, ...this.state.favorites]
+      if(this.state.item) allDucks = [...allDucks, this.state.item]
 
       allDucks.forEach(duck => {
         if (duck.id === id && !duck.isFav) {
@@ -225,8 +225,8 @@ const App = (() => {
 
       { view === 'favorites' && <DucksList ducks={favorites} item={handleDetail} error={error} handleFavorite= {handleFavorite} /> }
 
-      { view === 'detail' && <Detail item={item} onBack={handleGoToList} handleFavorite= {handleFavorite}/> } <
-      />
+      { view === 'detail' && item && <Detail item={item} onBack={handleGoToList} handleFavorite= {handleFavorite}/> }
+      </>
     }
   }
 })()

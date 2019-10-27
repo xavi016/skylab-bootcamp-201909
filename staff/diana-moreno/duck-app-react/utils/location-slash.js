@@ -1,7 +1,6 @@
 if (!Object.getOwnPropertyDescriptor(Location.prototype, 'slash'))
   Object.defineProperty(Location.prototype, 'slash', {
     set(path) {
-      debugger
       const { protocol, host } = this
       const url = `${protocol}//${host}${path}`
       history.pushState({ path: url }, '', url)
