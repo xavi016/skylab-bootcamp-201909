@@ -5,7 +5,7 @@ const App = (() => {
     const { pathname, query, hash } = location
 
     return class extends Component {
-        state = { view: id && token ? (hash? 'detail' : 'search') : 'login', error: undefined, query }
+        state = { view: id && token ? (hash? 'detail' : 'search') : 'register', error: undefined, query }
 
         componentDidMount() {
             const { id, token } = sessionStorage
@@ -50,15 +50,11 @@ const App = (() => {
                 registerUser(name, surname, email, password, error => {
                     if (error) return this.setState({ error: error.message })
 
-                    this.setState({ view: 'landing' })
+                    this.setState({ view: 'login' })
                 })
             } catch (error) {
                 this.setState({ error: error.message })
             }
-        }
-
-        handleBackToLanding = () => {
-            this.setState({ view: 'landing', error: undefined })
         }
 
         handleLogin = (email, password) => {
@@ -149,16 +145,15 @@ const App = (() => {
 
         handleLogout = () => {
             sessionStorage.clear()
-            this.handleBackToLanding()
+            this.handleGoToLogin()
         }
 
         render() {
-            const { state: { view, error, ducks, duck, user, query }, handleGoToRegister, handleGoToLogin, handleRegister, handleBackToLanding, handleLogin, handleSearch, handleDetail, handleBackToSearch, handleFav, handleLogout } = this
+            const { state: { view, error, ducks, duck, user, query }, handleGoToRegister, handleGoToLogin, handleRegister, handleLogin, handleSearch, handleDetail, handleBackToSearch, handleFav, handleLogout } = this
 
             return <>
-                {view === 'landing' && <Landing onLogin={handleGoToLogin} onRegister={handleGoToRegister} />}
-                {view === 'register' && <Register onRegister={handleRegister} onBack={handleBackToLanding} error={error} />}
-                {view === 'login' && <Login onLogin={handleLogin} onBack={handleBackToLanding} error={error} />}
+                {view === 'register' && <Register onRegister={handleRegister} onLogin={handleGoToLogin} error={error} />}
+                {view === 'login' && <Login onLogin={handleLogin} onRegister={handleGoToRegister} error={error} />}
                 {view === 'search' && <>
                     <Search onSubmit={handleSearch} results={ducks} error={error} onResultsRender={results => <Results items={results} onItemRender={item => <ResultItem item={item} key={item.id} onClick={handleDetail} onFav={handleFav} />} />} user={user} query={query} onLogout={handleLogout} />
                     {error && <Feedback message={error} />}

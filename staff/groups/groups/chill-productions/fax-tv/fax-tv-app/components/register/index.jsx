@@ -1,25 +1,27 @@
-function Register({ onRegister, onBack, error }) {
-    return <section className="view register _hide">
-        <form onSubmit={function (event) {
+function Register({ onRegister, onLogin, error }) {
+    return <section className="register">
+        <form className="register__form" onSubmit={function (event) {
             event.preventDefault()
 
             const { name: { value: name }, surname: { value: surname }, email: { value: email }, password: { value: password } } = event.target
 
             onRegister(name, surname, email, password)
         }}>
-            <h1 className="register__title">Register</h1>
-            <input className="register__field" type="text" name="name" placeholder="name" />
-            <input className="register__field" type="text" name="surname" placeholder="surname" />
-            <input className="register__field" type="email" name="email" placeholder="e-mail" />
-            <input className="register__field" type="password" name="password" placeholder="password" />
-            <button className="register__submit">📨</button>
-            <a className="register__back" href="" onClick={event => {
+            <input type="text" name="name" placeholder="Name" className="register__input name"/>
+            <input type="text" name="surname" placeholder="Surname" className="register__input surname"/>
+            <input type="email" name="email" placeholder="Email" className="register__input email"/>
+            <input type="password" name="password" placeholder="Password" className="register__input password"/>
+            <button className="register__btn btn-main">Register</button>
+            <p className="register__or">or</p>
+            <a className="register__btn" href="" onClick={event => {
                 event.preventDefault()
 
-                onBack()
-            }}>Go back</a>
+                onLogin()
+            }}>Log In</a>
         </form>
 
         {error && <Feedback message={error} />}
     </section>
 }
+
+

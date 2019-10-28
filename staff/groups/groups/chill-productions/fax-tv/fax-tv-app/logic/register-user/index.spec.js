@@ -1,49 +1,25 @@
-//jasmine.DEFAULT_TIMEOUT_INTERVAL= 10000;
-
-
 describe('logic - register user', () => {
-    let name, surname, email, password, favorites, rating, id, token
+    let name, surname, email, password
 
-    beforeEach(done => {
+    beforeEach(() => {
         name = `name-${Math.random()}`
         surname = `surname-${Math.random()}`
         email = `email-${Math.random()}@mail.com`
         password = `password-${Math.random()}`
     })
 
-    fit('should succeed on correct user register', done => {
-        debugger
-        registerUser(name, surname, email, password, result => {
-            if (result.error) return done(new Error(result.error))
+    it('should succeed on correct credentials', done => {
+        registerUser(name, surname, email, password, (error, response) => {
+            expect(error).toBeUndefined()
+            expect(response).toBeUndefined()
+
             done()
-            call('POST', undefined, 'https://skylabcoders.herokuapp.com/api/auth', { username: email, password }, result => {
-                if (result.error) return done(new Error(result.error))
-                const { data } = result
-                id = data.id
-                token = data.token
-                call('GET', token, `https://skylabcoders.herokuapp.com/api/user/${id}`, undefined, result => {
-                    if (result.error) return done(new Error(result.error))
-debugger
-                    data = result.data
-                    expect(result).toBeDefined()
-                    expect(data.name).toBe(name)
-                    expect(data.surname).toBe(surname)
-                    expect(data.username).toBe(email)
-                    expect(data.password).toBe(password)
-                    expect(data.favorites).toEqual([])
-                    expect(data.rating).toEqual([])
-                    
-                    done()
-                })
-            })
         })
-
     })
-
 
     describe('when user already exists', () => {
         beforeEach(done => {
-            call('POST', undefined, 'https://skylabcoders.herokuapp.com/api/user', { name, surname, email, password, favorites, rating }, result => {
+            call('POST', undefined, 'https://skylabcoders.herokuapp.com/api/user', { name, surname, username: email, password }, result => {
                 if (result.error) done(new Error(result.error))
                 else done()
             })
@@ -113,4 +89,5 @@ debugger
         expect(() => registerUser(name, surname, email, password, null)).toThrowError(TypeError, 'null is not a function')
     })
 
+    // TODO other cases
 })
