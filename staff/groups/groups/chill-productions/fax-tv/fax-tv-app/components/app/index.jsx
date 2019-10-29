@@ -5,7 +5,7 @@ const App = (() => {
     const { pathname, query, hash } = location
 
     return class extends Component {
-        state = { view: id && token ? (hash? 'detail' : 'search') : 'home', error: undefined, query }
+        state = { view: id && token ? (hash? 'detail' : 'home') : 'login', error: undefined, query }
 
         componentDidMount() {
             const { id, token } = sessionStorage
@@ -104,12 +104,12 @@ const App = (() => {
         }
 
         render() {
-            const { state: { view, error, user, query }, handleGoToRegister, handleGoToLogin, handleRegister, handleLogin } = this
+            const { state: { view, error, user }, handleGoToRegister, handleGoToLogin, handleRegister, handleLogin } = this
 
             return <div className="container"><>
                 {view === 'register' && <Register onRegister={handleRegister} onLogin={handleGoToLogin} error={error} />}
                 {view === 'login' && <Login onLogin={handleLogin} onRegister={handleGoToRegister} error={error} />}
-                {view === 'home' && <Home user={user} error={error} />}
+                {view === 'home' && <Home user={user} error={error} onLogin={handleGoToLogin} />}
             </>
             </div>
         }

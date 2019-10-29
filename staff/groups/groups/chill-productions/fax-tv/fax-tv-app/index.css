@@ -17,7 +17,7 @@ body {
   min-height: 100vh;
 }
 
-.register__or, .register, .login__or, .login {
+.results .item, .nav__search, .nav .menu, .register__or, .register, .login__or, .login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,6 +145,99 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+}
+
+.nav {
+  display: grid;
+  grid-template-areas: "name search option";
+  grid-template-columns: 1fr 1fr 60px;
+  grid-gap: 0.5rem;
+  background-color: var(--main-color);
+  padding: 1rem;
+  color: #fff;
+}
+.nav__logo {
+  grid-area: name;
+}
+.nav__logo .company-name {
+  display: flex;
+  justify-content: flex-start;
+  font-weight: bold;
+}
+.nav .menu {
+  grid-area: option;
+  list-style: none;
+  padding: 0;
+}
+.nav .menu__item {
+  cursor: pointer;
+}
+.nav .menu__item .menu_sub {
+  display: none;
+  z-index: 10;
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  background-color: var(--main-color);
+  visibility: hidden;
+  opacity: 0;
+  min-width: 8rem;
+  transition: all 0.5 ease;
+  right: 20px;
+  border: 1px solid #fff;
+}
+.nav .menu__item .menu_sub__item {
+  padding: 5px;
+  border-bottom: 1px solid #fff;
+}
+.nav .menu__item:hover > .menu_sub {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav__search {
+  grid-area: search;
+}
+.nav__search .input__search {
+  border: 0;
+  padding: 0.25rem;
+  border-radius: 5px;
+  background: url(https://www.pinclipart.com/picdir/middle/485-4851736_free-png-search-icon-search-icon-free-download.png) no-repeat scroll 7px 7px;
+  background-size: 14px 14px;
+  background-color: #fff;
+  padding-left: 30px;
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  grid-gap: 0.75rem;
+  list-style: none;
+  padding: 1rem;
+}
+
+.results .item {
+  flex-direction: column;
+  background-color: #FFDD5C;
+  padding: 0.75rem;
+  border-radius: 5px;
+}
+.results .item__poster {
+  width: 100px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px #000000;
+}
+.results .item__title {
+  font-weight: bold;
+  text-align: center;
+}
+.results .item__year {
+  text-align: center;
+  font-size: 0.75rem;
+}
+.results .item:hover {
+  cursor: pointer;
 }
 
 .main {
