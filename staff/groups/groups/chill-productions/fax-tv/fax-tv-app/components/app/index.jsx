@@ -5,7 +5,7 @@ const App = (() => {
     const { pathname, query, hash } = location
 
     return class extends Component {
-        state = { view: id && token ? (hash? 'detail' : 'search') : 'register', error: undefined, query }
+        state = { view: id && token ? (hash? 'detail' : 'search') : 'login', error: undefined, query }
 
         componentDidMount() {
             const { id, token } = sessionStorage
@@ -49,8 +49,27 @@ const App = (() => {
             try {
                 registerUser(name, surname, email, password, error => {
                     if (error) return this.setState({ error: error.message })
-
-                    this.setState({ view: 'login' })
+                    // START AUTOLOGIN     
+                    authenticateUser(email, password, (error, data) => {
+                        if (error) return this.setState({ error: error.message })
+    
+                        try {
+                            const { id, token } = data
+    
+                            sessionStorage.id = id
+                            sessionStorage.token = token
+    
+                            retrieveUser(id, token, (error, user) => {
+                                if (error) return this.setState({ error: error.message })
+    
+                                const { name } = user
+    
+                                this.setState({ view: 'dumb-search', user: name })
+                            })
+                        } catch (error) {
+                            this.setState({ error: error.message })
+                        }
+                    })  // END AUTOLOGIN
                 })
             } catch (error) {
                 this.setState({ error: error.message })
@@ -159,6 +178,7 @@ const App = (() => {
                     {error && <Feedback message={error} />}
                 </>}
                 {view === 'detail' && duck && <Detail item={duck} onBack={handleBackToSearch} onFav={handleFav} />}
+                {view === 'dumb-search' && <DumbSearch/>} 
             </>
         }
     }
