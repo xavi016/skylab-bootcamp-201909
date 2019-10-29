@@ -5,7 +5,7 @@ const App = (() => {
     const { pathname, query, hash } = location
 
     return class extends Component {
-        state = { view: id && token ? (hash? 'detail' : 'search') : 'login', error: undefined, query }
+        state = { view: id && token ? (hash? 'detail' : 'search') : 'home', error: undefined, query }
 
         componentDidMount() {
             const { id, token } = sessionStorage
@@ -49,7 +49,7 @@ const App = (() => {
             try {
                 registerUser(name, surname, email, password, error => {
                     if (error) return this.setState({ error: error.message })
-                    // START AUTOLOGIN     
+                       
                     authenticateUser(email, password, (error, data) => {
                         if (error) return this.setState({ error: error.message })
     
@@ -64,12 +64,12 @@ const App = (() => {
     
                                 const { name } = user
     
-                                this.setState({ view: 'dumb-search', user: name })
+                                this.setState({ view: 'home', user: name })
                             })
                         } catch (error) {
                             this.setState({ error: error.message })
                         }
-                    })  // END AUTOLOGIN
+                    })
                 })
             } catch (error) {
                 this.setState({ error: error.message })
@@ -92,7 +92,7 @@ const App = (() => {
 
                             const { name } = user
 
-                            this.setState({ view: 'search', user: name })
+                            this.setState({ view: 'home', user: name })
                         })
                     } catch (error) {
                         this.setState({ error: error.message })
@@ -103,83 +103,15 @@ const App = (() => {
             }
         }
 
-        handleSearch = query => {
-            try {
-                const { id, token } = sessionStorage
-
-                searchDucks(id, token, query, (error, ducks) => {
-                    if (error) return this.setState({ error: error.message })
-
-                    location.query = query
-
-                    this.setState({ query, error: undefined, ducks })
-                })
-            } catch (error) {
-                this.setState({ error: error.message })
-            }
-        }
-
-        handleDetail = duckId => {
-            try {
-                location.slash = pathname
-                location.hash = `/duck/${duckId}`
-
-                const { id, token } = sessionStorage
-
-                retrieveDuck(id, token, duckId, (error, duck) => {
-                    if (error) return this.setState({ error: error.message })
-
-                    this.setState({ view: 'detail', duck })
-                })
-            } catch (error) {
-                this.setState({ error: error.message })
-            }
-        }
-
-        handleBackToSearch = () => {
-            location.hash = ''
-
-            const { state: { query } } = this
-
-            this.setState({ view: 'search' }) // NOTE in case you needa do things in order you can use this callback from setState (it is called after state changes are effective)
-
-            query && this.handleSearch(query)
-        }
-
-        handleFav = duckId => {
-            try {
-                const { id, token } = sessionStorage
-
-                toggleFavDuck(id, token, duckId, error => {
-                    if (error) return this.setState({ error: error.message })
-
-                    const { state: { view, query, duck } } = this
-
-                    view === 'search' ? this.handleSearch(query) : this.handleDetail(duck.id)
-                })
-            } catch (error) {
-                this.setState({ error: error.message })
-            }
-        }
-
-        handleLogout = () => {
-            sessionStorage.clear()
-            this.handleGoToLogin()
-        }
-
         render() {
-            const { state: { view, error, ducks, duck, user, query }, handleGoToRegister, handleGoToLogin, handleRegister, handleLogin, handleSearch, handleDetail, handleBackToSearch, handleFav, handleLogout } = this
+            const { state: { view, error, user, query }, handleGoToRegister, handleGoToLogin, handleRegister, handleLogin } = this
 
-            return <>
+            return <div className="container"><>
                 {view === 'register' && <Register onRegister={handleRegister} onLogin={handleGoToLogin} error={error} />}
                 {view === 'login' && <Login onLogin={handleLogin} onRegister={handleGoToRegister} error={error} />}
-                {view === 'search' && <>
-                    <Search onSubmit={handleSearch} results={ducks} error={error} onResultsRender={results => <Results items={results} onItemRender={item => <ResultItem item={item} key={item.id} onClick={handleDetail} onFav={handleFav} />} />} user={user} query={query} onLogout={handleLogout} />
-                    {error && <Feedback message={error} />}
-                </>}
-                {view === 'detail' && duck && <Detail item={duck} onBack={handleBackToSearch} onFav={handleFav} />}
-                {view === 'dumb-search' && <DumbSearch/>} 
+                {view === 'home' && <Home user={user} error={error} />}
             </>
+            </div>
         }
     }
 })()
