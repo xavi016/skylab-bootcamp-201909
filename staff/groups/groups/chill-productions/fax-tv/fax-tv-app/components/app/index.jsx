@@ -64,7 +64,7 @@ const App = (() => {
     
                                 const { name } = user
     
-                                this.setState({ view: 'search', user: name })
+                                this.setState({ view: 'dumb-search', user: name })
                             })
                         } catch (error) {
                             this.setState({ error: error.message })
@@ -178,6 +178,7 @@ const App = (() => {
                     {error && <Feedback message={error} />}
                 </>}
                 {view === 'detail' && duck && <Detail item={duck} onBack={handleBackToSearch} onFav={handleFav} />}
+                {view === 'dumb-search' && <DumbSearch/>} 
             </>
         }
     }
