@@ -1,13 +1,11 @@
-function searchMovies(id, token, query, callback) { 
+function discoverMovies(id, token, callback) { 
     validate.string(id)
     validate.string.notVoid('id',id)
     validate.string(token)
     validate.string.notVoid('token',token)
-    validate.string(query)
-    validate.string.notVoid('query',query)
     validate.function(callback)
 
-    const url = 'https://api.themoviedb.org/3/search/movie?api_key=6ce203b8e2cd4e788e8a3222ce05dfc8&query=' + query
+    const url = 'https://api.themoviedb.org/3/discover/movie?api_key=6ce203b8e2cd4e788e8a3222ce05dfc8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
     
     call('GET', undefined, url, undefined, result => {
         if (result.errors) return callback(new Error(result.errors))

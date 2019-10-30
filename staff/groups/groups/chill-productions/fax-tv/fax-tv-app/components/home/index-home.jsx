@@ -1,22 +1,31 @@
 const { Component } = React
 
 class Home extends Component {
-    constructor({user, error}) {
+    constructor({user, error, onLogin}) {
         super()
-
+        
+        this.onLogin = onLogin
         this.user = user
         this.error = error
 
         this.state = { view: 'search', user: user, error: undefined}
     }
-
+    componentDidMount() {
+        this.handleDiscover()
+    }
     handleSearch = (query) => {
-        searchDucks(query, (error, results) => {
+        searchMovies(sessionStorage.id, sessionStorage.token, query, (error, results) => {
                 if (error) return this.setState({ error: error.message })              
-                
                 this.setState({ view: 'results', results: results }) 
             })
     }
+    handleDiscover = () => {
+        discoverMovies(sessionStorage.id, sessionStorage.token, (error, results) => {
+                if (error) return this.setState({ error: error.message })              
+                this.setState({ view: 'results', results: results }) 
+            })
+    }
+    
     handleBackToSearch = () => {
         this.setState({ view: 'search' })
     }
@@ -49,17 +58,16 @@ class Home extends Component {
             this.setState({ error: error.message })
         }
     }
-
     handleLogout = () => {
-        sessionStorage.clear()
-        this.handleGoToLogin()
+        sessionStorage.clear()   
+        this.onLogin()
     }
-    
+        
     render() { 
-        const { state: { view, results, duck },  handleSearch, user, error, handleDetail, handleFav,handleBackToSearch} = this
+        const { state: { view, results, duck },  handleSearch, handleLogout, user, error, handleDetail, handleFav,handleBackToSearch} = this
 
         return <main><> 
-            {<Search user={user} onSearch={handleSearch} error={error} />}  
+            {<Header user={user} onSearch={handleSearch} onLogout={handleLogout} error={error} />}  
             {view === 'results' && <Results items={results} onItemRender={item => <ResultItem item={item} key={item.id} onClick={handleDetail} onFav={handleFav} />} />}
             {view === 'detail' && <Detail item={duck} onBack={handleBackToSearch} />}
         </></main>
