@@ -9,8 +9,7 @@ function discoverMovies(id, token, callback) {
     
     call('GET', undefined, url, undefined, result => {
         if (result.errors) return callback(new Error(result.errors))
-        // callback(undefined, result.results)
-        debugger
+
         call('GET', token, `https://skylabcoders.herokuapp.com/api/user/${id}`, undefined, result2 => {
             if (result2.error) return callback(new Error(result2.error))
 

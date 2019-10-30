@@ -10,7 +10,9 @@ class Home extends Component {
 
         this.state = { view: 'search', user: user, error: undefined}
     }
-
+    componentDidMount() {
+        this.handleDiscover()
+    }
     handleSearch = (query) => {
         searchMovies(sessionStorage.id, sessionStorage.token, query, (error, results) => {
                 if (error) return this.setState({ error: error.message })              
@@ -23,6 +25,7 @@ class Home extends Component {
                 this.setState({ view: 'results', results: results }) 
             })
     }
+    
     handleBackToSearch = () => {
         this.setState({ view: 'search' })
     }
@@ -59,7 +62,7 @@ class Home extends Component {
         sessionStorage.clear()   
         this.onLogin()
     }
-    
+        
     render() { 
         const { state: { view, results, duck },  handleSearch, handleLogout, user, error, handleDetail, handleFav,handleBackToSearch} = this
 
