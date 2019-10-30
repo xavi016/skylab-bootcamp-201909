@@ -29,9 +29,9 @@ class Home extends Component {
     handleBackToSearch = () => {
         this.setState({ view: 'search' })
     }
-    handleDetail = (movie_id) => { debugger
+    handleDetail = (movie_id) => { 
         try { 
-            retrieveMovie(sessionStorage.id, sessionStorage.token, movie_id, (error, _movie) => {debugger
+            retrieveMovie(sessionStorage.id, sessionStorage.token, movie_id, (error, _movie) => {
                 if (error) this.setState({ error: error.message })
                 else this.setState({ view: 'detail', movie: _movie });
             })
@@ -39,9 +39,22 @@ class Home extends Component {
             this.setState({ error: error.message })
         }
     }
+
+    handleDetailTvShow = (tvshow_id) => { 
+        try { 
+            retrieveTvShow(sessionStorage.id, sessionStorage.token, tvshow_id, (error, _tvshow) => {
+                if (error) this.setState({ error: error.message })
+                else this.setState({ view: 'detail-show', tvshow: _tvshow });
+            })
+        } catch (error) {
+            this.setState({ error: error.message })
+        }
+    }
+
+
     handleFav = (id) => {
         try {
-            retrieveUser(sessionStorage.id, sessionStorage.token, (error, data) =>{debugger
+            retrieveUser(sessionStorage.id, sessionStorage.token, (error, data) =>{
                 if (error) this.setState({ error: error.message })
                 else{
                     let favs
@@ -64,12 +77,13 @@ class Home extends Component {
     }
         
     render() { 
-        const { state: { view, results, movie },  handleSearch, handleLogout, user, error, handleDetail, handleFav,handleBackToSearch} = this
+        const { state: { view, results, movie },  handleSearch, handleLogout, user, error, handleDetail, handleFav, handleBackToSearch} = this
 
         return <main><> 
             {<Header user={user} onSearch={handleSearch} onLogout={handleLogout} error={error} />}  
             {view === 'results' && <Results items={results} onItemRender={item => <ResultItem item={item} key={item.id} onClick={handleDetail} onFav={handleFav} />} />}
             {view === 'detail' && <Detail item={movie} onBack={handleBackToSearch} />}
+            {view === 'detail-show' && <DetailTvShow item={tvshow} onBack={handleBackToSearch} />}
 
             {/* <Footer/> */}
         </></main>

@@ -1,5 +1,5 @@
 describe('logic - retrieve movie', () => {
-    let name, surname, email, password, id, token, movie_id = '550'
+    let name, surname, email, password, id, token, movie_id = 550
 
     beforeEach(done => {
         name = `name-${Math.random()}`
@@ -26,39 +26,46 @@ describe('logic - retrieve movie', () => {
     })
 
     it('should succeed on correct movie id', done => {
-        retrieveMovie(id, token, movie_id, (error, duck) => {
+        retrieveMovie(id, token, movie_id, (error, movie) => {
             expect(error).toBeUndefined()
 
-            expect(duck).toBeDefined()
-            expect(duck.id).toBe(movie_id)
+            expect(movie).toBeDefined()
+           
+            expect(typeof movie.id).toBe('number')
+            
+            if(movie.title !== null){
+                expect(movie.title).toBeDefined()
+                expect(typeof movie.title).toBe('string')
+                expect(movie.title.length).toBeGreaterThan(0)
+            }
+            if(movie.poster_path !== null){
+                expect(movie.poster_path).toBeDefined()
+                expect(typeof movie.poster_path).toBe('string')
+                expect(movie.poster_path.length).toBeGreaterThan(0)
+            }
+            if(movie.release_date === 'string'){     
+                let a = movie.release_date    
+                expect(movie.release_date).toBeDefined()
+                expect(typeof movie.release_date).toBe('string')
+                expect(movie.release_date.length).toBeGreaterThan(0)
+            }
+            if(movie.release_date !== null){
+                expect(movie.overview).toBeDefined()
+                expect(typeof movie.overview).toBe('string')
+                expect(movie.overview.length).toBeGreaterThan(0)
+            }
+            if(movie.vote_average !== null){
+                expect(movie.vote_average).toBeDefined()
+                expect(typeof movie.vote_average).toBe('number')
+            }
 
-            expect(duck.title).toBeDefined()
-            expect(typeof duck.title).toBe('string')
-            expect(duck.title.length).toBeGreaterThan(0)
-
-            expect(duck.image).toBeDefined()
-            expect(typeof duck.image).toBe('string')
-            expect(duck.image.length).toBeGreaterThan(0)
-
-            expect(duck.description).toBeDefined()
-            expect(typeof duck.description).toBe('string')
-            expect(duck.description.length).toBeGreaterThan(0)
-
-            expect(duck.link).toBeDefined()
-            expect(typeof duck.link).toBe('string')
-            expect(duck.link.length).toBeGreaterThan(0)
-
-            expect(duck.price).toBeDefined()
-            expect(typeof duck.price).toBe('string')
-            expect(duck.price.length).toBeGreaterThan(0)
-
-            expect(duck.isFav).toBeFalsy()
+            expect(movie.isFav).toBeDefined()
 
             done()
         })
     })
 
-    describe('when fav already exists', () => {
+/*     describe('when fav already exists', () => {
         beforeEach(done => {
             call('PUT', token, `https://skylabcoders.herokuapp.com/api/user/${id}`, { favs: [movie_id] }, result => {
                 result.error ? done(new Error(result.error)) : done()
@@ -66,70 +73,66 @@ describe('logic - retrieve movie', () => {
         })
 
         it('should succeed on correct movie id', done => {
-            retrieveDuck(id, token, movie_id, (error, duck) => {
+            retrieveMovie(id, token, movie_id, (error, movie) => {
                 expect(error).toBeUndefined()
     
-                expect(duck).toBeDefined()
-                expect(duck.id).toBe(movie_id)
+                expect(movie).toBeDefined()
+                expect(movie.id).toBe(movie_id)
     
-                expect(duck.title).toBeDefined()
-                expect(typeof duck.title).toBe('string')
-                expect(duck.title.length).toBeGreaterThan(0)
+                expect(movie.title).toBeDefined()
+                expect(typeof movie.title).toBe('string')
+                expect(movie.title.length).toBeGreaterThan(0)
     
-                expect(duck.image).toBeDefined()
-                expect(typeof duck.image).toBe('string')
-                expect(duck.image.length).toBeGreaterThan(0)
+                expect(movie.image).toBeDefined()
+                expect(typeof movie.image).toBe('string')
+                expect(movie.image.length).toBeGreaterThan(0)
     
-                expect(duck.description).toBeDefined()
-                expect(typeof duck.description).toBe('string')
-                expect(duck.description.length).toBeGreaterThan(0)
+                expect(movie.description).toBeDefined()
+                expect(typeof movie.description).toBe('string')
+                expect(movie.description.length).toBeGreaterThan(0)
     
-                expect(duck.link).toBeDefined()
-                expect(typeof duck.link).toBe('string')
-                expect(duck.link.length).toBeGreaterThan(0)
+                expect(movie.link).toBeDefined()
+                expect(typeof movie.link).toBe('string')
+                expect(movie.link.length).toBeGreaterThan(0)
     
-                expect(duck.price).toBeDefined()
-                expect(typeof duck.price).toBe('string')
-                expect(duck.price.length).toBeGreaterThan(0)
+                expect(movie.price).toBeDefined()
+                expect(typeof movie.price).toBe('string')
+                expect(movie.price.length).toBeGreaterThan(0)
     
-                expect(duck.isFav).toBeTruthy()
+                expect(movie.isFav).toBeTruthy()
     
                 done()
             })
         })
-    })
+    }) */
 
-    it('should fail on incorrect duck id', done => {
-        const wrongmovie_id = '5c3853ABCd1bde8520e66e1b'
+    it('should fail on incorrect movie id', done => {
+        const wrongmovie_id = 123456789
 
-        retrieveDuck(id, token, wrongmovie_id, (error, duck) => {
-            expect(duck).toBeUndefined()
-
-            expect(error).toBeDefined()
-
-            expect(error.message).toBeDefined()
-            expect(typeof error.message).toBe('string')
-            expect(error.message.length).toBeGreaterThan(0)
+        retrieveMovie(id, token, wrongmovie_id, (error, movie) => {
+            
+            expect(error).toBeUndefined()
+            expect(movie).toBeDefined()
+            expect(movie.status_code).toEqual(34)
 
             done()
         })
     })
 
-    it('should fail on incorrect id or expression types', () => {
-        // TODO cases when id and token have values diff from non-empty string
+    it('should fail on incorrect id or expression types', () => {debugger
+ 
+        expect(() => { retrieveMovie(id, token, 'abc') }).toThrowError(TypeError, 'abc is not a number')
+        expect(() => { retrieveMovie(id, token, true) }).toThrowError(TypeError, 'true is not a number')
+        expect(() => { retrieveMovie(id, token, []) }).toThrowError(TypeError, ' is not a number')
+        expect(() => { retrieveMovie(id, token, {}) }).toThrowError(TypeError, '[object Object] is not a number')
+        expect(() => { retrieveMovie(id, token, undefined) }).toThrowError(TypeError, 'undefined is not a number')
+        expect(() => { retrieveMovie(id, token, null) }).toThrowError(TypeError, 'null is not a number') 
 
-        expect(() => { retrieveDuck(id, token, 1) }).toThrowError(TypeError, '1 is not a string')
-        expect(() => { retrieveDuck(id, token, true) }).toThrowError(TypeError, 'true is not a string')
-        expect(() => { retrieveDuck(id, token, []) }).toThrowError(TypeError, ' is not a string')
-        expect(() => { retrieveDuck(id, token, {}) }).toThrowError(TypeError, '[object Object] is not a string')
-        expect(() => { retrieveDuck(id, token, undefined) }).toThrowError(TypeError, 'undefined is not a string')
-        expect(() => { retrieveDuck(id, token, null) }).toThrowError(TypeError, 'null is not a string')
-
-        expect(() => { retrieveDuck(id, token, 'red', 1) }).toThrowError(TypeError, '1 is not a function')
-        expect(() => { retrieveDuck(id, token, 'red', true) }).toThrowError(TypeError, 'true is not a function')
-        expect(() => { retrieveDuck(id, token, 'red', []) }).toThrowError(TypeError, ' is not a function')
-        expect(() => { retrieveDuck(id, token, 'red', {}) }).toThrowError(TypeError, '[object Object] is not a function')
-        expect(() => { retrieveDuck(id, token, 'red', undefined) }).toThrowError(TypeError, 'undefined is not a function')
-        expect(() => { retrieveDuck(id, token, 'red', null) }).toThrowError(TypeError, 'null is not a function')
+        expect(() => { retrieveMovie(id, token, 550, 1) }).toThrowError(TypeError, '1 is not a function')
+        expect(() => { retrieveMovie(id, token, 550, true) }).toThrowError(TypeError, 'true is not a function')
+        expect(() => { retrieveMovie(id, token, 550, []) }).toThrowError(TypeError, ' is not a function')
+        expect(() => { retrieveMovie(id, token, 550, {}) }).toThrowError(TypeError, '[object Object] is not a function')
+        expect(() => { retrieveMovie(id, token, 550, undefined) }).toThrowError(TypeError, 'undefined is not a function')
+        expect(() => { retrieveMovie(id, token, 550, null) }).toThrowError(TypeError, 'null is not a function')
     })
 })
