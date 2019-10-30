@@ -110,6 +110,7 @@ const App = (() => {
                 {view === 'register' && <Register onRegister={handleRegister} onLogin={handleGoToLogin} error={error} />}
                 {view === 'login' && <Login onLogin={handleLogin} onRegister={handleGoToRegister} error={error} />}
                 {view === 'home' && <Home user={user} error={error} onLogin={handleGoToLogin} />}
+                <Footer/>
             </>
             </div>
         }

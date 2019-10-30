@@ -29,11 +29,11 @@ class Home extends Component {
     handleBackToSearch = () => {
         this.setState({ view: 'search' })
     }
-    handleDetail = (id) => {
-        try {
-            retrieveDuck(id, (error, duck) => {
+    handleDetail = (movie_id) => { debugger
+        try { 
+            retrieveMovie(sessionStorage.id, sessionStorage.token, movie_id, (error, _movie) => {debugger
                 if (error) this.setState({ error: error.message })
-                else this.setState({ view: 'detail', duck });
+                else this.setState({ view: 'detail', movie: _movie });
             })
         } catch (error) {
             this.setState({ error: error.message })
@@ -64,12 +64,14 @@ class Home extends Component {
     }
         
     render() { 
-        const { state: { view, results, duck },  handleSearch, handleLogout, user, error, handleDetail, handleFav,handleBackToSearch} = this
+        const { state: { view, results, movie },  handleSearch, handleLogout, user, error, handleDetail, handleFav,handleBackToSearch} = this
 
         return <main><> 
             {<Header user={user} onSearch={handleSearch} onLogout={handleLogout} error={error} />}  
             {view === 'results' && <Results items={results} onItemRender={item => <ResultItem item={item} key={item.id} onClick={handleDetail} onFav={handleFav} />} />}
-            {view === 'detail' && <Detail item={duck} onBack={handleBackToSearch} />}
+            {view === 'detail' && <Detail item={movie} onBack={handleBackToSearch} />}
+
+            {/* <Footer/> */}
         </></main>
     }
 }
