@@ -42,7 +42,6 @@ class Home extends Component {
             })
     }
     handleDiscover = () => {
-        
         discoverMovies(sessionStorage.id, sessionStorage.token, (error, results) => {
                 if (error) return this.setState({ error: error.message })              
                 this.setState({ view: 'results', results: results }) 
@@ -89,12 +88,14 @@ class Home extends Component {
                 if (error) this.setState({ error: error.message })
                 else{
                     let favs
-                    data.fav ? favs = data.fav :  favs = []
+                    data.favorites ? favs = data.favorites :  favs = []
 
-                    favs.includes(id) ? favs = data.fav.filter(a => a !== id) : favs.push(id)
+                    favs.includes(id) ? favs = data.favorites.filter(a => a !== id) : favs.push(id)
                     
-                    toggleFav(data.id, sessionStorage.token, { fav: favs }, (error, result) => {
+                    toggleFav(data.id, sessionStorage.token, { favorites: favs }, (error, result) => {
                         if (error) this.setState({ error: error.message })
+
+                        this.handleDiscover()
                     })
                 }
             })
