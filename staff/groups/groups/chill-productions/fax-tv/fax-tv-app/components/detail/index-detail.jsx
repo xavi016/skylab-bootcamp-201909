@@ -1,4 +1,4 @@
-function Detail({ item: { id, title, overview, poster_path, runtime, release_date, vote_average, isFav }, onClick, onFav }) { debugger
+function Detail({ item: { id, title, overview, poster_path, runtime, release_date, vote_average, isFav }, onBack, onFav }) { debugger
 
     return <div className="details">
                 <h1 className="details__title">{title}<span className="details__year">{release_date}</span></h1>
@@ -17,8 +17,13 @@ function Detail({ item: { id, title, overview, poster_path, runtime, release_dat
                     <ul className="cast">
                         <li className="cast__name">Actor</li>  
                     </ul>
-
                 </div>
+                <br/>
+                <a className="details__back" href="" onClick={event => {
+                event.preventDefault()
+
+                onBack()
+            }}>Back</a>
     </div>
 }
 

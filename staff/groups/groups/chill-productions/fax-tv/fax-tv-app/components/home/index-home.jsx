@@ -27,7 +27,7 @@ class Home extends Component {
     }
     
     handleBackToSearch = () => {
-        this.setState({ view: 'search' })
+        this.setState({ view: 'results' })
     }
     handleDetail = (movie_id) => { 
         try { 

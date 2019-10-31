@@ -17,8 +17,12 @@ function DetailTvShow({ item: { id, name, overview, poster_path, first_air_date,
                     <ul className="cast">
                         <li className="cast__name">Actor</li>  
                     </ul>
-
                 </div>
+                <a className="details__back" href="" onClick={event => {
+                event.preventDefault()
+
+                onBack()
+            }}>Go bacK</a>
     </div>
 }
 
