@@ -82,7 +82,7 @@ class Home extends Component {
     }
 
 
-    handleFav = (id) => {
+    handleFav = (id,type) => {
         try {
             retrieveUser(sessionStorage.id, sessionStorage.token, (error, data) =>{
                 if (error) this.setState({ error: error.message })
@@ -94,8 +94,8 @@ class Home extends Component {
                     
                     toggleFav(data.id, sessionStorage.token, { favorites: favs }, (error, result) => {
                         if (error) this.setState({ error: error.message })
-
-                        this.handleDiscover()
+                        debugger
+                        (type === "detail") ? this.handleDetail(id) : this.handleDiscover()
                     })
                 }
             })
@@ -103,20 +103,27 @@ class Home extends Component {
             this.setState({ error: error.message })
         }
     }
+
+    handleMyFav = () => {
+        debugger
+        favoritesList(sessionStorage.id, sessionStorage.token, (error, results) => {
+                if (error) return this.setState({ error: error.message })              
+                this.setState({ view: 'results', results: results }) 
+            })
+    }
+
     handleLogout = () => {
         sessionStorage.clear()   
         this.onLogin()
     }
         
     render() { 
-        const { state: { view, results, movie, weather },  handleSearch, handleLogout, user, error, handleDetail, handleFav, handleBackToSearch} = this
+        const { state: { view, results, movie, weather },  handleSearch, handleLogout, handleMyFav, user, error, handleDetail, handleFav, handleBackToSearch} = this
         return <main><> 
-            {<Header user={user} weather={weather} onSearch={handleSearch} onLogout={handleLogout} error={error} />}  
+            {<Header user={user} weather={weather} onSearch={handleSearch} onMyFav={handleMyFav} onLogout={handleLogout} error={error} />}  
             {view === 'results' && <Results items={results} onItemRender={item => <ResultItem item={item} key={item.id} onClick={handleDetail} onFav={handleFav} />} />}
-            {view === 'detail' && <Detail item={movie} onBack={handleBackToSearch} />}
+            {view === 'detail' && <Detail item={movie} onBack={handleBackToSearch} onFav={handleFav}/>}
             {view === 'detail-show' && <DetailTvShow item={tvshow} onBack={handleBackToSearch} />}
-
-            {/* <Footer/> */}
         </></main>
     }
 }

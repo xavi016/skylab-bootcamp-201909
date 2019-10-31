@@ -1,4 +1,4 @@
-function Header({ onLogout, onSearch, weather }) {
+function Header({ onLogout, onSearch, weather, onMyFav }) {
 
     return <header className="header">
 
@@ -11,8 +11,14 @@ function Header({ onLogout, onSearch, weather }) {
                     <i className="fas fa-user-circle"></i>
                     <i className="fas fa-ellipsis-v"></i>
                     <ul className="menu_sub">
-                        <li className="menu_sub__item">Favorites</li>
-                        <li className="menu_sub__item">My rating</li>
+                        <li className="menu_sub__item">
+                            <a href="" onClick={event => {
+                                    event.preventDefault()
+                                    onMyFav()
+                                }}>
+                                Favorites
+                            </a>
+                        </li>
                         <li className="menu_sub__item">
                             <a href="" onClick={event => {
                                 event.preventDefault()

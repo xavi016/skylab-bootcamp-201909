@@ -1,5 +1,5 @@
 function Weather(weather){
-    debugger
+    
     return <>
         <div className="weather">
             {weather.weather === "clear-day" && <i className="far fa-sun"></i>}
