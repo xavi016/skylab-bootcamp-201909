@@ -8,22 +8,53 @@ class Home extends Component {
         this.user = user
         this.error = error
 
-        this.state = { view: 'search', user: user, error: undefined}
+        this.state = { view: undefined, user: user, error: undefined}
     }
-    componentDidMount() {
-        this.handleDiscover()
+    componentWillMount() {
+        
+        getWeather(undefined, undefined, (error, result) => {
+            if (result.error) return this.setState({ error: result.error }) 
+            let genre 
+            switch (result.icon) {
+                case "clear-day":
+                    genre = '35'//Comedy
+                    break;
+                case "cloudy":
+                    genre = '18'//Drama
+                    break;
+                case "rain":
+                    genre = '27'//Horror
+                    break;
+                default:
+                    this.handleDiscover()
+                    break;
+            }
+            this.setState({weather : result.icon})
+            
+            if(genre) this.handleDiscoverByGenre(genre)
+        })
+        
     }
-    handleSearch = (query) => {
-        searchMovies(sessionStorage.id, sessionStorage.token, query, (error, results) => {
+    handleSearch = (query, typeMedia) => {
+        searchMovies(sessionStorage.id, sessionStorage.token, query, typeMedia, (error, results) => {
                 if (error) return this.setState({ error: error.message })              
                 this.setState({ view: 'results', results: results }) 
             })
     }
     handleDiscover = () => {
+        
         discoverMovies(sessionStorage.id, sessionStorage.token, (error, results) => {
                 if (error) return this.setState({ error: error.message })              
                 this.setState({ view: 'results', results: results }) 
             })
+    }
+
+    handleDiscoverByGenre = (genre) => {
+        
+        discoverMoviesByGenre(sessionStorage.id, sessionStorage.token, genre, (error, results) => {
+            if (error) return this.setState({ error: error.message })              
+            this.setState({ view: 'results', results: results }) 
+        })
     }
     
     handleBackToSearch = () => {
@@ -77,10 +108,9 @@ class Home extends Component {
     }
         
     render() { 
-        const { state: { view, results, movie },  handleSearch, handleLogout, user, error, handleDetail, handleFav, handleBackToSearch} = this
-
+        const { state: { view, results, movie, weather },  handleSearch, handleLogout, user, error, handleDetail, handleFav, handleBackToSearch} = this
         return <main><> 
-            {<Header user={user} onSearch={handleSearch} onLogout={handleLogout} error={error} />}  
+            {<Header user={user} weather={weather} onSearch={handleSearch} onLogout={handleLogout} error={error} />}  
             {view === 'results' && <Results items={results} onItemRender={item => <ResultItem item={item} key={item.id} onClick={handleDetail} onFav={handleFav} />} />}
             {view === 'detail' && <Detail item={movie} onBack={handleBackToSearch} />}
             {view === 'detail-show' && <DetailTvShow item={tvshow} onBack={handleBackToSearch} />}
