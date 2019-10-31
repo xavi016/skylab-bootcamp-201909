@@ -1,5 +1,5 @@
 function Footer() {
-    return <footer class="footer">
+    return <footer className="footer">
     <p className="footer__copy-right">Copyright © 2019 Chill Productions. All rights reserved.</p>
 </footer>
 }

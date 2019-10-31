@@ -58,21 +58,34 @@ class Home extends Component {
     }
     
     handleBackToSearch = () => {
-        this.setState({ view: 'search' })
+        this.setState({ view: 'results' })
     }
-    handleDetail = (id) => {
-        try {
-            retrieveDuck(id, (error, duck) => {
+    handleDetail = (movie_id) => { 
+        try { 
+            retrieveMovie(sessionStorage.id, sessionStorage.token, movie_id, (error, _movie) => {
                 if (error) this.setState({ error: error.message })
-                else this.setState({ view: 'detail', duck });
+                else this.setState({ view: 'detail', movie: _movie });
             })
         } catch (error) {
             this.setState({ error: error.message })
         }
     }
+
+    handleDetailTvShow = (tvshow_id) => { 
+        try { 
+            retrieveTvShow(sessionStorage.id, sessionStorage.token, tvshow_id, (error, _tvshow) => {
+                if (error) this.setState({ error: error.message })
+                else this.setState({ view: 'detail-show', tvshow: _tvshow });
+            })
+        } catch (error) {
+            this.setState({ error: error.message })
+        }
+    }
+
+
     handleFav = (id) => {
         try {
-            retrieveUser(sessionStorage.id, sessionStorage.token, (error, data) =>{debugger
+            retrieveUser(sessionStorage.id, sessionStorage.token, (error, data) =>{
                 if (error) this.setState({ error: error.message })
                 else{
                     let favs
@@ -95,12 +108,14 @@ class Home extends Component {
     }
         
     render() { 
-        const { state: { view, results, duck, weather },  handleSearch, handleLogout, user, error, handleDetail, handleFav,handleBackToSearch} = this
-        debugger
+        const { state: { view, results, movie, weather },  handleSearch, handleLogout, user, error, handleDetail, handleFav, handleBackToSearch} = this
         return <main><> 
             {<Header user={user} weather={weather} onSearch={handleSearch} onLogout={handleLogout} error={error} />}  
             {view === 'results' && <Results items={results} onItemRender={item => <ResultItem item={item} key={item.id} onClick={handleDetail} onFav={handleFav} />} />}
-            {view === 'detail' && <Detail item={duck} onBack={handleBackToSearch} />}
+            {view === 'detail' && <Detail item={movie} onBack={handleBackToSearch} />}
+            {view === 'detail-show' && <DetailTvShow item={tvshow} onBack={handleBackToSearch} />}
+
+            {/* <Footer/> */}
         </></main>
     }
 }

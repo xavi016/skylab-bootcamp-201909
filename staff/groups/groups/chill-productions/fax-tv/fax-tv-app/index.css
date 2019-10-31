@@ -17,7 +17,7 @@ body {
   min-height: 100vh;
 }
 
-.results .item, .nav__search, .nav .menu, .register__or, .register, .login__or, .login {
+.footer, .details .rating__score, .details .rating, .details__back, .results .item, .nav__search, .nav .menu, .register__or, .register, .login__or, .login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -238,6 +238,189 @@ body {
 }
 .results .item:hover {
   cursor: pointer;
+}
+
+.details {
+  display: grid;
+  grid-template-areas: "title title" "poster rating" "overview overview" "director director" "cast cast";
+  padding: 1rem;
+  gap: 10px;
+  font-size: 0.75rem;
+  min-height: 100vh;
+}
+.details__title {
+  grid-area: title;
+  font-size: 1.5rem;
+}
+.details__year {
+  color: #828282;
+  font-size: 1rem;
+}
+.details__img {
+  grid-area: poster;
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.details__back {
+  background-color: var(--main-color);
+  margin: 10px;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 0.5rem;
+}
+.details .rating {
+  grid-area: rating;
+}
+.details .rating__score {
+  background-color: var(--main-color);
+  margin: 10px;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.details .rating__button {
+  border: 1px solid var(--main-color);
+  padding: 0.25rem 0.5rem;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px #000;
+}
+.details .rating__button:hover {
+  background-color: var(--main-color);
+  color: #fff;
+  cursor: pointer;
+}
+.details .overview {
+  grid-area: overview;
+}
+.details .overview__title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.details__director {
+  grid-area: director;
+}
+.details .details__subtitle {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.details .cast {
+  grid-area: cast;
+}
+
+@media only screen and (min-width: 768px) {
+  .details {
+    grid-template-areas: "title title" "poster rating" "poster overview" "poster director" "poster cast";
+  }
+  .details__img {
+    width: 200px;
+  }
+  .details .rating {
+    justify-content: flex-start;
+  }
+}
+.details {
+  display: grid;
+  grid-template-areas: "title title" "poster rating" "overview overview" "director director" "cast cast";
+  padding: 1rem;
+  gap: 10px;
+  font-size: 0.75rem;
+  min-height: 100vh;
+}
+.details__title {
+  grid-area: title;
+  font-size: 1.5rem;
+}
+.details__year {
+  color: #828282;
+  font-size: 1rem;
+}
+.details__img {
+  grid-area: poster;
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.details__back {
+  background-color: var(--main-color);
+  margin: 10px;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 0.5rem;
+}
+.details .rating {
+  grid-area: rating;
+}
+.details .rating__score {
+  background-color: var(--main-color);
+  margin: 10px;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.details .rating__button {
+  border: 1px solid var(--main-color);
+  padding: 0.25rem 0.5rem;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px #000;
+}
+.details .rating__button:hover {
+  background-color: var(--main-color);
+  color: #fff;
+  cursor: pointer;
+}
+.details .overview {
+  grid-area: overview;
+}
+.details .overview__title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.details__director {
+  grid-area: director;
+}
+.details .details__subtitle {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.details .cast {
+  grid-area: cast;
+}
+
+@media only screen and (min-width: 768px) {
+  .details {
+    grid-template-areas: "title title" "poster rating" "poster overview" "poster director" "poster cast";
+  }
+  .details__img {
+    width: 200px;
+  }
+  .details .rating {
+    justify-content: flex-start;
+  }
+}
+.footer {
+  padding: 1rem 0;
+  background-color: #757eff;
+  padding: 10px 0;
+  color: #fff;
+  font-weight: bold;
+}
+.footer__copy-right {
+  font-size: 10px;
 }
 
 .main {
