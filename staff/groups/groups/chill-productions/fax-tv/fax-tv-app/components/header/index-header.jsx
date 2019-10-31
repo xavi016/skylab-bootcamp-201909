@@ -1,9 +1,10 @@
-function Header({ onLogout, onSearch }) {
+function Header({ onLogout, onSearch, weather }) {
 
     return <header className="header">
 
         <nav className="main__nav nav" role="navigations">
             <div className="nav__logo"><p className="company-name">faxTV</p></div>
+            <Weather weather={weather}/>
             <Search onSubmit={onSearch}/>
             <ul className="nav__menu menu">
                 <li className="menu__item">

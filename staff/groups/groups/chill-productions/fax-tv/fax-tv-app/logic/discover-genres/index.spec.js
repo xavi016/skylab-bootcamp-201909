@@ -25,7 +25,7 @@ describe('logic - discover movies by genre', () => {
         })
     })
 
-    fit('should succeed on correct showing movies', done => {
+    it('should succeed on correct showing movies', done => {
         genre = '14'
         discoverMoviesByGenre(id, token, genre, (error, movies) => {
             expect(error).toBeUndefined()

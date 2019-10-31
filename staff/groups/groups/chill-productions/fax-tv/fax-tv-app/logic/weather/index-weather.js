@@ -4,10 +4,10 @@
  * @return {Object} Json whit the info of API
  */
 
-function weather(latitude, longitude, callback){ 
+function getWeather(latitude, longitude, callback){ 
 
-    if(latitude==undefined) latitude=41.398679
-    if(longitude==undefined) longitude=2.199960
+    if(latitude === undefined) latitude = 41.398679
+    if(longitude === undefined) longitude = 2.199960
 
     validate.function(callback)
 

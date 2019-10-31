@@ -1,7 +1,7 @@
 describe('logic - get weather', () => {
 
     it('should succeed on giving weather', done => {
-        weather(undefined, undefined, (error, result) => {
+        getWeather(undefined, undefined, (error, result) => {
             if (result.error) return done(new Error(result.error))
 
             expect(error).toBeUndefined()
