@@ -13,8 +13,8 @@ class Home extends Component {
     componentDidMount() {
         this.handleDiscover()
     }
-    handleSearch = (query) => {
-        searchMovies(sessionStorage.id, sessionStorage.token, query, (error, results) => {
+    handleSearch = (query, typeMedia) => {
+        searchMovies(sessionStorage.id, sessionStorage.token, query, typeMedia, (error, results) => {
                 if (error) return this.setState({ error: error.message })              
                 this.setState({ view: 'results', results: results }) 
             })

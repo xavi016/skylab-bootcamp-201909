@@ -1,14 +1,20 @@
-function searchMovies(id, token, query, callback) { 
+function searchMovies(id, token, query, typeMedia, callback) { 
     validate.string(id)
     validate.string.notVoid('id',id)
     validate.string(token)
     validate.string.notVoid('token',token)
+    validate.string(typeMedia)
+    validate.string.notVoid('typeMedia',typeMedia)
     validate.string(query)
     validate.string.notVoid('query',query)
     validate.function(callback)
+    let url
+    if (typeMedia === "movies") {
+        url = 'https://api.themoviedb.org/3/search/movie?api_key=6ce203b8e2cd4e788e8a3222ce05dfc8&query=' + query
+    } else {
+        url = 'https://api.themoviedb.org/3/search/tv?api_key=6ce203b8e2cd4e788e8a3222ce05dfc8&language=en-US&page=1&query=' + query
+    }
 
-    const url = 'https://api.themoviedb.org/3/search/movie?api_key=6ce203b8e2cd4e788e8a3222ce05dfc8&query=' + query
-    
     call('GET', undefined, url, undefined, result => {
         if (result.errors) return callback(new Error(result.errors))
 
