@@ -64,7 +64,7 @@ const App = (() => {
     
                                 const { name } = user
     
-                                this.setState({ view: 'home', user: name })
+                                this.setState({ view: 'home', user: name, error: undefined})
                             })
                         } catch (error) {
                             this.setState({ error: error.message })
@@ -92,7 +92,7 @@ const App = (() => {
 
                             const { name } = user
 
-                            this.setState({ view: 'home', user: name })
+                            this.setState({ view: 'home', user: name, error: undefined })
                         })
                     } catch (error) {
                         this.setState({ error: error.message })

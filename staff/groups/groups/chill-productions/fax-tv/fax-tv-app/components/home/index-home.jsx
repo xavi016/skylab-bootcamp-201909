@@ -113,9 +113,9 @@ class Home extends Component {
         
     render() {
         const { state: { view, results, movie, tvshow, weather },  handleSearch, handleLogout, user, error, handleDetail, handleFav, handleBackToSearch} = this 
-        return <main><> 
+        return <main className='main'><> 
             {<Header user={user} weather={weather} onSearch={handleSearch} onLogout={handleLogout} error={error} />}  
-            {view === 'results' && <Results items={results} onItemRender={item => <ResultItem item={item} key={item.id} onClick={handleDetail} onFav={handleFav} />} />}
+            {view === 'results' && <Results items={results} onItemRender={item => <ResultItem item={item} key={item.id} onClick={handleDetail} onFav={handleFav} />} error={error}/>}
             {view === 'detail' && <Detail item={movie} onBack={handleBackToSearch} />}
             {view === 'detail-show' && <DetailTvShow item={tvshow} onBack={handleBackToSearch} />}
         </></main>
