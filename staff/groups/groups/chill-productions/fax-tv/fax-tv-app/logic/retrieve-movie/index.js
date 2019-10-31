@@ -16,7 +16,7 @@ function retrieveMovie(id, token, movie_id, callback) {
             if (result2.error) return callback(new Error(result2.error))
 
             let path = "https://image.tmdb.org/t/p/original/"
-            result.poster_path ? path += result.poster_path : "" 
+            result.poster_path ? path += result.poster_path : path = "./images/no-poster-image.png" 
             result.poster_path = path
 
 
