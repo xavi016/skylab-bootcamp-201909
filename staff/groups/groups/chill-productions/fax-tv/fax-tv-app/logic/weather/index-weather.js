@@ -11,7 +11,7 @@ function getWeather(latitude, longitude, callback){
 
     validate.function(callback)
 
-    const url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/993b369171584baeb14fed074ca98282/${latitude},${longitude}`
+    const url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/1e9b9ef424d5f6d6b566e721f59a45aa/${latitude},${longitude}`
     
     call('GET', undefined, url, undefined, result => { 
         if (result.error) return callback(new Error(result.error))

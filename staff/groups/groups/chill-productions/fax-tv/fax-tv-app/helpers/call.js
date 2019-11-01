@@ -1,4 +1,4 @@
-function call(method, token, url, body, callback) {
+function call(method, token, url, body, callback) {debugger
     let headers = {}
 
     if (token) headers['Authorization'] = `Bearer ${token}`

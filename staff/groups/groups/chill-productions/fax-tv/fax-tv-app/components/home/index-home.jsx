@@ -38,7 +38,7 @@ class Home extends Component {
     }
     handleDiscoverByWeather = () => {
         
-        getWeather(undefined, undefined, (error, result) => {
+          getWeather(undefined, undefined, (error, result) => {
             if (result.error) return this.setState({ error: result.error }) 
             let genre 
             switch (result.icon) {
@@ -59,7 +59,8 @@ class Home extends Component {
             this.setState({weather : result.icon})
             
             if(genre) this.handleDiscoverByGenre(genre)
-        })
+        }) 
+        //this.handleDiscoverByGenre('35')
     }
     
     handleBackToSearch = () => {
