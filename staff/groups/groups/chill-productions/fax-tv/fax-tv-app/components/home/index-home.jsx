@@ -8,9 +8,9 @@ class Home extends Component {
         this.user = user
         this.error = error
 
-        this.state = { view: undefined, user: user, error: undefined}
+        this.state = { view: undefined, user: user, error: undefined, media: 'movies'}
     }
-    componentWillMount() {
+    componentDidMount() {
         
         getWeather(undefined, undefined, (error, result) => {
             if (result.error) return this.setState({ error: result.error }) 
@@ -36,6 +36,7 @@ class Home extends Component {
         
     }
     handleSearch = (query, typeMedia) => {
+        (typeMedia === 'tv-shows') ? this.setState({ media: 'shows'}) : this.setState({ media: 'movies'})
         searchMovies(sessionStorage.id, sessionStorage.token, query, typeMedia, (error, results) => {
                 if (error) return this.setState({ error: error.message })              
                 this.setState({ view: 'results', results: results }) 
@@ -59,7 +60,10 @@ class Home extends Component {
     handleBackToSearch = () => {
         this.setState({ view: 'results' })
     }
-    handleDetail = (movie_id) => { 
+    handleDetail = (id) => { 
+        (this.state.media === 'shows') ? this.handleDetailTvShow(id) : this.handleDetailMovies(id)
+    }
+    handleDetailMovies = (movie_id) => {
         try { 
             retrieveMovie(sessionStorage.id, sessionStorage.token, movie_id, (error, _movie) => {
                 if (error) this.setState({ error: error.message })
@@ -94,7 +98,7 @@ class Home extends Component {
                     
                     toggleFav(data.id, sessionStorage.token, { favorites: favs }, (error, result) => {
                         if (error) this.setState({ error: error.message })
-                        debugger
+                        
                         (type === "detail") ? this.handleDetail(id) : this.handleDiscover()
                     })
                 }
@@ -105,7 +109,6 @@ class Home extends Component {
     }
 
     handleMyFav = () => {
-        debugger
         favoritesList(sessionStorage.id, sessionStorage.token, (error, results) => {
                 if (error) return this.setState({ error: error.message })              
                 this.setState({ view: 'results', results: results }) 
@@ -117,9 +120,10 @@ class Home extends Component {
         this.onLogin()
     }
         
-    render() { 
-        const { state: { view, results, movie, weather },  handleSearch, handleLogout, handleMyFav, user, error, handleDetail, handleFav, handleBackToSearch} = this
-        return <main><> 
+
+    render() {
+        const { state: { view, results, movie, tvshow, weather },  handleSearch, handleLogout, handleMyFav, user, error, handleDetail, handleFav, handleBackToSearch} = this 
+        return <main className='main'><> 
             {<Header user={user} weather={weather} onSearch={handleSearch} onMyFav={handleMyFav} onLogout={handleLogout} error={error} />}  
             {view === 'results' && <Results items={results} onItemRender={item => <ResultItem item={item} key={item.id} onClick={handleDetail} onFav={handleFav} />} />}
             {view === 'detail' && <Detail item={movie} onBack={handleBackToSearch} onFav={handleFav}/>}

@@ -17,7 +17,7 @@ function discoverMovies(id, token, callback) {
 
             result.results.forEach(movie => {
                 let path = "https://image.tmdb.org/t/p/original/"
-                movie.poster_path ? path += movie.poster_path : "" 
+                movie.poster_path ? path += movie.poster_path : path = "./images/no-poster-image.png"  
                 movie.poster_path = path
                 movie.isFav = favorites.includes(movie.id)
             }) 

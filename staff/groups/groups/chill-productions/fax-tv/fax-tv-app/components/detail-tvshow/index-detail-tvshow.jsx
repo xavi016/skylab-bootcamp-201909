@@ -1,7 +1,7 @@
-function DetailTvShow({ item: { id, name, overview, poster_path, first_air_date, vote_average, isFav }, onClick, onFav }) { debugger
+function DetailTvShow({ item: { id, name, overview, poster_path, first_air_date, vote_average, isFav }, onBack, onFav }) { 
 
     return <div className="details">
-                <h1 className="details__title">{name}<span className="details__year">{first_air_date}</span></h1>
+                <h1 className="details__title">{name}<span className="details__year"> ({first_air_date.slice(0, 4)})</span></h1>
                 <img src={poster_path} alt="Film" className="details__img"/>
                 <div className="details__rating rating">
                     <span className="rating__score">{vote_average}</span>

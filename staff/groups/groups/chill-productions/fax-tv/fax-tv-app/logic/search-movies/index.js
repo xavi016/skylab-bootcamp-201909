@@ -16,7 +16,7 @@ function searchMovies(id, token, query, typeMedia, callback) {
     }
 
     call('GET', undefined, url, undefined, result => {
-        if (result.errors) return callback(new Error(result.errors))
+        if (result.error) return callback(new Error(result.error))
 
         call('GET', token, `https://skylabcoders.herokuapp.com/api/user/${id}`, undefined, result2 => {
             if (result2.error) return callback(new Error(result2.error))
@@ -25,7 +25,7 @@ function searchMovies(id, token, query, typeMedia, callback) {
 
             result.results.forEach(movie => {
                 let path = "https://image.tmdb.org/t/p/original/"
-                movie.poster_path ? path += movie.poster_path : "" 
+                movie.poster_path ? path += movie.poster_path : path = "./images/no-poster-image.png" 
                 movie.poster_path = path
                 movie.isFav = favorites.includes(movie.id)
             }) 
