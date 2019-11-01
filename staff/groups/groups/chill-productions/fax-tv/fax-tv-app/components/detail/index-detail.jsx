@@ -1,4 +1,4 @@
-function Detail({ item: { id, title, overview, poster_path, runtime, release_date, vote_average, isFav }, onBack, onFav }) { debugger
+function Detail({ item: { id, title, overview, poster_path, runtime, release_date, vote_average, isFav }, onBack, onFav }) {
 
     return <div className="details">
                 <h1 className="details__title">{title}<span className="details__year">{release_date}</span></h1>
@@ -6,6 +6,12 @@ function Detail({ item: { id, title, overview, poster_path, runtime, release_dat
                 <div className="details__rating rating">
                     <span className="rating__score">{vote_average}</span>
                     <button className="rating__button">Vote</button>
+                    <a href="" className="mov__fav" onClick={event => {
+                        event.preventDefault()
+                        onFav(id, "detail")
+                        }}>
+                    {isFav ? "❤" : "💥"}
+                    </a>
                 </div>
                 <div className="details__overview overview">
                     <h2 className="details__subtitle">Synopsis/Plot</h2>
