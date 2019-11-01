@@ -14,7 +14,7 @@ describe('logic - discover movies by genre', () => {
                     if (result.error) done(new Error(result.error))
                     else {
                         const { data } = result
-                        debugger
+                         
                         id = data.id
                         token = data.token
 

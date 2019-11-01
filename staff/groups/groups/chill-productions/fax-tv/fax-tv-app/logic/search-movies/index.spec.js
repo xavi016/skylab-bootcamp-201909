@@ -27,8 +27,8 @@ describe('logic - search movies', () => {
 
     it('should succeed on correct criteria (query)', done => {
         const query = 'blade runner'
-
-        searchMovies(id, token, query, (error, movies) => {
+        const typeMedia = "movies"
+        searchMovies(id, token, query, typeMedia, (error, movies) => {
             expect(error).toBeUndefined()
 
             expect(movies).toBeDefined()
@@ -48,8 +48,7 @@ describe('logic - search movies', () => {
                     expect(typeof movie.poster_path).toBe('string')
                     expect(movie.poster_path.length).toBeGreaterThan(0)
                 }
-                if(movie.release_date === 'string'){     
-                    let a = movie.release_date    
+                if(movie.release_date === 'string'){        
                     expect(movie.release_date).toBeDefined()
                     expect(typeof movie.release_date).toBe('string')
                     expect(movie.release_date.length).toBeGreaterThan(0)
@@ -71,52 +70,6 @@ describe('logic - search movies', () => {
         })
     })
 
-/*     describe('when fav already exists', () => {
-        beforeEach(done => {
-            call('PUT', token, `https://skylabcoders.herokuapp.com/api/user/${id}`, { favs: [movieId] }, result => {
-                result.error ? done(new Error(result.error)) : done()
-            })
-        })
-
-        it('should succeed on correct criteria (query)', done => {
-            const query = 'blue'
-
-            searchMovies(id, token, query, (error, movies) => {
-                expect(error).toBeUndefined()
-
-                expect(movies).toBeDefined()
-                expect(movies.length).toBeGreaterThan(0)
-
-                const hasFav = movies.some(movie => movie.isFav)
-
-                expect(hasFav).toBeTruthy()
-
-                movies.forEach(function (movie) {
-                    expect(movie).toBeDefined()
-                    expect(typeof movie.id).toBe('string')
-                    expect(movie.id.length).toBeGreaterThan(0)
-
-                    expect(movie.title).toBeDefined()
-                    expect(typeof movie.title).toBe('string')
-                    expect(movie.title.length).toBeGreaterThan(0)
-
-                    expect(movie.image).toBeDefined()
-                    expect(typeof movie.image).toBe('string')
-                    expect(movie.image.length).toBeGreaterThan(0)
-
-                    expect(movie.price).toBeDefined()
-                    expect(typeof movie.price).toBe('string')
-                    expect(movie.price.length).toBeGreaterThan(0)
-
-                    movie.id === movieId ? expect(movie.isFav).toBeTruthy() : expect(movie.isFav).toBeFalsy()
-                })
-
-                done()
-            })
-        })
-    }) */
-
-
     it('should fail on incorrect query or expression types', () => {
         // TODO cases when id and token have values diff from non-empty string
         
@@ -128,11 +81,18 @@ describe('logic - search movies', () => {
         expect(() => { searchMovies(id, token, null) }).toThrowError(TypeError, 'null is not a string')
         expect(() => { searchMovies(id, token, '') }).toThrowError(ContentError, 'query is empty or blank')
 
-        expect(() => { searchMovies(id, token, 'red', 1) }).toThrowError(TypeError, '1 is not a function')
-        expect(() => { searchMovies(id, token, 'red', true) }).toThrowError(TypeError, 'true is not a function')
-        expect(() => { searchMovies(id, token, 'red', []) }).toThrowError(TypeError, ' is not a function')
-        expect(() => { searchMovies(id, token, 'red', {}) }).toThrowError(TypeError, '[object Object] is not a function')
-        expect(() => { searchMovies(id, token, 'red', undefined) }).toThrowError(TypeError, 'undefined is not a function')
-        expect(() => { searchMovies(id, token, 'red', null) }).toThrowError(TypeError, 'null is not a function')
+        expect(() => { searchMovies(id, token, 'red', 1) }).toThrowError(TypeError, '1 is not a string')
+        expect(() => { searchMovies(id, token, 'red', true) }).toThrowError(TypeError, 'true is not a string')
+        expect(() => { searchMovies(id, token, 'red', []) }).toThrowError(TypeError, ' is not a string')
+        expect(() => { searchMovies(id, token, 'red', {}) }).toThrowError(TypeError, '[object Object] is not a string')
+        expect(() => { searchMovies(id, token, 'red', undefined) }).toThrowError(TypeError, 'undefined is not a string')
+        expect(() => { searchMovies(id, token, 'red', null) }).toThrowError(TypeError, 'null is not a string')
+
+        expect(() => { searchMovies(id, token, 'red', 'movies', 1) }).toThrowError(TypeError, '1 is not a function')
+        expect(() => { searchMovies(id, token, 'red', 'movies', true) }).toThrowError(TypeError, 'true is not a function')
+        expect(() => { searchMovies(id, token, 'red', 'movies', []) }).toThrowError(TypeError, ' is not a function')
+        expect(() => { searchMovies(id, token, 'red', 'movies', {}) }).toThrowError(TypeError, '[object Object] is not a function')
+        expect(() => { searchMovies(id, token, 'red', 'movies', undefined) }).toThrowError(TypeError, 'undefined is not a function')
+        expect(() => { searchMovies(id, token, 'red', 'movies', null) }).toThrowError(TypeError, 'null is not a function')
     })
 })

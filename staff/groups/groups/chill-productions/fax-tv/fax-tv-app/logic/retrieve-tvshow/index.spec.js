@@ -119,7 +119,7 @@ describe('logic - retrieve show', () => {
         })
     })
 
-    it('should fail on incorrect id or expression types', () => {debugger
+    it('should fail on incorrect id or expression types', () => { 
  
         expect(() => { retrieveTvShow(id, token, 'abc') }).toThrowError(TypeError, 'abc is not a number')
         expect(() => { retrieveTvShow(id, token, true) }).toThrowError(TypeError, 'true is not a number')

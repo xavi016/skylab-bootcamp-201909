@@ -1,9 +1,15 @@
-function Header({ onLogout, onSearch, weather, onMyFav }) {
+function Header({ onLogout, onSearch, weather, onMyFav , onDiscover}) {
 
     return <header className="header">
 
         <nav className="main__nav nav" role="navigations">
-            <div className="nav__logo"><p className="company-name">faxTV</p></div>
+            <div className="nav__logo">
+            <a href="" className="nav__a" onClick={event => {
+                                    onDiscover()
+                                }}>
+                <p className="company-name">faxTV</p>
+            </a>
+            </div>
             <Weather weather={weather}/>
             <Search onSubmit={onSearch}/>
             <ul className="nav__menu menu">
@@ -12,7 +18,7 @@ function Header({ onLogout, onSearch, weather, onMyFav }) {
                     <i className="fas fa-ellipsis-v"></i>
                     <ul className="menu_sub">
                         <li className="menu_sub__item">
-                            <a href="" onClick={event => {
+                            <a href="" className="link" onClick={event => {
                                     event.preventDefault()
                                     onMyFav()
                                 }}>
@@ -20,7 +26,7 @@ function Header({ onLogout, onSearch, weather, onMyFav }) {
                             </a>
                         </li>
                         <li className="menu_sub__item">
-                            <a href="" onClick={event => {
+                            <a href="" className="link" onClick={event => {
                                 event.preventDefault()
                                 onLogout()
                             }}>

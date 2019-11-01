@@ -3,11 +3,12 @@ function searchMovies(id, token, query, typeMedia, callback) {
     validate.string.notVoid('id',id)
     validate.string(token)
     validate.string.notVoid('token',token)
-    validate.string(typeMedia)
-    validate.string.notVoid('typeMedia',typeMedia)
     validate.string(query)
     validate.string.notVoid('query',query)
+    validate.string(typeMedia)
+    validate.string.notVoid('typeMedia',typeMedia)
     validate.function(callback)
+    
     let url
     if (typeMedia === "movies") {
         url = 'https://api.themoviedb.org/3/search/movie?api_key=6ce203b8e2cd4e788e8a3222ce05dfc8&query=' + query

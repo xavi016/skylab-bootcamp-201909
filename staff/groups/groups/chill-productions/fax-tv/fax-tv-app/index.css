@@ -17,7 +17,7 @@ body {
   min-height: 100vh;
 }
 
-.footer, .details .rating__score, .details .rating, .details__back, .results .item, .nav__search, .nav .menu, .register__or, .register, .login__or, .login {
+.footer, .details .rating__score, .details .rating, .details__back, .results .item, .nav__search, .nav .menu, .nav__weather, .register__or, .register, .login__or, .login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -149,8 +149,7 @@ body {
 
 .nav {
   display: grid;
-  grid-template-areas: "name search option";
-  grid-template-columns: 1fr 1fr 60px;
+  grid-template-areas: "name weather" "search option";
   grid-gap: 0.5rem;
   background-color: var(--main-color);
   padding: 1rem;
@@ -158,11 +157,23 @@ body {
 }
 .nav__logo {
   grid-area: name;
+  font-size: 1.5rem;
+  text-shadow: 0 0 5px #000000;
 }
-.nav__logo .company-name {
+.nav__a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.nav__a .company-name {
   display: flex;
   justify-content: flex-start;
   font-weight: bold;
+}
+.nav__weather {
+  grid-area: weather;
+}
+.nav__weather i {
+  font-size: 1.5rem;
 }
 .nav .menu {
   grid-area: option;
@@ -171,6 +182,9 @@ body {
 }
 .nav .menu__item {
   cursor: pointer;
+}
+.nav .menu__item i {
+  font-size: 1.5rem;
 }
 .nav .menu__item .menu_sub {
   display: none;
@@ -189,6 +203,14 @@ body {
 .nav .menu__item .menu_sub__item {
   padding: 5px;
   border-bottom: 1px solid #fff;
+  color: #fff;
+}
+.nav .menu__item .menu_sub__item .link {
+  color: #fff;
+  text-decoration: none;
+}
+.nav .menu__item .fa-user-circle {
+  margin-right: 1rem;
 }
 .nav .menu__item:hover > .menu_sub {
   display: block;
@@ -196,6 +218,12 @@ body {
   visibility: visible;
 }
 
+@media (min-width: 768px) {
+  .nav {
+    grid-template-areas: "name weather search option";
+    grid-template-columns: 100px 50px 1fr 60px;
+  }
+}
 .nav__search {
   grid-area: search;
 }
@@ -204,6 +232,7 @@ body {
   padding: 0.25rem;
   border-radius: 5px;
   margin-right: 1rem;
+  font-size: 1.3rem;
   cursor: pointer;
 }
 .nav__search .input__search {
@@ -211,9 +240,10 @@ body {
   padding: 0.25rem;
   border-radius: 5px;
   background: url(https://www.pinclipart.com/picdir/middle/485-4851736_free-png-search-icon-search-icon-free-download.png) no-repeat scroll 7px 7px;
-  background-size: 14px 14px;
+  background-size: 20px 20px;
   background-color: #fff;
   padding-left: 30px;
+  font-size: 1.3rem;
 }
 
 .results {
@@ -314,97 +344,12 @@ body {
   background-color: var(--main-color);
   margin: 10px;
   color: #fff;
-  width: 30px;
+  width: 150px;
   height: 30px;
   font-weight: bold;
   border-radius: 5px;
-  font-size: 0.5rem;
-}
-.details .rating {
-  grid-area: rating;
-}
-.details .rating__score {
-  background-color: var(--main-color);
-  margin: 10px;
-  color: #fff;
-  width: 30px;
-  height: 30px;
-  font-weight: bold;
-  border-radius: 5px;
-}
-.details .rating__button {
-  border: 1px solid var(--main-color);
-  padding: 0.25rem 0.5rem;
-  height: 30px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 0px 2px #000;
-}
-.details .rating__button:hover {
-  background-color: var(--main-color);
-  color: #fff;
-  cursor: pointer;
-}
-.details .overview {
-  grid-area: overview;
-}
-.details .overview__title {
   font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-.details__director {
-  grid-area: director;
-}
-.details .details__subtitle {
-  font-size: 1rem;
-  font-weight: bold;
-}
-.details .cast {
-  grid-area: cast;
-}
-
-@media only screen and (min-width: 768px) {
-  .details {
-    grid-template-areas: "title title" "poster rating" "poster overview" "poster director" "poster cast";
-  }
-  .details__img {
-    width: 200px;
-  }
-  .details .rating {
-    justify-content: flex-start;
-  }
-}
-.details {
-  display: grid;
-  grid-template-areas: "title title" "poster rating" "overview overview" "director director" "cast cast";
-  padding: 1rem;
-  gap: 10px;
-  font-size: 0.75rem;
-  min-height: 100vh;
-}
-.details__title {
-  grid-area: title;
-  font-size: 1.5rem;
-}
-.details__year {
-  color: #828282;
-  font-size: 1rem;
-}
-.details__img {
-  grid-area: poster;
-  width: 100px;
-  margin: 0 auto;
-  border-radius: 5px;
-}
-.details__back {
-  background-color: var(--main-color);
-  margin: 10px;
-  color: #fff;
-  width: 30px;
-  height: 30px;
-  font-weight: bold;
-  border-radius: 5px;
-  font-size: 0.5rem;
+  text-decoration: none;
 }
 .details .rating {
   grid-area: rating;

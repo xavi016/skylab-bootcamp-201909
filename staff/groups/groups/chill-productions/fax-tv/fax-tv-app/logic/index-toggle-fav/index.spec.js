@@ -25,7 +25,7 @@ describe('logic - Toggle Favorite', () => {
                             let favs = result.data.favorites
                             favs.push(movieId)
                             toggleFav(id, token, { favorites: favs }, (error, result) => {
-                                debugger
+                                 
                                 if (result.error) return done(new Error(result.error))
                                 
                                 done()

@@ -119,7 +119,7 @@ describe('logic - retrieve movie', () => {
         })
     })
 
-    it('should fail on incorrect id or expression types', () => {debugger
+    it('should fail on incorrect id or expression types', () => { 
  
         expect(() => { retrieveMovie(id, token, 'abc') }).toThrowError(TypeError, 'abc is not a number')
         expect(() => { retrieveMovie(id, token, true) }).toThrowError(TypeError, 'true is not a number')

@@ -1,5 +1,5 @@
 function discoverMoviesByGenre(id, token, genre, callback) { 
-    debugger
+     
     validate.string(id)
     validate.string.notVoid('id',id)
     validate.string(genre)
