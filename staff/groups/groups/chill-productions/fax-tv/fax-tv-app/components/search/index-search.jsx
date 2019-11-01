@@ -8,7 +8,7 @@ function Search({ onSubmit, query, typeMedia }){
                     
                     onSubmit(query, typeMedia)
                  }}> 
-                    <select name="typeMedia">
+                    <select name="typeMedia" className="input__select">
                         <option value ="movies">Movies</option>
                         <option value ="tv-shows">Tv Shows</option>
                     </select>
