@@ -1,5 +1,8 @@
 # MOVIE-LAB
 
+![](images/logo.png
+)
+
 ## Introduction:
 
 This application allows searches through [The Movie DB] (https://www.themoviedb.org/).
@@ -42,3 +45,9 @@ The application is developed with [React] (https://reactjs.org). The design has 
 ### Code Coverage
 
 ![Code Coverage](images/coverage.png)
+
+### Screenshots
+
+![Screenshots Login](images/login.png)
+![Screenshots Register](images/register.png)
+![Screenshots Home](images/home.png)
