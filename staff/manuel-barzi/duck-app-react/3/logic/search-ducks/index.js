@@ -7,24 +7,22 @@ function searchDucks(id, token, query, callback) {
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
 
     call('GET', undefined, query ? 'https://duckling-api.herokuapp.com/api/search?q=' + query : 'https://duckling-api.herokuapp.com/api/search', undefined, result => {
-        if (result.error)
-            callback(new Error(result.error))
-        else {
-            call('GET', token, `https://skylabcoders.herokuapp.com/api/user/${id}`, undefined, result2 => {
-                if (result2.error) return callback(new Error(result2.error))
+        if (result.error) return callback(new Error(result.error))
 
-                const { data: { favs = [] } } = result2
+        call('GET', token, `https://skylabcoders.herokuapp.com/api/user/${id}`, undefined, result2 => {
+            if (result2.error) return callback(new Error(result2.error))
 
-                result.map(duck => { // normalize image url to image
-                    duck.image = duck.imageUrl
+            const { data: { favs = [] } } = result2
 
-                    delete duck.imageUrl
+            result.map(duck => { // normalize image url to image
+                duck.image = duck.imageUrl
 
-                    duck.isFav = favs.includes(duck.id)
-                })
+                delete duck.imageUrl
 
-                callback(undefined, result)
+                duck.isFav = favs.includes(duck.id)
             })
-        }
+
+            callback(undefined, result)
+        })
     })
 }
