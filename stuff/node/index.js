@@ -4,7 +4,8 @@ const HJSON = require('hybrid-json')
 
 const { argv: [, , name] } = process
 
-//console.log(JSON.parse(`{"name": '${name}'}`))
-console.log(HJSON.parse(`{"name": '${name}'}`))
+//console.log(JSON.parse(`{"name": "${name}""}`)) // OK
+//console.log(JSON.parse(`{"name": '${name}'}`)) // KO cannot parse a json with simple quotes
+console.log(HJSON.parse(`{"name": '${name}'}`)) // OK now yes
 
 
