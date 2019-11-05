@@ -4,12 +4,10 @@ const fs = require('fs')
 const { argv: [, , port, pathFile] } = process
 
 const server = http.createServer((req, res) => {
-    let readStream = fs.createReadStream(pathFile);
-    readStream.on('open', () => {
-        readStream.pipe(res)
-    })
+    fs.createReadStream(pathFile).pipe(res)
 })
 server.listen(port)
+
 /*
 //Learnyounode proposal
 
