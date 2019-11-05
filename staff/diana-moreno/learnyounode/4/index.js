@@ -1,5 +1,3 @@
-//console.log(process.argv)
-
 const fs = require('fs')
 const {argv:[,,path]}= process
 
