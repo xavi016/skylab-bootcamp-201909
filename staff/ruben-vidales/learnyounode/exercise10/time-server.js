@@ -4,16 +4,6 @@ const strftime = require('strftime')
 const [, , port] = process.argv
 
 const server = net.createServer((socket) => {
-    console.log('client connected');
-    socket.on('data', (data) => {
-        console.log(data)
-    })
-    socket.on('end', () => {
-        console.log('client disconnected')
-        //server.close(port)
-
-    });
-
     //With Date object (issues with zeros in days, months, hours and minutes)
     // const date = new Date()
     // socket.write(date.getFullYear()+'-'+(date.getMonth() + 1)+
@@ -21,7 +11,6 @@ const server = net.createServer((socket) => {
 
     const timeStr = strftime('%Y-%m-%d %H:%M\n')
     socket.end(timeStr)
-    socket.pipe(socket)
 })
 server.listen(port)
 
