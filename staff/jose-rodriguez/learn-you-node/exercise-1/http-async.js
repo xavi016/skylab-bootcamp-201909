@@ -4,6 +4,7 @@ let result = []
 let index = 0
 
 http.get(url1, response => {
+    debugger
     response.on('error', error => { throw error })
     response.pipe(bl((error, data) => {
         if (error) throw error
