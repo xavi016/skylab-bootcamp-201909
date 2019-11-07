@@ -1,36 +1,22 @@
-const http = require('http'), bl = require('bl'), { argv: [, , url1, url2, url3] } = process
+const http = require('http')
+const { argv: [,,...urls] } = process
 
-let result = []
-let index = 0
+let results = []
+let counter = 0
 
-http.get(url1, response => {
-    debugger
-    response.on('error', error => { throw error })
-    response.pipe(bl((error, data) => {
-        if (error) throw error
-        result[0] = data.toString()
-        index++
-        if (index === 3) console.log(result)
-    }))
+urls.forEach((url, index) => {
+    const request = http.get(url, response => {
+        response.setEncoding('utf8')
+        response.on('error', error => { throw error })
+
+        let content = ''
+        response.on('data', chunk => content += chunk)
+        response.on('end', () => {
+            results[index] = content
+            ++counter === urls.length && results.forEach(result => console.log(result))
+        })
+    })
+    request.on('error', error => { throw error })
 })
 
-http.get(url2, response => {
-    response.on('error', error => { throw error })
-    response.pipe(bl((error, data) => {
-             if (error) throw error
-             result[1] = data.toString()
-             index++
-             if (index === 3) console.log(result)
-         }))
-})
 
-http.get(url3, response => {
-    response.on('error', error => { throw error })
-    response.pipe(bl((error, data) => {
-        if (error) throw error
-        result[2] = data.toString()
-        index++
-        if (index === 3) console.log(result)
-    }))
-
-})
