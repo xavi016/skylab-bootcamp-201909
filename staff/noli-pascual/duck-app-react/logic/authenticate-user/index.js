@@ -1,4 +1,4 @@
-function authenticateUser(email, password, callback) {debugger
+function authenticateUser(email, password, callback) {
     if (typeof email !== 'string') throw new TypeError(email + ' is not a string')
     if (!email.trim().length) throw new ContentError('e-mail is empty or blank')
     if (typeof password !== 'string') throw new TypeError(password + ' is not a string')

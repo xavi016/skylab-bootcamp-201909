@@ -7,8 +7,8 @@ const { id, token } = sessionStorage
 class App extends Component {
     state = { view: id && token ? 'search' : 'landing', error: undefined, query }
 
-    componentWillMount() {debugger
-        if (id && token)
+    componentWillMount() {
+        if (id && token) {
             try {
                 retrieveUser(id, token, (error, user) => {
                     if (error) this.setState({ error: error.message })
@@ -22,9 +22,10 @@ class App extends Component {
                 this.setState({ error: error.message })
             }
 
-        const { state: { query } } = this
+            const { state: { query } } = this
 
-        query && this.handleSearch(query)
+            query && this.handleSearch(query)
+        }
     }
 
     handleGoToRegister = () => {
@@ -78,11 +79,9 @@ class App extends Component {
         }
     }
 
-    handleSearch = query => {
+    handleSearch = (query) => {
         try {
-            const { id, token } = sessionStorage
-
-            searchDucks(id, token, query, (error, ducks) => {
+            searchDucks(query, (error, ducks) => {
                 if (error) this.setState({ error: error.message })
                 else {
                     location.query = query
@@ -95,11 +94,9 @@ class App extends Component {
         }
     }
 
-    handleDetail = duckId => {
+    handleDetail = (id) => {
         try {
-            const { id, token } = sessionStorage
-
-            retrieveDuck(id, token, duckId, (error, duck) => {
+            retrieveDuck(id, (error, duck) => {
                 if (error) this.setState({ error: error.message })
                 else this.setState({ view: 'detail', duck })
             })
@@ -112,7 +109,7 @@ class App extends Component {
         this.setState({ view: 'search' })
     }
 
-    handleFav = duckId => {
+    handleFav = (id) => {
         // TODO toggleFavDuck(user-id, user-token, id)
     }
 
@@ -131,3 +128,5 @@ class App extends Component {
         </>
     }
 }
+
+ReactDOM.render(<App />, document.getElementById('root'))
