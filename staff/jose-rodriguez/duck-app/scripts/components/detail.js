@@ -1,51 +1,37 @@
-function Detail (container){
-    Component.call(this,container);
-    this.container.innerHTML = "";
-}
+class Detail extends Component {
+    constructor(container) {
+        super(container)
+    }
 
-Detail.extend(Component);
+    set onBack(expression) {
+        const link = this.container.getElementsByTagName('a')[1]
 
-Detail.prototype.render = function(duck){
-    document.getElementsByClassName("results")[0].style.display = 'none';
-    document.getElementsByClassName("search").style.display = 'none';
-    document.getElementsByClassName("details")[0].style.display = 'block';
+        link.addEventListener('click', event =>{
+            event.preventDefault()
 
-    var article = document.createElement('article');
-    details.append(article)
+            expression()
+        })
+    }
+    
+    render(item) {
+        const title = this.container.getElementsByClassName('detail__title')[0]
+        title.innerText = item.title
+    
+        const image = this.container.getElementsByClassName('detail__image')[0]
+        image.src = item.imageUrl
+    
+        const description = this.container.getElementsByClassName('detail__description')[0]
+        description.innerText = item.description
+    
+        const store = this.container.getElementsByClassName('detail__store')[0]
+        store.href = item.link
+    
+        const price = this.container.getElementsByClassName('detail__price')[0]
+        price.innerText = item.price
+    
+        const back = this.container.getElementsByClassName('detail__back')[0]
+        back.addEventListener('click', this.onBack)
 
-    var img = document.createElement('img');
-    img.src = duck.imageUrl;
-    img.id = "img__detail";
-
-    var title = document.createElement('h3');
-    title.innerHTML = duck.title;
-    title.className = "detail__title";
-
-    var description = document.createElement('p');
-    description.innerHTML = duck.description;
-
-    var container = document.createElement('div');
-    container.className = "container";
-
-    var showOps = document.createElement('div');
-    showOps.className = "show__options";
-
-    var price = document.createElement('div');
-    price.className = "price__detail";
-    price.innerHTML = duck.price;
-
-    var back = document.createElement('div')
-    back.className = "back__button";
-    back.innerHTML = "Go back";
-    back.addEventListener('click', function () {
-        document.getElementById("results").style.display = 'block';
-        document.getElementById("searching").style.display = 'block';
-        document.getElementById("details").style.display = 'none';
-    })
-
-    showOps.append(description, price, back);
-    container.append(img, showOps);
-    article.append(container, showOps);
-    this.container.append(article)
-
+        this.show()
+    }
 }

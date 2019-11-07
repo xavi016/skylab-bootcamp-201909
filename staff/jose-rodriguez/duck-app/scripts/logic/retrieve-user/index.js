@@ -3,6 +3,9 @@ function retrieveUser(id,token, callback) {
     if (typeof token !== 'string') throw new TypeError(token + ' is not a string')
     // if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
 
-    request('GET', 'https://skylabcoders.herokuapp.com/api/user/'+id,{"token":token}, callback)
+    call('GET', 'https://skylabcoders.herokuapp.com/api/user/'+id,{"token":token}, result =>{
+        result.error ? callback(new Error(result.error), email) : callback();
+
+    })
 
 }

@@ -3,7 +3,7 @@ function authenticateUser(email, password, callback) {
     if (typeof password !== 'string') throw new TypeError(password + ' is not a string')
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
 
-    request('POST', 'https://skylabcoders.herokuapp.com/api/auth', { username: email, password }, result => {
+    call('POST',undefined, 'https://skylabcoders.herokuapp.com/api/auth', { username: email, password }, result => {
         if (result.error)
             callback(new Error(result.error),email)
         else {

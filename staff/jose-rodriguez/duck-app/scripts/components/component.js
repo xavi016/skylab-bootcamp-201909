@@ -1,15 +1,23 @@
-function Component (container) {
-    this.__container__ = container;
-}
-
-Object.defineProperty(Component.prototype, 'container', {
-    get: function() {
-        return this.__container__;
+class Component {
+    constructor(container) {
+        this.__container__ = container
     }
-});
 
-Component.prototype.add = function(child) {
-    if (!(child instanceof Component)) throw TypeError(child + ' is not a Component');
+    get container() {
+        return this.__container__
+    }
 
-    this.container.append(child.container);
-};
+    add(child) {
+        if (!(child instanceof Component)) throw TypeError(child + ' is not a Component')
+    
+        this.container.append(child.container)
+    }
+    
+    show() {
+        this.container.classList.remove('hide')
+    }
+    
+    hide() {
+        this.container.classList.add('hide')
+    }
+}

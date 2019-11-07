@@ -1,87 +1,110 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Duck App</title>
     <link rel="stylesheet" href="style/index.css">
-    <script src="https://kit.fontawesome.com/80c46885ed.js"></script>
-    <title>SPA duck-app</title>
+
 </head>
 
-<body class="body__content">
-    <main class="main__content">
-        <h1 class="title">DUCKY APP STORE</h1>
-        <section class="landing _hide">
-            <div class="home">
-                <p class="home__welcome">Welcome to Ducky Store! </p>
-                <div class="home__options">
-                    <a href="" class="home__register">Sign Up</a>
-                    <a href="" class="home__login">Sign In</a>
-                </div>
-            </div>
+<body>
+    <section class="view landing">
+        <h1 class="landing__title">Welcome to Duck App 🐥</h1>
+        <p class="landing__options">Please, proceed to <a href="">Register</a> or <a href="">Login</a>.</p>
+    </section>
+
+    <section class="view register hide">
+        <form>
+            <h1 class="register__title">Register</h1>
+            <input class="register__field" type="text" name="name" placeholder="name">
+            <input class="register__field" type="text" name="surname" placeholder="surname">
+            <input class="register__field" type="email" name="email" placeholder="e-mail">
+            <input class="register__field" type="password" name="password" placeholder="password">
+            <button class="register__submit">📨</button>
+            <a class="register__back" href="">Go back</a>
+        </form>
+
+        <section class="feedback hide">
+            <span class="feedback__icon">🤡</span>
+            <p class="feedback__message">Come with me...</p>
+            <span class="feedback__icon">🎈</span>
         </section>
-        <section class="login _hide">
-            <form class="form">
-                <input type="text" class="form__email" name="email" placeholder="e-mail">
-                <input type="password" class="form__password" name="password" placeholder="password">
-                <input type="submit" class="form__submit" name="login" value="Sign In!">
-                <div> <i class="fas fa-backward"></i></div>
-            </form>
+    </section>
+
+    <section class="view login hide">
+        <form>
+            <h1 class="login__title">Login</h1>
+            <input class="login__field" type="email" name="email" placeholder="e-mail">
+            <input class="login__field" type="password" name="password" placeholder="password">
+            <button class="login__submit">🗝</button>
+            <a class="login__back" href="">Go back</a>
+        </form>
+
+        <section class="feedback hide">
+            <span class="feedback__icon">🤡</span>
+            <p class="feedback__message">Come with me...</p>
+            <span class="feedback__icon">🎈</span>
         </section>
-        <section class="register _hide">
-            <form class="form">
-                <input type="text" class="form__name" name="name" placeholder="name">
-                <input type="text" class="form__surname" name="surname" placeholder="surname">
-                <input type="text" class="form__email" name="email" placeholder="e-mail">
-                <input type="password" class="form__password" name="password" placeholder="password">
-                <input type="submit" class="form__submit" name="login" value="Sign Up!">
-                <div> <i class="fas fa-backward"></i></div>
-            </form>
-        </section>
-        <section class="feedback _hide">
-            <p class="feedback__message"></p>
-        </section>
-        <section class="search _hide">
-            <form class="navigation">
-                <input class="navigation__input" type="text" placeholder="Search..." name="q" autofocus>
-                <span>
-                    <i class="fas fa-search"></i>
-                </span>
-            </form>
-        </section>
-        <section class="results _hide">
-            <div class="results__content _hide">
-            
-            </div>
+    </section>
+
+    <section class="view search hide">
+        <h1 class="search__title">Search</h1>
+
+        <form>
+            <span class="search__icon">🐣</span>
+            <input class="search__criteria" type="text" name="query" placeholder="criteria">
+            <button class="search__submit">🔍</button>
+        </form>
+
+        <section class="feedback hide">
+            <span class="feedback__icon">🤡</span>
+            <p class="feedback__message">Come with me...</p>
+            <span class="feedback__icon">🎈</span>
         </section>
 
-        <section id="details" class="details _hide">
-        </section>
-    </main>
-    <footer class="footer footer__information">
-        <p class="information__text">@Jose Rodríguez</p>
+        <ul class="results">
+        </ul>
 
-    </footer>
+    </section>
+
+    <section class="view detail hide">
+        <h2 class="detail__title">Duck X</h2>
+        <img class="detail__image" src="https://fakeimg.pl/500x300/?text=Hello">
+        <p class="detail__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate neque omnis
+            sunt dolor repellat incidunt voluptates odio eos consequatur corrupti. Accusantium porro minima molestias
+            voluptatem dolor nobis! Perspiciatis, vero maiores!</p>
+        <a class="detail__store" href="">Go to store</a>
+        <span class="detail__price">10€</span>
+        <a class="detail__back" href="">Go back</a>
+    </section>
+
+    <section class="global-feedback feedback hide">
+        <span class="feedback__icon">🤡</span>
+        <p class="feedback__message">Come with me...</p>
+        <span class="feedback__icon">🎈</span>
+    </section>
+
     <script src="scripts/utils/array-shuffle.js"></script>
     <script src="scripts/utils/fetch.js"></script>
     <script src="scripts/utils/function-extend.js"></script>
-    <script src="scripts/helper/request.js"></script>
-    <script src="scripts/logic/search-duck/index.js"></script>
-    <script src="scripts/logic/get-duck/index.js"></script>
-    <script src="scripts/logic/authenticate-user/index.js"></script>
+    <script src="scripts/utils/errors.js"></script>
+    <script src="scripts/logic/retrieve-duck/index.js"></script>
+    <script src="scripts/logic/search-ducks/index.js"></script>
     <script src="scripts/logic/register-user/index.js"></script>
-    <script src="scripts/logic/retrieve-user/index.js"></script>
+    <script src="scripts/logic/authenticate-user/index.js"></script>
+    <script src="scripts/helpers/call.js"></script>
     <script src="scripts/components/component.js"></script>
-    <script src="scripts/components/detail.js"></script>
-    <script src="scripts/components/item.js"></script>
-    <script src="scripts/components/item.js"></script>
-    <script src="scripts/components/list.js"></script>
     <script src="scripts/components/search.js"></script>
+    <script src="scripts/components/results.js"></script>
+    <script src="scripts/components/result-item.js"></script>
+    <script src="scripts/components/detail.js"></script>
     <script src="scripts/components/feedback.js"></script>
-    <script src="scripts/components/login.js"></script>
+    <script src="scripts/components/landing.js"></script>
     <script src="scripts/components/register.js"></script>
+    <script src="scripts/components/login.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 

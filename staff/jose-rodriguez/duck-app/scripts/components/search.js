@@ -1,14 +1,23 @@
-function Search (container) {
-    Component.call(this,container);
-}
+class Search extends Component {
+    constructor(container) {
+        super(container)
 
-Search.extend(Component);
+        this.__feedback__ = new Feedback(container.getElementsByTagName('section')[0])
+    }
 
-Search.prototype.onSubmit = function (expression) {
-    this.container.addEventListener('submit', function (e){
-        e.preventDefault();
-        var query = this.q.value;
+    get feedback() {
+        return this.__feedback__
+    }
 
-        expression(query);
-    })
+    set onSubmit(expression) {
+        const form = this.container.getElementsByTagName('form')[0]
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault()
+
+            const query = this.query.value
+
+            expression(query)
+        })
+    }
 }

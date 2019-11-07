@@ -1,17 +1,48 @@
-function Register (container) {
-    Component.call(this,container);
-}
+class Register extends Component {
+    constructor(container) {
+        super(container)
 
-Register.extend(Component);
+        this.__feedback__ = new Feedback(container.getElementsByTagName('section')[0])
+    }
 
-Register.prototype.onSignUp = function(expression){
-    this.container.addEventListener('submit', function(e){
-        e.preventDefault();
-        var name = this.name.value;
-        var surname = this.name.value;
-        var email = this.email.value;
-        var password = this.password.value;
-    
-        expression(name, surname,email,password);
-    })
+    get feedback() {
+        return this.__feedback__
+    }
+
+    set onSubmit(expression) {
+        const form = this.container.getElementsByTagName('form')[0]
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault()
+
+            const { name: { value: name }, surname: { value: surname }, email: { value: email }, password: { value: password } } = this
+
+            expression(name, surname, email, password)
+        })
+    }
+
+    set onBack(expression) {
+        const link = this.container.getElementsByTagName('a')[0]
+
+        link.addEventListener('click', event => {
+            event.preventDefault()
+
+            expression()
+        })
+    }
+
+    hide() {
+        const form = this.container.getElementsByTagName('form')[0]
+        
+        const { name, surname, email, password } = form
+
+        name.value = ''
+        surname.value = ''
+        email.value = ''
+        password.value = ''
+
+        this.feedback.hide()
+
+        super.hide()
+    }
 }
