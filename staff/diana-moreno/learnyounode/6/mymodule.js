@@ -1,5 +1,3 @@
-//console.log(process.argv)
-
 module.exports = function (folder, extension, callback) {
   const fs = require('fs')
   var path = require('path')

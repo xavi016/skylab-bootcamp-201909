@@ -1,11 +1,11 @@
 const http = require('http')
-const {argv:[,,url]}= process
+const { argv: [, , url] } = process
 
 function callback(response) {
   response.setEncoding('utf8')
-  response.on('error', error => {throw Error})
+  response.on('error', error => { throw Error })
   let content = ''
-  response.on('data', chunk => {content += chunk})
+  response.on('data', chunk => { content += chunk })
   response.on('end', () => {
     console.log(content.length)
     console.log(content)
@@ -13,7 +13,7 @@ function callback(response) {
 }
 
 const req = http.get(url, callback)
-req.on('error', error => {throw Error})
+req.on('error', error => { throw Error })
 
 // install bl with: npm i bl
 

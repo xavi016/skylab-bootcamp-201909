@@ -3,7 +3,7 @@ const { argv: [, , ...urls] } = process //using rest operator and destructuring
 let counter = urls.length //using a counter to be sure to save the content in the correct position
 let results = []
 
-urls.forEach(function (url, index) {
+urls.forEach(function(url, index) {
 
   const req = http.get(url, response => {
     response.setEncoding('utf8')
@@ -16,11 +16,10 @@ urls.forEach(function (url, index) {
     response.on('end', function() {
       results[index] = str
       counter--
-      if(!counter) results.forEach(elem => console.log(elem))
+      if (!counter) results.forEach(elem => console.log(elem))
     })
   })
 })
-
 
 
 /*
@@ -60,5 +59,3 @@ urls.forEach(function(val, i) {
     httpGet(i);
 });
 */
-
-
