@@ -25,7 +25,7 @@ app.route('/login')
         authenticateUser(email, password)
             .then(credentials => {
                 const { id, token } = credentials
-                sessions[id] = token
+                sessions[id] = { token }
                 res.setHeader('set-cookie', `id=${id}`)
                 res.redirect('/search')
             })
@@ -57,15 +57,14 @@ app.route('/register')
 // HOME
 
 app.get('/search', cookieParser, (req, res) => {
+    
     try {
         const { cookies: { id }, query: { q: query } } = req
-        
         if (!id) return res.redirect('/')
-
-        const token = sessions[id]
-
+        const session = sessions[id]
+        if (!session) return res.redirect('/')
+        const { token } = session
         if (!token) return res.redirect('/')
-
         let name
 
         retrieveUser(id, token)
@@ -73,7 +72,7 @@ app.get('/search', cookieParser, (req, res) => {
                 name = user.name
 
                 if (!query) return res.send(View({ body: Search({ path: '/search', name, logout: '/logout' }) }))
-
+                session.query = query
                 return searchDucks(id, token, query)
                     .then(ducks => res.send(View({ body: Search({ path: '/search', query, name, logout: '/logout', results: ducks, favPath: '/fav', detailPath: 'duck' }) })))
             })
