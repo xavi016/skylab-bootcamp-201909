@@ -3,10 +3,10 @@ const { View, Landing, Register, Login, Search, Detail } = require('./components
 const { registerUser, authenticateUser, retrieveUser, searchDucks, toggleFavDuck, retrieveDuck } = require('./logic')
 // const logic = require('./logic')
 const { bodyParser, cookieParser } = require('./utils/middlewares')
-const sessions = {}
-const sessionRetriever = require('./helpers/middlewares/session-retriever')(sessions)
 
 const { argv: [, , port = 8080] } = process
+
+const sessions = {}
 
 const app = express()
 
@@ -60,13 +60,17 @@ app.post('/login', bodyParser, (req, res) => {
     }
 })
 
-app.get('/search', cookieParser, sessionRetriever, (req, res) => {
+app.get('/search', cookieParser, (req, res) => {
     try {
-        const { session, query: { q: query } } = req
+        const { cookies: { id }, query: { q: query } } = req
+
+        if (!id) return res.redirect('/')
+
+        const session = sessions[id]
 
         if (!session) return res.redirect('/')
 
-        const { id, token } = session
+        const { token } = session
 
         if (!token) return res.redirect('/')
 
@@ -102,13 +106,17 @@ app.post('/logout', cookieParser, (req, res) => {
     res.redirect('/')
 })
 
-app.post('/fav', cookieParser, sessionRetriever, bodyParser, (req, res) => {
+app.post('/fav', cookieParser, bodyParser, (req, res) => {
     try {
-        const { session, body: { id: duckId }, headers: { referer } } = req
+        const { cookies: { id }, body: { id: duckId }, headers: { referer } } = req
+
+        if (!id) return res.redirect('/')
+
+        const session = sessions[id]
 
         if (!session) return res.redirect('/')
 
-        const { id, token, query } = session
+        const { token, query } = session
 
         if (!token) return res.redirect('/')
 
@@ -122,13 +130,17 @@ app.post('/fav', cookieParser, sessionRetriever, bodyParser, (req, res) => {
     }
 })
 
-app.get('/ducks/:id', cookieParser, sessionRetriever, (req, res) => {
+app.get('/ducks/:id', cookieParser, (req, res) => {
     try {
-        const { session, params: { id: duckId } } = req
+        const { cookies: { id }, params: { id: duckId } } = req
+
+        if (!id) return res.redirect('/')
+
+        const session = sessions[id]
 
         if (!session) return res.redirect('/')
 
-        const { id, token, view, query } = session
+        const { token, view, query } = session
 
         if (!token) return res.redirect('/')
 

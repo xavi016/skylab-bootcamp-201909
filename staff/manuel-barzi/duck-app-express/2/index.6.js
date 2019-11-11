@@ -3,10 +3,10 @@ const { View, Landing, Register, Login, Search, Detail } = require('./components
 const { registerUser, authenticateUser, retrieveUser, searchDucks, toggleFavDuck, retrieveDuck } = require('./logic')
 // const logic = require('./logic')
 const { bodyParser, cookieParser } = require('./utils/middlewares')
-const sessions = {}
-const sessionRetriever = require('./helpers/middlewares/session-retriever')(sessions)
 
 const { argv: [, , port = 8080] } = process
+
+const sessions = {}
 
 const app = express()
 
