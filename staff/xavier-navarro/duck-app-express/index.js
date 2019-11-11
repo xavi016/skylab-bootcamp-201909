@@ -1,6 +1,6 @@
 const express = require('express')
-const { View, Register, Login, Search } = require('./components')
-const { registerUser, authenticateUser, retrieveUser, searchDucks, toggleFavDuck } = require('./logic')
+const { View, Register, Login, Search, Detail } = require('./components')
+const { registerUser, authenticateUser, retrieveUser, searchDucks, toggleFavDuck, retrieveDucks } = require('./logic')
 const { bodyParser, cookieParser } = require('./utils/middlewares')
 const { argv: [, , port = 8080] } = process
 const sessions = {}
@@ -9,9 +9,14 @@ const app = express()
 
 app.use(express.static('public'))
 
+
 app.get('/', (req, res) => {
     res.send(View({body : Login({register: '/register'})}))
 })
+
+// app.use(function (req, res, next) {
+//     res.status(404).send("Sorry can't find that!")
+//   })
 // LOGIN
 app.route('/login')
   .get((req, res) => {
@@ -84,7 +89,7 @@ app.get('/search', cookieParser, (req, res) => {
 
 // FAVORITES
 app.post('/fav', cookieParser, bodyParser, (req, res) => {
-    debugger
+    
     try {
         const { cookies: { id }, body: { id: duckId } } = req
 
@@ -109,12 +114,34 @@ app.post('/fav', cookieParser, bodyParser, (req, res) => {
 })
 
 // DETAIL DUCK
-app.get('/ducks/:id', (req, res) => {
-    const { params: { id } } = req
+app.get('/duck/:id', cookieParser, (req, res) => {
+    try {
+        debugger
+        const { cookies: { id }, params: { id: duckId } } = req
 
-    // TODO control session, etc
+        if (!id) return res.redirect('/')
+        const session = sessions[id]
+        if (!session) return res.redirect('/')
+        const { token, query } = session
+        if (!token) return res.redirect('/')
+        // TODO control session, etc
 
-    res.send('TODO detail of duck ' + id)
+        retrieveDucks(id, token, duckId)
+            .then(duck => {
+                // res.send(duck)   
+                res.send(View({ body: Detail({ item: duck, path: '/search?q='+query}) }))   
+            })
+            .catch(({ message }) => {
+                res.send("message")
+            })
+        
+    } catch (error) {
+        res.send("{message}" )
+    }
+})
+
+app.use(function (req, res, next) {
+    res.status(404).send("<h1>ERROR 404. View not found.</h1>")
 })
 
 app.listen(port, () => console.log(`server running on port ${port}`))

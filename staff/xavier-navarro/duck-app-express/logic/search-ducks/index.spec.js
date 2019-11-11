@@ -2,7 +2,7 @@ const { expect } = require('chai')
 const call = require('../../helpers/call')
 const searchDucks = require('.')
 
-describe('logic - search ducks', () => {
+describe.only('logic - search ducks', () => {
     let name, surname, email, password, id, token, duckId = '5c3853aebd1bde8520e66e1b'
 
     beforeEach(done => {
@@ -30,6 +30,7 @@ describe('logic - search ducks', () => {
     })
 
     it('should succeed on correct criteria (query)', () => {
+        debugger
         const query = 'blue'
 
         return searchDucks(id, token, query)

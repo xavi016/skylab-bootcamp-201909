@@ -148,4 +148,29 @@ body {
   margin: 0 auto;
 }
 
+.details {
+  display: grid;
+  grid-template-areas: "title" "img" "description" "price" "back";
+}
+.details__title {
+  grid-area: title;
+}
+.details__img {
+  grid-area: img;
+}
+.details__description {
+  grid-area: description;
+}
+.details .go-home {
+  grid-area: back;
+}
+.details__price {
+  grid-area: price;
+}
+.details__price-tag {
+  background-color: #ffff71;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+}
+
 /*# sourceMappingURL=index.css.map */

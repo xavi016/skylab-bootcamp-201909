@@ -4,5 +4,7 @@ module.exports = {
     Register: require('./register'),
     Search: require('./search'),
     View: require('./views'),
-    Results: require('./results')
+    Results: require('./results'),
+    ResultsItem: require('./result-item'),
+    Detail: require('./detail')
 }
