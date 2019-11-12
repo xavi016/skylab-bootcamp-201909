@@ -23,7 +23,8 @@ app.use(session({
 const formBodyParser = bodyParser.urlencoded({ extended: false })
 
 app.get('/', (req, res) => {
-    res.send(View({body : Login({register: '/register'})}))
+    // res.send(View({body : Login({register: '/register'})}))
+    res.render('login', { path: '/register' })
 })
 // REGISTER
 app.route('/register')
@@ -36,9 +37,11 @@ app.route('/register')
     try {
         registerUser(name, surname, email, password)
             .then(() => res.redirect('/'))
-            .catch(({ message }) => res.send(View({ body: Register({ path: '/register', error: message }) })))
+            .catch(({ message }) => res.render('register', {path: '/register', error: message }) )
+            // .catch(({ message }) => res.send(View({ body: Register({ path: '/register', error: message }) })))
     } catch ({ message }) {
         res.send(View({ body: Register({ path: '/register', error: message }) }))
+        // res.send(View({ body: Register({ path: '/register', error: message }) }))
     }
 })
 // LOGIN
@@ -123,7 +126,6 @@ app.get('/my-favorites', (req, res) => {
                 return favList(id, token)
                     .then(ducks => {
                         session.view = 'fav-list'
-debugger
                         session.save(() => res.send(View({ body: Search({ path: '/search', favListPath: '/my-favorites', name, logout: '/logout', results: ducks, favPath: '/fav', detailPath: '/duck' }) })))
                     })
             })
@@ -174,7 +176,7 @@ app.get('/duck/:id', (req, res) => {
         const { userId: id, token, view, query } = session
         if (!token) return res.redirect('/')
         let backPath
-        view === 'search' ? backPath = `/search?q=${query}` : backPath ='/'
+        view === 'search' ? backPath = `/search?q=${query}` : backPath ='/my-favorites'
         retrieveDucks(id, token, duckId)
             .then(duck => {
               res.send(View({ body: Detail({ item: duck, backPath, favPath: '/fav'}) }))

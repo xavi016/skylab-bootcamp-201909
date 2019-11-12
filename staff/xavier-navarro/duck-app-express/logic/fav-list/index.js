@@ -6,8 +6,7 @@ module.exports = function (id, token) {
     validate.string.notVoid('id', id)
     validate.string(token)
     validate.string.notVoid('token', token)
-    let favList = []
-    debugger
+    
     return new Promise((resolve, reject) => {
         call('GET', token, `https://skylabcoders.herokuapp.com/api/user/${id}`, undefined, dataUser => {
             if(dataUser.error) return reject(new Error(dataUser.error))
