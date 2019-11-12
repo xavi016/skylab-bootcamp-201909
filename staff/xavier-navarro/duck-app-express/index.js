@@ -1,6 +1,6 @@
 const express = require('express')
 const { View, Register, Login, Search, Detail } = require('./components')
-const { registerUser, authenticateUser, retrieveUser, searchDucks, toggleFavDuck, retrieveDucks } = require('./logic')
+const { registerUser, authenticateUser, retrieveUser, searchDucks, toggleFavDuck, retrieveDucks, favList } = require('./logic')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
@@ -73,46 +73,90 @@ app.get('/search', (req, res) => {
     
     try {
         const { session, query: { q: query } } = req
+
         if (!session) return res.redirect('/')
+
         const { userId: id, token } = session
+
         if (!token) return res.redirect('/')
+
         let name
 
         retrieveUser(id, token)
             .then(user => {
                 name = user.name
 
-                if (!query) return res.send(View({ body: Search({ path: '/search', name, logout: '/logout' }) }))
-                
+                if (!query) return res.send(View({ body: Search({ path: '/search', favListPath: '/my-favorites', name, logout: '/logout' }) }))
+
                 return searchDucks(id, token, query)
                     .then(ducks => {
                         session.query = query
                         session.view = 'search'
 
-                        session.save(() => res.send(View({ body: Search({ path: '/search', query, name, logout: '/logout', results: ducks, favPath: '/fav', detailPath: 'duck' }) })))
+                        session.save(() => res.send(View({ body: Search({ path: '/search', favListPath: '/my-favorites', query, name, logout: '/logout', results: ducks, favPath: '/fav', detailPath: '/duck' }) })))
                     })
             })
-            .catch(({ message }) => res.send(View({ body: Search({ path: '/search', query, name, logout: '/logout', error: message }) })))
+            .catch(({ message }) => res.send(View({ body: Search({ path: '/search', favListPath: '/my-favorites', query, name, logout: '/logout', error: message }) })))
     } catch ({ message }) {
-        res.send(View({ body: Search({ path: '/search', query, name, logout: '/logout', error: message }) }))
+        res.send(View({ body: Search({ path: '/search', favListPath: '/my-favorites', query, name, logout: '/logout', error: message }) }))
     }
 })
 
 // FAVORITES
+app.get('/my-favorites', (req, res) => {
+    
+    try {
+        const { session } = req
+
+        if (!session) return res.redirect('/')
+
+        const { userId: id, token } = session
+
+        if (!token) return res.redirect('/')
+
+        let name
+
+        retrieveUser(id, token)
+            .then(user => {
+                name = user.name
+
+                return favList(id, token)
+                    .then(ducks => {
+                        session.view = 'fav-list'
+debugger
+                        session.save(() => res.send(View({ body: Search({ path: '/search', favListPath: '/my-favorites', name, logout: '/logout', results: ducks, favPath: '/fav', detailPath: '/duck' }) })))
+                    })
+            })
+            .catch(({ message }) => res.send(View({ body: Search({ path: '/search',favListPath: '/my-favorites', name, logout: '/logout', error: message }) })))
+    } catch ({ message }) {
+        res.send(View({ body: Search({ path: '/search',favListPath: '/my-favorites', name, logout: '/logout', error: message }) }))
+    }
+})
+
 app.post('/fav', formBodyParser, (req, res) => {
     
     try {
-        const { session, body: { id: duckId } } = req
+        const { session, body: { id: duckId }, headers: { referer } } = req
 
         if (!session) return res.redirect('/')
-        const { userId: id, token, query } = session
+        const { userId: id, token, query, view } = session
         if (!token) return res.redirect('/')
 
         toggleFavDuck(id, token, duckId)
             .then(() => {
                 let path
-                view === 'search' ? path = `/search?q=${query}` : path =`/duck/${duckId}`
-                res.redirect(path)
+                switch (view) {
+                    case  'search':
+                        path = `/search?q=${query}`
+                        break;
+                    case  'detail':
+                        path =`/duck/${duckId}`
+                        break;
+                    default:
+                        break;
+                }
+              
+                res.redirect(referer)
             })
             .catch(({ message }) => {
                 res.send(View({ body: Search({ path: '/search', query, name, logout: '/logout', error: message }) }))
@@ -133,7 +177,7 @@ app.get('/duck/:id', (req, res) => {
         view === 'search' ? backPath = `/search?q=${query}` : backPath ='/'
         retrieveDucks(id, token, duckId)
             .then(duck => {
-                res.send(View({ body: Detail({ item: duck, backPath, favPath: '/fav'}) }))   
+              res.send(View({ body: Detail({ item: duck, backPath, favPath: '/fav'}) }))
             })
             .catch(({ message }) => {
                 res.send("message")

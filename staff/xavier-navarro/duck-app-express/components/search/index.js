@@ -2,7 +2,7 @@ const Feedback = require('../feedback')
 const Results = require('../results')
 const ResultItem = require('../result-item')
 
-module.exports = function ({ path, query, name, logout, error, results, favPath, detailPath }) {
+module.exports = function ({ path, query, name, logout, error, results, favListPath, favPath, detailPath }) {
     return `<header class="header__container header">
                 <div class="header__logo">
                     <img class="image" src="https://amsterdamduckstore.com/wp-content/uploads/2018/01/Sneowboard-rubber-duck-Amsterdam-Duck-Store.jpg" alt="DUCKGO"/>
@@ -12,6 +12,7 @@ module.exports = function ({ path, query, name, logout, error, results, favPath,
                 </div>
                 <div class="header__home">
                     <p>${name}</p>
+                    <p><a href="${favListPath}">My favorites</a></p>
                 </div>
                 <div class="header__search search">
                     <form method="get" action="${path}" id="duck-search" class="search__form">

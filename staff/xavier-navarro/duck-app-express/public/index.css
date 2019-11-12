@@ -172,5 +172,8 @@ body {
   padding: 0.5rem;
   border-radius: 0.4rem;
 }
+.details__form {
+  padding: 25px;
+}
 
 /*# sourceMappingURL=index.css.map */

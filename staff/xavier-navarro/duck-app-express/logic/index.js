@@ -4,5 +4,6 @@ module.exports = {
     retrieveUser: require('./retrieve-user'),
     searchDucks: require('./search-ducks'),
     retrieveDucks: require('./retrieve-duck'),
+    favList: require('./fav-list'),
     toggleFavDuck: require('./toggle-fav-duck')
 }
