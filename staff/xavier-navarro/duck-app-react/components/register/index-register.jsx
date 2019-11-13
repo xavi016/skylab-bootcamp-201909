@@ -1,4 +1,4 @@
-function Register({ onRegister, error }) {
+function Register({ onRegister, error, onLogin }) {
     return <section className="view register">
         <form className="register__form" onSubmit={function (event) {
             event.preventDefault()
@@ -15,7 +15,7 @@ function Register({ onRegister, error }) {
             <button type="login__submit">Entrar</button>
             <a href="" className="btn__register" onClick={event => {
                 event.preventDefault()
-                onRegister()
+                onLogin()
             }}>DuckIN</a>
         </form>
 

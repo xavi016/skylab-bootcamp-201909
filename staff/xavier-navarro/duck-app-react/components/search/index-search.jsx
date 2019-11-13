@@ -1,7 +1,7 @@
 function Search({ onSearch, error, user }) {
     return <header className="header__container header">
                 <div className="header__logo">
-                    <img className="image" src="https://www.shareicon.net/download/2016/08/01/640067_internet_512x512.png" alt="DUCKGO"/>
+                    <img className="image" src="https://amsterdamduckstore.com/wp-content/uploads/2018/01/Sneowboard-rubber-duck-Amsterdam-Duck-Store.jpg" alt="DUCKGO"/>
                 </div>
                 <div className="header__company-name">
                     <h1 className="title">*DUCKSTAR*</h1>

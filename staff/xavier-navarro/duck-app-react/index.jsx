@@ -2,8 +2,8 @@ const { Component } = React
 const { query } = location
 class App extends Component {
     state = { view: sessionStorage.id && sessionStorage.token ? "": "login", user: undefined, error: undefined, ducks: [] }
-
     componentWillMount(){
+        const { id, token } = sessionStorage
         if (id && token)
             try {
                 retrieveUser(id, token, (undefined, credentials) =>{ 
@@ -57,8 +57,8 @@ class App extends Component {
         const { state: { view, error, user, ducks }, handleGoToRegister, handleGoToLogin, handleRegister, handleLogin } = this
 
         return <>
-            {view === 'login' && <Login onLogin={handleLogin} />}
-            {view === 'register' && <Register onRegister={handleRegister} error={error} />}
+            {view === 'login' && <Login onLogin={handleLogin} onRegister={handleGoToRegister}/>}
+            {view === 'register' && <Register onRegister={handleRegister} onLogin={handleGoToLogin} error={error} />}
             {view === 'landing' && <Landing user={user} error={error} />}
         </>
     }
