@@ -1,7 +1,7 @@
 const validate = require('../../utils/validate')
 const users = require('../../data/users')()
 const tasks = require('../../data/tasks')()
-const { NotFoundError } = require('../../utils/errors')
+const { NotFoundError, ConflictError } = require('../../utils/errors')
 
 module.exports = function (id, taskId, title, description, status) {
     validate.string(id)
@@ -19,6 +19,7 @@ module.exports = function (id, taskId, title, description, status) {
     if (status) {
         validate.string(status)
         validate.string.notVoid('status', status)
+        validate.matches('status', status, 'TODO', 'DOING', 'REVIEW', 'DONE')
     }
 
     return new Promise((resolve, reject) => {
@@ -28,7 +29,9 @@ module.exports = function (id, taskId, title, description, status) {
 
         const task = tasks.data.find(({ id }) => id === taskId)
 
-        if (task.user !== id) return reject(new NotFoundError(`user does not have task with id ${taskId}`))
+        if (!task) return reject(new NotFoundError(`user does not have task with id ${taskId}`))
+
+        if (task.user !== id) return reject(new ConflictError(`user with id ${id} does not correspond to task with id ${taskId}`))
 
         title && (task.title = title)
         description && (task.description = description)
