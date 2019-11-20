@@ -1,10 +1,9 @@
+require('dotenv').config()
+const { env: { DB_URL_TEST } } = process
 const { expect } = require('chai')
+const { database, ObjectId, models: { User, Task } } = require('../../data')
+const listTasks = require('.')
 const { random } = Math
-const users = require('../../data/users')('test')
-const tasks = require('../../data/tasks')('test')
-const retrieveTasks = require('.')
-const uuid = require('uuid/v4')
-const { NotFoundError } = require('../../utils/errors')
 
 describe.skip('logic - retrieve tasks user', () => {
     before(() => Promise.all([users.load(), tasks.load()]))

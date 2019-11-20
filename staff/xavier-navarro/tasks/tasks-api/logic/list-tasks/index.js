@@ -1,21 +1,27 @@
 const validate = require('../../utils/validate')
-const users = require('../../data/users')()
-const tasks = require('../../data/tasks')()
-const { NotFoundError } = require('../../utils/errors')
+const { ObjectId, models: { User, Task } } = require('../../data')
+const { NotFoundError, ContentError } = require('../../utils/errors')
 
 module.exports = function (id) {
     validate.string(id)
     validate.string.notVoid('id', id)
+    if (!ObjectId.isValid(id)) throw new ContentError(`${id} is not a valid id`)
 
-    return new Promise((resolve, reject) => {
-        const user = users.data.find(user => user.id === id)
+    return User.findById(id)
+        .then(user => {
+            if (!user) throw new NotFoundError(`user with id ${id} not found`)
 
-        if (!user) return reject(new NotFoundError(`user with id ${id} not found`))
+            return Task.updateMany({ user: id }, { $set: { lastAccess: new Date } })
+        })
+        .then(() => Task.find({ user: id }).lean())
+        .then(tasks => {
+            tasks.forEach(task => {
+                task.id = task._id.toString()
+                delete task._id
 
-        const _tasks = tasks.data.filter(({ user }) => user === id)
+                task.user = id
+            })
 
-        _tasks.forEach(task => task.lastAccess = new Date)
-
-        tasks.persist().then(() => resolve(_tasks)).catch(reject)
-    })
+            return tasks
+        })
 }

@@ -1,22 +1,28 @@
 const validate = require('../../utils/validate')
-const users = require('../../data/users')()
+const { ObjectId, models: { User } } = require('../../data')
 const { NotFoundError } = require('../../utils/errors')
 
 module.exports = function (id) {
     validate.string(id)
     validate.string.notVoid('id', id)
+    if (!ObjectId.isValid(id)) throw new ContentError(`${id} is not a valid id`)
 
-    return new Promise((resolve, reject) => {
-        const user = users.data.find(user => user.id === id)
+    return User.findById(id)
+        .then(user => {
+            if (!user) throw new NotFoundError(`user with id ${id} not found`)
 
-        if (!user) return reject(new NotFoundError(`user with id ${id} not found`))
+            user.lastAccess = new Date
 
-        user.lastAccess = new Date
-
-        users.persist().then(() => {
-            const { name, surname, email, username } = user
-
-            resolve({ id, name, surname, email, username })
+            return user.save()
         })
-    })
+        .then(user => {
+            user = user.toObject()
+
+            user.id = user._id.toString()
+            delete user._id
+
+            delete user.password
+
+            return user
+        })
 }

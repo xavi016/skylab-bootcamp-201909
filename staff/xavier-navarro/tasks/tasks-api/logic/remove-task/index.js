@@ -1,15 +1,28 @@
 const validate = require('../../utils/validate')
-const users = require('../../data/users')()
-const tasks = require('../../data/tasks')()
-const { NotFoundError } = require('../../utils/errors')
-module.exports = function (id) {
-    debugger
+const { ObjectId, models: { User, Task } } = require('../../data')
+const { NotFoundError, ConflictError } = require('../../utils/errors')
+
+module.exports = function (id, taskId) {
     validate.string(id)
     validate.string.notVoid('id', id)
-    return new Promise((resolve, reject) => {
-        const taskPos = tasks.data.findIndex(task => task.id === id)
-        if (taskPos === -1) return reject(new NotFoundError(`task with id ${id} not found`))
-        tasks.data.splice(taskPos,1)
-        tasks.persist().then(() => resolve(tasks)).catch(reject)
-    })
+    if (!ObjectId.isValid(id)) throw new ContentError(`${id} is not a valid id`)
+
+    validate.string(taskId)
+    validate.string.notVoid('task id', taskId)
+    if (!ObjectId.isValid(taskId)) throw new ContentError(`${taskId} is not a valid task id`)
+
+    return User.findById(id)
+        .then(user => {
+            if (!user) throw new NotFoundError(`user with id ${id} not found`)
+
+            return Task.findById(taskId)
+        })
+        .then(task => {
+            if (!task) throw new NotFoundError(`user does not have task with id ${taskId}`)
+
+            if (task.user.toString() !== id.toString()) throw new ConflictError(`user with id ${id} does not correspond to task with id ${taskId}`)
+
+            return Task.deleteOne({ _id: ObjectId(taskId) })
+        })
+        .then(() => { })
 }

@@ -1,6 +1,3 @@
-const validate = require('../../utils/validate')
-const users = require('../../data/users')()
-const { NotFoundError } = require('../../utils/errors')
 
 module.exports = function () {
 

@@ -1,6 +1,4 @@
 const validate = require('../../utils/validate')
-const users = require('../../data/users')()
-const tasks = require('../../data/tasks')()
 const { NotFoundError } = require('../../utils/errors')
 
 module.exports = function (id) {

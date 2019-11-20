@@ -4,18 +4,10 @@ const { expect } = require('chai')
 const registerUser = require('.')
 const { ContentError } = require('../../utils/errors')
 const { random } = Math
-const database = require('../../utils/database')
+const { database, models: { User }} = require('../../data')
 
-describe.only('logic - register user', () => {
-    debugger
-    let client, users
-
-    before(() => {
-        client = database(DB_URL_TEST)
-
-        return client.connect()
-            .then(connection => users = connection.db().collection('users'))
-    })
+describe('logic - register user', () => {
+    before(() => database.connect(DB_URL_TEST))
 
     let name, surname, email, username, password
 
@@ -25,14 +17,17 @@ describe.only('logic - register user', () => {
         email = `email-${random()}@mail.com`
         username = `username-${random()}`
         password = `password-${random()}`
+
+        return User.deleteMany()
     })
 
     it('should succeed on correct credentials', () =>
-        registerUser(name, surname, email, username, password)
-            .then(response => {
+    registerUser(name, surname, email, username, password)
+    .then(response => {
+        debugger
                 expect(response).to.be.undefined
 
-                return users.findOne({ username })
+                return User.findOne({ username })
             })
             .then(user => {
                 expect(user).to.exist
@@ -47,7 +42,7 @@ describe.only('logic - register user', () => {
 
     describe('when user already exists', () => {
         beforeEach(() =>
-            users.insertOne({ name, surname, email, username, password })
+            User.create({ name, surname, email, username, password })
         )
 
         it('should fail on already existing user', () =>
@@ -111,6 +106,5 @@ describe.only('logic - register user', () => {
         expect(() => registerUser(name, surname, email, username, ' \t\r')).to.throw(ContentError, 'password is empty or blank')
     })
 
-    // TODO other cases
-    after(() => client.close())
+    after(() => User.deleteMany().then(database.disconnect))
 })
