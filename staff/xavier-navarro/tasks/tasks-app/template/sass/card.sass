@@ -1,0 +1,22 @@
+.card
+    display: grid
+    grid-template-areas: "title" "description" "owner"
+    padding: .5rem
+    gap: .5rem
+    border: 2px solid#03A2FF
+    border-radius: 5px
+    &__header
+        grid-area: title
+        display: flex
+        justify-content: space-between
+        padding: .5rem 0
+    &__description
+        grid-area: description
+    &__footer
+        grid-area: owner
+        padding: .5rem
+        .owner__tag
+            color: #ffffff
+            background-color: #012940
+            padding: .5rem 0.6rem
+            border-radius: 5px

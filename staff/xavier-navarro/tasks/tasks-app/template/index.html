@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TASkS APP</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/80c46885ed.js"></script> 
+</head>
+<body>
+    <div class="container">
+        <header class="main__header">
+            <h1 class="title">TASKS APP</h1>
+        </header>
+        <section class="login hidden">
+            <form class="login__form">
+                <input type="email" name="email" placeholder="Email" class="login__input email">
+                <input type="password" name="password" placeholder="Password" class="login__input password">
+                <button class="login__btn btn-main">Log In</button>
+                <p class="login__or">or</p>
+                <a class="login__btn">Register</a>
+            </form>
+        </section>
+        <section class="register hidden">
+            <form class="register__form">
+                <input type="text" name="name" placeholder="Name" class="register__input name">
+                <input type="text" name="surname" placeholder="Surname" class="register__input surname">
+                <input type="email" name="email" placeholder="Email" class="register__input email">
+                <input type="password" name="password" placeholder="Password" class="register__input password">
+                <button class="register__btn btn-main">Register</button>
+                <p class="register__or">or</p>
+                <a class="register__btn">Log In</a>
+            </form>
+        </section>
+        <section class="feedback hidden">
+                <span class="feedback__icon">🤡</span>
+                <p class="feedback__message">Come with me...</p>
+                <span class="feedback__icon">🎈</span>
+            </section>
+        <section class="board">
+            <div class="board__state todo">
+                <header class="doing__header header">
+                    <h1 class="header__title">
+                        <label class="header__title--label" for="todo-collapse">TO DO</label>
+                    </h1>
+                </header>
+                <input type="checkbox" name="todo-collapse" id="todo-collapse">
+                <ul class="tasks tasks--todo">
+                    
+                </ul>
+            </div>
+            <div class="board__state doing">
+                <header class="doing__header header">
+                    <h1 class="header__title">
+                        <label class="header__title--label" for="doing-collapse">DOING</label>
+                    </h1>
+                </header>
+                <input type="checkbox" name="doing-collapse" id="doing-collapse">
+                <ul class="tasks tasks--doing">
+                    <li class="task__card card">
+                        <header class="card__header">
+                            <h2 class="header__title">
+                                ayudar adri
+                            </h2>
+                            <select name="status" class="">
+                                <option value="todo">TODO</option>
+                                <option value="doing">DOING</option>
+                                <option value="review">REVIEW</option>
+                                <option value="done">DONE</option>
+                            </select>
+                        </header>
+                        <p class="card__description">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                            Odit corrupti quae quia animi officia inventore dolores?
+                                Pariatur provident porro corrupti ex libero autem modi iusto totam voluptatum,
+                                ab dolorum accusamus?
+                        </p>
+                        <footer class="card__footer">
+                            <span class="owner__tag">xavi</span>
+                        </footer>
+                    </li>
+                    <li class="task__card card">
+                        <header class="card__header">
+                            <h2 class="header__title">
+                                ayudar adri
+                            </h2>
+                            <select name="status" class="">
+                                <option value="todo">TODO</option>
+                                <option value="doing">DOING</option>
+                                <option value="review">REVIEW</option>
+                                <option value="done">DONE</option>
+                            </select>
+                        </header>
+                        <p class="card__description">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                            Odit corrupti quae quia animi officia inventore dolores?
+                                Pariatur provident porro corrupti ex libero autem modi iusto totam voluptatum,
+                                ab dolorum accusamus?
+                        </p>
+                        <footer class="card__footer">
+                            <span class="owner__tag">xavi</span>
+                        </footer>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="board__state review">
+                <header class="doing__header header">
+                    <h1 class="header__title">
+                        REVIEW
+                    </h1>
+                </header>
+            </div>
+            <div class="board__state done">
+                <header class="doing__header header">
+                    <h1 class="header__title">
+                        DONE
+                    </h1>
+                </header>
+            </div>
+            <div class="create">
+                <h2 class="create__title">CREATE A NEW TASKS</h2>
+                <form action="" method="POST" class="create__form">
+                    <input type="text" name="taks-name" class="form__input" placeholder="title">
+                    <textarea name="description" placeholder="description" class="form__textarea" cols="30" rows="10"></textarea>
+                    <button type="submit" class="form__submit">ADD</button>
+                </form>
+            </div>
+            <button class="add__task">
+                +
+            </button>
+        </section>
+    </div>
+</body>
+</html>
