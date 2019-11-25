@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flott</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/80c46885ed.js"></script> 
+</head>
+<body>
+    <header class="header">
+        <input id="show-menu" name="modal" type="checkbox">
+        <label class="header__hamburger hamburger" for="show-menu">
+               <span> <i class="fas fa-bars hamburger__icon"></i></span>
+        </label>
+        <a href="" class="logo"><img src="images/flott.png" alt="Flott" class="logo__img"></a>
+        <nav class="header__nav nav">
+            <ul class="nav__menu menu">
+                <li class="menu__item">Spots</li>
+                <li class="menu__item">News</li>
+                <li class="menu__item">Maps</li>
+                <li class="menu__item">Following</li>
+                <li class="menu__item">Profile</li>
+            </ul>
+        </nav>
+    </header>
+    <section class="login hidden">
+        <form action="" method="POST" class="login__form form">
+            <h1 class="form__title">Log in</h1>
+            <input type="text" class="form__input" placeholder="Username" />
+            <input type="password" class="form__input" placeholder="Password" />
+            <button class="btn-submit">Log in</button>
+        </form>
+    </section>
+    <section class="register">
+            <form action="" method="POST" class="login__form form">
+                <h1 class="form__title">Sign up</h1>
+                <input type="text" class="form__input" placeholder="Name" />
+                <input type="text" class="form__input" placeholder="Surname" />
+                <input type="email" class="form__input" placeholder="Email" />
+                <input type="text" class="form__input" placeholder="Username" />
+                <input type="password" class="form__input" placeholder="Password" />
+                <select name="sports" class="form__input">
+                    <option value="" selected>Select your dicipline</option>
+                    <option value="bmx">BMX</option>
+                    <option value="roller">Roller</option>
+                    <option value="skate">Skate</option>
+                    <option value="scooter">Scooter</option>
+                </select>
+                <button class="btn-submit">Sign up</button>
+            </form>
+        </section>
+    <section class="spots__detail detail hidden">
+        <div class="detail__image">
+            <img src="images/spots/macba/macba.jpg" alt="spot" class="img">
+            <div class="user__profile profile">
+                <img src="images/users/cristianvanella.png" alt="user" class="profile__image">
+                <p class="profile__name">Cristian Vannella</p>
+            </div>
+        </div>
+        <ul class="detail__tags tags">
+            <li class="tags__item">Skate</li>
+            <li class="tags__item">Street</li>
+        </ul>
+        <div class="detail__spot spot">
+            <h1 class="spot__name">MACBA<span class="spot__location">(Barcelona)</span></h1>
+            <button class="btn-fav">
+                <i class="fas fa-heart"></i>
+            </button>
+        </div>
+        <div class="detail__description description">
+            <p class="description__title">Description</p>
+            <p class="description__content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat exercitationem dicta debitis esse dolore eligendi obcaecati, minus laboriosam sit libero ex corporis tenetur dolores omnis animi assumenda earum officiis. A!
+            </p>
+        </div>
+        <div class="detail__extra">
+            <a href="#" class="url-maps"><i class="fas fa-map-marker-alt"></i> View in maps</a>
+            <button class="btn-info">More information</button>
+        </div>
+        <div class="detail__comments comments">
+            <p class="comments__title">Comments</p>
+            <ul class="comments__list list">
+                <li class="list__item">
+                    <div class="user__profile profile">
+                        <img src="images/users/cristianvanella.png" alt="user" class="profile__image">
+                        <div class="item__data">
+                            <p class="profile__name">Cristian Vannella</p>
+                            <p class="date">12/11/2019</p>
+                        </div>
+                    </div>
+                    <p class="user__comment">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum veritatis culpa dicta tempore nulla possimus, aliquam quia ducimus deleniti, laboriosam ab eius. Pariatur laborum labore, voluptatibus nihil voluptates modi fugit!
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="spots__container spots hidden">
+        <div class="spots__action-bar">
+            <div class="filter">
+                <button class="btn-filter">
+                    <i class="fas fa-sliders-h"></i>
+                </button>
+            </div>
+            <form action="" method="get" class="search">
+                <input type="search" name="search-spot" class="input-search" placeholder="Search spot">
+                <button class="btn-search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+        <ul class="spots__results results">
+            <li class="results__item card">
+                <div class="card__image">
+                    <img src="images/spots/macba/macba.jpg" alt="spot" class="img">
+                    <p class="more-info">More info</p>
+                </div>
+                <ul class="card__tags tags">
+                    <li class="tags__item">Skate</li>
+                    <li class="tags__item">Street</li>
+                </ul>
+                <div class="card__header">
+                    <a href="#" class="url-maps"><i class="fas fa-map-marker-alt"></i></a>
+                    <h1 class="spot-name">MACBA</h1>
+                    <p class="spot-location">(Barcelona)</p>
+                </div>
+                <div class="card__social social">
+                    <div class="social__last-comment">
+                        <img src="images/users/cristianvanella.png" alt="user" class="user-image">
+                        <p class="user-comment">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <p class="date">12/11/2019</p>
+                    </div>
+                    <p class="social__total-likes">
+                        <i class="fas fa-heart"></i> 1.5K
+                    </p>
+                    <p class="social__total-comments">
+                        <i class="far fa-comment-alt"></i> 84
+                    </p>
+                </div>
+            </li>
+            <li class="results__item card">
+                    <div class="card__image">
+                        <img src="images/spots/macba/macba.jpg" alt="spot" class="img">
+                        <p class="more-info">More info</p>
+                    </div>
+                    <ul class="card__tags tags">
+                        <li class="tags__item">Skate</li>
+                        <li class="tags__item">Street</li>
+                    </ul>
+                    <div class="card__header">
+                        <a href="#" class="url-maps"><i class="fas fa-map-marker-alt"></i></a>
+                        <h1 class="spot-name">MACBA</h1>
+                        <p class="spot-location">(Barcelona)</p>
+                    </div>
+                    <div class="card__social social">
+                        <div class="social__last-comment">
+                            <img src="images/users/cristianvanella.png" alt="user" class="user-image">
+                            <p class="user-comment">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                            </p>
+                            <p class="date">12/11/2019</p>
+                        </div>
+                        <p class="social__total-likes">
+                            <i class="fas fa-heart"></i> 1.5K
+                        </p>
+                        <p class="social__total-comments">
+                            <i class="far fa-comment-alt"></i> 84
+                        </p>
+                    </div>
+                </li>
+                <li class="results__item card">
+                    <div class="card__image">
+                        <img src="images/spots/macba/macba.jpg" alt="spot" class="img">
+                        <p class="more-info">More info</p>
+                    </div>
+                    <ul class="card__tags tags">
+                        <li class="tags__item">Skate</li>
+                        <li class="tags__item">Street</li>
+                    </ul>
+                    <div class="card__header">
+                        <a href="#" class="url-maps"><i class="fas fa-map-marker-alt"></i></a>
+                        <h1 class="spot-name">MACBA</h1>
+                        <p class="spot-location">(Barcelona)</p>
+                    </div>
+                    <div class="card__social social">
+                        <div class="social__last-comment">
+                            <img src="images/users/cristianvanella.png" alt="user" class="user-image">
+                            <p class="user-comment">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                            </p>
+                            <p class="date">12/11/2019</p>
+                        </div>
+                        <p class="social__total-likes">
+                            <i class="fas fa-heart"></i> 1.5K
+                        </p>
+                        <p class="social__total-comments">
+                            <i class="far fa-comment-alt"></i> 84
+                        </p>
+                    </div>
+                </li>
+        </ul>
+        <button class="btn-add">
+            <i class="fas fa-plus"></i>
+        </button>
+    </section>
+    <footer class="footer">
+        <p class="footer__copyright">Copyright ©</p>
+    </footer>
+</body>
+</html>

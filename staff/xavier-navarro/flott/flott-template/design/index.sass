@@ -1,0 +1,42 @@
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+body
+    display: flex
+    flex-flow: column
+    min-height: 100vh
+[class^="btn"]
+    padding: .5rem
+    border: none
+    background-color: inherit
+    cursor: pointer
+a
+    text-decoration: none
+    color: #000   
+
+.hidden
+    display: none!important
+.spots
+    //flex-flow: 1
+    position: relative
+.btn-add
+    @extend %flex-center
+    width: 60px
+    height: 60px
+    background-color: #002fb3
+    color: #fff
+    border-radius: 50%
+    font-size: 36px
+    position: fixed
+    bottom: 2rem
+    right: 2rem
+    
+@import utils/utils
+@import components/header/index
+@import components/login/index
+@import components/register/index
+@import components/actionbar/index
+@import components/results/index
+@import components/detail/index
+@import components/footer/index
