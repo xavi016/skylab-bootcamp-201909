@@ -1,6 +1,6 @@
 module.exports = {
     user: require('./user'),
-    socialmedia: require('./socialmedia'),
+    socialMedia: require('./social-media'),
     spot: require('./spot'),
     flags: require('./flags')
 }

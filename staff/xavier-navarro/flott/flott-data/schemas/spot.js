@@ -1,5 +1,5 @@
 const { Schema } = require('mongoose')
-const Flags = require('./flags')
+const { flags } = require('.')
 
 module.exports = new Schema({
     creator: {
@@ -40,7 +40,7 @@ module.exports = new Schema({
         type: array
     },
     flags: {
-        type: Flags,
+        type: flags,
         required: true
     },
     lastModification: {
