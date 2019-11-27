@@ -5,11 +5,12 @@ const authenticateUser = require('.')
 const { random } = Math
 const { errors: { ContentError, CredentialsError } } = require('flott-util')
 const { database, models: { User } } = require('flott-data')
+const bcrypt = require('bcryptjs')
 
 describe('logic - authenticate user', () => {
     before(() => database.connect(TEST_DB_URL))
 
-    let id, name, surname, email, username, password
+    let id, name, surname, email, username, password, hash
 
     beforeEach(async () => {
         name = `name-${random()}`
@@ -17,10 +18,10 @@ describe('logic - authenticate user', () => {
         email = `email-${random()}@mail.com`
         username = `username-${random()}`
         password = `password-${random()}`
-
+        hash = await bcrypt.hash(password, 10)
         await User.deleteMany()
 
-        const user = await User.create({ name, surname, email, username, password })
+        const user = await User.create({ name, surname, email, username, password: hash })
 
         id = user.id
     })
@@ -69,7 +70,7 @@ describe('logic - authenticate user', () => {
         })
     })
 
-    it('should fail on incorrect name, surname, email, password, or expression type and content', () => {
+    it('should fail on incorrect username, password, or expression type and content', () => {
         expect(() => authenticateUser(1)).to.throw(TypeError, '1 is not a string')
         expect(() => authenticateUser(true)).to.throw(TypeError, 'true is not a string')
         expect(() => authenticateUser([])).to.throw(TypeError, ' is not a string')
@@ -80,18 +81,16 @@ describe('logic - authenticate user', () => {
         expect(() => authenticateUser('')).to.throw(ContentError, 'username is empty or blank')
         expect(() => authenticateUser(' \t\r')).to.throw(ContentError, 'username is empty or blank')
 
-        expect(() => authenticateUser(email, 1)).to.throw(TypeError, '1 is not a string')
-        expect(() => authenticateUser(email, true)).to.throw(TypeError, 'true is not a string')
-        expect(() => authenticateUser(email, [])).to.throw(TypeError, ' is not a string')
-        expect(() => authenticateUser(email, {})).to.throw(TypeError, '[object Object] is not a string')
-        expect(() => authenticateUser(email, undefined)).to.throw(TypeError, 'undefined is not a string')
-        expect(() => authenticateUser(email, null)).to.throw(TypeError, 'null is not a string')
+        expect(() => authenticateUser(username, 1)).to.throw(TypeError, '1 is not a string')
+        expect(() => authenticateUser(username, true)).to.throw(TypeError, 'true is not a string')
+        expect(() => authenticateUser(username, [])).to.throw(TypeError, ' is not a string')
+        expect(() => authenticateUser(username, {})).to.throw(TypeError, '[object Object] is not a string')
+        expect(() => authenticateUser(username, undefined)).to.throw(TypeError, 'undefined is not a string')
+        expect(() => authenticateUser(username, null)).to.throw(TypeError, 'null is not a string')
 
-        expect(() => authenticateUser(email, '')).to.throw(ContentError, 'password is empty or blank')
-        expect(() => authenticateUser(email, ' \t\r')).to.throw(ContentError, 'password is empty or blank')
+        expect(() => authenticateUser(username, '')).to.throw(ContentError, 'password is empty or blank')
+        expect(() => authenticateUser(username, ' \t\r')).to.throw(ContentError, 'password is empty or blank')
     })
-
-    // TODO other cases
 
     after(() => User.deleteMany().then(database.disconnect))
 })

@@ -5,20 +5,22 @@ const registerUser = require('.')
 const { random } = Math
 const { errors: { ContentError } } = require('flott-util')
 const { database, models: { User } } = require('flott-data')
+const bcrypt = require('bcryptjs')
 
-describe.only('logic - register user', () => {
+describe('logic - register user', () => {
     before(() => database.connect(TEST_DB_URL))
 
-    let name, surname, email, username, password
+    let name, surname, email, username, password, _password, hash
 
-    beforeEach(() => {
+    beforeEach(async () => {
         name = `name-${random()}`
         surname = `surname-${random()}`
         email = `email-${random()}@mail.com`
         username = `username-${random()}`
         password = `password-${random()}`
+        hash = await bcrypt.hash(password, 10)
 
-        return User.deleteMany()
+        await User.deleteMany()
     })
 
     it('should succeed on correct credentials', async () => {
@@ -34,7 +36,8 @@ describe.only('logic - register user', () => {
         expect(user.surname).to.equal(surname)
         expect(user.email).to.equal(email)
         expect(user.username).to.equal(username)
-        expect(user.password).to.equal(password)
+        const match = await bcrypt.compare(password, user.password)
+        expect(match).to.be.true
     })
 
     describe('when user already exists', () => {
@@ -100,8 +103,6 @@ describe.only('logic - register user', () => {
         expect(() => registerUser(name, surname, email, username, '')).to.throw(ContentError, 'password is empty or blank')
         expect(() => registerUser(name, surname, email, username, ' \t\r')).to.throw(ContentError, 'password is empty or blank')
     })
-
-    // TODO other cases
 
     after(() => User.deleteMany().then(database.disconnect))
 })

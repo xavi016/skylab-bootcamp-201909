@@ -14,10 +14,6 @@ const { models: { Spot } } = require('flott-data')
 * @param {array} tags
 * @param {array} flags
 * 
-* @throws {ContentError} If id hasn't got the correct format
-* 
-* @throws {NotFoundError} If doesn't find the user with the id
-* 
 * @return {Promise}
 * @return {string}  id Returns the user id
 */

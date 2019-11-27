@@ -1,5 +1,6 @@
 const { validate, errors: { ConflictError } } = require('flott-util')
 const { models: { User } } = require('flott-data')
+const bcrypt = require('bcryptjs')
 
 /**
 * Register user
@@ -18,7 +19,7 @@ const { models: { User } } = require('flott-data')
 * @return {string}  id Returns the user id
 */
 
-module.exports = function (name, surname, email, username, password, profileImage, socialMedia) {
+module.exports = function (name, surname, email, username, password) {
     validate.string(name)
     validate.string.notVoid('name', name)
     validate.string(surname)
@@ -36,6 +37,8 @@ module.exports = function (name, surname, email, username, password, profileImag
 
         if (user) throw new ConflictError(`user with username ${username} already exists`)
 
-        await User.create({ name, surname, email, username, password })
+        const hash = await bcrypt.hash(password, 10)
+
+        await User.create({ name, surname, email, username, password: hash })
     })()
 }

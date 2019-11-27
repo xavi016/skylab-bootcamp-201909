@@ -14,6 +14,7 @@ router.post('/', jsonBodyParser, (req, res) => {
     const { body: { name, surname, email, username, password } } = req
 
     try {
+        debugger
         registerUser(name, surname, email, username, password)
             .then(() => res.status(201).end())
             .catch(error => {

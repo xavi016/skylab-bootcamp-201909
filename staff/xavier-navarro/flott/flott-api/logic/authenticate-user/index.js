@@ -1,16 +1,12 @@
 const { validate, errors: { CredentialsError } } = require('flott-util')
 const { models: { User } } = require('flott-data')
+const bcrypt = require('bcryptjs')
 
 /**
 * Authenticate user
 * 
-* @param {string} name
-* @param {string} surname 
 * @param {string} email
 * @param {string} username
-* @param {string} password 
-* @param {string} profileImage
-* @param {string} socialMedia 
 * 
 * @throws {CredentialsError} If username or password doesn't match with the correct credentials
 * 
@@ -25,9 +21,9 @@ module.exports = function (username, password) {
     validate.string.notVoid('password', password)
 
     return (async () => {
-        const user = await User.findOne({ username, password })
+        const user = await User.findOne({ username })
 
-        if (!user) throw new CredentialsError('wrong credentials')
+        if (!user || !(await bcrypt.compare(password, user.password))) throw new CredentialsError('wrong credentials')
 
         user.lastAccess = new Date
 
