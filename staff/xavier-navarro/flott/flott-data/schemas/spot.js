@@ -1,11 +1,10 @@
-const { Schema } = require('mongoose')
-const { flags } = require('.')
+const { Schema, ObjectId } = require('mongoose')
 
 module.exports = new Schema({
     creator: {
         type: ObjectId,
-        ref: 'User',
-        required: true
+        required: true,
+        ref: 'User'
     },
     name: {
         type: String,
@@ -27,20 +26,20 @@ module.exports = new Schema({
             required: true
         }
     },
-    modalities: {
-        type: array,
+    modalities: [{
+        type: String,
         enum: ['skate','longboard','roller','scooter','bmx'],
         required: true
-    },
+    }],
     images: {
-        type: array,
+        type: Array,
         required: true
     },
     tags: {
-        type: array
+        type: Array
     },
     flags: {
-        type: flags,
+        type: Object,
         required: true
     },
     lastModification: {

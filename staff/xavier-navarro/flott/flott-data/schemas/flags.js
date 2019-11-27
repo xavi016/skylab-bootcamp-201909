@@ -12,8 +12,5 @@ module.exports = new Schema({
     },
     parking: {
         type: Boolean
-    },
-    publicTransport: {
-        type: Boolean
     }
 })

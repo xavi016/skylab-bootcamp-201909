@@ -6,5 +6,5 @@ module.exports = {
     User: model('User', user),
     Spot: model('Spot', spot),
     Socialmedia: model('Socialmedia', socialMedia),
-    Flags: model('Flags', flags),
+    Flag: model('Flag', flags),
 }
