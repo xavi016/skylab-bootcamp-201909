@@ -1,5 +1,5 @@
 const { Schema, ObjectId } = require('mongoose')
-
+const Flags = require('./flags')
 module.exports = new Schema({
     creator: {
         type: ObjectId,
@@ -32,16 +32,16 @@ module.exports = new Schema({
         required: true
     }],
     images: {
-        type: Array,
-        required: true
+        type: Array
     },
     tags: {
         type: Array
     },
-    flags: {
-        type: Object,
-        required: true
-    },
+    flag: Flags,
+    comments: [{
+        type: ObjectId,
+        ref: 'Comments'
+    }],
     lastModification: {
         type: Date
     }

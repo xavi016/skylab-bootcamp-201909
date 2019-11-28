@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { registerUser, authenticateUser, retrieveUser } = require('../../logic')
+const { registerUser, authenticateUser, retrieveUser } = require('../../logic/user')
 const jwt = require('jsonwebtoken')
 const { env: { SECRET } } = process
 const tokenVerifier = require('../../helpers/token-verifier')(SECRET)
@@ -11,10 +11,11 @@ const jsonBodyParser = bodyParser.json()
 const router = Router()
 
 router.post('/', jsonBodyParser, (req, res) => {
+    
     const { body: { name, surname, email, username, password } } = req
 
     try {
-        debugger
+        
         registerUser(name, surname, email, username, password)
             .then(() => res.status(201).end())
             .catch(error => {

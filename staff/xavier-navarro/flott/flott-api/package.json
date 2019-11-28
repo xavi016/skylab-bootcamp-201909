@@ -7,9 +7,9 @@
     "start": "node .",
     "debug": "node inspect .",
     "watch": "npx nodemon .",
-    "test": "npx mocha logic/**/*.spec.js",
-    "test-debug": "npx mocha inspect logic/*/*.spec.js",
-    "test:coverage": "npx nyc --reporter=html --reporter=text mocha logic/**/*.spec.js",
+    "test": "npx mocha logic/**/**/*.spec.js",
+    "test-debug": "npx mocha inspect logic/**/**/*.spec.js",
+    "test:coverage": "npx nyc --reporter=html --reporter=text mocha logic/**/**/*.spec.js",
     "lint": "npx eslint index.js helpers logic routes utils"
   },
   "keywords": [],
@@ -30,6 +30,7 @@
     "eslint": "^6.7.1",
     "mocha": "^6.2.2",
     "nodemon": "^2.0.0",
-    "nyc": "^14.1.1"
+    "nyc": "^14.1.1",
+    "random-coordinates": "^1.0.1"
   }
 }
