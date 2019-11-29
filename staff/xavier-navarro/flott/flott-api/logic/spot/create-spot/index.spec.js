@@ -41,8 +41,8 @@ describe('logic - register spot', () => {
                 publicTransport: false,
                 parking: true
                 }
-        await User.deleteMany()
-        await Spot.deleteMany()
+        
+        await Promise.all([User.deleteMany(), Spot.deleteMany()])
 
         const user = await User.create({ name: _name, surname, email, username, password: hash })
 

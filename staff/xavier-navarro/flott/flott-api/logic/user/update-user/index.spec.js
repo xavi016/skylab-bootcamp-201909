@@ -102,6 +102,70 @@ describe('logic - update user', () => {
         expect(user.lastAccess).to.be.an.instanceOf(Date)
     })
 
+    it('should succeed on correct update user, except for name', async () => {
+        const newSurname = `new-surname-${random()}`
+        const newEmail = `new-email-${random()}@mail.com`
+        const newUsername = `new-username-${random()}`
+        let newPassword = `new-password-${random()}`
+        newPassword = await bcrypt.hash(newPassword, 10)
+        const newDescription = `new-description-${random()}`
+        const newModalities = ['longboard']
+        const newMedia = {
+            name: 'instagram',
+            link: `media.com/-${random()}`
+        }
+        const newMediaObj = new Socialmedia(newMedia)
+        const { name } = await User.findById(id)
+        const response = await updateUser(id, undefined, newSurname, newUsername, newEmail, newPassword, newDescription, newModalities, newMediaObj)
+        expect(response).to.not.exist
+
+        const user = await User.findById(id)   
+        expect(user.id).to.equal(id)
+
+        expect(user.name).to.exist
+        expect(user.name).to.be.a('string')
+        expect(user.name).to.have.length.greaterThan(0)
+        expect(user.name).to.equal(name)
+
+        expect(user.surname).to.exist
+        expect(user.surname).to.be.a('string')
+        expect(user.surname).to.have.length.greaterThan(0)
+        expect(user.surname).to.equal(newSurname)
+
+        expect(user.email).to.exist
+        expect(user.email).to.be.a('string')
+        expect(user.email).to.have.length.greaterThan(0)
+        expect(user.email).to.equal(newEmail)
+
+        expect(user.username).to.exist
+        expect(user.username).to.be.a('string')
+        expect(user.username).to.have.length.greaterThan(0)
+        expect(user.username).to.equal(newUsername)
+
+        expect(user.password).to.exist
+        expect(user.password).to.be.a('string')
+        expect(user.password).to.have.length.greaterThan(0)
+        expect(user.password).to.equal(newPassword)
+
+        expect(user.description).to.exist
+        expect(user.description).to.be.a('string')
+        expect(user.description).to.have.length.greaterThan(0)
+        expect(user.description).to.equal(newDescription)
+
+        expect(user.modalities).to.exist
+        expect(user.modalities).to.be.an('array')
+        expect(user.modalities).to.have.length.greaterThan(0)
+        expect(user.modalities).to.deep.equal(newModalities)
+
+        expect(user.socialMedia).to.exist
+        expect(user.socialMedia).to.be.an('array')
+        expect(user.socialMedia).to.have.length.greaterThan(0)
+        expect(user.socialMedia[0].url).to.equal(newMedia.url)
+
+        expect(user.lastAccess).to.exist
+        expect(user.lastAccess).to.be.an.instanceOf(Date)
+    })
+
     it('should fail on unexisting user', async () => {
         const id = ObjectId().toString()
         const newName = `new-name-${random()}`

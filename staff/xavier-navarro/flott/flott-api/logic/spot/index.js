@@ -1,3 +1,4 @@
 module.exports = {
-    createSpot: require('./create-spot')
+    createSpot: require('./create-spot'),
+    retrieveSpot: require('./retrieve-spot')
 } 
