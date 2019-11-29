@@ -25,7 +25,7 @@ describe('logic - register spot', () => {
 
         coordinates = randomCoordinates()
         coordinates = coordinates.split(',')
-        debugger
+        
         modalities = ['skate','longboard','roller','scooter','bmx']
         const numItems = floor(random() * modalities.length)
         modalities = modalities.shuffle().splice(0, numItems)

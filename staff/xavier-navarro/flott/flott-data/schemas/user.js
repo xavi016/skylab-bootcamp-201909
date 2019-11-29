@@ -28,6 +28,10 @@ module.exports = new Schema({
     description: {
         type: String
     },
+    modalities: [{
+        type: String,
+        enum: ['skate','longboard','roller','scooter','bmx']
+    }],
     profileImage: {
         type: String
     },

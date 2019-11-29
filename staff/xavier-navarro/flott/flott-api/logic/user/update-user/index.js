@@ -1,5 +1,5 @@
-const { validate, errors: { NotFoundError, ContentError } } = require('tasks-util')
-const { ObjectId, models: { User } } = require('tasks-data')
+const { validate, errors: { NotFoundError, ContentError } } = require('flott-util')
+const { ObjectId, models: { User } } = require('flott-data')
 
 /**
 * Update user
@@ -10,6 +10,8 @@ const { ObjectId, models: { User } } = require('tasks-data')
 * @param {string} email
 * @param {string} username
 * @param {string} password 
+* @param {string} description 
+* @param {string} modalities 
 * @param {string} profileImage
 * @param {string} socialMedia 
 * 
@@ -20,7 +22,7 @@ const { ObjectId, models: { User } } = require('tasks-data')
 * @return {Promise}
 */
 
-module.exports = function (id, name, surname, email, username, password, description, socialMedia) {
+module.exports = function (id, name, surname, username, email, password, description, modalities, socialMedia) {
     validate.string(id)
     validate.string.notVoid('id', id)
     if (!ObjectId.isValid(id)) throw new ContentError(`${id} is not a valid id`)
@@ -49,6 +51,9 @@ module.exports = function (id, name, surname, email, username, password, descrip
         validate.string(description)
         validate.string.notVoid('description', description)
     }
+    if (modalities) {
+        validate.array(modalities)
+    }
     if (socialMedia) {
         validate.instanceOf(Object, socialMedia)
     }
@@ -63,8 +68,10 @@ module.exports = function (id, name, surname, email, username, password, descrip
         name && (update.name = name)
         surname && (update.surname = surname)
         email && (update.email = email)
+        username && (update.username = username)
         password && (update.password = password)
         description && (update.description = description)
+        modalities && (update.modalities = modalities)
         socialMedia && (update.socialMedia = socialMedia)
         update.lastAccess = new Date
 
