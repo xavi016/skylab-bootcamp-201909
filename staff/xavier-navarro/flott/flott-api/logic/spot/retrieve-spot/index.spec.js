@@ -11,8 +11,8 @@ const randomCoordinates = require('random-coordinates')
 describe('logic - retrieve spot', () => {
     before(() => database.connect(TEST_DB_URL))
 
-    let id, name, surname, email, username, password
-    let creator, spotname, description, longitude, latitude, modalities, tags, flags
+    let id, _name, surname, email, username, password
+    let spotname, description, longitude, latitude, modalities, tags, flags
 
     beforeEach(async () => {
         _name = `name-${random()}`
@@ -57,8 +57,14 @@ describe('logic - retrieve spot', () => {
         expect(spot.id).to.equal(idSpot)
         expect(spot.id).to.be.a('string')
         expect(spot._id).to.not.exist
-        expect(spot.creator._id.toString()).to.equal(id)
-        expect(spot.creator._id.toString()).to.be.a('string')
+        expect(spot.creatorId.toString()).to.equal(id)
+        expect(spot.creatorId.toString()).to.be.a('string')
+        expect(spot.creatorName.toString()).to.equal(_name)
+        expect(spot.creatorName.toString()).to.be.a('string')
+        expect(spot.creatorSurname.toString()).to.equal(surname)
+        expect(spot.creatorSurname.toString()).to.be.a('string')
+        expect(spot.creatorUsername.toString()).to.equal(username)
+        expect(spot.creatorUsername.toString()).to.be.a('string')
         expect(spot.name).to.equal(spotname)
         expect(spot.name).to.be.a('string')
         expect(spot.description).to.equal(description)
@@ -71,6 +77,8 @@ describe('logic - retrieve spot', () => {
         expect(spot.modalities).to.deep.equal(modalities)
         expect(spot.tags).to.be.an('array')
         expect(spot.tags).to.deep.equal(tags)
+        expect(spot.totalFavs).to.be.a('number')
+        expect(spot.totalFavs).to.equal(0)
         expect(spot.flag).to.be.an('object')
         expect(spot.flag.fountain).to.equal(flag.fountain)
         expect(spot.flag.supermarket).to.equal(flag.supermarket)
@@ -80,17 +88,17 @@ describe('logic - retrieve spot', () => {
         expect(spot.lastModification).to.be.an.instanceOf(Date)
     })
 
-    it.skip('should fail on wrong user id', async () => {
+    it('should fail on wrong spot id', async () => {
         const id = '012345678901234567890123'
 
         try {
-            await retrieveUser(id)
+            await retrieveSpot(id)
 
             throw Error('should not reach this point')
         } catch (error) {
             expect(error).to.exist
             expect(error).to.be.an.instanceOf(NotFoundError)
-            expect(error.message).to.equal(`user with id ${id} not found`)
+            expect(error.message).to.equal(`spot with id ${id} not found`)
         }
     })
 

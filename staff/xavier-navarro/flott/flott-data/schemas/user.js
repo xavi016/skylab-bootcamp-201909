@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose')
+const { Schema, ObjectId } = require('mongoose')
 const { validators: { isEmail } } = require('flott-util')
 const { social } = require('./')
 
@@ -38,6 +38,9 @@ module.exports = new Schema({
     socialMedia: {
         type: [social]
     },
+    favorites: [{
+        type: ObjectId
+    }],
     lastAccess: {
         type: Date
     }

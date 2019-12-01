@@ -23,6 +23,7 @@ module.exports = new Schema({
         },
         coordinates: {
             type: [Number],
+            index:"2dsphere",
             required: true
         }
     },
@@ -36,6 +37,11 @@ module.exports = new Schema({
     },
     tags: {
         type: Array
+    },
+    totalFavs: {
+        type: Number,
+        default: 0,
+        required: true
     },
     flag: Flags,
     comments: [{
