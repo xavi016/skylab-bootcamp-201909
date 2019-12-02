@@ -1,6 +1,6 @@
-const { Schema } = require('mongoose')
+const { Schema, ObjectId } = require('mongoose')
 const { validators: { isEmail } } = require('flott-util')
-const {socialMedia} = require('.')
+const { social } = require('./')
 
 module.exports = new Schema({
     name: {
@@ -25,12 +25,21 @@ module.exports = new Schema({
         type: String,
         required: true
     },
-    profileImage: {
-        type: String,
+    description: {
+        type: String
     },
-    socialMedia: [{
-        type: socialMedia,
-        required: true
+    modalities: [{
+        type: String,
+        enum: ['skate','longboard','roller','scooter','bmx']
+    }],
+    profileImage: {
+        type: String
+    },
+    socialMedia: {
+        type: [social]
+    },
+    favorites: [{
+        type: ObjectId
     }],
     lastAccess: {
         type: Date

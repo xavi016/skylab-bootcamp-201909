@@ -5,15 +5,15 @@ module.exports = new Schema({
         type: Boolean
     },
     supermarket: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     publicTransport: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     parking: {
-        type: Boolean
-    },
-    publicTransport: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 })
