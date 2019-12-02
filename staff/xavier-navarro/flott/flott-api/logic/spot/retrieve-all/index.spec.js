@@ -8,7 +8,7 @@ const { database, ObjectId, models: { Spot, User } } = require('flott-data')
 const bcrypt = require('bcryptjs')
 const randomCoordinates = require('random-coordinates')
 
-describe.only('logic - list spots', () => {
+describe('logic - list spots', () => {
     
     before(() => database.connect(TEST_DB_URL))
 
@@ -16,6 +16,7 @@ describe.only('logic - list spots', () => {
     let spotname, description, longitude, latitude, spotModalities
     let userCoordinates, radius, spotName, sports, spotTags
     const insertions = []
+    const spotsName = []
 
     beforeEach(async() => {
         
@@ -31,23 +32,21 @@ describe.only('logic - list spots', () => {
         const user = await User.create({ name: _name, surname, email, username, password: hash })
         id = user.id
 
-       
+         
 
         for (let i = 0; i < 10; i++) {
 
             let coor = [41 + random(), 2 + random()]
             latitude = coor[1]
             longitude = coor[0]
-        
-            spotname = `new-spotname-${random()}`
-            description = `description-${random()}`
+            spotName = `spotname-${random()}`
             spotModalities = ['skate','longboard','roller','scooter','bmx']
             const numItems = floor(random() * spotModalities.length)
             spotModalities = spotModalities.shuffle().splice(0, numItems)
 
             const spot = {
                 creator: id,
-                name: `name-${random()}`,
+                name: spotName,
                 description: `description-${random()}`,
                 location: { type: "Point", coordinates: [longitude, latitude] },
                 modalities: spotModalities,
@@ -59,7 +58,7 @@ describe.only('logic - list spots', () => {
                         parking: true
                     }
             }
-
+            spotsName.push(spotName)
             insertions.push(spot)
         }
 
@@ -67,17 +66,35 @@ describe.only('logic - list spots', () => {
 
     })
 
-    it('should succeed on correct spot id', async () => {
+    it('should succeed on correct retrieve collecting elements according to filter', async () => {
         userCoordinates = [41+random(),2+random()]
         radius = 130000
-        spotName = "Lukazhu"
-        sports = ["skate","longboard"]
-        spotTags = ["random"]
+        spotName = 'Lukazhu'
+        sports = ['skate','longboard']
+        spotTags = ['random']
         
         const spots = await listSpots(userCoordinates, radius, spotName, sports, spotTags)
-        console.log(spots)
+        
+        expect(spots).to.exist
+        expect(spots).to.be.an("array")
+        
+        spots.forEach(spot => {
+            expect(spot.name).to.exist
+            expect(spot.name).to.be.a('string')
+            expect(spot.name).to.be.oneOf(spotsName)
+            expect(spot.tags).to.exist
+            expect(spot.tags).to.be.an('array')
+            expect(spot.modalities).to.exist
+            expect(spot.modalities).to.be.an('array')
+            expect(spot.images).to.exist
+            expect(spot.images).to.be.an('array')
+            expect(spot.totalFavs).to.exist
+            expect(spot.totalFavs).to.be.a('number')
+            expect(spot.username).to.exist
+            expect(spot.username).to.be.a('string')
+            expect(spot.userImage).to.be.undefined
+        });
     })
-
 
     after(() => Promise.all([User.deleteMany(), Spot.deleteMany()]).then(database.disconnect))
 })

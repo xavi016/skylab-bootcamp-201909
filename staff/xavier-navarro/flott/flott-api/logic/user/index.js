@@ -3,4 +3,5 @@ module.exports = {
     authenticateUser: require('./authenticate-user'),
     retrieveUser: require('./retrieve-user'),
     updateUser: require('./update-user'),
+    toggleFav: require('./toggle-fav'),
 } 

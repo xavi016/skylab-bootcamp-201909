@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { registerUser, authenticateUser, retrieveUser, toggleFav } = require('../../logic/user')
+const { listSpots, retrieveSpot, createSpot } = require('../../logic/spot')
 const { uploadImage, loadImageUrl, loadImage } = require('../../logic/images')
 const jwt = require('jsonwebtoken')
 const { env: { SECRET } } = process
@@ -12,13 +12,12 @@ const jsonBodyParser = bodyParser.json()
 
 const router = Router()
 
-router.post('/', jsonBodyParser, (req, res) => {
-    
-    const { body: { name, surname, email, username, password } } = req
 
+router.post('/', tokenVerifier, jsonBodyParser, (req, res) => {
+    const { id,  body: { name, description, longitude, latitude, modalities, tags, flags }  } = req
     try {
         
-        registerUser(name, surname, email, username, password)
+        createSpot(creator = id, name, description, longitude, latitude, modalities, tags, flags)
             .then(() => res.status(201).end())
             .catch(error => {
                 const { message } = error
@@ -33,35 +32,12 @@ router.post('/', jsonBodyParser, (req, res) => {
     }
 })
 
-router.post('/auth', jsonBodyParser, (req, res) => {
-    const { body: { username, password } } = req
-
+router.get('/:idSpot', tokenVerifier, (req, res) => {
     try {
-        authenticateUser(username, password)
-            .then(id => {
-                const token = jwt.sign({ sub: id }, SECRET, { expiresIn: '1d' })
+        const { params : {idSpot} } = req
 
-                res.json({ token })
-            })
-            .catch(error => {
-                const { message } = error
-
-                if (error instanceof CredentialsError)
-                    return res.status(401).json({ message })
-
-                res.status(500).json({ message })
-            })
-    } catch ({ message }) {
-        res.status(400).json({ message })
-    }
-})
-
-router.get('/', tokenVerifier, (req, res) => {
-    try {
-        const { id } = req
-
-        retrieveUser(id)
-            .then(user => res.json(user))
+        retrieveSpot(idSpot)
+            .then(spot => res.json(spot))
             .catch(error => {
                 const { message } = error
 
@@ -77,12 +53,10 @@ router.get('/', tokenVerifier, (req, res) => {
     }
 })
 
-router.get('/all', tokenVerifier, (req, res) => {
+router.get('/search/all', tokenVerifier, (req, res) => {
     try {
-        const { id } = req
-
-        retrieveUser(id)
-            .then(user => res.json(user))
+        listSpots()
+            .then(spots => res.status(201).json({spots}))
             .catch(error => {
                 const { message } = error
 
@@ -94,27 +68,6 @@ router.get('/all', tokenVerifier, (req, res) => {
     } catch (error) {
         const { message } = error
 
-        res.status(400).json({ message })
-    }
-})
-
-router.patch('/favs/:favId', tokenVerifier, jsonBodyParser, (req, res) => {
-    
-    try {
-        const { id, params : {favId} } = req
-        toggleFav(id, favId)
-            .then(() =>
-                res.end()
-            )
-            .catch(error => {
-                const { message } = error
-                if (error instanceof NotFoundError)
-                    return res.status(404).json({ message })
-                if (error instanceof ConflictError)
-                    return res.status(409).json({ message })
-                res.status(500).json({ message })
-            })
-    } catch ({ message }) {
         res.status(400).json({ message })
     }
 })
@@ -123,7 +76,7 @@ router.post('/upload/:id', tokenVerifier, (req, res) => {
     debugger
     const { params: { id } } = req
     const busboy = new Busboy({ headers: req.headers })
-    const type = 'users'
+    const type = 'spots'
 
     try {
         busboy.on('file', async(fieldname, file, filename, encoding, mimetype) => {
@@ -143,7 +96,7 @@ router.post('/upload/:id', tokenVerifier, (req, res) => {
 
 router.get('/retrieve-img/:id', tokenVerifier, async(req, res) => {
 
-    const type = 'users'
+    const type = 'spots'
     const { params: { id } } = req
     const stream = await loadImage(id, type)
     res.setHeader('Content-Type', 'image/jpeg')
@@ -152,7 +105,7 @@ router.get('/retrieve-img/:id', tokenVerifier, async(req, res) => {
 
 router.get('/profile-imgUrl/:id', tokenVerifier, async(req, res) => {
     
-    const type = 'users'
+    const type = 'spots'
     const { params: { id } } = req
     const imageUrl = await loadImageUrl(id, type)
     res.json({ imageUrl })
