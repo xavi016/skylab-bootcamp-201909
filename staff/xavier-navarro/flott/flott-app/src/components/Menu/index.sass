@@ -1,0 +1,56 @@
+.header
+    display: flex
+    justify-content: space-between
+    padding: .5rem 1rem
+    font-size: 1.5rem
+    position: sticky
+    top: 0
+    background-color: #fff
+    z-index: 100
+    border-bottom: 1px solid #ececec
+    margin-bottom: 1rem
+    .logo 
+        width: 150px
+        &__img
+            width: 100%
+    #show-menu 
+        display: none
+    .hamburger
+        display: flex
+        align-items: center
+    &:hover
+        cursor: pointer
+    .nav
+        display: none
+        z-index: 10
+    
+    #show-menu:checked ~ .nav
+        display: block
+        position: absolute
+        top: 72px
+        left: 0
+        width: 200px
+        background: aliceblue
+        
+    #show-menu:checked ~ .nav .menu
+        display: flex
+        flex-direction: column
+        height: calc(100vh - 60px)
+        justify-content: flex-start
+        list-style: none
+
+    #show-menu:checked ~ .nav .menu .menu__item
+        padding: 1rem    
+    .nav
+        width: 100%
+
+@media (min-width: 480px)
+    .header
+        .hamburger__icon 
+            display: none
+        .nav
+            display: block
+            .menu
+                display: flex
+                justify-content: space-around
+                list-style: none
