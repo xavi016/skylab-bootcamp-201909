@@ -56,7 +56,7 @@ router.get('/:idSpot', tokenVerifier, (req, res) => {
 router.get('/search/all', tokenVerifier, (req, res) => {
     try {
         listSpots()
-            .then(spots => res.status(201).json({spots}))
+            .then(spots => res.status(200).json({spots}))
             .catch(error => {
                 const { message } = error
 

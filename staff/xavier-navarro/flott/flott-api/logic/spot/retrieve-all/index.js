@@ -14,8 +14,11 @@ const { models: { Spot, User } } = require('flott-data')
 * @return {Array} id Returns an array with all results
 */
 
-module.exports = function (userCoordinates = [41,2], radius = 130000, spotName, sports = ['skate','longboard','roller','scooter','bmx'], spotTags, numFavs, fountain, supermarket, publicTransport, parking ) {
-    userCoordinates && validate.array(userCoordinates)
+module.exports = function (userCoordinates, radius, spotName, sports, spotTags, numFavs, fountain, supermarket, publicTransport, parking ) {
+    userCoordinates ? validate.array(userCoordinates) : userCoordinates = [41,2]
+    radius ? validate.number(radius) : radius = 130000
+    sports ? validate.array(sports) : sports = ['skate','longboard','roller','scooter','bmx']
+
     radius && validate.number(radius, 'radius')
     if(spotName){
         validate.string(spotName)
@@ -23,7 +26,6 @@ module.exports = function (userCoordinates = [41,2], radius = 130000, spotName, 
     }else{
         spotName = " "
     }
-    sports && validate.array(sports)
     spotTags ? validate.array(spotTags) : sportTags = " "
 
     return (async () => {
