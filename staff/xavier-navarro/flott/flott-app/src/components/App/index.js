@@ -10,11 +10,14 @@ import logic, { user } from '../../logic'
 export default withRouter(function ({ history }) {
     // const [name, setName] = useState()
 
-    async function handleRegister(name, surname, email, username, password) {
+    async function handleRegister(name, surname, email, username, password, modalities) {
         try {
-            await logic.user.registerUser(name, surname, email, username, password)
+            await logic.user.registerUser(name, surname, email, username, password, modalities)
 
-            history.push('/login')
+            const token = await logic.user.authenticateUser(username, password)
+
+            sessionStorage.token = token
+            history.push('/home')
         } catch (error) {
             console.error(error)
         }
@@ -24,7 +27,6 @@ export default withRouter(function ({ history }) {
 
     async function handleLogin(username, password) {
         try {
-            
             const token = await logic.user.authenticateUser(username, password)
 
             sessionStorage.token = token

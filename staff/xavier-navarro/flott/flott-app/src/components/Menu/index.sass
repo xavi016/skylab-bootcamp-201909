@@ -24,7 +24,7 @@
         display: none
         z-index: 10
     
-    #show-menu:checked ~ .nav
+    .nav-show
         display: block
         position: absolute
         top: 72px
@@ -32,15 +32,15 @@
         width: 200px
         background: aliceblue
         
-    #show-menu:checked ~ .nav .menu
-        display: flex
-        flex-direction: column
-        height: calc(100vh - 60px)
-        justify-content: flex-start
-        list-style: none
+        & .menu
+            display: flex
+            flex-direction: column
+            height: calc(100vh - 60px)
+            justify-content: flex-start
+            list-style: none
 
-    #show-menu:checked ~ .nav .menu .menu__item
-        padding: 1rem    
+            & .menu__item
+                padding: 1rem      
     .nav
         width: 100%
 
