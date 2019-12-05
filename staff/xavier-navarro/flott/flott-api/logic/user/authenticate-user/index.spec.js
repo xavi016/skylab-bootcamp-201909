@@ -10,7 +10,7 @@ const bcrypt = require('bcryptjs')
 describe('logic - authenticate user', () => {
     before(() => database.connect(TEST_DB_URL))
 
-    let id, name, surname, email, username, password, hash
+    let id, name, surname, email, username, password, hash, modalities
 
     beforeEach(async () => {
         name = `name-${random()}`
@@ -19,9 +19,10 @@ describe('logic - authenticate user', () => {
         username = `username-${random()}`
         password = `password-${random()}`
         hash = await bcrypt.hash(password, 10)
+        modalities = ['skate', 'roller']
         await User.deleteMany()
 
-        const user = await User.create({ name, surname, email, username, password: hash })
+        const user = await User.create({ name, surname, email, username, password: hash, modalities })
 
         id = user.id
     })
