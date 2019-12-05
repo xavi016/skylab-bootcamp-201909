@@ -2,6 +2,21 @@ const call = require('../../../utils/call')
 const { validate, errors: { ConflictError } } = require('flott-util')
 const API_URL = process.env.REACT_APP_API_URL
 
+/**
+* Register user
+* 
+* @param {string} name
+* @param {string} surname 
+* @param {string} email
+* @param {string} username
+* @param {string} password 
+* @param {string} modalities
+* 
+* @throws {ConflictError} If exist another user with the same username.
+* 
+* @return {status}  status 201
+*/
+
 module.exports = function (name, surname, email, username, password, modalities) {
     validate.string(name)
     validate.string.notVoid('name', name)
@@ -12,6 +27,8 @@ module.exports = function (name, surname, email, username, password, modalities)
     validate.email(email)
     validate.string(username)
     validate.string.notVoid('username', username)
+    validate.string(password)
+    validate.string.notVoid('password', password)
     validate.array(modalities)
     // validate.matches('modalities', modalities, 'bmx','skate', 'longboard','roller','scooter')
 
