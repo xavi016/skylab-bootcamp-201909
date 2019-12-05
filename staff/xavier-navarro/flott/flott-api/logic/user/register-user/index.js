@@ -10,8 +10,7 @@ const bcrypt = require('bcryptjs')
 * @param {string} email
 * @param {string} username
 * @param {string} password 
-* @param {string} profileImage
-* @param {string} socialMedia 
+* @param {string} modalities
 * 
 * @throws {ConflictError} If exist another user with the same username.
 * 
@@ -19,7 +18,8 @@ const bcrypt = require('bcryptjs')
 * @return {string}  id Returns the user id
 */
 
-module.exports = function (name, surname, email, username, password) {
+module.exports = function (name, surname, email, username, password, modalities) {
+    
     validate.string(name)
     validate.string.notVoid('name', name)
     validate.string(surname)
@@ -32,6 +32,9 @@ module.exports = function (name, surname, email, username, password) {
     validate.string(password)
     validate.string.notVoid('password', password)
 
+    validate.array(modalities)
+    // validate.matches('modalities', modalities, 'bmx','skate', 'longboard','roller','scooter')
+
     return (async () => {
         const user = await User.findOne({ username })
 
@@ -39,6 +42,6 @@ module.exports = function (name, surname, email, username, password) {
 
         const hash = await bcrypt.hash(password, 10)
 
-        await User.create({ name, surname, email, username, password: hash })
+        await User.create({ name, surname, email, username, password: hash, modalities })
     })()
 }

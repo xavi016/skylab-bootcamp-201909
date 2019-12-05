@@ -14,11 +14,11 @@ const router = Router()
 
 router.post('/', jsonBodyParser, (req, res) => {
     
-    const { body: { name, surname, email, username, password } } = req
+    const { body: { name, surname, email, username, password, modalities } } = req
 
     try {
         
-        registerUser(name, surname, email, username, password)
+        registerUser(name, surname, email, username, password, modalities)
             .then(() => res.status(201).end())
             .catch(error => {
                 const { message } = error

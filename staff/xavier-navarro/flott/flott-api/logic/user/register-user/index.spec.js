@@ -10,7 +10,7 @@ const bcrypt = require('bcryptjs')
 describe('logic - register user', () => {
     before(() => database.connect(TEST_DB_URL))
 
-    let name, surname, email, username, password, _password, hash
+    let name, surname, email, username, password, _password, hash, modalities
 
     beforeEach(async () => {
         name = `name-${random()}`
@@ -19,12 +19,13 @@ describe('logic - register user', () => {
         username = `username-${random()}`
         password = `password-${random()}`
         hash = await bcrypt.hash(password, 10)
+        modalities = ['skate', 'roller']
 
         await User.deleteMany()
     })
 
     it('should succeed on correct credentials', async () => {
-        const response = await registerUser(name, surname, email, username, password)
+        const response = await registerUser(name, surname, email, username, password, modalities)
 
         expect(response).to.be.undefined
 
@@ -38,14 +39,15 @@ describe('logic - register user', () => {
         expect(user.username).to.equal(username)
         const match = await bcrypt.compare(password, user.password)
         expect(match).to.be.true
+        expect(user.modalities).to.be.an('array')
     })
 
     describe('when user already exists', () => {
-        beforeEach(() => User.create({ name, surname, email, username, password }))
+        beforeEach(() => User.create({ name, surname, email, username, password, modalities }))
 
         it('should fail on already existing user', async () => {
             try {
-                await registerUser(name, surname, email, username, password)
+                await registerUser(name, surname, email, username, password, modalities)
 
                 throw Error('should not reach this point')
             } catch (error) {
@@ -102,6 +104,20 @@ describe('logic - register user', () => {
 
         expect(() => registerUser(name, surname, email, username, '')).to.throw(ContentError, 'password is empty or blank')
         expect(() => registerUser(name, surname, email, username, ' \t\r')).to.throw(ContentError, 'password is empty or blank')
+
+        expect(() => registerUser(name, surname, email, username, 1)).to.throw(TypeError, '1 is not a string')
+        expect(() => registerUser(name, surname, email, username, true)).to.throw(TypeError, 'true is not a string')
+        expect(() => registerUser(name, surname, email, username, [])).to.throw(TypeError, ' is not a string')
+        expect(() => registerUser(name, surname, email, username, {})).to.throw(TypeError, '[object Object] is not a string')
+        expect(() => registerUser(name, surname, email, username, undefined)).to.throw(TypeError, 'undefined is not a string')
+        expect(() => registerUser(name, surname, email, username, null)).to.throw(TypeError, 'null is not a string')
+        
+        expect(() => registerUser(name, surname, email, username, password, 1)).to.throw(TypeError, '1 is not a Array')
+        expect(() => registerUser(name, surname, email, username, password, true)).to.throw(TypeError, 'true is not a Array')
+        expect(() => registerUser(name, surname, email, username, password, 'hola')).to.throw(TypeError, ' is not a Array')
+        expect(() => registerUser(name, surname, email, username, password, {})).to.throw(TypeError, '[object Object] is not a Array')
+        expect(() => registerUser(name, surname, email, username, password, undefined)).to.throw(TypeError, 'undefined is not a Array')
+        expect(() => registerUser(name, surname, email, username, password, null)).to.throw(TypeError, 'null is not a Array')
     })
 
     after(() => User.deleteMany().then(database.disconnect))
