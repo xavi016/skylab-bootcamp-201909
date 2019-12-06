@@ -6,12 +6,18 @@ import MyContext from '../ProviderContext'
 
 export default withRouter(function ({ history }) {
     const  [error, setError]  = useState()
+    const  [spots, setSpot]  = useState()
+    UseEffect(() => {
+        (async () => {
+           setSpot(await handleRetrieveSpots())
+        })()
+    }, [setUser])
     async function handleRetrieveSpots(){
         const results = retrieveSpots()
     }
     return <section className="spots__container spots">
                 <ul className="spots__results results">
-                    {results.map(result => <li className="results__item card" key={result.id}><Spot result={result} /></li>)}
+                    {spots && spots.map(result => <li className="results__item card" key={result.id}><Spot result={result} /></li>)}
                 </ul>
 
                 <button className="btn-add">
