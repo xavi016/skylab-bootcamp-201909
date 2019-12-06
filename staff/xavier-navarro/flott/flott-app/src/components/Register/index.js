@@ -1,31 +1,50 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-// import './index.sass'
+import React, { useState, useContext } from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import logic, { user } from '../../logic'
+import MyContext from '../ProviderContext'
 // import Feedback from '../Feedback'
 
-export default function({ onRegister, error }) {
-  
-    return <section className="register">
-        <form className="register__form form" onSubmit={function (event) {
-            event.preventDefault()
-            let modalities = []
-            
-            const { 
-                name: { value: name },
-                surname: { value: surname },
-                email: { value: email },
-                username: { value: username },
-                password: { value: password } 
-            } = event.target
-            debugger
-            if(event.target.roller.checked) modalities.push('roller')
-            if(event.target.skate.checked) modalities.push('skate')
-            if(event.target.longboard.checked) modalities.push('longboard')
-            if(event.target.scooter.checked) modalities.push('scooter')
-            if(event.target.bmx.checked) modalities.push('bmx')
+export default withRouter(function ({ history }) {
+    const  [error, setError]  = useState()
+    const { setUser } = useContext(MyContext)
 
-            onRegister(name, surname, email, username, password, modalities)
-        }}>
+    function handleSubmit (event) {
+        event.preventDefault()
+        let modalities = []
+        
+        const { 
+            name: { value: name },
+            surname: { value: surname },
+            email: { value: email },
+            username: { value: username },
+            password: { value: password } 
+        } = event.target
+        
+        if(event.target.roller.checked) modalities.push('roller')
+        if(event.target.skate.checked) modalities.push('skate')
+        if(event.target.longboard.checked) modalities.push('longboard')
+        if(event.target.scooter.checked) modalities.push('scooter')
+        if(event.target.bmx.checked) modalities.push('bmx')
+
+        onRegister(name, surname, email, username, password, modalities)
+    }
+
+    async function onRegister(name, surname, email, username, password, modalities) {
+        try {
+            await logic.user.registerUser(name, surname, email, username, password, modalities)
+
+            const token = await logic.user.authenticateUser(username, password)
+
+            sessionStorage.token = token
+            setUser(name)
+            history.push('/home')
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    return <section className="register">
+        <form className="register__form form" onSubmit={handleSubmit}>
             <h1 className="form__title">Sign up</h1>
             <input className="form__input" type="text" name="name" placeholder="Name" />
             <input className="form__input" type="text" name="surname" placeholder="Surname" />
@@ -46,4 +65,4 @@ export default function({ onRegister, error }) {
 
         {/* {error && <Feedback message={error} />} */}
     </section>
-}
+})
