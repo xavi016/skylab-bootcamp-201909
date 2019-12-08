@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import MyContext from '../ProviderContext'
 
-export default function() {
+export default function({ onLogout }) {
     const [toggleMenu, setToggleMenu] = useState(false)
     const { user } = useContext(MyContext)
     function onToggleMenu() {
@@ -12,15 +12,27 @@ export default function() {
 
     return <header className="header">
     <input id="show-menu" name="modal" type="checkbox"/>
-     <i  onClick={onToggleMenu} className="fas fa-bars hamburger__icon"></i>
-    <Link to="/fds" className="logo"><img src="/images/flott.png" alt="Flott" className="logo__img"/></Link>
+    <i onClick={onToggleMenu} className="fas fa-bars hamburger__icon"></i>
+    <Link to="/" className="logo"><img src="/images/flott.png" alt="Flott" className="logo__img"/></Link>
     <nav className={toggleMenu ? 'header__nav nav-show' : 'header__nav nav'}>
         <ul className="nav__menu menu">
-            <li className="menu__item">Spots</li>
-            <li className="menu__item">News</li>
-            <li className="menu__item"><Link to="/fds" className="logo">Maps</Link></li>
-            { user && <li className="menu__item">Following</li> }
-            { user && <li className="menu__item"><Link to="/fds" className="logo">{user}</Link></li> }
+            <span>
+                { user && <li className="menu__item"><Link to="/" className="logo">{user}</Link></li> }
+                <li className="menu__item"><Link to="/" onClick={onToggleMenu} className="logo">Spots</Link></li>
+                <li className="menu__item">News</li>
+                <li className="menu__item"><Link to="/" onClick={onToggleMenu} className="logo">Maps</Link></li>
+                { user && <li className="menu__item">Following</li> }
+                { user && <li className="menu__item">
+                    <form onSubmit={event => { event.preventDefault(); onLogout() }}>
+                        <button className="btn__logout">Logout</button>
+                    </form>
+                </li> }
+            </span>
+            {/* <li className="menu__item"></li> */}
+            {!user && <li className="menu__item access">
+                    <Link to="/register" onClick={onToggleMenu} className="logo">Sing In</Link> | 
+                    <Link to="/login" onClick={onToggleMenu} className="logo">Log In</Link>
+            </li> }
         </ul>
     </nav>
 </header>

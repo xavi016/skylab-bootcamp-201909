@@ -46,7 +46,7 @@ export default withRouter(function ({ history }) {
     return <section className="register">
         <form className="register__form form" onSubmit={handleSubmit}>
             <h1 className="form__title">Sign up</h1>
-            <input className="form__input" type="text" name="name" placeholder="Name" />
+            <input className="form__input" type="text" name="name" autoFocus placeholder="Name" />
             <input className="form__input" type="text" name="surname" placeholder="Surname" />
             <input className="form__input" type="email" name="email" placeholder="E-mail" />
             <input className="form__input" type="username" name="username" placeholder="Username" />
@@ -60,7 +60,7 @@ export default withRouter(function ({ history }) {
                 <label htmlFor=""><input type="checkbox" name="roller" value="roller"/>Roller</label>
             </div>
             <button className="btn-submit">Sign up</button>
-            <Link className="login__back" to="/">Log in</Link>
+            <Link className="login__back" to="/login">Log in</Link>
         </form>
 
         {/* {error && <Feedback message={error} />} */}

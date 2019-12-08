@@ -7,35 +7,42 @@ import Register from '../Register'
 import Login from '../Login'
 import Footer from '../Footer'
 import { Route, withRouter, Redirect } from 'react-router-dom'
+import logic, { user, retrieveUser } from '../../logic'
 import MyContext from '../ProviderContext'
 
 export default withRouter(function ({ history }) {
     const [user, setUser] = useState(undefined)
-    const { token } = sessionStorage
     
     useEffect(() => {
+        const { token } = sessionStorage;
+
         (async () => {
             if (token) {
-                const { name } = await retrieveUser(token)
+                const { username: user } = await logic.user.retrieveUser(token)
 
-                setUser(name)
-
-                await retrieveTasks(token)
+                setUser(user)
             }
         })()
-    }, [setUser])
+    }, [sessionStorage.token, setUser])
 
+    function handleGoBack() { history.push('/') }
+
+    function handleLogout() {
+        sessionStorage.clear()
+        setUser(undefined)
+
+        handleGoBack()
+    }
     
 
     return <MyContext.Provider value={{ user , setUser }}>  
-                <Menu/>
-                    <section className="spots__container spots">
-                        <Search/>
-                        <Route path="/" render={() => <Home/>} />
-                    </section>
-                    <Route path="/register" render={() => token ? <Redirect to="/" /> : <Register/>} />
-                    <Route exact path="/login" render={() => token ? <Redirect to="/" /> : <Login/>} />
-            {/* <Route path="/board" render={() => token ? <Board user={name} tasks={tasks} onLogout={handleLogout} onChangeTaskStatus={handleChangeTaskStatus} onNewTask={handleNewTask} /> : <Redirect to="/" />} /> */}
-                <Footer/>
+                    <Menu onLogout={handleLogout}/>
+                        <section className="spots__container spots">
+                            <Route exact path="/" render={() =><><Search/><Home/></>} />
+                        </section>
+                        <Route path="/register" render={() => user ? <Redirect to="/" /> : <Register/>} />
+                        <Route path="/login" render={() => user ? <Redirect to="/" /> : <Login/>} />
+                {/* <Route path="/board" render={() => token ? <Board user={name} tasks={tasks} onLogout={handleLogout} onChangeTaskStatus={handleChangeTaskStatus} onNewTask={handleNewTask} /> : <Redirect to="/" />} /> */}
+                    <Footer/>
           </MyContext.Provider>
 })
