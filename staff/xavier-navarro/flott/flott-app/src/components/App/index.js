@@ -11,7 +11,9 @@ import logic, { user, retrieveUser } from '../../logic'
 import MyContext from '../ProviderContext'
 
 export default withRouter(function ({ history }) {
-    const [user, setUser] = useState(undefined)
+    const   [user, setUser] = useState(undefined)
+    const   [spots, setSpots]  = useState()
+    const   [refresh, setRefresh]  = useState(false)
     
     useEffect(() => {
         const { token } = sessionStorage;
@@ -23,7 +25,7 @@ export default withRouter(function ({ history }) {
                 setUser(user)
             }
         })()
-    }, [sessionStorage.token, setUser])
+    }, [sessionStorage.token, setUser, setRefresh])
 
     function handleGoBack() { history.push('/') }
 
@@ -35,7 +37,7 @@ export default withRouter(function ({ history }) {
     }
     
 
-    return <MyContext.Provider value={{ user , setUser }}>  
+    return <MyContext.Provider value={{ user , setUser, setSpots, spots, setRefresh, refresh }}>  
                     <Menu onLogout={handleLogout}/>
                         <section className="spots__container spots">
                             <Route exact path="/" render={() =><><Search/><Home/></>} />

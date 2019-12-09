@@ -4,10 +4,16 @@ import MyContext from '../ProviderContext'
 
 export default function({ onLogout }) {
     const [toggleMenu, setToggleMenu] = useState(false)
-    const { user } = useContext(MyContext)
+    const { user,refresh, setRefresh } = useContext(MyContext)
     function onToggleMenu() {
-        
-        setToggleMenu(!toggleMenu)
+        setToggleMenu(!toggleMenu)        
+    }
+    function refreshSpots(){
+        debugger
+        console.log(refresh)
+        setRefresh(!refresh)
+        console.log(refresh)
+        onToggleMenu()
     }
 
     return <header className="header">
@@ -18,7 +24,7 @@ export default function({ onLogout }) {
         <ul className="nav__menu menu">
             <span>
                 { user && <li className="menu__item"><Link to="/" className="logo">{user}</Link></li> }
-                <li className="menu__item"><Link to="/" onClick={onToggleMenu} className="logo">Spots</Link></li>
+                <li className="menu__item"><Link to="/" onClick={refreshSpots} className="logo">Spots</Link></li>
                 <li className="menu__item">News</li>
                 <li className="menu__item"><Link to="/" onClick={onToggleMenu} className="logo">Maps</Link></li>
                 { user && <li className="menu__item">Following</li> }

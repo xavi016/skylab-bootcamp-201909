@@ -7,15 +7,16 @@ import MyContext from '../ProviderContext'
 
 export default withRouter(function ({ history }) {
     const  [error, setError]  = useState()
-    const  [spots, setSpot]  = useState()
-    const { user } = useContext(MyContext)
+    
+    const { user, spots, setSpots, refresh, setRefresh } = useContext(MyContext)
 
     useEffect(() => {
         (async () => {
+            debugger
             const listSpots = await handleRetrieveSpots()
-           setSpot(listSpots)
+            setSpots(listSpots)
         })()
-    }, [setSpot])
+    }, [setSpots, refresh, setRefresh])
     async function handleRetrieveSpots(){
         const results = await logic.spots.listSpots()
         return results

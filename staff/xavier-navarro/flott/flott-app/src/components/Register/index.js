@@ -37,7 +37,7 @@ export default withRouter(function ({ history }) {
 
             sessionStorage.token = token
             setUser(name)
-            history.push('/home')
+            history.push('/')
         } catch (error) {
             console.error(error)
         }
