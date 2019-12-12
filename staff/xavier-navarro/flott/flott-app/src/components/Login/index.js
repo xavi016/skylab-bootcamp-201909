@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import logic, { user, retrieveUser } from '../../logic'
 import { Link, withRouter } from 'react-router-dom'
 import MyContext from '../ProviderContext'

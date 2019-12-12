@@ -9,10 +9,7 @@ export default function({ onLogout }) {
         setToggleMenu(!toggleMenu)        
     }
     function refreshSpots(){
-        debugger
-        console.log(refresh)
         setRefresh(!refresh)
-        console.log(refresh)
         onToggleMenu()
     }
 
@@ -23,18 +20,17 @@ export default function({ onLogout }) {
     <nav className={toggleMenu ? 'header__nav nav-show' : 'header__nav nav'}>
         <ul className="nav__menu menu">
             <span>
-                { user && <li className="menu__item"><Link to="/" className="logo">{user}</Link></li> }
+                { user && <li className="menu__item"><Link to="/" className="logo">{user.username}</Link></li> }
                 <li className="menu__item"><Link to="/" onClick={refreshSpots} className="logo">Spots</Link></li>
-                <li className="menu__item">News</li>
-                <li className="menu__item"><Link to="/" onClick={onToggleMenu} className="logo">Maps</Link></li>
-                { user && <li className="menu__item">Following</li> }
+                {/* <li className="menu__item">News</li>
+                <li className="menu__item"><Link to="/" onClick={onToggleMenu} className="logo">Maps</Link></li> */}
+                { user && <li className="menu__item"><Link to="/favorites" onClick={refreshSpots} className="logo">Favorites</Link></li> }
                 { user && <li className="menu__item">
                     <form onSubmit={event => { event.preventDefault(); onLogout() }}>
                         <button className="btn__logout">Logout</button>
                     </form>
                 </li> }
             </span>
-            {/* <li className="menu__item"></li> */}
             {!user && <li className="menu__item access">
                     <Link to="/register" onClick={onToggleMenu} className="logo">Sing In</Link> | 
                     <Link to="/login" onClick={onToggleMenu} className="logo">Log In</Link>

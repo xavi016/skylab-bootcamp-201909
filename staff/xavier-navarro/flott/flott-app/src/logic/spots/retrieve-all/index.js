@@ -2,10 +2,10 @@ const call = require('../../../utils/call')
 const { validate, errors: { NotFoundError, CredentialsError } } = require('flott-util')
 const API_URL = process.env.REACT_APP_API_URL
 
-module.exports = function () {
+module.exports = function (idUser) {
 
     return (async () => {
-        const res = await call(`${API_URL}/spots`, {
+        const res = await call(`${API_URL}/spots/${idUser}`, {
             method: 'GET'
         })
 

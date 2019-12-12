@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react'
-import { Link, withRouter } from 'react-router-dom'
-import logic, { spot } from '../../logic'
+import { withRouter } from 'react-router-dom'
+import logic, { spots } from '../../logic'
 import MyContext from '../ProviderContext'
 // import Feedback from '../Feedback'
 
 export default withRouter(function ({ history }) {
     const  [error, setError]  = useState()
-    const { setSpots } = useContext(MyContext)
+    const { user, setSpots } = useContext(MyContext)
 
     function handleSubmit(event){
         event.preventDefault()
@@ -28,7 +28,9 @@ export default withRouter(function ({ history }) {
     }
 
     async function handleSearch(query){
-        const results = await logic.spots.searchSpots(query)
+        let idUser
+        user && user.id ? idUser = user.id : idUser = undefined
+        const results = await logic.spots.searchSpots(query,idUser)
         return results
     }
 

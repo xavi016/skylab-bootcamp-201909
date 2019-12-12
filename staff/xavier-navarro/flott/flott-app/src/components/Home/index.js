@@ -12,21 +12,27 @@ export default withRouter(function ({ history }) {
 
     useEffect(() => {
         (async () => {
-            debugger
-            const listSpots = await handleRetrieveSpots()
+            // const listSpots = await handleRetrieveSpots()
+            let idUser
+            user && user.id ? idUser = user.id : idUser = undefined
+            const listSpots = await logic.spots.listSpots(idUser)
             setSpots(listSpots)
         })()
-    }, [setSpots, refresh, setRefresh])
-    async function handleRetrieveSpots(){
-        const results = await logic.spots.listSpots()
-        return results
-    }
+    }, [refresh])
+
+    // async function handleRetrieveSpots(){
+    //     debugger
+    //     let idUser
+    //     user && user.id ? idUser = user.id : idUser = undefined
+    //     const results = await logic.spots.listSpots(idUser)
+    //     return results
+    // }
     return <section className="spots__container spots">
 
                 <SpotsList spots={spots}/>
-                { user && <button className="btn-add">
+                { user && <Link to="/create"  className="btn-add">
                     <i className="fas fa-plus"></i>
-                </button>}
+                </Link>}
                 {/* {error && <Feedback message={error} />} */}
             </section>
 })

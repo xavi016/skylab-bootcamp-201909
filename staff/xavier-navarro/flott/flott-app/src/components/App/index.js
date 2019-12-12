@@ -3,6 +3,10 @@ import './index.sass'
 import Menu from '../Menu'
 import Search from '../Search'
 import Home from '../Home'
+import DetailSpot from '../DetailSpot'
+import CreateSpot from '../CreateSpot'
+import ModifySpot from '../ModifySpot'
+import FavoritesList from '../FavoritesList'
 import Register from '../Register'
 import Login from '../Login'
 import Footer from '../Footer'
@@ -17,11 +21,9 @@ export default withRouter(function ({ history }) {
     
     useEffect(() => {
         const { token } = sessionStorage;
-
         (async () => {
             if (token) {
-                const { username: user } = await logic.user.retrieveUser(token)
-
+                const user = await logic.user.retrieveUser(token)
                 setUser(user)
             }
         })()
@@ -41,7 +43,11 @@ export default withRouter(function ({ history }) {
                     <Menu onLogout={handleLogout}/>
                         <section className="spots__container spots">
                             <Route exact path="/" render={() =><><Search/><Home/></>} />
+                            <Route exact path="/favorites" render={() =><><FavoritesList/></>} />
                         </section>
+                        <Route path="/create" render={() =><><CreateSpot/></>} />
+                        <Route path="/update-spot/:idSpot" render={({ match: { params: { idSpot } } }) => <ModifySpot idSpot={idSpot} />} />
+                        <Route path="/detail/:idSpot" render={({ match: { params: { idSpot } } }) => <DetailSpot idSpot={idSpot} />} />
                         <Route path="/register" render={() => user ? <Redirect to="/" /> : <Register/>} />
                         <Route path="/login" render={() => user ? <Redirect to="/" /> : <Login/>} />
                 {/* <Route path="/board" render={() => token ? <Board user={name} tasks={tasks} onLogout={handleLogout} onChangeTaskStatus={handleChangeTaskStatus} onNewTask={handleNewTask} /> : <Redirect to="/" />} /> */}
