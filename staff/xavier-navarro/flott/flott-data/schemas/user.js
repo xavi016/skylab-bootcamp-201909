@@ -40,7 +40,8 @@ module.exports = new Schema({
         type: [social]
     },
     favorites: [{
-        type: ObjectId
+        type: ObjectId,
+        ref: 'Spot'
     }],
     lastAccess: {
         type: Date
