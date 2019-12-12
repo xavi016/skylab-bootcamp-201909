@@ -28,15 +28,13 @@ The application is developed with [React](https://reactjs.org) and [node.js](htt
 ### Data Model
 
 ![Data Model](images/data-model.png)
-### Activity Diagram
 
-![Activity Diagram]()
-### Code Coverage
+## Code Coverage
 ![Coverage report](https://img.shields.io/badge/Coverage-98.06%25-green.svg)
 
 ![Code Coverage](images/test-coverage.png)
 
-### Future updates
+## Future updates
 - Finish test app logic
 - Modify User
 - Modify Spot
