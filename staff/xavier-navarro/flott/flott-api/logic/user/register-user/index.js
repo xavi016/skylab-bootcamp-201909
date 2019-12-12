@@ -19,7 +19,6 @@ const bcrypt = require('bcryptjs')
 */
 
 module.exports = function (name, surname, email, username, password, modalities) {
-    
     validate.string(name)
     validate.string.notVoid('name', name)
     validate.string(surname)

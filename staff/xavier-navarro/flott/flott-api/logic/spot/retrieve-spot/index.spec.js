@@ -51,7 +51,7 @@ describe('logic - retrieve spot', () => {
     })
 
     it('should succeed on correct spot id', async () => {
-        const spot = await retrieveSpot(idSpot)
+        const spot = await retrieveSpot(id, idSpot)
 
         expect(spot).to.exist
         expect(spot.id).to.equal(idSpot)
@@ -89,16 +89,16 @@ describe('logic - retrieve spot', () => {
     })
 
     it('should fail on wrong spot id', async () => {
-        const id = '012345678901234567890123'
+        const spotId = '012345678901234567890123'
 
         try {
-            await retrieveSpot(id)
+            await retrieveSpot(id, spotId)
 
             throw Error('should not reach this point')
         } catch (error) {
             expect(error).to.exist
             expect(error).to.be.an.instanceOf(NotFoundError)
-            expect(error.message).to.equal(`spot with id ${id} not found`)
+            expect(error.message).to.equal(`spot with id ${spotId} not found`)
         }
     })
 

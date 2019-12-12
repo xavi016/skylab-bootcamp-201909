@@ -8,7 +8,7 @@ const { database, ObjectId, models: { Spot, User } } = require('flott-data')
 const bcrypt = require('bcryptjs')
 const randomCoordinates = require('random-coordinates')
 
-describe('logic - list spots', () => {
+describe.only('logic - retrieve spots', () => {
     
     before(() => database.connect(TEST_DB_URL))
 
@@ -31,8 +31,6 @@ describe('logic - list spots', () => {
 
         const user = await User.create({ name: _name, surname, email, username, password: hash })
         id = user.id
-
-         
 
         for (let i = 0; i < 10; i++) {
 
@@ -67,13 +65,14 @@ describe('logic - list spots', () => {
     })
 
     it('should succeed on correct retrieve collecting elements according to filter', async () => {
-        userCoordinates = [41+random(),2+random()]
-        radius = 130000
-        spotName = 'Lukazhu'
-        sports = ['skate','longboard']
-        spotTags = ['random']
-        
-        const spots = await listSpots(userCoordinates, radius, spotName, sports, spotTags)
+        // userCoordinates = [41+random(),2+random()]
+        // radius = 130000
+        // spotName = 'Lukazhu'
+        // sports = ['skate','longboard']
+        // spotTags = ['random']
+        // query = " "
+
+        const spots = await listSpots(id)
         
         expect(spots).to.exist
         expect(spots).to.be.an("array")

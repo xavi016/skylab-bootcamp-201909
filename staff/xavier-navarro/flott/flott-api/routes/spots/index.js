@@ -32,11 +32,12 @@ router.post('/', tokenVerifier, jsonBodyParser, (req, res) => {
     }
 })
 
-router.get('/:idSpot', tokenVerifier, (req, res) => {
+router.get('/:idSpot&:idUser', (req, res) => {
     try {
-        const { params : {idSpot} } = req
+        
+        const { params : {idSpot, idUser} } = req
 
-        retrieveSpot(idSpot)
+        retrieveSpot(idUser,idSpot)
             .then(spot => res.json(spot))
             .catch(error => {
                 const { message } = error
@@ -53,10 +54,31 @@ router.get('/:idSpot', tokenVerifier, (req, res) => {
     }
 })
 
-router.get('/search/all', tokenVerifier, (req, res) => {
+router.get('/:idUser', (req, res) => {
     try {
-        listSpots()
-            .then(spots => res.status(200).json({spots}))
+        const { params : {idUser} } = req
+        listSpots(idUser)
+            .then(spots => res.status(200).json(spots))
+            .catch(error => {
+                const { message } = error
+
+                if (error instanceof NotFoundError)
+                    return res.status(404).json({ message })
+
+                res.status(500).json({ message })
+            })
+    } catch (error) {
+        const { message } = error
+
+        res.status(400).json({ message })
+    }
+})
+router.get('/search/:query&:idUser', (req, res) => {
+    
+    const { params: { query, idUser } } = req
+    try {
+        listSpots(idUser, undefined, undefined, query, undefined)
+            .then(spots => res.status(200).json(spots))
             .catch(error => {
                 const { message } = error
 
@@ -72,15 +94,15 @@ router.get('/search/all', tokenVerifier, (req, res) => {
     }
 })
 
-router.post('/upload/:id', tokenVerifier, (req, res) => {
-    debugger
+router.patch('/upload/:id', tokenVerifier, (req, res) => {
+    
     const { params: { id } } = req
     const busboy = new Busboy({ headers: req.headers })
     const type = 'spots'
 
     try {
         busboy.on('file', async(fieldname, file, filename, encoding, mimetype) => {
-            filename = 'profile'
+            filename = 'profile.png'
             await uploadImage(id, file, filename, type)
         })
     

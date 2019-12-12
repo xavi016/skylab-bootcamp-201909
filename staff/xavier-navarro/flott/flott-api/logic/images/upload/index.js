@@ -1,7 +1,7 @@
  
 require('dotenv').config()
 const { validate } = require('flott-util')
-const { ObjectId, models: { User } } = require('flott-data')
+const { ObjectId, models: { User, Spot } } = require('flott-data')
 const fs = require('fs')
 const path = require('path')
 const { promisify } = require('util')
@@ -33,12 +33,15 @@ module.exports = function(id, file, filename, type) {
 
     return (async() => {
 
-        imgPath = path.join(__dirname, `../../../data/${type}/${id}/` + filename + '.png')
-        route = path.join(__dirname, `../../../data/${type}/${id}/`)
-
+        imgPath = path.join(__dirname, `../../../public/data/${type}/${id}/${filename}`)
+        route = path.join(__dirname, `../../../public/data/${type}/${id}/`)
 
         try {
-            if (await fs.existsSync(route)) {
+            const spot = await Spot.findById(id)
+            spot.images.push(`http://localhost:8000/data/${type}/${id}/${filename}`)
+            await spot.save()
+
+            if (fs.existsSync(route)) {
                 return file.pipe(fs.createWriteStream(imgPath))
                 
             } else {
@@ -47,7 +50,7 @@ module.exports = function(id, file, filename, type) {
                 
             }
         } catch (error) {
-            
+            return error
         }
 
     })()

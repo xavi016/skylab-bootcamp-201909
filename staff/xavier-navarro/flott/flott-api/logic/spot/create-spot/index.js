@@ -25,11 +25,11 @@ module.exports = function (creator, name, description, longitude, latitude, moda
     validate.string.notVoid('name', name)
     validate.string(description)
     validate.string.notVoid('description', description)
-    validate.number(longitude, 'longitude')
-    validate.number(latitude, 'latitude')
+    longitude ? validate.number(longitude, 'longitude') : longitude = 41.123015
+    latitude ? validate.number(latitude, 'latitude') : latitude = 2.1232512
     validate.array(modalities)
     tags && validate.array(tags)
-    validate.instanceOf(Object, flags)
+    flags && validate.instanceOf(Object, flags)
 
     return (async () => {
         const flagsSpot = await new Flag(flags)
