@@ -7,7 +7,7 @@ const { errors: { ContentError } } = require('flott-util')
 const { database, models: { User } } = require('flott-data')
 const bcrypt = require('bcryptjs')
 
-describe('logic - register user', () => {
+describe.only('logic - register user', () => {
     before(() => database.connect(TEST_DB_URL))
 
     let name, surname, email, username, password, _password, hash, modalities

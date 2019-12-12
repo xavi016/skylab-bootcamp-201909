@@ -1,6 +1,6 @@
+const call = require('../../../utils/call')
 const { validate, errors: { ConflictError } } = require('flott-util')
-const { models: { User } } = require('flott-data')
-const bcrypt = require('bcryptjs')
+const API_URL = process.env.REACT_APP_API_URL
 
 /**
 * Register user
@@ -14,8 +14,7 @@ const bcrypt = require('bcryptjs')
 * 
 * @throws {ConflictError} If exist another user with the same username.
 * 
-* @return {Promise}
-* @return {string}  id Returns the user id
+* @return {status}  status 201
 */
 
 module.exports = function (name, surname, email, username, password, modalities) {
@@ -30,17 +29,20 @@ module.exports = function (name, surname, email, username, password, modalities)
     validate.string.notVoid('username', username)
     validate.string(password)
     validate.string.notVoid('password', password)
-
     validate.array(modalities)
     // validate.matches('modalities', modalities, 'bmx','skate', 'longboard','roller','scooter')
 
     return (async () => {
-        const user = await User.findOne({ username })
+        const res = await call(`${API_URL}/users`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, surname, email, username, password, modalities })
+        })
 
-        if (user) throw new ConflictError(`user with username ${username} already exists`)
+        if (res.status === 201) return
+        
+        if (res.status === 409) throw new ConflictError(JSON.parse(res.body).message)
 
-        const hash = await bcrypt.hash(password, 10)
-
-        await User.create({ name, surname, email, username, password: hash, modalities })
+        throw new Error(JSON.parse(res.body).message)
     })()
 }
