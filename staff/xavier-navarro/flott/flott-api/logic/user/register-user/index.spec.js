@@ -114,7 +114,7 @@ describe.only('logic - register user', () => {
         
         expect(() => registerUser(name, surname, email, username, password, 1)).to.throw(TypeError, '1 is not a Array')
         expect(() => registerUser(name, surname, email, username, password, true)).to.throw(TypeError, 'true is not a Array')
-        expect(() => registerUser(name, surname, email, username, password, 'hola')).to.throw(TypeError, ' is not a Array')
+        expect(() => registerUser(name, surname, email, username, password, 'hola')).to.throw(TypeError, 'hola is not a Array')
         expect(() => registerUser(name, surname, email, username, password, {})).to.throw(TypeError, '[object Object] is not a Array')
         expect(() => registerUser(name, surname, email, username, password, undefined)).to.throw(TypeError, 'undefined is not a Array')
         expect(() => registerUser(name, surname, email, username, password, null)).to.throw(TypeError, 'null is not a Array')

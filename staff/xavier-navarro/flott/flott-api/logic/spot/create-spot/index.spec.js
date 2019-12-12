@@ -114,15 +114,11 @@ describe('logic - register spot', () => {
         expect(() => registerSpot(creator, spotname, description, true)).to.throw(TypeError, 'true is not a number')
         expect(() => registerSpot(creator, spotname, description, [])).to.throw(TypeError, ' is not a number')
         expect(() => registerSpot(creator, spotname, description, {})).to.throw(TypeError, '[object Object] is not a number')
-        expect(() => registerSpot(creator, spotname, description, undefined)).to.throw(TypeError, 'undefined is not a number')
-        expect(() => registerSpot(creator, spotname, description, null)).to.throw(TypeError, 'null is not a number')
 
         expect(() => registerSpot(creator, spotname, description, longitude, 'abc')).to.throw(TypeError, 'abc is not a number')
         expect(() => registerSpot(creator, spotname, description, longitude, true)).to.throw(TypeError, 'true is not a number')
         expect(() => registerSpot(creator, spotname, description, longitude, [])).to.throw(TypeError, ' is not a number')
         expect(() => registerSpot(creator, spotname, description, longitude, {})).to.throw(TypeError, '[object Object] is not a number')
-        expect(() => registerSpot(creator, spotname, description, longitude, undefined)).to.throw(TypeError, 'undefined is not a number')
-        expect(() => registerSpot(creator, spotname, description, longitude, null)).to.throw(TypeError, 'null is not a number')
     
         expect(() => registerSpot(creator, spotname, description, longitude, latitude, 1)).to.throw(TypeError, '1 is not a Array')
         expect(() => registerSpot(creator, spotname, description, longitude, latitude, true)).to.throw(TypeError, 'true is not a Array')
@@ -139,8 +135,7 @@ describe('logic - register spot', () => {
         expect(() => registerSpot(creator, spotname, description, longitude, latitude, modalities, tags, 1)).to.throw(TypeError, '1 is not a Object')
         expect(() => registerSpot(creator, spotname, description, longitude, latitude, modalities, tags, true)).to.throw(TypeError, 'true is not a Object')
         expect(() => registerSpot(creator, spotname, description, longitude, latitude, modalities, tags, 'abc')).to.throw(TypeError, 'abc is not a Object')
-        expect(() => registerSpot(creator, spotname, description, longitude, latitude, modalities, tags, undefined)).to.throw(TypeError, 'undefined is not a Object')
-        expect(() => registerSpot(creator, spotname, description, longitude, latitude, modalities, tags, null)).to.throw(TypeError, 'null is not a Object')
+
     })
 
     after(() => Promise.all([User.deleteMany(), Spot.deleteMany()]).then(database.disconnect))

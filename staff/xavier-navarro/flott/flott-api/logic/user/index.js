@@ -4,4 +4,5 @@ module.exports = {
     retrieveUser: require('./retrieve-user'),
     updateUser: require('./update-user'),
     toggleFav: require('./toggle-fav'),
+    retrieveFavs: require('./retrieve-favs')
 } 

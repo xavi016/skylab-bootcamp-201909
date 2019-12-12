@@ -37,7 +37,7 @@ module.exports = function(id, type) {
                 return await fs.createReadStream(defaultImage)
             }
         } catch (error) {
-            debugger
+            return error
         }
 
     })()

@@ -6,44 +6,57 @@ const { models: { Spot, User } } = require('flott-data')
 *  
 * @param {Array} userCoordinates
 * @param {Number} radius
-* @param {string} spotName
+* @param {string} query
 * @param {Array} sports
-* @param {Array} spotTags
 * 
 * @return {Promise}
 * @return {Array} id Returns an array with all results
 */
 
-module.exports = function (userCoordinates, radius, spotName, sports, spotTags, numFavs, fountain, supermarket, publicTransport, parking ) {
+module.exports = function (idUser, userCoordinates, radius, query, sports) {
+    let user
+    // , numFavs, fountain, supermarket, publicTransport, parking
+    if(idUser !== "undefined"){
+        validate.string(idUser)
+        validate.string.notVoid('idUser', idUser)
+    }
     userCoordinates ? validate.array(userCoordinates) : userCoordinates = [41,2]
     radius ? validate.number(radius) : radius = 130000
     sports ? validate.array(sports) : sports = ['skate','longboard','roller','scooter','bmx']
 
     radius && validate.number(radius, 'radius')
-    if(spotName){
-        validate.string(spotName)
-        validate.string.notVoid('spotName', spotName)
+    if(query){
+        validate.string(query)
+        validate.string.notVoid('query', query)
     }else{
-        spotName = " "
+        query = " "
     }
-    spotTags ? validate.array(spotTags) : sportTags = " "
 
     return (async () => {
-
+        debugger
         const spots = await Spot.find({$and:[
                                         { location: { $nearSphere: { $geometry: { type: "Point", coordinates: userCoordinates },$maxDistance: radius } }},
                                         {"modalities": {$in: sports}},
                                         { $or:[ 
-                                            { "name" : {$regex : `.*${spotName}*`}},
-                                            { "tags": {$in: spotTags}}]
-                                        }]}).populate('creator').sort({ 'totalFavs' : 1}).lean()
-        // const spots = await Spot.find().populate('creator')
+                                            { "name" : {$regex : `.*${query}*`, $options: 'i'}},
+                                            { "tags": {$in: query}}]
+                                        }]}).populate('creator').sort({ 'totalFavs' : 0})
 
         let results = []
+        if(idUser !== "undefined"){
+            user = await User.findById(idUser)
+            if (!user) throw new NotFoundError(`user with id ${idUser} not found`)
+        }
+        
         spots.forEach(elem => {
-            const { name, tags, modalities, images, totalFavs, creator: {username, image: userImage} } = elem
-            let place = { name, tags, modalities, images, totalFavs, username, userImage }
+            const { id, name, tags, modalities, images, totalFavs, creator: {username, profileImage: userImage} } = elem
+            let place = { id, name, tags, modalities, images, totalFavs, username, userImage }
 
+            if(idUser !== "undefined"){
+                elem.isFav = user.favorites.includes(id)
+            }else{
+                elem.isFav = undefined
+            }
             results.push(place)
         })
         return results

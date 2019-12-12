@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { registerUser, authenticateUser, retrieveUser, toggleFav } = require('../../logic/user')
+const { registerUser, authenticateUser, retrieveUser, toggleFav, retrieveFavs } = require('../../logic/user')
 const { uploadImage, loadImageUrl, loadImage } = require('../../logic/images')
 const jwt = require('jsonwebtoken')
 const { env: { SECRET } } = process
@@ -98,6 +98,27 @@ router.get('/all', tokenVerifier, (req, res) => {
     }
 })
 
+router.get('/favorites', tokenVerifier, (req, res) => {
+    
+    try {
+        const { id } = req
+        retrieveFavs(id)
+            .then(favorites => res.json(favorites))
+            .catch(error => {
+                const { message } = error
+
+                if (error instanceof NotFoundError)
+                    return res.status(404).json({ message })
+
+                res.status(500).json({ message })
+            })
+    } catch (error) {
+        const { message } = error
+
+        res.status(400).json({ message })
+    }
+})
+
 router.patch('/favs/:favId', tokenVerifier, jsonBodyParser, (req, res) => {
     
     try {
@@ -120,7 +141,7 @@ router.patch('/favs/:favId', tokenVerifier, jsonBodyParser, (req, res) => {
 })
 
 router.post('/upload/:id', tokenVerifier, (req, res) => {
-    debugger
+    
     const { params: { id } } = req
     const busboy = new Busboy({ headers: req.headers })
     const type = 'users'

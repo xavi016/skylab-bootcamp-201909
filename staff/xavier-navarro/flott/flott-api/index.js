@@ -8,6 +8,7 @@ const { database } = require('flott-data')
 const { users, spots } = require('./routes')
 
 const api = express()
+api.use(express.static('public'))
 
 api.use(cors)
 
