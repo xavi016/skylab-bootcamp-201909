@@ -24,7 +24,7 @@ export default function ({user, idSpot}) {
         user && user.id ? idUser = user.id : idUser = undefined
         
         const updatedSpot = await logic.spots.retrieveSpot(idSpot, idUser)
-        debugger
+        
         setSpot(updatedSpot)
     }
 

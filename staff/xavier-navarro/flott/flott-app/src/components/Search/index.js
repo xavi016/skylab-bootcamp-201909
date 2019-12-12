@@ -16,7 +16,7 @@ export default withRouter(function ({ history }) {
 
     async function onSearch(query) {
         try {
-            debugger
+            
             const listSpots = await handleSearch(query)
             setSpots(listSpots)
             

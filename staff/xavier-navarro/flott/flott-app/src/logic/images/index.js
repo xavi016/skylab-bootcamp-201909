@@ -24,7 +24,7 @@ module.exports = function (token, id, image, type) {
     validate.string.notVoid('id', id)
     validate.string(type)
     validate.string.notVoid('type', type)
-    debugger
+    
     return (async () => {
         const res = await fetch(`${API_URL}/${type}/upload/${id}`, {
             method: 'PATCH',
@@ -33,7 +33,7 @@ module.exports = function (token, id, image, type) {
             },
             body: fData
         })
-        debugger
+        
         if (res.status === 200) return
 
         throw new Error(JSON.parse(res.body).message)

@@ -21,7 +21,6 @@ export default withRouter(function ({ history }) {
     }, [refresh])
 
     // async function handleRetrieveSpots(){
-    //     debugger
     //     let idUser
     //     user && user.id ? idUser = user.id : idUser = undefined
     //     const results = await logic.spots.listSpots(idUser)

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext }  from 'react'
 import logic, { spots, user } from '../../logic'
 import ButtonFavorite from '../ButtonFavorite'
+import { Link } from 'react-router-dom'
 import MyContext from '../ProviderContext'
 // import './index.sass'
 
@@ -29,7 +30,7 @@ export default function ({idSpot}) {
         setSpot(spot)
     }
 
-    return  <>{spot  && <section className="spots__detail detail hidden">
+    return  <>{spot  && <section className="spots__detail detail">
                 <div className="detail__image">
                     <img src={spot.images.length > 0 ? spot.images[0] :"images/default-images/spot.png"} alt="spot" className="img"/>
                     <div className="user__profile profile">
@@ -39,6 +40,10 @@ export default function ({idSpot}) {
                 </div>
                 <ul className="detail__tags tags">
                     {spot.tags.map(tag => <li key={tag} className="tags__item">{tag}</li>)}
+                </ul>
+                <p>Modalities</p>
+                <ul className="detail__tags tags">
+                    {spot.modalities.map(modaity => <li key={modaity} className="tags__item">{modaity}</li>)}
                 </ul>
                 <div className="detail__spot spot">
                     <h1 className="spot__name">{spot.name}<span className="spot__location">(Barcelona)</span></h1>                
@@ -51,10 +56,11 @@ export default function ({idSpot}) {
                     </p>
                 </div>
                 <div className="detail__extra">
-                    <a href="#" className="url-maps"><i className="fas fa-map-marker-alt"></i> View in maps</a>
-                    <button className="btn-info">More information</button>
+                {user && <Link to={`/update-spot/${spot.id}`}  ><i class="far fa-edit"></i> Edit</Link>}
+                    {/* <a href="#" className="url-maps"><i className="fas fa-map-marker-alt"></i> View in maps</a>
+                    <button className="btn-info">More information</button> */}
                 </div>
-                <div className="detail__comments comments">
+                {/* <div className="detail__comments comments">
                     <p className="comments__title">Comments</p>
                     <ul className="comments__list list">
                         <li className="list__item">
@@ -70,7 +76,7 @@ export default function ({idSpot}) {
                             </p>
                         </li>
                     </ul>
-                </div>
+                </div> */}
 </section>}</>
            
 }

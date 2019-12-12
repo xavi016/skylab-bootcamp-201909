@@ -41,10 +41,8 @@ export default withRouter(function ({ history }) {
 
     return <MyContext.Provider value={{ user , setUser, setSpots, spots, setRefresh, refresh }}>  
                     <Menu onLogout={handleLogout}/>
-                        <section className="spots__container spots">
-                            <Route exact path="/" render={() =><><Search/><Home/></>} />
-                            <Route exact path="/favorites" render={() =><><FavoritesList/></>} />
-                        </section>
+                        <Route exact path="/" render={() =><><section className="spots__container spots"><Search/><Home/></section></>} />
+                        <Route exact path="/favorites" render={() =><><section className="spots__container spots"><FavoritesList/></section></>} />
                         <Route path="/create" render={() =><><CreateSpot/></>} />
                         <Route path="/update-spot/:idSpot" render={({ match: { params: { idSpot } } }) => <ModifySpot idSpot={idSpot} />} />
                         <Route path="/detail/:idSpot" render={({ match: { params: { idSpot } } }) => <DetailSpot idSpot={idSpot} />} />

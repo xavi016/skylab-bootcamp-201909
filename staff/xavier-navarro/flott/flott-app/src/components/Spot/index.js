@@ -4,7 +4,7 @@ import MyContext from '../ProviderContext'
 import ButtonFavorite from '../ButtonFavorite'
 
 export default function ({ spot: { id, images, username, name, totalFavs, tags, isFav } }) {
-    debugger
+    
     const { user } = useContext(MyContext)
 
     return  <>
@@ -19,20 +19,21 @@ export default function ({ spot: { id, images, username, name, totalFavs, tags, 
                     <a className="#"href="#" className="url-maps"><i className="fas fa-map-marker-alt"></i></a>
                     <h1 className="spot-name">{name}</h1>
                     <p className="spot-location">(Barcelona)</p>
+                    <ButtonFavorite user={user} idSpot={id} />
                 </div>
                 <div className="card__social social">
                     <div className="social__last-comment">
-                        <img src={"images/default-images/user.png"} alt="user" className="user-image"/>
+                        {/* <img src={"images/default-images/user.png"} alt="user" className="user-image"/>
                         <p className="user-comment">
                             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                         </p>
-                        <p className="date">12/11/2019</p>
+                        <p className="date">12/11/2019</p> */}
                     </div>
                     <p className="social__total-likes">
-                        <ButtonFavorite user={user} idSpot={id} />
+                       
                     </p>
                     <p className="social__total-comments">
-                        <i className="far fa-comment-alt"></i> 84
+                        {/* <i className="far fa-comment-alt"></i> 84 */}
                     </p>
                 </div>
             </>

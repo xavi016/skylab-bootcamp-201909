@@ -39,7 +39,7 @@ export default withRouter(function ({ history }) {
             let latitude = position.coords.latitude
             let longitude =  position.coords.longitude
         }, error => console.log(error.message), options)
-debugger
+
         try {
             const { token } = sessionStorage;
             await logic.spots.createSpot(token, name, description, tagsArr, modalities)

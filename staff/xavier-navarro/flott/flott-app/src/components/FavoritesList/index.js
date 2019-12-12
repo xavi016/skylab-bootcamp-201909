@@ -16,7 +16,6 @@ export default withRouter(function ({ history }) {
             const spots = await logic.user.retrieveFavs(token)
             
             setSpots(spots)
-            console.log(spots)
         })()
     }, [refresh, setRefresh])
 

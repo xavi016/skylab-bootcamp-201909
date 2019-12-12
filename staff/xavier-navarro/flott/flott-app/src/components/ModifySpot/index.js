@@ -57,7 +57,7 @@ export default withRouter(function ({ history, idSpot }) {
             <input type="file" class="form__input-file" name="file"/>
             <button className="btn-submit save">Save</button>
         </form>
-        <form className="update-spot__form form" onSubmit={handleSubmit}>
+        {/* <form className="update-spot__form form" onSubmit={handleSubmit}>
             <input className="form__input" type="text" name="name" autoFocus placeholder="Name" />
             <textarea name="description" className="form__text-area" rows="6"
                     placeholder="Description"></textarea>
@@ -71,7 +71,7 @@ export default withRouter(function ({ history, idSpot }) {
                 <label htmlFor="roller"><input id="roller" className="form__checkbox" type="checkbox" name="roller" value="roller"/>Roller</label>
             </div>
             <button className="btn-submit">Update spot</button>
-        </form>
+        </form> */}
 
         {/* {error && <Feedback message={error} />} */}
     </section>
