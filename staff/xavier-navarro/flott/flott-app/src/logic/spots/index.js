@@ -1,6 +1,11 @@
-module.exports = {
-    listSpots: require('./retrieve-all'),
-    searchSpots: require('./search-spots'),
-    retrieveSpot: require('./retrieve-spot'),
-    createSpot: require('./create-spot')
+import listSpots from './retrieve-all'
+import searchSpots from './search-spots'
+import retrieveSpot from './retrieve-spot'
+import createSpot from './create-spot'
+
+export default {
+    listSpots,
+    searchSpots,
+    retrieveSpot,
+    createSpot
 }

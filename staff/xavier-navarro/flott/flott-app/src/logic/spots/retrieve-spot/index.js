@@ -1,8 +1,8 @@
-const call = require('../../../utils/call')
+import call from '../../../utils/call' //eslint-disable-line
 const { validate, errors: { NotFoundError, CredentialsError } } = require('flott-util')
 const API_URL = process.env.REACT_APP_API_URL
 
-module.exports = function (idSpot, idUser) {
+export default function (idSpot, idUser) {
 
     return (async () => {
         

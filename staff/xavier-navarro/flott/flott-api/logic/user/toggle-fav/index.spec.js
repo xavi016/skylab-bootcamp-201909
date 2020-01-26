@@ -51,5 +51,5 @@ describe('logic- toggle favs', () => {
             expect(user.favorites).to.have.lengthOf(0)
         })
     })
-    
+    after(() => User.deleteMany().then(database.disconnect))
 })

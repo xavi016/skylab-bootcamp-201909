@@ -1,7 +1,13 @@
-module.exports = {
-    authenticateUser: require('./authenticate'),
-    registerUser: require('./register'),
-    retrieveUser: require('./retrieve-user'),
-    toggleFav: require('./toggleFav'),
-    retrieveFavs: require('./retrieve-favorites')
+import authenticateUser from './authenticate'
+import registerUser from './register'
+import retrieveUser from './retrieve-user'
+import toggleFav from './toggleFav'
+import retrieveFavs from './retrieve-favorites'
+
+export default {
+    authenticateUser,
+    registerUser,
+    retrieveUser,
+    toggleFav,
+    retrieveFavs
 }

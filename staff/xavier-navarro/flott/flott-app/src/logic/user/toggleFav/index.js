@@ -1,4 +1,4 @@
-const call = require('../../../utils/call')
+import call from '../../../utils/call' //eslint-disable-line
 const { validate, errors: { ConflictError } } = require('flott-util')
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -13,7 +13,7 @@ const API_URL = process.env.REACT_APP_API_URL
 * @return {status}  status 201
 */
 
-module.exports = function (token, idUser) {
+export default function (token, idUser) {
     validate.string(token)
     validate.string.notVoid('token', token)
     validate.string(idUser)

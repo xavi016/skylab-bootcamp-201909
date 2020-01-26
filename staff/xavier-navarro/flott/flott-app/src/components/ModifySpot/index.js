@@ -34,6 +34,7 @@ export default withRouter(function ({ history, idSpot }) {
         const { token } = sessionStorage
         try {
             await logic.images(token, idSpot, image, 'spots')
+            history.push(`/detail/${idSpot}`)
         } catch (error) {
             console.log(error)
         }
@@ -44,7 +45,7 @@ export default withRouter(function ({ history, idSpot }) {
         try {
             const { token } = sessionStorage;
             await logic.spots.createSpot(token, name, description, tagsArr, modalities)
-            history.push('/')
+            history.push(`/detail/${idSpot}`)
 
         } catch (error) {
             console.error(error)
@@ -54,7 +55,7 @@ export default withRouter(function ({ history, idSpot }) {
     return <section className="update-spot">
         <form className="update-spot__form form"  onSubmit={handleSaveImage}>
             <h1 className="form__title">Modify Spot</h1>
-            <input type="file" class="form__input-file" name="file"/>
+            <input type="file" className="form__input-file" name="file"/>
             <button className="btn-submit save">Save</button>
         </form>
         {/* <form className="update-spot__form form" onSubmit={handleSubmit}>

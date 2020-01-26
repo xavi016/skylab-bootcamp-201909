@@ -32,7 +32,7 @@ export default function ({idSpot}) {
 
     return  <>{spot  && <section className="spots__detail detail">
                 <div className="detail__image">
-                    <img src={spot.images.length > 0 ? spot.images[0] :"images/default-images/spot.png"} alt="spot" className="img"/>
+                    <img src={spot.images.length > 0 ? `${spot.images[0]}?timestamp=${Date.now()}` :"images/default-images/spot.png"} alt="spot" className="img"/>
                     <div className="user__profile profile">
                         <img src={"images/default-images/user.png"} alt="user" className="profile__image"/>
                         <p className="profile__name">{spot.creatorUsername}</p>
@@ -56,7 +56,7 @@ export default function ({idSpot}) {
                     </p>
                 </div>
                 <div className="detail__extra">
-                {user && <Link to={`/update-spot/${spot.id}`}  ><i class="far fa-edit"></i> Edit</Link>}
+                {user && <Link to={`/update-spot/${spot.id}`}  ><i className="far fa-edit"></i> Edit</Link>}
                     {/* <a href="#" className="url-maps"><i className="fas fa-map-marker-alt"></i> View in maps</a>
                     <button className="btn-info">More information</button> */}
                 </div>

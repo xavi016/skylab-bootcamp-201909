@@ -8,7 +8,7 @@ const { database, ObjectId, models: { Spot, User } } = require('flott-data')
 const bcrypt = require('bcryptjs')
 const randomCoordinates = require('random-coordinates')
 
-describe.only('logic - retrieve spots', () => {
+describe('logic - retrieve spots', () => {
     
     before(() => database.connect(TEST_DB_URL))
 

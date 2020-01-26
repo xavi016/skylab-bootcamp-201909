@@ -15,7 +15,7 @@ const API_URL = process.env.REACT_APP_API_URL
 * @return {status}  status 201
 */
 
-module.exports = function (token, id, image, type) {
+export default function (token, id, image, type) {
     let fData = new FormData()
     fData.append('image', image)
     validate.string(token)

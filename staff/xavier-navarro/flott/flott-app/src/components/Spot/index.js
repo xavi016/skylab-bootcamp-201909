@@ -9,7 +9,7 @@ export default function ({ spot: { id, images, username, name, totalFavs, tags, 
 
     return  <>
                 <div className="card__image">
-                        <img src={images.length > 0 ? images[0] :"images/default-images/spot.png"} alt="spot" className="img"/>
+                        <img src={images.length > 0 ? `${images[0]}?timestamp=${Date.now()}` :"images/default-images/spot.png"} alt="spot" className="img"/>
                         <Link to={`detail/${id}`} className="more-info">More info</Link>
                     </div>
                 <ul className="card__tags tags">

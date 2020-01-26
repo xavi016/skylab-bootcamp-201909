@@ -33,7 +33,7 @@ module.exports = function (idUser, userCoordinates, radius, query, sports) {
     }
 
     return (async () => {
-        debugger
+        
         const spots = await Spot.find({$and:[
                                         { location: { $nearSphere: { $geometry: { type: "Point", coordinates: userCoordinates },$maxDistance: radius } }},
                                         {"modalities": {$in: sports}},
